@@ -9,12 +9,10 @@
     }
 
     .manage-item {
-        background-color: #eeeeee;
+        background-color: #f6f6f6;
         color: #555555;
-        border-top: solid 1px #fbfbfb;
-        border-left: solid 1px #fbfbfb;
-        border-right: solid 1px #bbbbbb;
-        border-bottom: solid 1px #bbbbbb;
+        border-radius: 0.416666rem;
+        border: 1px solid #d0d0d0;
         width: auto;
         min-width: 8rem;
         height: 2.8rem;
@@ -27,12 +25,10 @@
     }
 
     #m-setting-content {
-        background: #ededed url("imgs/bg-line.png") center repeat;
+        background-color: #efeff4 ;
     }
 
-    #m-setting-store-edit {
-        background: #ededed url("imgs/bg-line.png") center repeat;
-    }
+
 
     #store-up-section-content {
         height: 26.333333rem;
@@ -188,7 +184,7 @@
     }
 
     .stand-operate-color {
-        background-color: #398acb;
+        background-color: #007aff;
         color: #fff;
     }
 
@@ -227,9 +223,10 @@
                     <img ng-src="{{store.logo ? store.logo : 'imgs/default_store.png'}}"
                          style="width: 7rem;height: 7rem;">
                     <br/>
-                    <button type="button" ng-tap="getPicture(store,'folder')" class="sel-logo-image-button">
+                    <div class="m-button-pink" ng-tap="getPicture(store,'folder')"  class="sel-logo-image-button" style="width: 7rem"><%= setting.account.choose_photo %></div>
+                    <!--<button type="button" ng-tap="getPicture(store,'folder')" class="sel-logo-image-button">
                         <%= setting.account.choose_photo %>
-                    </button>
+                    </button>-->
                 </div>
                 <!--与loge图片并列的两项店铺名、注册账号-->
                 <div id="store-name-user" class="store-name-user">
@@ -311,7 +308,7 @@
 </div>
 
 <!--店铺资料编辑-->
-<div id="m-setting-store-edit" class="none bg-color-ededed" style="overflow: hidden;">
+<div id="m-setting-store-edit" class="none bg-color-efeff4" style="overflow: hidden;">
     <div class="m-setting-title">
         <ul>
             <li class="fl">
@@ -416,9 +413,9 @@
                 <input class="m-input" type="text" ng-model="storeTemp.addr_detail"
                        placeholder="<%= setting.store.block_address %>"
                        style="width: 60%" maxlength="64">
-                <button type="button" class="sel-logo-image-button h-3" ng-tap="showAddPointOfMap()">
+                <div class="m-button-pink inlinebl fr mr-1" ng-tap="showAddPointOfMap()" style="margin-top: 0.7rem;">
                     <%= setting.store.map_location %>
-                </button>
+                </div>
                 <cite id="store-error-addr_detail" class="fr error-hint">
                     <img src="../../resource/images/alarmIcon.png">
                     <%= setting.store.input_error %>
@@ -492,7 +489,8 @@
                 <input class="m-input" style="width: 60%" ng-model="temp.newOperateStr"
                        placeholder="<%= setting.store.add_by_hand_placeholder %>"
                        type="text"/>
-                <button class="operate-add-button" ng-tap="addOperateItem()"><%= common.label.confirm %></button>
+                <!--<button class="operate-add-button" ng-tap="addOperateItem()"><%= common.label.confirm %></button>-->
+                <div class="m-button-pink inlinebl fr mr-1" ng-tap="addOperateItem()"><%= common.label.confirm %></div>
             </div>
         </div>
     </div>

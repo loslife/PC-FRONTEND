@@ -19,10 +19,10 @@ define(function (require, exports, module) {
         })
     }
     //基础服务
-    var utils = require("mframework/package").utils; 			        //全局公共函数
-    var dataUtils = require("mframework/package").dataUtils;
-    var database = require("mframework/package").database;
-    var RSA = require("mframework/package").RSA;
+    var utils = require("mframework/static/package").utils; 			        //全局公共函数
+    var dataUtils = require("mframework/static/package").dataUtils;
+    var database = require("mframework/static/package").database;
+    var RSA = require("mframework/static/package").RSA;
     var dbInstance = null;
     var CONSTANT = {
         tb_users: "tb_users",

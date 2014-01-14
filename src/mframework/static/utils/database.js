@@ -33,7 +33,7 @@ define(function (require, exports, module) {
                     tx.executeSql(sql, args, function (tx, result) {
                         successCallback(result);
                     });
-                }, function ( error) {
+                }, function (error) {
                     console.log(error);
                     errorCallback(error);
                 });

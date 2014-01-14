@@ -51,8 +51,10 @@
         "license_info_out_detail_two_ios":"为了不影响正常使用，请通过服务热线0755-28890800或QQ:1994714502和我们取得联系。",
         "choose_member":"选择会员",
         "member_search_placeholder":"请输入会员编号或手机",
-        "discount_info":"输入折扣信息",
-        "discount_info_placeholder":"请输入折扣信息",
+        "discount_info":"输入折扣",
+        "change_price":"输入新单价",
+        "discount_info_placeholder":"请输入折扣",
+        "changed_price_placeholder":"输入新单价",
         "license_info_ing":"账号即将过期",
         "license_info_ing_detail_one":"为了不影响正常使用，请按照",
         "license_info_ing_detail_two":"管理台->我的账号->支付方式",
@@ -285,6 +287,11 @@
             "employee_performance":"员工业绩",
             "service_performance":"服务业绩",
             "client_stream":"客流量"
+        },
+        "finance":{
+            "title":"财务",
+            "checkoutrevenuelist":"收入流水",
+            "cardrevenuelist":"办卡流水"
         },
         "employee": {
             "employee":"员工",

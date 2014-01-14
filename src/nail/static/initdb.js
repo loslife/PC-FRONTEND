@@ -1,6 +1,6 @@
     define(function (require,exports,module) {
 
-    var database = require("mframework/package").database.getDBInstance();		//数据操作服务
+    var database = require("mframework/static/package").database.getDBInstance();		//数据操作服务
 
     exports.initTable =  function(callback){
 

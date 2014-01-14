@@ -156,7 +156,7 @@ define(function (require,exports,module) {
     function  loadFeatureContent(parentId,moduleId,featureId,featureInstance,callback) {
         var featureViewUrl = "";
         if (global["_g_env"] == "dev") {
-            featureViewUrl = "/"+moduleId+"/"+featureId+"_zh_CN.html";
+            featureViewUrl = "/"+moduleId+"/static/"+featureId+"_zh_CN.html";
             if(featureInstance.featurePath){
                 featureViewUrl =  "/"+moduleId+"/static/"+featureInstance.featurePath+"/"+featureId+"_zh_CN.html";
             }

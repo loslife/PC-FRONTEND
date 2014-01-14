@@ -256,10 +256,10 @@ margin-right: 1rem;">
                 <img ng-src="{{user.baseInfo_image ? user.baseInfo_image : 'imgs/man-icon.jpg'}}"
                      style="width: 7rem; height: 7rem; border-radius: 0.833rem">
                 <br>
-                <button type="button" ng-tap="getPicture(user,'folder')"
-                        style="margin-left: auto; margin-right: auto; width:7rem; height: 2.5rem; border:none; margin-top: 0.5rem; background-color: #a6428b; color: #fff; border-radius: 0.416666rem">
-                    <%= setting.account.choose_photo %>
-                </button>
+                <div class="m-button-pink" ng-tap="getPicture(user,'folder')" style="min-width: 3rem;
+width: 7rem;
+margin-left: 0.3rem;"><%= setting.account.choose_photo %></div>
+
             </div>
             <div class="fl " style="width: 75%">
                 <ul class="mt-2">
@@ -275,8 +275,8 @@ margin-right: 1rem;">
         </div>
     </div>
 
-    <div class="m-setting-account-hidden m-setting-account-edit bg-color-ededed" id="m-setting-account-edit" style="display: none;
-                background: #ededed url(imgs/bg-line.png) center repeat;"
+    <div class="m-setting-account-hidden m-setting-account-edit bg-color-efeff4" id="m-setting-account-edit" style="display: none;
+         "
          ng-style="action=='modifyAccount'?{}:{'display':'none'}">
         <div class="m-setting-title">
             <ul>
@@ -436,12 +436,9 @@ margin-right: 1rem;">
     </div>
     <div id="m-setting-account-loginout" class="none dialog-delete">
         <div class="dialog-body">
-            <div class="dialog-header" style="background-color: #ec5870;">
+            <div class="dialog-header delete-dialog-ios">
                 <div class="dialog-title">
                     <%= setting.account.login_out_confirm %>？
-                </div>
-                <div class="delete-icon" ng-tap="modalDialogClose()">
-                    <i class="icon-remove-circle fancybox-close-icon-s"></i>
                 </div>
             </div>
             <div class="m-setting-addMsg" style="display: none;"></div>

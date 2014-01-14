@@ -1,6 +1,6 @@
 define(function (require, exports, module) {
-    var utils = require("mframework/package").utils;
-    var database = require("mframework/package").database;
+    var utils = require("mframework/static/package").utils;
+    var database = require("mframework/static/package").database;
     var featureDataI = require("./checkout-dataI.js");
 
     exports.initScope = initScope;

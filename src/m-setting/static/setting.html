@@ -262,19 +262,30 @@ margin-top: -0.5rem;">
         <div class="cover-box-rows" style="display: none;">
 
         </div>
+
         <div class="list-one bg-color-blue"
              ng-tap="clickSettingMenu('terminal',$event)"
-             style="width:20%; margin-right: 9px; overflow: hidden; text-align: center;"
-             >
+             style="width:20%; margin-right: 9px; overflow: hidden; text-align: center;">
             <div class="setting-inline-block setting-user"><span class="setting-title-one  ">
                  <img src="imgs/print-icon-setting.png" style="vertical-align: middle; margin-right: 0.8rem;
 margin-top: -0.5rem;">
                     <%= setting.terminal.terminal %></span>
             </div>
         </div>
+
+
+        <div class="list-one bg-color-grass-green"
+             ng-tap="clickSettingMenu('finance',$event)"
+             style="text-align: center;width:30%; margin-right: 9px; overflow: hidden; min-width: 168px;">
+            <div class="setting-inline-block setting-user"><span class="setting-title-one  ">
+                    <img src="imgs/feedback.png" style="vertical-align: middle; margin-right: 0.8rem;
+margin-top: -0.5rem;"><%= setting.finance.title %></span>
+            </div>
+        </div>
+
         <div class="list-one "
              ng-tap="clickMessage()"
-             style="text-align: center;width:30%; margin-right: 9px; overflow: hidden; min-width: 168px; background-color: #a0a0a0 ">
+             style="width:25%; margin-right: 9px; min-width: 168px;background-color: #a0a0a0; text-align: center;">
             <div class="setting-inline-block setting-user"><span class="setting-title-one  " style="color: #565656">
                     <img src="imgs/icon-comments-alt.png" style="vertical-align: middle; margin-right: 0.8rem;
 margin-top: -0.5rem;">
@@ -283,17 +294,11 @@ margin-top: -0.5rem;">
         </div>
         <div class="list-one bg-color-orange"
              ng-tap="clickMessage()"
-             style="width:25%; margin-right: 9px; overflow: hidden; min-width: 168px;background-color: #a0a0a0; text-align: center ">
+             style="width: 25%; overflow: hidden;background-color: #a0a0a0;  text-align: center;min-width: 148px;">
             <div class="setting-inline-block setting-user"><span class="setting-title-one  " style="color: #565656">
                     <img src="imgs/icon-hdd.png" style="vertical-align: middle; margin-right: 0.8rem;
 margin-top: -0.5rem;">
                 <%= setting.repertory.repertory %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            </div>
-        </div>
-        <div class="list-one "
-             style="width: 25%; overflow: hidden; text-align: center;min-width: 148px; background-color: #000 ">
-            <div class="setting-inline-block setting-user"><span class="setting-title-one  "
-                                                                 style="color: #565656"></span>
             </div>
         </div>
 

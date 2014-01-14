@@ -52,7 +52,15 @@ define(function (require, exports, module) {
             return function (scope, element, attrs) {
                 var tapping,tapOffsetX,tapOffsetY;
                 tapping = false;
-
+                element.bind('click', function (e) {
+                    element.addClass('active');
+                    var fn = $parse(attrs["ngTap"]);
+                    scope.$apply(function () {
+                        element.removeClass('active');
+                        fn(scope, {$event: e});
+                    });
+                    tapping = true;
+                });
                 element.bind('touchstart', function (e) {
                     var touch = event.touches[0];
                     tapOffsetX = touch.screenX;

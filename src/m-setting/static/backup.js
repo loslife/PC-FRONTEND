@@ -21,11 +21,11 @@ define(function (require, exports, module) {
     exports.fullscreen = true;
 
     require("./setting.css")
-    var database = require("mframework/package").database;
+    var database = require("mframework/static/package").database;
     var dbInstance = null;
 
     //基础服务
-    var utils = require("mframework/package").utils, 			        //全局公共函数
+    var utils = require("mframework/static/package").utils, 			        //全局公共函数
         cache = utils.getCache(),
         CONSTANT = {
         };
@@ -99,7 +99,7 @@ define(function (require, exports, module) {
 
     function formatDate(milliSeconds) {
         var date = new Date(milliSeconds)
-        return (date.getMonth() + 1) + "月" + date.getDate() + "日 " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+        return (date.getMonth() + 1) + "月" + date.getDate() + "日 " + date.getHours() + ":" + date.getMinutes();
     }
 
     function paramsChange(params) {
@@ -123,15 +123,29 @@ define(function (require, exports, module) {
     }
 
     function backup_android() {
-        if (window.LosNailActivity) {
-            window.LosNailActivity.cloudBackup();
+        if (window.plugins.BackupAndResume) {
+            window.plugins.BackupAndResume.cloudBackup({}, function (successResult) {
+                console.log("显示最近一次备份时间");
+                //备份成功后，更新界面显示时间
+                moduleScope.tips = "最近一次备份时间：" + formatDate(new Date().getTime());
+                try {
+                    moduleScope.$digest();
+                } catch (error) {
+                    console.log(error);
+                }
+            }, function (errorResult) {
+
+            });
         }
     }
 
     function resume_android() {
-        if (window.LosNailActivity) {
-            window.LosNailActivity.cloudResume();
-            cache.clearAll();
+        if (window.plugins.BackupAndResume) {
+            window.plugins.BackupAndResume.cloudResume({}, function (successResult) {
+                cache.clearAll();
+            }, function (errorResult) {
+                cache.clearAll();
+            });
         }
     }
 

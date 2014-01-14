@@ -74,7 +74,7 @@ a:hover {
     position: relative;
     top: -5rem;
     z-index: 0;
-    background: #ededed url("imgs/bg-line.png") center repeat;
+    background-color: #f8f8f8;
 }
 
 #client-lock-pwd>div>ul>li {
@@ -83,11 +83,12 @@ a:hover {
 }
 
 #client-lock-pwd>div>ul>li input {
-    height: 5.5rem;
-    width: 5.3rem;
+    height: 6rem;
+    width: 6rem;
     text-align: center;
     font-size: 5rem;
-    border-radius: 0.416666rem;
+    border-radius: 3rem;
+    border: 1px solid #d0d0d0;
 }
 
 #client-lock-pwd>div>ul>li input.error-pwd {
@@ -141,12 +142,8 @@ a:hover {
 }
 
 .button-big {
-    background-color: #bd438e;
-    border-top: solid 1px #bd438e;
-    border-left: solid 1px #bd438e;
-    border-right: solid 1px #bd438e;
-    border-bottom: solid 1px #bd438e;
-    color: white;
+    background-color: #c1c5c9;
+    color: black;
     cursor: pointer;
     text-align: center;
     -webkit-box-orient: horizontal;
@@ -154,15 +151,13 @@ a:hover {
     -webkit-box-align: center;
     display: -webkit-box;
     border-radius: 0.416666rem;
+    border-bottom: solid 1px #858789;
 
 }
 
 .button-big-grey {
-    background-color: #767676;
-    border-top: solid 1px #767676;
-    border-left: solid 1px #767676;
-    border-right: solid 1px #767676;
-    border-bottom: solid 1px #767676;
+    background-color: #eee;
+    border-bottom: solid 1px #858789;
 }
 
 .button-text {
@@ -191,8 +186,12 @@ a:hover {
     background: url("imgs/icon-member.png") no-repeat;
     background-size: 1.6rem 1.6rem;
 }
+.btn-icon-member-black {
+    background: url("imgs/icon-member-black.png") no-repeat;
+    background-size: 1.6rem 1.6rem;
+}
 .btn-icon-guadan {
-    background: url("imgs/icon-guadan.png") no-repeat;
+    background: url("imgs/icon-guadan-black.png") no-repeat;
     background-size: 1.6rem 1.6rem;
 }
 
@@ -211,7 +210,7 @@ a:hover {
     background-size: 1.6rem 1.6rem;
 }
 .btn-icon-checkout {
-    background: url("imgs/pay-style-white.png") no-repeat;
+    background: url("imgs/pay-style-black.png") no-repeat;
     background-size: 1.6rem 1.6rem;
     vertical-align: middle;
     margin-top:-0.1rem;
@@ -301,8 +300,8 @@ a:hover {
 
 .product-list>div>li {
     display: inline-block;
-    width: 8rem;
-    height: 8rem;
+    width: 10rem;
+    height: 10rem;
     margin-top: 0.8rem;
     margin-right: 0.8rem;
     -webkit-box-align: stretch;
@@ -319,9 +318,9 @@ a:hover {
 }
 
 .product-list>div>li>a {
-    width: 8rem;
-    height: 8rem;
-    background-size: 8rem 8rem
+    width: 10rem;
+    height: 10rem;
+    background-size: 10rem 10rem
 }
 
 .product-list>div>li.selected {

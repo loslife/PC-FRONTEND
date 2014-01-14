@@ -15,9 +15,9 @@ define(function (require, exports, module) {
     require("./setting.css");
 
     //基础服务
-    var utils = require("mframework/package").utils, 			        //全局公共函数
-        framework = require("mframework/package").framework,
-        database = require("mframework/package").database,		//数据操作服务
+    var utils = require("mframework/static/package").utils, 			        //全局公共函数
+        framework = require("mframework/static/package").framework,
+        database = require("mframework/static/package").database,		//数据操作服务
         db = null,		//数据操作服务
         moduleScope;
 

@@ -1,8 +1,8 @@
 //会员类型模块对应的数据接口
 define(function (require, exports, module) {
-    var database = require("mframework/package").database;
-    var dataUtils = require("mframework/package").dataUtils;
-    var utils = require("mframework/package").utils;
+    var database = require("mframework/static/package").database;
+    var dataUtils = require("mframework/static/package").dataUtils;
+    var utils = require("mframework/static/package").utils;
     var cache = utils.getCache();
     var dbInstance = database.getDBInstance();
 

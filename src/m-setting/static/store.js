@@ -17,10 +17,10 @@ define(function (require, exports, module) {
         NETWORK_WIFI: 1,
         NETWORK_MOBILE: 2
     };
-    var utils = require("mframework/package").utils;
-    var dataUtils = require("mframework/package").dataUtils;
-    var database = require("mframework/package").database;
-    var address = require("mframework/package").addressData;
+    var utils = require("mframework/static/package").utils;
+    var dataUtils = require("mframework/static/package").dataUtils;
+    var database = require("mframework/static/package").database;
+    var address = require("mframework/static/package").addressData;
 
     var dbInstance = null;
     var moduleScope;

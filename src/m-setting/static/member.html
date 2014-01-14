@@ -6,7 +6,6 @@
 }
 
 #m-setting-member-area {
-    background: #ededed url("imgs/bg-line.png") center repeat;
 }
 
 #m-setting-type-content {
@@ -121,17 +120,18 @@
 }
 
 .m-list-display-account {
-    width: 24.75rem;
-    height: 15.08rem;
+    width: 21.75rem;
+    height: 13rem;
     border: none;
-    border-radius: 10px;
+    border-radius: 0.416666rem;
     display: inline-block;
     margin-left: 2.3rem;
     background-color: #f3c7a2;
     box-shadow: 0 0 5px #bfbfbf;
-    margin-top: 1.6rem;
+    margin-top: 2rem;
     margin-bottom: 0;
     position: relative;
+    z-index: 100;
 }
 
 .m-list-display-account>div:first-child>span:first-child {
@@ -139,7 +139,7 @@
 }
 
 .m-setting-card-bar {
-    height: 3.2rem;
+    height: 2.2rem;
     background-color: #313131;
 }
 
@@ -189,8 +189,8 @@
 }
 
 .m-list-card-display {
-    width: 24.75rem;
-    height: 15.08rem;
+    width: 21.75rem;
+    height: 13rem;
 }
 
 .sameLine-second {
@@ -311,120 +311,278 @@
     white-space: nowrap;
     overflow: auto;
 }
+.member-card-left{
+    background: url("imgs/member-card-grey.png");
+    background-size: 1.4rem 1.4rem;
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+    vertical-align: middle;
+    margin-left: 1rem;
+    display: inline-block;
+    position: relative !important;
+    margin-right: 0.1rem;
+    margin-top: -0.2rem;
+}
 
+.member-card-left-pink{
+    background: url("imgs/member-card-pink.png");
+    background-size: 1.4rem 1.4rem;
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+    vertical-align: middle;
+    margin-left: 1rem;
+    display: inline-block;
+    position: relative !important;
+    margin-right: 0.1rem;
+    margin-top: -0.2rem;
+}
+
+.member-card-time-left{
+    background: url("imgs/member-card-time-grey.png");
+    background-size: 1.4rem 1.4rem;
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+    vertical-align: middle;
+    margin-left: 1rem;
+    display: inline-block;
+    position: relative !important;
+    margin-right: 0.1rem;
+    margin-top: -0.2rem;
+}
+
+.member-card-time-left-pink{
+    background: url("imgs/member-card-time-pink.png");
+    background-size: 1.4rem 1.4rem;
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+    vertical-align: middle;
+    margin-left: 1rem;
+    display: inline-block;
+    position: relative !important;
+    margin-right: 0.1rem;
+    margin-top: -0.2rem;
+}
+.shelf-position{
+    top: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.shelf-bg{
+    width: 100%;
+    height: 15rem;
+    background:-webkit-gradient(linear, 0 100%, 0 0, from(#e5e5e5), to(#f1f1f1));
+}
+
+ #m-setting-member-area .right{
+     position: relative;
+ }
 
 </style>
-<div class="m-setting-title" ng-show="pageIndex == 'memberTypeList'">
-    <ul>
-        <li style="float: left;">
-            <a ng-tap="backto('/m-setting/setting')">
-                <img src="imgs/back-arrow.png" width="20rem" height="20rem">
-            </a>
-                <span style="font-size: 1.4rem;">
-                     <%= setting.member.member_type %>
-                </span>
-        </li>
 
-        <li style="float: right;"
-            ng-tap="newMemberCate()"
-            class=" m-setting-employee-head-right-tab-select">
-            <a style="width: 10rem;">
-                <span style="font-size: 1.2rem;">
-                    <img src="imgs/icon-plus-white.png"
-                         style="
-                                width:1.2rem;
-                                margin-top: -0.2rem;
-                                 height: 1.2rem;
-                                 vertical-align: middle;">
-                    <%= setting.member.add_new_type %>
+
+
+<div ng-show="pageIndex == 'memberTypeList'">
+    <div class="m-setting-title" ng-show="pageIndex == 'memberTypeList'">
+        <ul>
+            <li style="float: left;">
+                <a ng-tap="backto('/m-setting/setting')">
+                    <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+                </a>
+                    <span style="font-size: 1.4rem;">
+                         <%= setting.member.member_type %>
+                    </span>
+            </li>
+
+            <li style="float: right;"
+                ng-tap="newMemberCate()"
+                class=" m-setting-employee-head-right-tab-select">
+                <a style="width: 10rem;">
+                    <span style="font-size: 1.2rem;">
+                        <img src="imgs/icon-plus-white.png"
+                             style="
+                                    width:1.2rem;
+                                    margin-top: -0.2rem;
+                                     height: 1.2rem;
+                                     vertical-align: middle;">
+                        <%= setting.member.add_new_type %>
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="m-two-column-area">
+        <div class="left" style="z-index: 10; margin-right: 0; width: 9rem;">
+            <ul class="left-nav">
+                <li ng-tap="showChargeCard()" ng-class="selectedStyle=='memberTypeList'?'selected':''">
+                    <div ng-class="selectedStyle=='memberTypeList'?'selected':''"></div>
+                    <div ng-class="selectedStyle=='memberTypeList'?'member-card-left-pink':'member-card-left'"></div>
+                <span>
+                    充值卡
                 </span>
-            </a>
-        </li>
-    </ul>
-</div>
-<div id="m-setting-typeList" ng-show="pageIndex == 'memberTypeList'">
-    <div class="m-list-display-account" ng-repeat="item in memberTypeList">
-        <div class="m-list-card-display" ng-tap="isEditAble(item)">
-            <div class="m-list-card-cat"><span><%= setting.member.recharge_card %></span><span>(<%= setting.member.expiry_date %>：{{transValidToName(item.cardValid)}})</span>
-            </div>
-            <div class="m-setting-card-bar"></div>
-            <div class="m-list-display-accountname">
-                <span>{{item.name}}卡</span><br>
-            </div>
-            <ul>
-                <li style="text-align: left;">
-                    <%= setting.member.card_prefix %>：<span>{{item.cardNoGenRule_cardNoPrefix}}</span>
                 </li>
-                <li style="text-align: left;">
-                    办理人数：<span>{{cateMemberCount[item.id] ? cateMemberCount[item.id] : 0}}</span>
-                </li>
-                <li style="text-align: left;"><%= setting.member.new_card_money %>：<span>￥{{item.baseInfo_minMoney | number: 2}}</span>
-                </li>
-                <li style="text-align: left;">
-                    <%= setting.member.default_discount %>：<span>{{item.discounts_serviceDiscount | number : 1}}<%= setting.member.discount %></span>
+                <li ng-tap="showRecordCard()" ng-class="selectedStyle=='memberRecordTime'?'selected':''">
+                    <div ng-class="selectedStyle=='memberRecordTime'?'selected':''"></div>
+                    <div ng-class="selectedStyle=='memberRecordTime'?'member-card-time-left-pink':'member-card-time-left'"></div>
+                <span>
+                    计次卡
+                </span>
                 </li>
             </ul>
         </div>
-        <div class="m-cancel-circle">
-            <i class="icon-remove-circle delete-cardCate" ng-tap="showDelCateDia(item)"></i>
-        </div>
-    </div>
-
-    <div class="m-setting-dashed-line" style=""></div>
-    <div class="m-list-display-account" ng-repeat="item in recordTimeCateList" style="background-color: #b0c17a;">
-        <div class="m-list-card-display" ng-tap="isEditAble(item)">
-            <div class="m-list-card-cat">
-                <span>计次卡</span><span>(有效期：{{transValidToName(item.cardValid)}})</span>
-            </div>
-            <div class="m-setting-card-bar"></div>
-            <div class="m-list-display-accountname">
-                <span>{{item.name}}</span><br>
-                <span class="countCate-serviceList">计次项目：{{item.selectServiceNameString}}</span>
-            </div>
-            <ul>
-                <li style="text-align: left;">
-                    卡前缀：<span>{{item.cardNoGenRule_cardNoPrefix}}</span>
-                </li>
-                <li style="text-align: left;">
-                    办理人数：<span>{{cateMemberCount[item.id] ? cateMemberCount[item.id] : 0}}</span>
-                </li>
-                <li style="text-align: left;">开卡金额：<span>{{item.baseInfo_minMoney | number : 2}}</span>
-                </li>
-                <li style="text-align: left;">服务次数：<span>{{item.discounts_serviceDiscount | number : 0}}</span>
-                </li>
-            </ul>
-        </div>
-        <div class="m-cancel-circle">
-            <i class="icon-remove-circle delete-cardCate" ng-tap="showDelCateDia(item)"></i>
-        </div>
-    </div>
-
-    <!--删除确认-->
-    <div id="m-setting-memberCard-delete" class="none dialog-delete">
-        <div class="dialog-body">
-            <div class="dialog-header" style="background-color: #ec5870;">
-                <div class="dialog-title">
-                    <%= setting.member.delete_memberCard_confirm %>？
-                </div>
-                <div class="delete-icon" ng-tap="modalDialogClose()">
-                    <i class="icon-remove-circle fancybox-close-icon-s"></i>
+        <div class="right">
+            <div id="m-setting-typeList" ng-show="pageIndex == 'memberTypeList'">
+                <div class="m-list-display-account" ng-repeat="item in memberTypeList">
+                    <div class="m-list-card-display" ng-tap="isEditAble(item)">
+                        <div class="m-list-card-cat"><span><%= setting.member.recharge_card %></span><span>(<%= setting.member.expiry_date %>：{{transValidToName(item.cardValid)}})</span>
+                        </div>
+                        <div class="m-setting-card-bar"></div>
+                        <div class="m-list-display-accountname">
+                            <span>{{item.name}}卡</span><br>
+                        </div>
+                        <ul>
+                            <li style="text-align: left; width:54%">
+                                <%= setting.member.card_prefix %>：<span>{{item.cardNoGenRule_cardNoPrefix}}</span>
+                            </li>
+                            <li style="text-align: left; width:39%">
+                                办理人数：<span>{{cateMemberCount[item.id] ? cateMemberCount[item.id] : 0}}</span>
+                            </li>
+                            <li style="text-align: left; width:54%"><%= setting.member.new_card_money %>：<span>￥{{item.baseInfo_minMoney | number: 2}}</span>
+                            </li>
+                            <li style="text-align: left; width:39%">
+                                <%= setting.member.default_discount %>：<span>{{item.discounts_serviceDiscount | number : 1}}<%= setting.member.discount %></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="m-cancel-circle" ng-tap="showDelCateDia(item)">
+                        <img src="imgs/icon-trash-grey.png" style="width:1.6rem; height: 1.6rem">
+                    </div>
                 </div>
             </div>
-            <div class="m-area-msg" style=""></div>
-            <div class="m-save-button">
-                <a ng-tap="modalDialogClose()" class="m-save-button-cancel bg-color-ededed"><%= common.label.cancel
-                    %></a><a
-                    ng-tap="deleteItemConfirm()" class="m-save-button-cancel bg-color-ededed"><%= common.label.confirm
-                %></a>
+
+            <div class="shelf-position">
+                <div class="shelf-bg"></div>
+                <div class="shelf-bg"></div>
+                <div class="shelf-bg"></div>
+                <div class="shelf-bg"></div>
             </div>
         </div>
     </div>
 </div>
 
-<div id="m-setting-type-content " class="area-fullscreen"
+<div ng-show="pageIndex == 'memberRecordTime'">
+    <div class="m-setting-title" ng-show="pageIndex == 'memberRecordTime'">
+        <ul>
+            <li style="float: left;">
+                <a ng-tap="backto('/m-setting/setting')">
+                    <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+                </a>
+                    <span style="font-size: 1.4rem;">
+                         <%= setting.member.member_type %>
+                    </span>
+            </li>
+
+            <li style="float: right;"
+                ng-tap="newMemberCate()"
+                class=" m-setting-employee-head-right-tab-select">
+                <a style="width: 10rem;">
+                    <span style="font-size: 1.2rem;">
+                        <img src="imgs/icon-plus-white.png"
+                             style="
+                                    width:1.2rem;
+                                    margin-top: -0.2rem;
+                                     height: 1.2rem;
+                                     vertical-align: middle;">
+                        <%= setting.member.add_new_type %>
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="m-two-column-area">
+        <div class="left" style="z-index: 10; margin-right: 0; width: 9rem;">
+            <ul class="left-nav">
+                <li ng-tap="showChargeCard()" ng-class="selectedStyle=='memberTypeList'?'selected':''">
+                    <div ng-class="selectedStyle=='memberTypeList'?'selected':''"></div>
+                    <div ng-class="selectedStyle=='memberTypeList'?'member-card-left-pink':'member-card-left'"></div>
+                <span>
+                    充值卡
+                </span>
+                </li>
+                <li ng-tap="showRecordCard()" ng-class="selectedStyle=='memberRecordTime'?'selected':''">
+                    <div ng-class="selectedStyle=='memberRecordTime'?'selected':''"></div>
+                    <div ng-class="selectedStyle=='memberRecordTime'?'member-card-time-left-pink':'member-card-time-left'"></div>
+                <span>
+                    计次卡
+                </span>
+                </li>
+            </ul>
+        </div>
+        <div class="right">
+            <div id="m-setting-recordTime" ng-show="pageIndex == 'memberRecordTime'">
+                <div class="m-list-display-account" ng-repeat="item in recordTimeCateList" style="background-color: #b0c17a;">
+                    <div class="m-list-card-display" ng-tap="isEditAble(item)">
+                        <div class="m-list-card-cat">
+                            <span>计次卡</span><span>(有效期：{{transValidToName(item.cardValid)}})</span>
+                        </div>
+                        <div class="m-setting-card-bar"></div>
+                        <div class="m-list-display-accountname">
+                            <span>{{item.name}}</span><br>
+                            <span class="countCate-serviceList">计次项目：{{item.selectServiceNameString}}</span>
+                        </div>
+                        <ul>
+                            <li style="text-align: left; width:54%">
+                                卡前缀：<span>{{item.cardNoGenRule_cardNoPrefix}}</span>
+                            </li>
+                            <li style="text-align: left; width:39%">
+                                办理人数：<span>{{cateMemberCount[item.id] ? cateMemberCount[item.id] : 0}}</span>
+                            </li>
+                            <li style="text-align: left; width:54%">开卡金额：<span>{{item.baseInfo_minMoney | number : 2}}</span>
+                            </li>
+                            <li style="text-align: left; width:39%">服务次数：<span>{{item.discounts_serviceDiscount | number : 0}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="m-cancel-circle" ng-tap="showDelCateDia(item)">
+                        <img src="imgs/icon-trash-grey.png" style="width:1.6rem; height: 1.6rem">
+                    </div>
+                </div>
+
+                <div class="shelf-position">
+                    <div class="shelf-bg"></div>
+                    <div class="shelf-bg"></div>
+                    <div class="shelf-bg"></div>
+                    <div class="shelf-bg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--删除确认-->
+<div id="m-setting-memberCard-delete" class="none dialog-delete">
+    <div class="dialog-body">
+        <div class="dialog-header delete-dialog-ios">
+            <div class="dialog-title">
+                <%= setting.member.delete_memberCard_confirm %>？
+            </div>
+        </div>
+        <div class="m-area-msg" style=""></div>
+        <div class="m-save-button">
+            <a ng-tap="modalDialogClose()" class="m-save-button-cancel bg-color-ededed"><%= common.label.cancel
+                %></a><a
+                ng-tap="deleteItemConfirm()" class="m-save-button-cancel bg-color-ededed"><%= common.label.confirm
+            %></a>
+        </div>
+    </div>
+</div>
+
+<div id="m-setting-type-content " class="area-fullscreen bg-color-efeff4" style="height: 100%"
      ng-show="pageIndex == 'newMemberType' || pageIndex == 'editMemberType'">
-<div id="m-setting-addInput" class="bg-color-ededed"
-     style="background: #ededed url(imgs/bg-line.png) center repeat;">
+<div id="m-setting-addInput" class="bg-color-efeff4"
+    >
 <div class="m-setting-title">
     <ul>
         <li style="float: left;">
@@ -454,7 +612,7 @@
         <div class="select-tags-s">
             <ul>
                 <li ng-repeat="item in cardTypeList"
-                    ng-style="item === cardTypeSelected ? {'background-color' : '#398acb' , 'color' : '#fff'} : {}"
+                    ng-style="item === cardTypeSelected ? {'background-color' : '#007aff' , 'color' : '#fff'} : {}"
                     ng-tap="selectCardType(item)">
                     {{item}}
                 </li>
@@ -520,7 +678,7 @@
             <div class="select-tags-s">
                 <ul>
                     <li ng-repeat="item in validList"
-                        ng-style="selValidIndex === $index ? {'background-color' : '#398acb' , 'color' : '#fff'} : {}"
+                        ng-style="selValidIndex === $index ? {'background-color' : '#007aff' , 'color' : '#fff'} : {}"
                         ng-tap="selectValid($index)">
                         {{item.name}}
                     </li>
@@ -599,7 +757,7 @@
             <div class="select-tags-s">
                 <ul>
                     <li ng-repeat="item in validList"
-                        ng-style="selValidIndex === $index ? {'background-color' : '#398acb' , 'color' : '#fff'} : {}"
+                        ng-style="selValidIndex === $index ? {'background-color' : '#007aff' , 'color' : '#fff'} : {}"
                         ng-tap="selectValid($index)">
                         {{item.name}}
                     </li>
@@ -625,7 +783,7 @@
                 选择服务项
             </div>
             <div class="delete-icon" ng-tap="closeCateSelDia()">
-                <i class="icon-remove-circle fancybox-close-icon-s"></i>
+                <img src="imgs/icon-cancel.png">
             </div>
         </div>
         <div class="m-area-msg"></div>
@@ -659,8 +817,8 @@
             </div>
         </div>
         <div class="m-save-button">
-            <a ng-tap="closeCateSelDia()" class="m-save-button-cancel bg-color-ededed">取消</a><a
-                class="m-save-button-confirm" ng-tap="selectCateServiceCommit()">确定
+            <a ng-tap="closeCateSelDia()" class="m-save-button-cancel bg-color-ededed border-top-ios">取消</a><a
+                class=" bg-color-ededed border-top-ios" ng-tap="selectCateServiceCommit()">确定
         </a>
         </div>
     </div>

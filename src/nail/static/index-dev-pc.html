@@ -270,52 +270,27 @@ var mainController = function ($scope, $location, $rootScope) {
         $location.path(url);
     }
 };
-// For development
-if (global["_g_env"] == "dev") {
-    seajs.config({
-        base: "../"
+
+
+//seajs初始化
+seajs.use(['./main.js', 'mframework/static/utils/utils.js',
+    'm-widgets/static/package.js' ], function (main, utils, widgets) {
+
+    utils.global.enterpriseId = $.cookie('enterpriseId');
+    utils.global.username = $.cookie('username');
+    utils.global.userId = $.cookie('userId');
+    widgets.init();
+    //绑定一级菜单点击事件
+    $("#header").on("click", ".nav>li", function () {
+        $("#header .nav>li").removeClass("selected");
+        $(this).addClass("selected");
     });
-
-    //seajs初始化
-    seajs.use(['nail/main.js', 'mframework/utils/utils.js',
-        'm-widgets/package.js' ], function (main, utils, widgets) {
-
-        utils.global.enterpriseId = $.cookie('enterpriseId');
-        utils.global.username = $.cookie('username');
-        utils.global.userId = $.cookie('userId');
-        widgets.init();
-        //绑定一级菜单点击事件
-        $("#header").on("click", ".nav>li", function () {
-            $("#header .nav>li").removeClass("selected");
-            $(this).addClass("selected");
-        });
-        main.init();
+    main.init();
 });
-}else{
-    // For production or image
-    seajs.config({
-        base: "../sea_modules/"
-    });
-    //seajs初始化
-    seajs.use(['nail/static/main.js', 'mframework/static/utils/utils.js',
-        'm-widgets/static/package.js' ], function (main, utils, widgets) {
-
-        utils.global.enterpriseId = $.cookie('enterpriseId');
-        utils.global.username = $.cookie('username');
-        utils.global.userId = $.cookie('userId');
-        widgets.init();
-        //绑定一级菜单点击事件
-        $("#header").on("click", ".nav>li", function () {
-            $("#header .nav>li").removeClass("selected");
-            $(this).addClass("selected");
-        });
-        main.init();
-    });
-}
 
 
 $(function () {
-    $("#client-lock-pwd .button-calculator").bind('touchstart', function () {
+    $("#client-lock-pwd .button-calculator").bind('click', function () {
         var num = this.dataset["num"];
         if (num == "-1") {
             for (var i = 4; i > 0; i--) {

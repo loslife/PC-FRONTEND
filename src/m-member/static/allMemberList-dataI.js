@@ -1,7 +1,7 @@
 //会员模块对应的数据接口
 define(function (require, exports, module) {
-    var database = require("mframework/package").database;
-    var dataUtils = require("mframework/package").dataUtils;
+    var database = require("mframework/static/package").database;
+    var dataUtils = require("mframework/static/package").dataUtils;
     var dbInstance = database.getDBInstance();
 
     exports.initEmployeeList = initEmployeeList;
@@ -158,6 +158,7 @@ define(function (require, exports, module) {
         function fillBillCodeId(callback) {
             rechargeBill.member_id = member.id;
             rechargeBill.memberCard_id = memberCard.id;
+            rechargeBill.memberCard_name = memberCard.cardNo;
             database.getUniqueCode("tb_serviceBill", 8, function (error, trans, code) {
                 if (error) {
                     callback(error);

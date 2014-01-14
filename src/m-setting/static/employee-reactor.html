@@ -1,0 +1,1430 @@
+<div id="m-setting-employee-area" class="featureSpace m-setting-head-navbar">
+<style type="text/css">
+a {
+    color: #565656;
+}
+
+    /*#m-setting-employee-area {
+        background: #ededed url("imgs/bg-line.png") center repeat;
+    }*/
+
+.m-setting-employee-display {
+    display: inline-block;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    position: relative;
+
+}
+
+.m-setting-employee-display ul li {
+    text-align: center;
+    color: #565656;
+    display: inline-block;
+    position: relative;
+    box-shadow: 0px 1px 1px #d0d0d0;
+    border: 2px solid #fff;
+    border-radius: 0.833rem;
+    margin: 0px;
+    padding: 0px;
+}
+
+.m-setting-employee-display img {
+    vertical-align: middle;
+}
+
+.m-setting-employee-display ul li:first-child img {
+}
+
+.m-setting-employee-display ul li:first-child>img:first-child {
+    border-radius: 0.833rem;
+}
+
+#m-setting-employee-list {
+    overflow: auto;
+}
+
+.clear {
+    clear: both
+}
+
+a {
+    outline: none;
+}
+
+a:active {
+    star: expression(this.onFocus=this.blur());
+}
+
+:focus {
+    outline: 0;
+}
+
+.m-input-tiny {
+    border: none;
+    background-color: #fff;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.m-setting-employee-salary-detail-table ul li {
+
+    line-height: 3.5rem;
+    border-bottom: 1px solid #d0d0d0;
+    border-top: 1px solid #fff;
+}
+
+.m-setting-employee-salary-detail-table ul li:first-child {
+    border-top: 1px solid #fff;
+}
+
+.m-setting-employee-salary-detail-table ul li div {
+    padding-left: 0.1rem;
+    padding-top: 0.1rem;
+    border-left: 1px solid #d0d0d0;
+}
+
+#m-setting-employee-post-admin {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#m-setting-employee-post-admin .right {
+    overflow: auto;
+}
+
+#m-setting-employee-post-admin .right a {
+    display: inline-block;
+    margin-right: 0.5rem;
+    text-align: center;
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
+}
+
+#m-setting-employee-post-admin .right a:active {
+    background-color: #ff66cc;
+}
+
+#salary-detail-table-content ul li:first-child {
+    border-top: none;
+}
+
+    /*#m-setting-employee-detail {
+        background: #ededed url("imgs/bg-line.png") center repeat;
+    }*/
+
+.m-head-title {
+    line-height: 3rem;
+    color: #565656;
+    font-size: 1.2rem;
+    width: 83%;
+}
+
+.time-day-select {
+    position: relative;
+    top: 6px;
+}
+
+.time-day-select>span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.time-day-select .text {
+    font-size: 1.4rem;
+    color: #565656;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    border-bottom: 1px solid #d0d0d0;
+    border-top: 1px solid #d0d0d0;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    background-color: #f7f7f7;
+}
+
+.time-day-select .prev, .time-day-select .next {
+    width: 3.5rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    text-align: center;
+    display: inline-block;
+    background-color: #bd438e;
+    border-bottom: 1px solid #bd438e;
+    border-top: 1px solid #bd438e;
+    color: #fff;
+    font-size: 2.5rem;
+}
+
+.time-day-select .prev>i, .time-day-select .next>i {
+    position: relative;
+    top: -1px;
+}
+
+.time-day-select .disable {
+    border-bottom: 1px solid #d0d0d0;
+    border-top: 1px solid #d0d0d0;
+    background-color: #eeeeee;
+    color: #d0d0d0;
+}
+
+.dashed-background-img {
+    width: 8.8rem;
+    height: 8.8rem;
+}
+
+.employee-type {
+    position: absolute;
+    bottom: 0rem;
+    left: -0.15rem;
+    font-size: 1.2rem;
+    border-right: none;
+    margin-top: 0.8rem;
+    text-align: left;
+    margin-left: 0.15rem;
+    line-height: 2rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 8.6rem;
+    color: #ffffff;
+    text-align: center;
+    border-bottom-left-radius: 0.833rem;
+    border-bottom-right-radius: 0.833rem;
+}
+
+.employee-icon {
+    position: absolute;
+    top: 0.8rem;
+    right: 0.4rem;
+    font-size: 1rem;
+    border-right: none;
+    height: 1.6rem;
+    line-height: 1.6rem;
+    text-align: left;
+    color: #fff;
+    vertical-align: middle;
+    border-radius: 0.25rem;
+    box-shadow: 0.1rem 0.1rem 0.1rem #d0d0d0;
+}
+
+.employee-icon span {
+    display: inline-block;
+    height: 1.6rem;
+    line-height: 1.6rem;
+    position: relative;
+    top: 1px;
+}
+
+.employee-salary {
+    position: absolute;
+    top: 0rem;
+    right: 0.4rem;
+    font-size: 1.2rem;
+    border-right: none;
+    margin-top: 0.8rem;
+    text-align: left;
+    margin-left: 1.1rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #ff3101;
+    height: 1.5rem;
+    line-height: 1.5rem;
+}
+
+.add-employee-form {
+    overflow: auto;
+}
+
+@media screen and (max-height: 640px) {
+
+}
+
+.emp-sel-image {
+    height: 5rem;
+    width: 5rem;
+    display: inline-block;
+    margin-left: 1rem;
+    border-radius: 0.833rem;
+}
+
+.female-bg {
+    background-color: #ffaed7;
+    padding-left: 0.3rem;
+    padding-right: 0.4rem;
+}
+
+.man-bg {
+    background-color: #62b1ea;
+    padding-left: 0.3rem;
+    padding-right: 0.4rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0;
+}
+
+.sex-tag {
+    font-size: 1.1rem;
+    margin-right: 0.2rem;
+    transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -0.3rem;
+}
+
+.employee-post {
+    width: 20.333333rem;
+    height: 34.916666rem;
+    background-color: #f7f7f7;
+    display: inline-block;
+}
+
+.employee-post-title {
+    font-size: 1.4rem;
+    padding: 1rem;
+}
+
+.ul-one {
+    width: 15.25rem;
+    height: 6.9rem;
+    background-color: #ffffff;
+    border-left: 1px solid #d0d0d0;
+    margin-left: 1.5rem;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.ul-two {
+    width: 15.25rem;
+    height: 10.666666rem;
+    background-color: #ffffff;
+    border-right: 1px solid #d0d0d0;
+    border-left: 1px solid #d0d0d0;
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+.ul-three {
+    width: 15.25rem;
+    height: 6.9rem;
+    background-color: #ffffff;
+    border-right: 1px solid #d0d0d0;
+    margin-left: 1rem;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.employee-post-content ul li {
+    height: 3.45rem;
+    font-size: 1.2rem;
+    line-height: 3.45rem;
+    padding-left: 1rem;
+}
+
+.employee-post-content ul li:last-child {
+    border-bottom: none;
+}
+
+#m-setting-update-job {
+    height: 100%;
+}
+
+#m-setting-update-job .caption {
+    width: 10.8rem !important;
+}
+
+#m-setting-update-job .m-input {
+    margin-left: 10.8rem !important;
+    width: 86% !important;
+}
+
+#m-setting-employee-post-add {
+    height: 100%;
+}
+
+#m-setting-employee-post-add .caption {
+    width: 10.8rem !important;
+}
+
+#m-setting-employee-post-add .m-input {
+    margin-left: 10.8rem !important;
+    width: 86% !important;
+}
+
+.nowrap-overflow {
+    white-space: nowrap;
+    overflow: auto;
+    margin-bottom: -2.6rem;
+    vertical-align: top;
+}
+
+.message-model-list {
+    display: inline-block;
+}
+
+.employee-post-button {
+    margin-right: 1.5rem;
+}
+
+.m-button-pink-post {
+    line-height: 2.5rem !important;
+    min-width: 0 !important;
+    font-size: 1rem;
+    width: 4rem !important;
+}
+
+.member-info-left {
+    background: url("imgs/member-info.png");
+    background-size: 1.4rem 1.4rem;
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+    vertical-align: middle;
+    margin-left: 1rem;
+    display: inline-block;
+    position: relative !important;
+    margin-right: 0.1rem;
+    margin-top: -0.2rem;
+}
+
+.member-info-left-pink {
+    background: url("imgs/member-info-pink.png");
+    background-size: 1.4rem 1.4rem;
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+    vertical-align: middle;
+    margin-left: 1rem;
+    display: inline-block;
+    position: relative !important;
+    margin-right: 0.1rem;
+    margin-top: -0.2rem;
+}
+
+.salary-bonus-left {
+    background: url("imgs/salary-bonus.png");
+    background-size: 1.4rem 1.4rem;
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+    vertical-align: middle;
+    margin-left: 1rem;
+    display: inline-block;
+    position: relative !important;
+    margin-right: 0.1rem;
+    margin-top: -0.2rem;
+}
+
+.salary-bonus-left-pink {
+    background: url("imgs/salary-bonus-pink.png");
+    background-size: 1.4rem 1.4rem;
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+    vertical-align: middle;
+    margin-left: 1rem;
+    display: inline-block;
+    position: relative !important;
+    margin-right: 0.1rem;
+    margin-top: -0.2rem;
+}
+
+.post-setting-left {
+    background: url("imgs/post-setting.png");
+    background-size: 1.4rem 1.4rem;
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+    vertical-align: middle;
+    margin-left: 1rem;
+    display: inline-block;
+    position: relative !important;
+    margin-right: 0.1rem;
+    margin-top: -0.2rem;
+}
+
+.post-setting-left-pink {
+    background: url("imgs/post-setting-pink.png");
+    background-size: 1.4rem 1.4rem;
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+    vertical-align: middle;
+    margin-left: 1rem;
+    display: inline-block;
+    position: relative !important;
+    margin-right: 0.1rem;
+    margin-top: -0.2rem;
+}
+
+</style>
+
+    <div class="m-two-column-area">
+    <div class="left" style="z-index: 10;">
+        <ul class="left-nav">
+            <li ng-tap="showEmployeeDetail()" ng-class="selectedStyle=='index'?'selected':''">
+                <div ng-class="selectedStyle=='index'?'selected':''"></div>
+                <div ng-class="selectedStyle=='index'?'member-info-left-pink':'member-info-left'"></div>
+                            <span>
+                                个人资料
+                            </span>
+            </li>
+            <li ng-tap="showSalaryList()" ng-class="selectedStyle=='salaryDetail'?'selected':''">
+                <div ng-class="selectedStyle=='salaryDetail'?'selected':''"></div>
+                <div ng-class="selectedStyle=='salaryDetail'?'salary-bonus-left-pink':'salary-bonus-left'"></div>
+                            <span>
+                                薪酬提成
+                            </span>
+            </li>
+            <li ng-tap="post_new()" ng-class="selectedStyle=='post'?'selected':''">
+                <div ng-class="selectedStyle=='post'?'selected':''"></div>
+                <div ng-class="selectedStyle=='post'?'post-setting-left-pink':'post-setting-left'"></div>
+                            <span>
+                                岗位设置
+                            </span>
+            </li>
+        </ul>
+    </div>
+    <div class="right">
+        <div ng-style="actionIndex=='index'?{}:{'display':'none'}">
+        <div class="m-setting-title">
+            <ul>
+                <li style="float: left;">
+                    <a ng-tap="back_setting()">
+                        <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+                    </a>
+                        <span style="font-size: 1.4rem;">
+                            员工
+                        </span>
+                </li>
+            </ul>
+        </div>
+        <!--员工资料显示-->
+        <div id="m-setting-employee-detail" ng-style="action=='index'?{}:{'display':'none'}">
+                <div style="height:3.6rem;">
+                    <div class="inlinebl ml-1 m-head-title mt-1 font-color-message">
+                                <span>
+                                    现有员工 {{employeeList.length}}人，包括{{empSortByJobDisplay()}}
+                                </span>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <!--员工列表展示区-->
+                <div id="m-setting-employee-list" class="">
+                    <div id="m-setting-in" class="p-list mt-1">
+                        <div class="m-setting-employee-display" ng-repeat="item in employeeList"
+                             ng-tap="editEmployee(item)">
+                            <ul>
+                                <li>
+                                    <!--src前面不加ng会导致程序挂掉 -->
+                                    <img ng-src="{{item.baseInfo_image ? item.baseInfo_image : 'imgs/man-icon.jpg'}} "
+                                         style="width: 8.6rem; height: 8.6rem; ">
+
+                                    <div class="employee-icon" ng-class="item.baseInfo_sex == 0? 'female-bg' : 'man-bg' ">
+                                        <!--<img ng-src="{{item.baseInfo_sex == 0? 'imgs/female-icon-little.jpg' : 'imgs/man-icon-little.jpg'}}"
+                                             style="position: relative; border: none; width: 2.916666rem; height:1.5rem; ">-->
+                                                <span><b ng-class="item.baseInfo_sex == 0 ? 'sex-tag' : ''">{{(item.baseInfo_sex
+                                                    == 0 ? '♀' : '♂')}}</b>{{getAgeByBir(item.baseInfo_birthday)}}</span>
+                                    </div>
+                                    <div class="employee-type">
+                                                <span class="">
+                                                    {{item.name}}
+                                                </span>
+                                        {{item.jobName}}
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div ng-show="temp.delAction"
+                                 style="position: absolute; left: -0.7rem; top: -1rem; width: 3rem; height: 3rem;">
+                                <img src="imgs/deletion-control.png" style="width:2rem;height: 2rem;;">
+                            </div>
+                        </div>
+                        <div class="m-setting-employee-display"
+                             ng-tap="addEmployee()"
+                             style=" background-color: #fff;
+                                             border-radius: 0.833rem;
+                                             position: relative;
+                                                 ">
+                            <img src="imgs/dashed-background-circle.png" class="dashed-background-img">
+
+                            <div style="height: 0.8rem;
+                                            width: 3rem;
+                                            background-color: #d0d0d0;
+                                            left: 3rem;
+                                            top: 4rem;
+                                            position: absolute;"></div>
+                            <div style="height: 3rem;
+                                            width: 0.8rem;
+                                            background-color: #d0d0d0;
+                                            left: 4.1rem;
+                                            top: 2.9rem;
+                                            position: absolute;"></div>
+                        </div>
+                        <div class="m-setting-employee-display"
+                             ng-tap="showDeleteControl()"
+                             style=" background-color: #fff;
+                                             border-radius: 0.833rem;
+                                             position: relative;">
+                            <img src="imgs/dashed-background-circle.png" class="dashed-background-img">
+
+                            <div style="height: 0.8rem;
+                                            width: 3rem;
+                                            background-color: #d0d0d0;
+                                            left: 3rem;
+                                            top: 4rem;
+                                            position: absolute;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!--员工薪酬显示-->
+        <div id="m-setting-employee-salary" style="display: none"
+                 ng-style="action=='salaryDetail'?{}:{'display':'none'}">
+                <div class="time-day-select mt-1 ml-1 fl inlinebl">
+                    <span id="salary-pre-month" class="prev" ng-tap="preMonth()"><i class="icon-angle-left"></i></span><span
+                        class="text">{{temp.selectMonth|date:'yyyy年MM月'}}</span><span
+                        id="salary-next-month" class="next " ng-tap="nextMonth()"><i class="icon-angle-right"></i></span>
+                </div>
+                <div class="mt-2 ml-3 fl inlinebl font-color-message" style="font-size: 1.2rem;">
+                    <span>当前月份合计薪酬支出：￥{{temp.salaryTalMoney | number:2}}</span>
+                </div>
+                <div class="clear"></div>
+                <!--员工薪酬列表展示区-->
+                <div id="m-setting-employee-salary-list">
+                    <div class="p-list mt-1">
+                        <div class="m-setting-employee-display" id="m-setting-employee-display"
+                             ng-repeat="item in empSalaryList"
+                             ng-tap="showSalaryDetail(item)"
+                             style="position: relative">
+                            <ul>
+                                <li>
+                                    <img ng-src="{{getEmployeeById(item.employee_id).baseInfo_image ? getEmployeeById(item.employee_id).baseInfo_image : 'imgs/man-icon.jpg'}} "
+                                         style="width: 8.6rem; height: 8.6rem ;border-radius: 0.833rem;  "
+                                            >
+
+                                    <div class="employee-salary">
+                                                <span>
+                                                    ￥{{item.totalMoney | number:2}}
+                                                </span>
+                                    </div>
+                                    <div class="employee-type">
+                                                <span>
+                                                     {{getEmployeeById(item.employee_id).name}}
+                                                    {{getEmployeeById(item.employee_id).jobName}}
+                                                </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!--岗位管理-->
+        <div id="m-setting-employee-post-admin" class="m-setting-employee-add m-setting-head-navbar"
+                         style="display: none;" ng-style="action=='postAdmin'?{}:{'display':'none'}">
+                        <div class="m-setting-title">
+                            <ul>
+                                <li style="float: left;">
+                                    <a ng-tap="back_setting()">
+                                        <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+                                    </a>
+                                <span style="font-size: 1.4rem;">
+                                    员工
+                                </span>
+                                </li>
+                                <li style=" float: right;">
+                                    <a style="width: 10rem;" ng-tap="addPost()">
+                                    <span style="font-size: 1.2rem;">
+                                        <img src="imgs/icon-plus-white.png"
+                                             style="
+                                                    width:1.2rem;
+                                                    margin-top: -0.2rem;
+                                                     height: 1.2rem;
+                                                     vertical-align: middle;">
+                                        添加岗位
+                                    </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="m-two-column-area">
+                            <div class="left" style="z-index: 10;">
+                                <ul class="left-nav">
+                                    <li ng-tap="showEmployeeDetail()" ng-class="selectedStyle=='index'?'selected':''">
+                                        <div ng-class="selectedStyle=='index'?'selected':''"></div>
+                                        <div ng-class="selectedStyle=='index'?'member-info-left-pink':'member-info-left'"></div>
+                                                <span>
+                                                    个人资料
+                                                </span>
+                                    </li>
+                                    <li ng-tap="showSalaryList()" ng-class="selectedStyle=='salaryDetail'?'selected':''">
+                                        <div ng-class="selectedStyle=='salaryDetail'?'selected':''"></div>
+                                        <div ng-class="selectedStyle=='salaryDetail'?'salary-bonus-left-pink':'salary-bonus-left'"></div>
+                                                <span>
+                                                    薪酬提成
+                                                </span>
+                                    </li>
+                                    <li ng-tap="post_new()" ng-class="selectedStyle=='post'?'selected':''">
+                                        <div ng-class="selectedStyle=='post'?'selected':''"></div>
+                                        <div ng-class="selectedStyle=='post'?'post-setting-left-pink':'post-setting-left'"></div>
+                                                <span>
+                                                    岗位设置
+                                                </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="right">
+                                <div class="message-model-list mt-2" ng-repeat="item in jobList">
+                                    <div class="m-message-title">
+                                                <span>
+                                                    {{item.name}}
+                                                </span>
+                                    </div>
+
+                                    <div class="m-message-body">
+                                        <div class="employee-post-content">
+                                            <ul class="ul-one">
+                                                <li>基本工资：￥{{item.baseSalary | number : 2}}</li>
+                                                <li>现金消费提成：{{item.bonus_cash | number : 1}}%</li>
+                                            </ul>
+                                            <ul class="ul-two">
+                                                <li>充值卡消费提成：{{item.bonus_memberCard | number : 1}}%</li>
+                                                <li>充值卡开卡提成：{{item.bonus_newCard | number : 1}}%</li>
+                                                <li>充值卡充值提成：{{item.bonus_recharge | number : 1}}%</li>
+                                            </ul>
+                                            <ul class="ul-three">
+                                                <li>计次卡消费提成：{{item.bonus_recordCardConsume | number : 1}}%</li>
+                                                <li>计次卡开卡提成：{{item.bonus_newRecordCard | number : 1}}%</li>
+                                            </ul>
+                                            <div class="inlinebl fr employee-post-button">
+                                                <div class="m-button-pink m-button-pink-post" ng-tap="postEdit(item)">修改</div>
+                                                <div class="m-button-pink mt-1 m-button-pink-post" ng-tap="postDelete(item)">删除</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div class="right employee-post-feature" style="width: 80%;">
+                                <div style="position: relative ; display: inline-block" ng-repeat="item in jobList">
+                                    <div class="employee-post mt-2 ml-2" ng-tap="postEdit(item)">
+                                        <div class="employee-post-title">
+                                            <span>{{item.name}}</span>
+                                        </div>
+                                        <div class="employee-post-content">
+                                            <ul class="ul-one">
+                                                <li>基本工资：￥{{item.baseSalary | number : 2}}</li>
+                                                <li>现金消费提成：{{item.bonus_cash | number : 1}}%</li>
+                                            </ul>
+                                            <ul class="ul-two">
+                                                <li>充值卡消费提成：{{item.bonus_memberCard | number : 1}}%</li>
+                                                <li>充值卡开卡提成：{{item.bonus_newCard | number : 1}}%</li>
+                                                <li>充值卡充值提成：{{item.bonus_recharge | number : 1}}%</li>
+                                            </ul>
+                                            <ul class="ul-one" style="margin-top: 1.5rem">
+                                                <li>计次卡消费提成：{{item.bonus_recordCardConsume | number : 1}}%</li>
+                                                <li>计次卡开卡提成：{{item.bonus_newRecordCard | number : 1}}%</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <a ng-tap="postDelete(item)"
+                                       style="position: absolute; right: 0; top:2.5rem; text-align: center;">
+                                        <i class="icon-remove-circle icon-large"></i>
+                                    </a>
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+        </div>
+        <!--薪酬明细-->
+        <div id="m-setting-employee-salary-detail" class="m-setting-head-navbar" style="display: none"
+             ng-style="action=='salaryMoreDetail'?{}:{'display':'none'}">
+            <div id="salary-detail-title" class="m-setting-title">
+                <ul>
+                    <li style="float: left;">
+                        <a ng-tap="backSalaryList()">
+                            <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+                        </a>
+                    <span style="font-size: 1.4rem;">
+                        {{getEmployeeById(temp.empSalarySelected.employee_id).name}}的薪酬明细
+                    </span>
+                    </li>
+                </ul>
+            </div>
+            <!--操作区-->
+            <div id="salary-detail-operating" style="height:4rem;">
+                <div class="time-day-select mt-1 ml-3 fl inlinebl">
+                    <span id="salary-emp-pre-month" class="prev" ng-tap="preEmpMonth()"><i
+                            class="icon-angle-left"></i></span><span class="text">{{temp.empSelectMonth|date:'yyyy年MM月'}}</span><span
+                        id="salary-emp-next-month" class="next " ng-tap="nextEmpMonth()"><i class="icon-angle-right"></i></span>
+                </div>
+                <div class="mt-1 inlinebl mr-2 m-button-pink fr" ng-tap="salaryManualModify()">
+                    <span>手工调整</span>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <!--表头信息区-->
+            <div id="salary-detail-tableInfo" class="font-color-message">
+                <div class="mt-1 mb-1 ml-3 inlinebl " style=" font-size: 1.2rem;">
+                    <span>基本工资：￥{{temp.empSalarySelected.baseSalary | number:2}}</span>
+                </div>
+                <div class="mt-1 ml-2 inlinebl" style="font-size: 1.2rem;">
+                    <span>提成：￥{{temp.empSalarySelected.bonusMoney | number:2}}</span>
+                </div>
+                <div class="mt-1 ml-2 inlinebl" style="font-size: 1.2rem;">
+                    <span>手工调整：￥{{temp.empSalarySelected.appendMoney | number:2}}</span>
+                </div>
+                <div class="mt-1 ml-2 inlinebl" style="font-size: 1.2rem;">
+                    <span>合计：￥{{temp.empSalarySelected.totalMoney | number:2}}</span>
+                </div>
+            </div>
+            <div id="salary-detail-table" class="m-setting-employee-salary-detail-table"
+                 style="font-size: 1.2rem; color: #b02e7d;">
+                <ul id="salary-detail-table-head" class="m-tb-head">
+                    <li class="m-input-underline"
+                        style="line-height: 3.5rem; border-left: none; border-right: none; border-top: 1px solid #d0d0d0;">
+                        <div class="inlinebl" style="width:9%; border-left: none;">顾客姓名
+                        </div>
+                        <div class="inlinebl" style="width:10%">
+                            会员号
+                        </div>
+                        <div class="inlinebl" style="width:8%">
+                            类型
+                        </div>
+                        <div class="inlinebl" style="width:8%">
+                            消费
+                        </div>
+                        <div class="inlinebl" style="width:5%">
+                            折扣
+                        </div>
+                        <div class="inlinebl" style="width:8%">
+                            实收
+                        </div>
+                        <div class="inlinebl" style="width:12%">
+                            日期
+                        </div>
+                        <div class="inlinebl" style="width:8%">
+                            提成
+                        </div>
+                        <div class="inlinebl" style="width:25%">
+                            备注
+                        </div>
+                    </li>
+                </ul>
+                <ul id="salary-detail-table-content" class="m-tb-body"
+                    style="
+                    overflow: auto;
+                    border-bottom: none; border-top: none; ">
+                    <!--手工调整展示-->
+                    <li ng-repeat="item in selEmpAppendLsit" class="" style="color: #665655;">
+                        <div class="inlinebl" style="width:9%;border-left: none;">
+                        </div>
+                        <div class="inlinebl" style="width:10%">
+                        </div>
+                        <div class="inlinebl" style="width:8%">
+                        </div>
+                        <div class="inlinebl" style="width:8%">
+                        </div>
+                        <div class="inlinebl" style="width:5%">
+                        </div>
+                        <div class="inlinebl" style="width:8%">
+                        </div>
+                        <div class="inlinebl nowrap-overflow" style="width:12%">
+                            {{item.create_date | date:'yyyy-MM-dd'}}
+                        </div>
+                        <div class="inlinebl nowrap-overflow" style="width:8%">
+                            ￥{{item.bonusMoney | number:2}}
+                        </div>
+                        <div class="inlinebl nowrap-overflow" style="width:25%;">
+                            {{(item.billDetail == null || item.billDetail == "") ? "无" : item.billDetail}}
+                        </div>
+                    </li>
+                    <!--提成记录明细展示-->
+                    <li ng-repeat="item in selEmpBonusList" style="color: #665655;">
+                        <div class="inlinebl nowrap-overflow" style="width:9%;border-left: none;">
+                            {{item.member_name ? item.member_name : "散客"}}
+                        </div>
+                        <div class="inlinebl nowrap-overflow" style="width:10%; ">
+                            {{item.cardNo ? item.cardNo : "&nbsp;"}}
+                        </div>
+                        <div class="inlinebl nowrap-overflow" style="width:8%;">
+                            {{item.cardCate}}{{(item.cardCate ? "卡" : "&nbsp;")}}
+                        </div>
+                        <div class="inlinebl" style="width:8%;">
+                            ￥{{item.befDisMoney | number:2}}
+                        </div>
+                        <div class="inlinebl" style="width:5%">
+                            {{item.discount == 10 ? '无' : (item.discount | number : 1)}}折
+                        </div>
+                        <div class="inlinebl" style="width:8%;">
+                            ￥{{item.totalMoney | number:2}}
+                        </div>
+                        <div class="inlinebl" style="width:12%">
+                            {{item.create_date | date:'yyyy-MM-dd'}}
+                        </div>
+                        <div class="inlinebl" style="width:8%">
+                            ￥{{item.bonusMoney | number:2}}
+                        </div>
+                        <div class="inlinebl nowrap-overflow" style="width:25%;">
+                            {{item.billDetail}}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--手工调整页面-->
+        <div id="m-setting-salary-manual-modify" style="display: none">
+            <div class="dialog-body">
+            <div class="dialog-header">
+                <div class="dialog-title">
+                    手工调整
+                </div>
+                <div class="delete-icon" ng-tap="modalDialogClose()">
+                    <img src="imgs/icon-cancel.png">
+                </div>
+            </div>
+            <div class="m-area-msg" style=""></div>
+            <div class="m-pos-member-popup-detail-one" style="width: 38rem;">
+                <div class="m-input-underline">
+                    <div class="caption" style="font-size: 1.2rem;padding-top: 1rem;padding-bottom: 0.5rem;">
+                        奖励：
+                    </div>
+                    <input id="m-setting-manual-reward" class="m-input-tiny" type="number"
+                           style="width:80%;font-size: 1.2rem;"
+                           ng-model="appendBonus.reward" placeholder="输入金额">
+                    <cite id="employee-error-reward" class=" error-hint" style="font-size:1.2rem; padding-top:0">
+                        <img src="../../resource/images/alarmIcon.png">
+                        <span>0-1000000之间的数字</span>
+                    </cite>
+                </div>
+                <div class=" m-input-underline">
+                    <div class="caption" style="font-size: 1.2rem;padding-top: 1rem;padding-bottom: 0.5rem;">
+                        扣除：
+                    </div>
+                    <input type="number" ng-model="appendBonus.punish" style="width:80%;font-size: 1.2rem;"
+                           placeholder="输入金额" class="m-input-tiny">
+                    <cite id="employee-error-punish" class="error-hint" style="font-size: 1.2rem; padding-top:0">
+                        <img src="../../resource/images/alarmIcon.png">
+                        <span>0-1000000之间的数字</span>
+                    </cite>
+                </div>
+                <div class="mb-1 m-input-underline">
+                    <div class="caption" style="font-size: 1.2rem;padding-top: 1rem;padding-bottom: 0.5rem;">
+                        备注：
+                    </div>
+                    <input type="text" ng-model="appendBonus.comment" style="width:80%; font-size: 1.2rem;"
+                           placeholder="输入备注信息" size="5" class=" m-input-tiny" maxlength="200">
+
+                </div>
+            </div>
+            <ul>
+                <li>
+                    <div class="m-save-button">
+                        <a ng-tap="modalDialogClose()" class="m-save-button-cancel bg-color-ededed">取消</a><a
+                            ng-tap="newAppend()" class="m-save-button-cancel bg-color-ededed">确定</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        </div>
+        <!--员工新增页面-->
+        <div id="m-setting-employee-add" class="ofauto m-setting-employee-add bg-color-efeff4 m-setting-head-navbar"
+             style="display: none;"
+             ng-style="action=='addEmployee'?{}:{'display':'none'}">
+            <div class="m-setting-title">
+                <ul>
+                    <li style="float: left;">
+                        <a ng-tap="backIndex()">
+                            <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+                        </a>
+                        <span style="font-size: 1.4rem;">
+                            添加员工
+                        </span>
+                    </li>
+                    <li style="float: right;">
+                        <a ng-tap="newEmployee()">
+                            <span style="font-size: 1.2rem;">
+                                <i class="icon-save"></i>保存
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="m-area-msg" style=""></div>
+            <div class="m-setting-form-bg add-employee-form">
+                <div class="m-input-underline">
+                    <img ng-src="{{employee.baseInfo_image ? employee.baseInfo_image : 'imgs/man-icon.jpg'}}"
+                         class="emp-sel-image">
+                    <span class="icon-camera-retro clickable ml-1"
+                          style="font-size:1.6rem; width: auto; height: 4rem; line-height: 4rem;"
+                          ng-tap="getPicture(employee,'camera')">
+                        <span>拍照</span>
+                    </span>
+                    <span class="icon-folder-open-alt clickable ml-1"
+                          style="font-size: 1.6rem; height: 4rem; line-height: 4rem;"
+                          ng-tap="getPicture(employee,'folder')">
+                        <span>选择本地文件</span>
+                    </span>
+                </div>
+                <div class="m-input-underline">
+                    <div class="caption inlinebl">
+                        名称：
+                    </div>
+                    <input type="text" ng-model="employee.name" placeholder="员工名称"
+                           ng-blur="checkName()" required="required" class="m-input" maxlength="12">
+                    <cite id="employee-error-newName" class=" error-hint error-hint-one" style="font-size: 1rem;">
+                        <img src="../../resource/images/alarmIcon.png">
+                        <span>长度为1-12之间</span>
+                    </cite>
+                </div>
+                <div class="m-input-underline">
+                    <div class="caption">
+                        昵称：
+                    </div>
+                    <input class="m-input" type="text"
+                           ng-model="employee.nickname" placeholder="昵称" maxlength="12">
+                    <cite class=" error-hint error-hint-two" style="font-size: 1rem;">
+                        <img src="../../resource/images/alarmIcon.png">
+                        <span>长度为1-12之间</span>
+                    </cite>
+                </div>
+                <div class="m-input-underline">
+                    <label class="caption">生日：</label>
+                    <input type="text" class="m-input" ng-model="employee.baseInfo_birthday" ng-tap="showBirSeleted($event)"
+                           disabled/>
+                    <cite id="emp-error-birthday" class="error-hint" style="font-size: 1rem;position: absolute;">
+                        <img src="imgs/alarmIcon.png">
+                        <span>不能为空</span>
+                    </cite>
+                </div>
+                <div class="m-input-underline">
+                    <div class="caption">
+                        手机：
+                    </div>
+                    <input ng-blur="checkPhone()" type="tel"
+                           ng-model="employee.contact_phoneMobile" placeholder="手机" size="30" class="m-input">
+                    <cite class=" error-hint error-hint-three" style="font-size: 1rem;">
+                        <img src="../../resource/images/alarmIcon.png">
+                        <span>11位手机号码</span>
+                    </cite>
+                </div>
+                <div class="m-input-underline">
+                    <div class="caption">
+                        性别：
+                    </div>
+                    <div class="select-tags-s">
+                        <ul>
+                            <li ng-tap="selectEmployeeSex('0')"
+                                ng-style="employee.baseInfo_sex === '0' ? {'background-color' : '#398acb', 'color': '#fff'} : {}">
+                                女
+                            </li>
+                            <li ng-tap="selectEmployeeSex('1')"
+                                ng-style="employee.baseInfo_sex === '1' ? {'background-color' : '#398acb', 'color': '#fff'} : {}">
+                                男
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="m-input-underline">
+                    <div class="caption">
+                        岗位：
+                    </div>
+                    <div class="select-tags-s">
+                        <ul>
+                            <li ng-repeat="item in jobList"
+                                ng-style="employee.job.id === item.id ? {'background-color' : '#398acb' , 'color': '#fff'} : {}"
+                                ng-tap="selectEmployeeJob(item)">
+                                {{item.name}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--新增岗位-->
+        <div id="m-setting-employee-post-add" class="m-setting-head-navbar bg-color-efeff4" style="display: none;"
+             ng-style="action=='postAdd'?{}:{'display':'none'}">
+            <div class="m-setting-title">
+                <ul>
+                    <li style="float: left;">
+                        <a ng-tap="backPostAdmin()">
+                            <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+                        </a>
+                        <span style="font-size: 1.4rem;">
+                            新增岗位
+                        </span>
+                    </li>
+                    <li style="float: right;" ng-tap="newJob()">
+                        <a>
+                            <span style="font-size: 1.2rem;">
+                                <i class="icon-save"></i> 保存
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="m-area-msg" style=""></div>
+            <div class="m-setting-form-bg">
+                <div class="m-input-underline">
+                    <div class="caption inlinebl">
+                        岗位名称：
+                    </div>
+                    <input type="text" ng-model="job.name" placeholder="岗位名称"
+                           ng-blur="checkJobName()" required="required" class="m-input" maxlength="12">
+                    <cite id="new-job-error-name" class="error-hint">
+                        <img src="../../resource/images/alarmIcon.png">
+                        <span>长度为1-12之间</span>
+                    </cite>
+                </div>
+                <div class="m-input-underline">
+                    <div class="caption inlinebl">
+                        基本工资：
+                    </div>
+                    <input type="number" ng-model="job.baseSalary" placeholder="基本工资"
+                           ng-blur="checkJobBaseSalary()" class="m-input">
+                    <cite id="new-job-error-baseSalary" class="error-hint">
+                        <img src="../../resource/images/alarmIcon.png">
+                        <span>0-1000000之间的数字</span>
+                    </cite>
+                </div>
+                <div class="m-input-underline">
+                    <div class="caption inlinebl">
+                        现金消费提成：
+                    </div>
+                    <input type="number" ng-model="job.bonus_cash" placeholder="现金消费提成" class="m-input"
+                           ng-blur="checkJobBonus_cash()">
+                    <cite id="new-job-error-bonus_cash" class="error-hint">
+                        <img src="../../resource/images/alarmIcon.png">
+                        <span>0-100之间的数字</span>
+                    </cite>
+                </div>
+                <div class="m-input-underline">
+                    <div class="caption inlinebl">
+                        充值卡消费提成：
+                    </div>
+                    <input ng-disabled="cateFlag.rechargeFlag" type="number" ng-model="job.bonus_memberCard"
+                           placeholder="充值卡消费提成(20代表20%)" class="m-input"
+                           ng-blur="checkJobBonus_memberCard()">
+                    <cite id="new-job-error-bonus_memberCard" class="error-hint">
+                        <img src="../../resource/images/alarmIcon.png">
+                        <span>0-100之间的数字</span>
+                    </cite>
+                </div>
+                <div class="m-input-underline">
+                    <div class="caption inlinebl">
+                        充值卡开卡提成：
+                    </div>
+                    <input ng-disabled="cateFlag.rechargeFlag" type="number" ng-model="job.bonus_newCard"
+                           placeholder="充值卡开卡提成(20代表20%)" class="m-input"
+                           ng-blur="checkJobBonus_newCard()">
+                    <cite id="new-job-error-bonus_newCard" class="error-hint">
+                        <img src="../../resource/images/alarmIcon.png">
+                        <span>0-100之间的数字</span>
+                    </cite>
+                </div>
+                <div class="m-input-underline">
+                    <div class="caption inlinebl">
+                        充值卡充值提成：
+                    </div>
+                    <input ng-disabled="cateFlag.rechargeFlag" type="number" ng-model="job.bonus_recharge"
+                           placeholder="充值卡充值提成(20代表20%)" class="m-input"
+                           ng-blur="checkJobBonus_recharge()">
+                    <cite id="new-job-error-bonus_recharge" class="error-hint">
+                        <img src="../../resource/images/alarmIcon.png">
+                        <span>0-100之间的数字</span>
+                    </cite>
+                </div>
+                <div class="m-input-underline">
+                    <div class="caption inlinebl">
+                        记次卡消费提成：
+                    </div>
+                    <input ng-disabled="cateFlag.recordFlag" type="number" ng-model="job.bonus_recordCardConsume"
+                           placeholder="记次卡消费提成(20代表20%)" class="m-input"
+                           ng-blur="checkJobRecordCardConsume()">
+                    <cite id="new-job-error-bonus_recordCardConsume" class="error-hint">
+                        <img src="../../resource/images/alarmIcon.png">
+                        <span>0-100之间的数字</span>
+                    </cite>
+                </div>
+                <div class="m-input-underline">
+                    <div class="caption inlinebl">
+                        记次卡开卡提成：
+                    </div>
+                    <input ng-disabled="cateFlag.recordFlag" type="number" ng-model="job.bonus_newRecordCard"
+                           placeholder="记次卡开卡提成(20代表20%)" class="m-input"
+                           ng-blur="checkJobNewRecordCard()">
+                    <cite id="new-job-error-bonus_newRecordCard" class="error-hint">
+                        <img src="../../resource/images/alarmIcon.png">
+                        <span>0-100之间的数字</span>
+                    </cite>
+                </div>
+            </div>
+        </div>
+        <!--修改岗位-->
+        <div id="m-setting-update-job" class="m-setting-head-navbar bg-color-efeff4" ng-show="action == 'postEdit'">
+            <div class="m-setting-title">
+                <ul>
+                    <li style="float: left;">
+                        <a ng-tap="backPostAdmin()">
+                            <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+                        </a>
+                        <span style="font-size: 1.4rem;">
+                            修改岗位
+                        </span>
+                    </li>
+                    <li style="float: right;" ng-tap="updateJob()">
+                        <a>
+                            <span style="font-size: 1.2rem;">
+                                <i class="icon-save"></i>保存
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="m-area-msg" style=""></div>
+            <div class="m-setting-form-bg">
+                <div class="m-input-underline">
+                    <div class="caption inlinebl">
+                        岗位名称：
+                    </div>
+                    <input type="text" ng-model="job.name" placeholder="岗位名称"
+                           ng-blur="checkJobName()" required="required" class="m-input" maxlength="12">
+                    <cite id="edit-job-error-name" class="error-hint">
+                        <img src="../../resource/images/alarmIcon.png">
+                        <span>长度为1-12之间</span>
+                    </cite>
+                </div>
+                <div class="m-input-underline">
+                    <div class="caption inlinebl">
+                        基本工资：
+                    </div>
+                    <input type="number" ng-model="job.baseSalary" placeholder="基本工资"
+                           ng-blur="checkJobBaseSalary()" required="required" class="m-input">
+                    <cite id="edit-job-error-baseSalary" class="error-hint">
+                        <img src="../../resource/images/alarmIcon.png">
+                        <span>0-1000000之间的数字</span>
+                    </cite>
+                </div>
+                <div class="m-input-underline">
+                    <div class="caption inlinebl">
+                        现金消费提成：
+                    </div>
+                    <input type="number" ng-model="job.bonus_cash" placeholder="现金消费提成(20代表20%)" class="m-input"
+                           ng-blur="checkJobBonus_cash()">
+                    <cite id="edit-job-error-bonus_cash" class="error-hint">
+                        <img src="../../resource/images/alarmIcon.png">
+                        <span>0-100之间的数字</span>
+                    </cite>
+                </div>
+                <div class="m-input-underline">
+                    <div class="caption inlinebl">
+                        充值卡消费提成：
+                    </div>
+                    <input ng-disabled="cateFlag.rechargeFlag" type="number" ng-model="job.bonus_memberCard"
+                           placeholder="充值卡消费提成(20代表20%)" class="m-input"
+                           ng-blur="checkJobBonus_memberCard()">
+                    <cite id="edit-job-error-bonus_memberCard" class="error-hint">
+                        <img src="../../resource/images/alarmIcon.png">
+                        <span>0-100之间的数字</span>
+                    </cite>
+                </div>
+                <div class="m-input-underline">
+                    <div class="caption inlinebl">
+                        充值卡开卡提成：
+                    </div>
+                    <input ng-disabled="cateFlag.rechargeFlag" type="number" ng-model="job.bonus_newCard"
+                           placeholder="充值卡开卡提成(20代表20%)" class="m-input"
+                           ng-blur="checkJobBonus_newCard()">
+                    <cite id="edit-job-error-bonus_newCard" class="error-hint">
+                        <img src="../../resource/images/alarmIcon.png">
+                        <span>0-100之间的数字</span>
+                    </cite>
+                </div>
+                <div class="m-input-underline">
+                    <div class="caption inlinebl">
+                        充值卡充值提成：
+                    </div>
+                    <input ng-disabled="cateFlag.rechargeFlag" type="number" ng-model="job.bonus_recharge"
+                           placeholder="充值卡充值提成(20代表20%)" class="m-input"
+                           ng-blur="checkJobBonus_recharge()">
+                    <cite id="edit-job-error-bonus_recharge" class="error-hint">
+                        <img src="../../resource/images/alarmIcon.png">
+                        <span>0-100之间的数字</span>
+                    </cite>
+                </div>
+                <div class="m-input-underline">
+                    <div class="caption inlinebl">
+                        记次卡消费提成：
+                    </div>
+                    <input ng-disabled="cateFlag.recordFlag" type="number" ng-model="job.bonus_recordCardConsume"
+                           placeholder="记次卡消费提成(20代表20%)"
+                           class="m-input"
+                           ng-blur="checkJobRecordCardConsume()">
+                    <cite id="edit-job-error-bonus_recordCardConsume" class="error-hint">
+                        <img src="../../resource/images/alarmIcon.png">
+                        <span>0-100之间的数字</span>
+                    </cite>
+                </div>
+                <div class="m-input-underline">
+                    <div class="caption inlinebl">
+                        记次卡开卡提成：
+                    </div>
+                    <input ng-disabled="cateFlag.recordFlag" type="number" ng-model="job.bonus_newRecordCard"
+                           placeholder="记次卡开卡提成(20代表20%)" class="m-input"
+                           ng-blur="checkJobNewRecordCard()">
+                    <cite id="edit-job-error-bonus_newRecordCard" class="error-hint">
+                        <img src="../../resource/images/alarmIcon.png">
+                        <span>0-100之间的数字</span>
+                    </cite>
+                </div>
+            </div>
+        </div>
+        <!--删除员工确认-->
+        <div id="m-setting-employee-delete" class="none dialog-delete">
+                <div class="dialog-body">
+                    <div class="dialog-header delete-dialog-ios">
+                        <div class="dialog-title">
+                            是否删除该员工？
+                        </div>
+                    </div>
+                    <div class="m-area-msg" style=""></div>
+                    <ul>
+                        <li>
+                            <div class="m-save-button">
+                                <a ng-tap="modalDialogClose()" class="m-save-button-cancel bg-color-ededed" style="">取消</a><a
+                                    ng-tap="delEmployee()" class="m-save-button-cancel bg-color-ededed">确定</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        <!--删除岗位确认-->
+        <div id="m-setting-post-delete" class="none dialog-delete">
+                <div class="dialog-body">
+                    <div class="dialog-header delete-dialog-ios">
+                        <div class="dialog-title">
+                            是否删除该岗位？
+                        </div>
+                    </div>
+                    <div class="m-area-msg" style=""></div>
+                    <ul>
+                        <li>
+                            <div class="m-save-button">
+                                <a ng-tap="modalDialogClose()" class="m-save-button-cancel bg-color-ededed">取消</a><a
+                                    ng-tap="delJob()" class="m-save-button-cancel bg-color-ededed">确定</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        <!--员工修改对话框-->
+        <div id="m-setting-employee-editpopup" style="display: none; background: #ededed url(imgs/bg-line.png) center repeat;"
+         ng-style="action=='employeeEdit'?{}:{'display':'none'}"
+         class="bg-color-ededed m-setting-head-navbar">
+                <div class="m-setting-title">
+                    <ul>
+                        <li style="float: left;">
+                            <a ng-tap="backIndex()">
+                                <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+                            </a>
+                            <span style="font-size: 1.4rem;">
+                                   修改员工
+                            </span>
+                        </li>
+                        <li style="float: right;">
+                            <a ng-tap="updateEmployee()">
+                                <span style="font-size: 1.2rem">
+                                    <i class="icon-save"></i>
+                                    保存
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="m-area-msg" style=""></div>
+                <div class="dialog-body m-setting-form-bg add-employee-form">
+                    <div class="dialog-content">
+                        <div class="m-input-underline">
+                            <img ng-src="{{employee.baseInfo_image ? employee.baseInfo_image : 'imgs/man-icon.jpg'}}"
+                                 class="emp-sel-image">
+                            <span class="icon-camera-retro clickable ml-1"
+                                  style="font-size:1.6rem; width: auto; height: 4rem; line-height: 4rem;"
+                                  ng-tap="getPicture(employee,'camera')">
+                                <span>拍照</span>
+                            </span>
+                            <span class="icon-folder-open-alt clickable ml-1"
+                                  style="font-size: 1.6rem; height: 4rem; line-height: 4rem;"
+                                  ng-tap="getPicture(employee,'folder')">
+                                <span>选择本地文件</span>
+                            </span>
+                        </div>
+                        <div class="m-input-underline">
+                            <div class="caption">
+                                名称：
+                            </div>
+                            <input class="m-input" type="text" ng-model="employee.name"
+                                   ng-blur="checkName()" placeholder="名称" maxlength="12">
+                            <cite class=" error-hint error-hint-one" style="font-size: 1rem;">
+                                <img src="../../resource/images/alarmIcon.png">
+                                <span>长度为1-12之间</span>
+                            </cite>
+                        </div>
+                        <div class="m-input-underline">
+                            <div class="caption ">
+                                昵称：
+                            </div>
+                            <input class="m-input" type="text" ng-model="employee.nickname" placeholder="昵称" maxlength="12">
+                            <cite class="error-hint error-hint-two" style="font-size: 1rem;">
+                                <img src="../../resource/images/alarmIcon.png">
+                                <span>长度为1-12之间</span>
+                            </cite>
+                        </div>
+                        <div class="m-input-underline">
+                            <label class="caption">生日：</label>
+                            <input type="text" class="m-input" ng-model="employee.baseInfo_birthday"
+                                   ng-tap="showBirSeleted($event)" disabled/>
+                        </div>
+                        <div class="mb-1 m-input-underline">
+                            <div class="caption">
+                                手机：
+                            </div>
+                            <input type="tel" ng-model="employee.contact_phoneMobile"
+                                   ng-blur="checkPhone()" placeholder="手机" class="m-input">
+                            <cite class="error-hint error-hint-three" style="font-size: 1rem;">
+                                <img src="../../resource/images/alarmIcon.png">
+                                <span>11位手机号码</span>
+                            </cite>
+                        </div>
+                        <div class="m-input-underline">
+                            <div class="caption">
+                                性别：
+                            </div>
+                            <div class="select-tags-s">
+                                <ul>
+                                    <li ng-tap="selectEmployeeSex('0')"
+                                        ng-style="employee.baseInfo_sex == '0' ? {'background-color' : '#398acb', 'color': '#fff'} : {}">
+                                        女
+                                    </li>
+                                    <li ng-tap="selectEmployeeSex('1')"
+                                        ng-style="employee.baseInfo_sex == '1' ? {'background-color' : '#398acb', 'color': '#fff'} : {}">
+                                        男
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="m-input-underline">
+                            <div class="caption">
+                                岗位：
+                            </div>
+                            <div class="select-tags-s">
+                                <ul>
+                                    <li ng-repeat="item in jobList"
+                                        ng-style="employee.job.id === item.id ? {'background-color' : '#398acb', 'color': '#fff'} : {}"
+                                        ng-tap="selectEmployeeJob(item)">
+                                        {{item.name}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    </div>
+</div>

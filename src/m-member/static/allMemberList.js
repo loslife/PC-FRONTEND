@@ -14,9 +14,9 @@ define(function (require, exports, module) {
     exports.checktimeout = true;
 
     var moduleScope = null;
-    var utils = require("mframework/package").utils;
-    var widgets = require("m-widgets/package");
-    var database = require("mframework/package").database;		//数据操作服务
+    var utils = require("mframework/static/package").utils;
+    var widgets = require("m-widgets/static/package");
+    var database = require("mframework/static/package").database;		//数据操作服务
     var featureDataI = require("./allMemberList-dataI.js");
 
     var CONSTANT = {
@@ -639,7 +639,7 @@ define(function (require, exports, module) {
                     weekDay: now.getDay(),
                     month: now.getMonth() + 1,
                     memberCardCate_id: memberCard.memberCardCategoryId,
-                    memberCard_name: memberCard.memberCardCategoryName,
+                    memberCard_name: memberCard.cardNo,
                     member_name: member.name,
                     member_currentBalance: memberCard.currentMoney,//当前剩余多少次
                     employee_id: memberCard.employee_id,
@@ -918,7 +918,7 @@ define(function (require, exports, module) {
                 member_name: $scope.memberInfo.name,
                 memberCard_id: memberCard.id,
                 memberCardCate_id: $scope.memberInfo.memberCardCategoryId,
-                memberCard_name: $scope.memberInfo.memberCardCategory,
+                memberCard_name: $scope.memberInfo.cardNo,
                 member_currentBalance: parseFloat($scope.memberInfo.currentMoney + $scope.memberRecharge.rechargeMoney),
                 employee_id: $scope.newMember.employee ? ($scope.newMember.employee.id ? $scope.newMember.employee.id : "") : "",
                 employee_name: $scope.newMember.employee ? ($scope.newMember.employee.id ? $scope.newMember.employee.name : "") : "",

@@ -1,5 +1,5 @@
 <!--remove pr-1-->
-<div id="m-member-allMemberList-area" class="featureSpace fh">
+<div id="m-member-allMemberList-area" class="featureSpace fh bg-color-efeff4">
 <style>
 #member-operating {
     text-align: center;
@@ -14,7 +14,6 @@
     display: -webkit-box;
     height: 100%;
     color: #565656;
-    background: #ededed url("imgs/bg-line.png") center repeat;
 }
 
 #m-member-allMemberList-area>div {
@@ -84,14 +83,12 @@
 }
 
 #member-operating span {
-    background-color: #767676;
-    border: 0px;
     text-align: center;
     display: inline-block;
     width: 22%;
     -webkit-box-pack: center;
     -webkit-box-align: center;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     padding: 1rem 0;
 
 }
@@ -290,7 +287,7 @@
                    style="font-size: 1.2rem; padding-top:0.5rem; padding-bottom: 0.5rem; width:85%;"
                    placeholder="<%= member.search_member_placeholder %>"
                    type="search" ng-model="search"/>
-            <hr style="width: 99%; margin-left: 2px; border:none; border-top:2px solid #b02e7d; ">
+            <hr style="width: 99%; margin-left: 2px; border:none; border-top:1px solid #b02e7d; ">
         </div>
         <div id="out-result-list">
             <div id="scroll-result-list">
@@ -389,7 +386,7 @@
                             {{memberInfo.cardNo}}
                         </div>
                     </li>
-                    <hr style="width: 99%; border:none; border-top:2px solid #b02e7d; ">
+                    <hr style="width: 99%; border:none; border-top:1px solid #b02e7d; ">
                     <li class="relative">
                         <label class="label-width"><%= member.balance %>：</label>
                         <span ng-show="memberInfo.baseInfo_type !== 'recordTimeCard'">￥{{memberInfo.currentMoney | number:2}}</span>
@@ -471,32 +468,30 @@
 </div>
 <div id="member-cancel" style="width:450px; display: none">
     <div class="dialog-body">
-        <div class="dialog-header" style="background-color: #ec5870;">
+        <div class="dialog-header delete-dialog-ios">
             <div class="dialog-title">
                 <%= member.delete_member_confirm %>？
             </div>
-            <div class="delete-icon" ng-tap="closeDialog()">
-                <i class="icon-remove-circle fancybox-close-icon-s"></i>
-            </div>
         </div>
         <div class="m-area-msg" style=""></div>
-        <div class="dialog-centent">
+        <div class="dialog-centent" style="background-color: #fff;
+border-bottom: 1px solid #9b9e9e;padding:3rem">
             <ul>
                 <li>
                     <div class="">
-                        <div style="font-size: 2.6rem; display: inline-block;height: 3rem;line-height: 3rem;">
+                        <div style="font-size: 2rem; display: inline-block; height: 3rem; line-height: 3rem;">
                             {{memberInfo.name}}
                         </div>
-                        <div style="color: #b02e7d; font-size: 1.6rem; display: inline-block;">
+                        <div style="color: #b02e7d; font-size: 1.2rem; display: inline-block;">
                             <img src="imgs/icon-member-color.png" width="20" height="20" class="m-img-middle">
                             {{memberInfo.cardNo}}
                         </div>
-                        <hr style="width: 100%; margin-left: 2px; border:none; border-top:2px solid #b02e7d; ">
-                        <div class="mt-2" style="font-size: 1.4rem;"><span><%= member.balance %>：</span>￥{{memberInfo.currentMoney
+                        <hr style="width: 100%; border:none; border-top:1px solid #b02e7d; ">
+                        <div class="mt-2" style="font-size: 1.2rem;"><span><%= member.balance %>：</span>￥{{memberInfo.currentMoney
                             | number : 2}}
                         </div>
-                        <div class="mt-1" style="font-size: 1.6rem;">
-                            <span style="font-size: 1.4rem;"><%= member.mobile_phone %>：</span>
+                        <div class="mt-1" style="font-size: 1.2rem;">
+                            <span style="font-size: 1.2rem;"><%= member.mobile_phone %>：</span>
                             {{memberInfo.phoneMobile}}
                         </div>
                     </div>
@@ -574,7 +569,7 @@
                     <div class="select-tags-s">
                         <ul>
                             <li ng-repeat="item in cardTypeList"
-                                ng-style="item === cardTypeSelected ? {'background-color' : '#398acb' , 'color' : '#fff'} : {}"
+                                ng-style="item === cardTypeSelected ? {'background-color' : '#007aff' , 'color' : '#fff'} : {}"
                                 ng-tap="selectCardType(item)">
                                 {{item}}
                             </li>
@@ -589,7 +584,7 @@
                     <div class="select-tags-s">
                         <ul>
                             <li ng-repeat="item in rechargeCateList"
-                                ng-style="newMember.memberCardCategory.id === item.id ? {'background-color' : '#398acb' , 'color':'#fff'}:{}"
+                                ng-style="newMember.memberCardCategory.id === item.id ? {'background-color' : '#007aff' , 'color':'#fff'}:{}"
                                 ng-tap="selectMemberCate(item)">
                                 {{item.name}}
                             </li>
@@ -605,7 +600,7 @@
                     <div class="select-tags-s">
                         <ul>
                             <li ng-repeat="item in recordCateList"
-                                ng-style="newMember.memberCardCategory.id === item.id ? {'background-color' : '#398acb' , 'color':'#fff'}:{}"
+                                ng-style="newMember.memberCardCategory.id === item.id ? {'background-color' : '#007aff' , 'color':'#fff'}:{}"
                                 ng-tap="selectMemberCate(item)">
                                 {{item.name}}
                             </li>
@@ -648,7 +643,7 @@
                     <div class="select-tags-s">
                         <ul>
                             <li ng-repeat="item in sexConstant"
-                                ng-style="newMember.sex.name === item.name ? {'background-color' : '#398acb' , 'color' : '#fff'} : {}"
+                                ng-style="newMember.sex.name === item.name ? {'background-color' : '#007aff' , 'color' : '#fff'} : {}"
                                 ng-tap="selectMemberSex(item)">
                                 {{item.name}}
                             </li>
@@ -664,7 +659,7 @@
                     <div class="select-tags-s">
                         <ul>
                             <li ng-repeat="item in employeeList"
-                                ng-style="newMember.employee.id === item.id ? {'background-color' : '#398acb' , 'color' : '#fff'} : {}"
+                                ng-style="newMember.employee.id === item.id ? {'background-color' : '#007aff' , 'color' : '#fff'} : {}"
                                 ng-tap="selectMemberEmpBonus(item)">
                                 {{item.name}}
                             </li>
@@ -708,7 +703,7 @@
             <li class="member-total-info mt-1">
                 <div><span><%= member.recharge_account %>：</span>{{memberInfo.name}}</div>
                 <div><span><%= member.current_balance %>：</span>￥{{memberInfo.currentMoney | number : 2}}</div>
-                <hr style="width: 100%; margin-left: 2px; border:none; border-top:2px solid #b02e7d; ">
+                <hr style="width: 100%; margin-left: 2px; border:none; border-top:1px solid #b02e7d; ">
             </li>
             <li>
                 <div class="m-input-underline">
@@ -728,7 +723,7 @@
                     <div class="select-tags-s">
                         <ul>
                             <li ng-repeat="item in employeeList"
-                                ng-style="newMember.employee.id === item.id ? {'background-color' : '#398acb', 'color':'#fff'} : {}"
+                                ng-style="newMember.employee.id === item.id ? {'background-color' : '#007aff', 'color':'#fff'} : {}"
                                 ng-tap="selectMemberEmpBonus(item)">
                                 {{item.name}}
                             </li>

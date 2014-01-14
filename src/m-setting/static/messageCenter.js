@@ -14,9 +14,9 @@ define(function (require, exports, module) {
     exports.fullscreen = true;
     require("./setting.css");
 
-    var utils = require("mframework/package").utils, 			//全局公共函数
-        database = require("mframework/package").database,		//数据操作服务
-        dataUtils = require("mframework/package").dataUtils,		//数据操作服务
+    var utils = require("mframework/static/package").utils, 			//全局公共函数
+        database = require("mframework/static/package").database,		//数据操作服务
+        dataUtils = require("mframework/static/package").dataUtils,		//数据操作服务
         dbInstance = null;		                                        //数据操作服务
 
 

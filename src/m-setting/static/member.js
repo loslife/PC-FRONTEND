@@ -9,8 +9,8 @@ define(function (require, exports, module) {
     require("./setting.css");
 
     //基础服务
-    var utils = require("mframework/package").utils;
-    var database = require("mframework/package").database;
+    var utils = require("mframework/static/package").utils;
+    var database = require("mframework/static/package").database;
     var dbInstance = null;
     var featureDataI = require("./member-dataI.js");
     var moduleScope;
@@ -20,6 +20,7 @@ define(function (require, exports, module) {
         var model = {
             dia_action: "",
             pageIndex: "memberTypeList",
+            selectedStyle: "memberTypeList",
             action: "",
             memberType: {
                 id: "",
@@ -756,6 +757,15 @@ define(function (require, exports, module) {
             $scope.serviceViewArray = $scope.serviceList;
             $scope.serviceCateSelected = "all";
         };
+        $scope.showChargeCard = function() {
+            $scope.pageIndex = "memberTypeList";
+            $scope.selectedStyle = "memberTypeList";
+        }
+        $scope.showRecordCard = function() {
+            $scope.pageIndex = "memberRecordTime";
+            $scope.selectedStyle = "memberRecordTime";
+        }
+
     }
 
     function init() {
@@ -765,6 +775,7 @@ define(function (require, exports, module) {
 
     function afterPageLoaded() {
         $("#m-setting-typeList").height($(window).height() - $(".m-setting-title").outerHeight() - 10);
+        $("#m-setting-recordTime").height($(window).height() - $(".m-setting-title").outerHeight() - 10);
 
         //服务或者服务类别发生改变
         global.eventEmitter.addListener("setting.service.service.change", function () {

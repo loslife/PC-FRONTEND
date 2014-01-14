@@ -67,10 +67,10 @@
                             ng-click="newProduct(productCategorySelected)">
                         <div class="abs fs-12" style="top: 3.5rem;left: 2rem;">
                             <img src="imgs/dashed-background.png"
-                                 style="width: 8rem; height: 8rem; margin-left: -2rem; margin-top: -3.5rem; ">
+                                 style="width: 10rem; height: 10rem; margin-left: -2rem; margin-top: -3.5rem; ">
 
-                            <div style="height: 0.8rem; width: 3.5rem; background-color: #d0d0d0; left: 0.3rem; top:0; position: absolute"></div>
-                            <div style="height: 3.5rem; width: 0.8rem; background-color: #d0d0d0; left: 1.6rem; top:-1.3rem;  position: absolute;"></div>
+                            <div style="height: 0.8rem; width: 3.5rem; background-color: #d0d0d0; left: 1.3rem; top:1rem; position: absolute"></div>
+                            <div style="height: 3.5rem; width: 0.8rem; background-color: #d0d0d0; left: 2.6rem; top:-0.3rem; position: absolute;"></div>
                         </div>
                     </a>
                 </li>
@@ -106,8 +106,8 @@
     </div>
 </div>
 
-<div id="m-setting-more-servicecate" class="abs abs-left-top fw fh bg-color-ededed"
-     style="display: none; background: #ededed url(imgs/bg-line.png) center repeat;"
+<div id="m-setting-more-servicecate" class="abs abs-left-top fw fh bg-color-efeff4"
+     style="display: none; height: 100%;"
      ng-style="action=='newcate'?{}:{'display':'none'}">
 
     <div class="m-setting-title" style="width: 100%">
@@ -132,7 +132,7 @@
     </div>
     <div class="m-area-msg" style=""></div>
 
-    <div class="dialog-body m-setting-form-bg">
+    <div class="m-setting-form-bg">
         <ul>
             <li class="m-input-underline">
                 <div class="caption ">
@@ -415,15 +415,13 @@
 
 <div id="m-setting-service-delete" class="none dialog-delete">
     <div class="dialog-body">
-        <div class="dialog-header" style="background-color: #ec5870;">
+        <div class="dialog-header delete-dialog-ios">
             <div class="dialog-title">
                 <%= setting.service.delete_service_confirm %>？
             </div>
-            <div class="delete-icon" ng-tap="modalDialogClose()">
-                <i class="icon-remove-circle fancybox-close-icon-s"></i>
-            </div>
+
         </div>
-        <div class="m-area-msg" style=""></div>
+        <div class="m-area-msg"></div>
 
         <ul>
             <li>
@@ -438,13 +436,11 @@
 
 <div id="m-setting-service-cate-delete" class="none dialog-delete">
     <div class="dialog-body">
-        <div class="dialog-header" style="background-color: #ec5870;">
-            <div class="dialog-title">
+        <div class="dialog-header delete-dialog-ios">
+            <div class="dialog-title ">
                 <%= setting.service.delete_classify_confirm %>？
             </div>
-            <div class="delete-icon" ng-tap="modalDialogClose()">
-                <i class="icon-remove-circle fancybox-close-icon-s"></i>
-            </div>
+
         </div>
         <div class="m-area-msg" style=""></div>
 

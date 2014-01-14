@@ -14,9 +14,9 @@ define(function (require, exports, module) {
     exports.fullscreen = true;
 
     //基础服务
-    var utils = require("mframework/package").utils, 			//全局公共函数
-        widgets = require("m-widgets/package"), 			//全局公共函数
-        database = require("mframework/package").database,		//数据操作服务
+    var utils = require("mframework/static/package").utils, 			//全局公共函数
+        widgets = require("m-widgets/static/package"), 			//全局公共函数
+        database = require("mframework/static/package").database,		//数据操作服务
         dbInstance = null;		//数据操作服务
 
     //使用snap捕捉元素实现滚动条当前位置获取、导致滚动效果在pad上体验太差、出现回滚

@@ -131,7 +131,7 @@ seajs.use(['nail/static/main.js', 'mframework/static/package.js',
  * 初始化测试数据
  */
 function initTestData() {
-    seajs.use(['nail/package.js'], function (mock) {
+    seajs.use(['nail/static/package.js'], function (mock) {
         mock.mockData.init();
     });
 }
@@ -143,7 +143,7 @@ function guideDataInitFinish() {
 
 
 $(function () {
-    $("#client-lock-pwd .button-calculator").bind('touchstart', function () {
+    $("#client-lock-pwd .button-calculator").bind('click', function () {
         var num = this.dataset["num"];
         if (num == "-1") {
             for (var i = 4; i > 0; i--) {

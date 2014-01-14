@@ -8,9 +8,9 @@ define(function (require, exports, module) {
     require("./setting.css");
     exports.fullscreen = true;
 
-    var widgets = require("m-widgets/package");
-    var utils = require("mframework/package").utils;			        //全局公共函数
-    var database = require("mframework/package").database;
+    var widgets = require("m-widgets/static/package");
+    var utils = require("mframework/static/package").utils;			        //全局公共函数
+    var database = require("mframework/static/package").database;
     var featureDataI = require("./employee-dataI.js");
     var moduleScope;
 

@@ -3,7 +3,7 @@
     <style type="text/css">
         #m-setting-backup-area {
             text-align: center;
-            background: #ededed url("imgs/bg-line.png") center repeat;
+            background-color: #efeff4!important;
         }
 
         #setting-backup-area {
@@ -16,15 +16,21 @@
         #setting-backup-area>div>ul {
             padding: 0.5rem;
             width: 25rem;
-            text-align: left;
-            background-color: #fff;
-            border-radius: 5px;
+            border: 1px solid #007aff;
+            text-align: center;
+            border-radius: 0.833rem;
+        }
+        .m-setting-backup-tolocal{
+            border-radius: 0.833rem;
         }
 
         #setting-backup-area ul>li {
             display: inline-block;
             vertical-align: middle;
             text-align: left;
+        }
+        .backup-title-color{
+            color: #007aff;
         }
 
     </style>
@@ -45,20 +51,20 @@
         <div class="fs-20 mainColor-1 mb-5">
             {{tips}}
         </div>
-        <div id="setting-backup-tocloud" class="inlinebl mr-2" ng-tap="backup()">
-            <ul style="border: 1px solid #d0d0d0">
+        <div id="setting-backup-tocloud" class="inlinebl mr-2 m-setting-backup-tolocal" ng-tap="backup()">
+            <ul >
                 <span class="cloudup-icon"></span>
                 <li class="ml-2">
-                    <div class="fs-20 mt-1 mainColor-1"> <%= setting.backup.backup_local_data %></div>
+                    <div class="fs-20 mt-1 backup-title-color"> <%= setting.backup.backup_local_data %></div>
                     <div class="font-color-message"> <%= setting.backup.upload_local_data %></div>
                 </li>
             </ul>
         </div>
-        <div id="setting-backup-tolocal" class="inlinebl" ng-tap="resume()">
-            <ul style="border: 1px solid #d0d0d0">
+        <div id="setting-backup-tolocal" class="inlinebl m-setting-backup-tolocal" ng-tap="resume()">
+            <ul>
                 <span class="clouddown-icon"></span>
                 <li class="ml-2">
-                    <div class="fs-20 mt-1 mainColor-1"> <%= setting.backup.recover_data %></div>
+                    <div class="fs-20 mt-1 backup-title-color"> <%= setting.backup.recover_data %></div>
                     <div class="font-color-message"> <%= setting.backup.download_cloud_data %></div>
                 </li>
             </ul>

@@ -1,7 +1,7 @@
 //收银点结算的动作
 define(function (require, exports, module) {
-    var utils = require("mframework/package").utils;
-    var database = require("mframework/package").database;
+    var utils = require("mframework/static/package").utils;
+    var database = require("mframework/static/package").database;
     var featureDataI = require("./checkout-dataI.js");
 
     exports.initScope = initScope;
@@ -9,9 +9,14 @@ define(function (require, exports, module) {
     exports.commitWithRecord = commitWithRecord;
     exports.commitBoth = commitBoth;
     exports.commitRecordNotSave = commitRecordNotSave;
+    exports.reprintInit = reprintInit;
+    exports.reprintCommit = reprintCommit;
+    exports.cancelReprint = cancelReprint;
+
 
     //angular的$scope对象
     var angScope = null;
+    var failTicket = [];//打印失败的小票
 
     function initScope(scope) {
         angScope = scope;
@@ -58,7 +63,14 @@ define(function (require, exports, module) {
             address: angScope.storeInfo.addr_state_city_area + angScope.storeInfo.addr_detail,
             phone: angScope.storeInfo.contact_phoneMobile
         };
-        utils.printTicket(ticketTemplate, callback);
+        utils.printTicket(ticketTemplate, function (error) {
+            if (error) {
+                addFailTicket(ticketTemplate);
+                callback(error);
+                return;
+            }
+            callback(null);
+        });
     }
 
     //会员使用记次卡支付
@@ -100,7 +112,14 @@ define(function (require, exports, module) {
             address: angScope.storeInfo.addr_state_city_area + angScope.storeInfo.addr_detail,
             phone: angScope.storeInfo.contact_phoneMobile
         };
-        utils.printTicket(ticketTemplate, callback);
+        utils.printTicket(ticketTemplate, function (error) {
+            if (error) {
+                addFailTicket(ticketTemplate);
+                callback(error);
+                return;
+            }
+            callback(null);
+        });
     }
 
     //会员使用现金支付
@@ -135,7 +154,14 @@ define(function (require, exports, module) {
             address: angScope.storeInfo.addr_state_city_area + angScope.storeInfo.addr_detail,
             phone: angScope.storeInfo.contact_phoneMobile
         };
-        utils.printTicket(ticketTemplate, callback);
+        utils.printTicket(ticketTemplate, function (error) {
+            if (error) {
+                addFailTicket(ticketTemplate);
+                callback(error);
+                return;
+            }
+            callback(null);
+        });
     }
 
     //打印现金消费小票
@@ -173,7 +199,84 @@ define(function (require, exports, module) {
             address: angScope.storeInfo.addr_state_city_area + angScope.storeInfo.addr_detail,
             phone: angScope.storeInfo.contact_phoneMobile
         };
-        utils.printTicket(ticketTemplate, callback);
+        utils.printTicket(ticketTemplate, function (error) {
+            if (error) {
+                addFailTicket(ticketTemplate);
+                callback(error);
+                return;
+            }
+            callback(null);
+        });
+    }
+
+    //失败小票清空
+    function emptyFailTicket() {
+        failTicket = [];
+    }
+
+    //新增失败小票
+    function addFailTicket(ticket) {
+        failTicket.push(ticket);
+    }
+
+    //尝试重新打印失败小票
+    function printFailTicket(callback) {
+        if (failTicket.length !== 0) {
+            async.each(failTicket, function (item, callback) {
+                utils.printTicket(item, function (error) {
+                    if (error) {
+                        callback(error);
+                        return;
+                    }
+                    callback(null);
+                });
+            }, function (error) {
+                callback(error);
+            });
+        }
+        else {
+            callback(null);
+        }
+    }
+
+    //重新打印失败小票
+    function reprintCommit() {
+        printFailTicket(function (error) {
+            if (error) {
+                utils.showAreaFailMsg("#m-pos-checkout-reprint", "打印失败");
+                return;
+            }
+            utils.showAreaSuccessMsg("#m-pos-checkout-reprint", "打印成功");
+            cancelReprint();
+        });
+    }
+
+    //重新打印小票初始化
+    function reprintInit() {
+        $.fancybox.open({href: "#m-pos-checkout-reprint" },
+            {
+                openEffect: 'none',
+                closeEffect: 'none',
+                closeBtn: false,
+                closeClick: false,
+                autoSize: false,
+                autoHeight: true,
+                autoWidth: true,
+                fitToView: true,
+                padding: 0,
+                margin: 0,
+                helpers: {
+                    overlay: {
+                        closeClick: false
+                    }
+                }
+            });
+    }
+
+    //取消重新尝试
+    function cancelReprint() {
+        angScope.modalDialogClose();
+        emptyFailTicket();
     }
 
     //打印小票
@@ -184,6 +287,7 @@ define(function (require, exports, module) {
             return;
         }
 
+        emptyFailTicket();
         if (!_.isEmpty(angScope.memberSelected)) {
             if (angScope.memberSelected.baseInfo_type === "recordTimeCard") {
                 //记次卡
@@ -316,7 +420,7 @@ define(function (require, exports, module) {
                 serviceBill.member_id = angScope.memberSelected.id;
                 serviceBill.member_name = angScope.memberSelected.name;
                 serviceBill.memberCard_id = angScope.memberSelected.cardId;
-                serviceBill.memberCard_name = angScope.memberSelected.memberCardCategoryName;
+                serviceBill.memberCard_name = angScope.memberSelected.cardNo;
                 serviceBill.member_currentBalance = angScope.memberSelected.currentMoney - serviceBill.pay_prePaidCard;
             }
         }
@@ -419,16 +523,17 @@ define(function (require, exports, module) {
             $.fancybox.close();
             angScope.digestScope();
         }, 1000);
-        utils.showAreaSuccessMsg("#m-pos-checkout-popup", "收银成功");
         printConsumeTicket(printResult.serviceBill, printResult.projectList, _.clone(angScope.memberSelected), function (error) {
             if (error) {
-                //todo 失败处理
                 utils.log("m-pos checkoutCommit.js commitWithMoney.printConsumeTicket", error);
-                console.log("打印失败");
+                setTimeout(function () {
+                    reprintInit();
+                }, 1000);
             }
             angScope.clearOrder();
             angScope.reInitRecordOrder();//记次卡信息继续清除
         });
+        utils.showAreaSuccessMsg("#m-pos-checkout-popup", "收银成功");
     }
 
     //使用记次卡收银
@@ -447,6 +552,21 @@ define(function (require, exports, module) {
         memberCard.id = angScope.memberSelected.cardId;
         memberCard.reduction = angScope.pay.cardTimes;//扣次数
         memberCard.updateDate = createDate;
+
+        //记次卡短信
+        var msgContent = null;
+        if (angScope.msgSwitch.consumeMsgSwitch == 1 && memberCard.id) {
+            msgContent = {};
+            msgContent.template_id = "template_9";
+            msgContent.projectList = billDetail.join(",");
+            if (msgContent.projectList.length >= 60) {
+                msgContent.projectList = msgContent.projectList.substring(0, 55) + "...";
+            }
+            msgContent.phoneNumber = angScope.memberSelected.phoneMobile;
+            msgContent.costTimes = serviceBill.def_int1;
+            msgContent.balance = serviceBill.member_currentBalance;
+            msgContent.enterpriseName = angScope.storeInfo.name;
+        }
 
         featureDataI.fillIdCode(serviceBill, projectList, memberCard, empBonus, function (error, result) {
             if (error) {
@@ -469,6 +589,9 @@ define(function (require, exports, module) {
                         enCheckBtn();
                         utils.log("m-pos checkoutCommit.js checkout.featureDataI.checkout.needDelPend", error);
                         return;
+                    }
+                    if (msgContent) {
+                        sendMsg(msgContent);
                     }
                     checkoutSuccess(printResult, createDate, memberCard, empBonus);
                 });
@@ -495,7 +618,7 @@ define(function (require, exports, module) {
             serviceBill.member_id = angScope.memberSelected.id;
             serviceBill.member_name = angScope.memberSelected.name;
             serviceBill.memberCard_id = angScope.memberSelected.cardId;
-            serviceBill.memberCard_name = angScope.memberSelected.memberCardCategoryName;
+            serviceBill.memberCard_name = angScope.memberSelected.cardNo;
             serviceBill.member_currentBalance = angScope.memberSelected.currentMoney - angScope.pay.cardTimes;//记次卡还剩多少次
         }
 
@@ -594,7 +717,7 @@ define(function (require, exports, module) {
             serviceBill.member_id = angScope.memberSelected.id;
             serviceBill.member_name = angScope.memberSelected.name;
             serviceBill.memberCard_id = angScope.memberSelected.cardId;
-            serviceBill.memberCard_name = angScope.memberSelected.memberCardCategoryName;
+            serviceBill.memberCard_name = angScope.memberSelected.cardNo;
             serviceBill.member_currentBalance = angScope.memberSelected.currentMoney - angScope.pay.cardTimes;//记次卡还剩多少次
         }
 
@@ -659,6 +782,25 @@ define(function (require, exports, module) {
         var memberCard = recordBillInfo.memberCard;
         var empBonus = recordBillInfo.empBonus;
 
+        //记次卡短信
+        var msgContent = null, billDetail = [];
+        if (angScope.msgSwitch.consumeMsgSwitch == 1 && memberCard.id) {
+            msgContent = {};
+            msgContent.template_id = "template_9";
+            _.each(projectList, function (item) {
+                billDetail.push(item.project_name);
+            });
+
+            msgContent.projectList = billDetail.join(",");
+            if (msgContent.projectList.length >= 60) {
+                msgContent.projectList = msgContent.projectList.substring(0, 55) + "...";
+            }
+            msgContent.phoneNumber = angScope.recordContext.memberSelected.phoneMobile;
+            msgContent.costTimes = serviceBill.def_int1;
+            msgContent.balance = serviceBill.member_currentBalance;
+            msgContent.enterpriseName = angScope.storeInfo.name;
+        }
+
         featureDataI.fillIdCode(serviceBill, projectList, memberCard, empBonus, function (error, result) {
             if (error) {
                 utils.showAreaFailMsg("#m-pos-checkout-popup", "收银失败");
@@ -677,6 +819,9 @@ define(function (require, exports, module) {
                     if (error) {
                         utils.log("m-pos checkoutCommit.js commitBoth.printConsumeTicket", error);
                     }
+                    if (msgContent) {
+                        sendMsg(msgContent);
+                    }
                     commitWithMoney();
                 });
             });
@@ -685,6 +830,7 @@ define(function (require, exports, module) {
 
     function sendMsg(msgArg) {
         var url = global["_g_server"].serviceurl + "/sms/sendEnterpriseSms/" + YILOS.ENTERPRISEID;
+//        var url = "http://192.168.1.110:5000/svc/sms/sendEnterpriseSms/100001109292000100";
         $.ajax({
             type: "post",
             async: true,

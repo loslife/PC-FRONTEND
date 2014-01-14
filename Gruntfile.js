@@ -175,6 +175,28 @@ module.exports = function (grunt) {
         },
         clean: {
             build: [buildDir, seaDir, frontDir, serverDir]
+        },
+        yilosi18n:{
+            production:{
+                files:[{
+                    src:["src/*/static/*-min.html"]
+                }] ,
+                options:{
+                    locales:["src/*/static/locales/*/*.json"],
+                    output:"YAE/frontend",
+                    base:"src"
+                }
+            },
+            dev:{
+                files:[{
+                    src:["src/*/static/*.html","!src/*/static/*-min.html","!src/*/static/*_US.html","!src/*/static/*CN.html"]
+                }] ,
+                options:{
+                    locales:["src/*/static/locales/*/*.json"],
+                    output:"src",
+                    base:"src"
+                }
+            }
         }
     });
 
@@ -185,6 +207,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-mkdir');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadTasks('grunt_task');
+
 
     grunt.registerTask('default', ['transport', 'concat', 'uglify', 'copy', 'mkdir', 'clean']);
 

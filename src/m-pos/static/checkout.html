@@ -108,22 +108,17 @@ a:active {
 .checkout-selected-employee {
     margin-left: 1rem;
     margin-right: 1rem;
-    background-color: #bd438e;
 }
 
 .checkout-selected-employee-name {
     height: 3rem;
     line-height: 3rem;
-    font-size: 1.4rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    color: #ffffff;
 }
 
 .checkout-keyboard-employeeSel {
     width: 19rem;
     float: left;
-    height: 24rem;
+    height: 24.5rem;
     overflow: auto;
 }
 
@@ -195,17 +190,11 @@ a:active {
 }
 
 .checkout-record-way {
-    display: inline-block;
     height: 6rem;
     width: 16rem;
-    background: #bd438e;
-    margin-left: 3rem;
-    font-size: 1.6rem;
-    line-height: 6rem;
-    text-align: center;
-    color: #ffffff;
 }
-.guadan-top-pink{
+
+.guadan-top-pink {
     background: url("imgs/icon-guadan-pink.png") no-repeat;
     background-size: 1.4rem 1.4rem;
     width: 1.4rem;
@@ -213,7 +202,8 @@ a:active {
     display: inline-block;
     vertical-align: middle;
 }
-.guadan-top{
+
+.guadan-top {
     background: url("imgs/icon-guadan.png") no-repeat;
     background-size: 1.4rem 1.4rem;
     width: 1.4rem;
@@ -221,7 +211,8 @@ a:active {
     display: inline-block;
     vertical-align: middle;
 }
-.pos-product-nav{
+
+.pos-product-nav {
     width: 9rem;
     position: absolute;
     bottom: 0rem;
@@ -235,18 +226,28 @@ a:active {
     -o-transition-duration: .5s;
 
 }
-.pos-product-nav-san{
+
+.pos-product-nav-san {
     height: 0;
     width: 0;
     margin-top: 0.15rem;
     margin-right: auto;
-    margin-left:auto;
+    margin-left: auto;
     border-bottom: 0.4rem solid #b02e7d;
     border-left: 0.4rem solid transparent;
     border-right: 0.4rem solid transparent;
 }
+
 .product-category>li .active {
     background-color: transparent !important;
+}
+.second-card-check{
+   margin-top:1rem; text-align: center
+}
+.second-card-check>div{
+    width: 15rem;
+    height: 4rem;
+    line-height: 4rem;
 }
 </style>
 <!--挂单位置-->
@@ -277,7 +278,7 @@ a:active {
 </ul>
 
 
-<div class="pos-left">
+<div class="pos-left" style="padding-top: 0px">
     <div class="pos-order">
         <div class="pos-order-title">
                     <span ng-tap="cancelOrder()">
@@ -404,26 +405,29 @@ a:active {
     </div>
 </div>
 </div>
-<div class="operation-area " style="margin-top: 0.5rem;">
-    <div class=" pos-money-operation" style="margin-left: 0.3rem; min-width: 20rem; width:9%; margin-top: 0.1rem;">
-        <a ng-tap="showMemberSel()">
-            <div class="button-big member button-big-grey">
-                <span class="btn-icon-member btn-icon-l" style=""></span>
-                <span style="font-size: 1rem;"><%= checkout.member %></span>
-            </div>
-        </a>
-        <a ng-tap="showPendingConfirm()">
-            <div class="button-big suspend button-big-grey">
-                <span class="btn-icon-guadan btn-icon-l" style=""></span>
-                <span style="font-size: 1rem;"><%= checkout.hold_bill %></span>
-            </div>
-        </a>
-        <a ng-tap="checkoutConfirm()">
-            <div class="button-big checkout" style="width: 5rem; min-height: 2.4rem;">
-                <span class="btn-icon-checkout btn-icon-l" style=""></span>
-                <span><%= checkout.checkout %></span>
-            </div>
-        </a>
+<div class="operation-area ">
+    <div class="pos-left  pos-money-operation">
+        <div>
+            <a >
+                <div ng-tap="showMemberSel()" class="button-big member button-big-grey">
+                    <span class="btn-icon-member-black btn-icon-l" style=""></span>
+                    <span style="font-size: 1rem;"><%= checkout.member %></span>
+                </div>
+            </a>
+            <a >
+                <div ng-tap="showPendingConfirm()" class="button-big suspend button-big-grey">
+                    <span class="btn-icon-guadan btn-icon-l" style=""></span>
+                    <span style="font-size: 1rem;"><%= checkout.hold_bill %></span>
+                </div>
+            </a>
+            <a class="checkout-button" >
+                <div ng-tap="checkoutConfirm()" class="button-big checkout" style="width: 5rem; min-height: 2.4rem;">
+                    <span class="btn-icon-checkout btn-icon-l" style=""></span>
+                    <span><%= checkout.checkout %></span>
+                </div>
+            </a>
+        </div>
+
     </div>
 
     <div class="pos-operation">
@@ -433,9 +437,25 @@ a:active {
             <span class="light-label" style="font-size: 1.4rem;">{{productSelected.name}}</span>
         </div>
         <ul class="product-operation" style="padding-right: 0.2rem;">
-            <li>
+            <li style="min-width: 4rem;">
                 <label for="" class="light-label"><%= common.label.price %></label><br>
                 <label for="" class="light-text">￥{{productSelected.unitPrice | number : 2}}</label>
+            </li>
+            <li>
+                <div class="button-big button-big-grey" ng-tap="changeProductPrice(productSelected.id,productSelected.unitPrice)">
+                    <a href="#">
+                        <span class="btn-icon-checkout btn-icon-l" style=""></span>
+                        <div class="" style="font-size: 1rem; padding-left: 0.2rem;font-weight: normal; color: #000">改价</div>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="button-big button-big-grey" ng-tap="deleteProductOrderNum()">
+                    <a href="#">
+                        <span class="btn-icon-checkout btn-icon-l" style=""></span>
+                        <div class="" style="font-size: 1rem; padding-left: 0.2rem;font-weight: normal; color: #000">删项</div>
+                    </a>
+                </div>
             </li>
             <li>
                 <div class="button-big button-big-grey" ng-tap="reduceProductOrderNum()">
@@ -447,14 +467,9 @@ a:active {
                     <label for="" class="light-label"><%= checkout.number %></label><br>
                     <label for="" class="light-text">{{productSelected.saleNum}}</label>
                 </div>
-                <div class="button-big" ng-tap="addProductOrderNum()">
+                <div class="button-big button-big-grey" ng-tap="addProductOrderNum()">
                     <a href="#">
                         <div class="add-order-num"></div>
-                    </a>
-                </div>
-                <div class="button-big " ng-tap="deleteProductOrderNum()">
-                    <a href="#">
-                        <div class="" style="font-size: 2rem; font-weight: normal; color: red">Del</div>
                     </a>
                 </div>
             </li>
@@ -471,7 +486,7 @@ a:active {
                 <%= checkout.checkout %>
             </div>
             <div class="delete-icon" ng-tap="modalDialogClose()">
-                <i class="icon-remove-circle fancybox-close-icon-s"></i>
+                <img src="imgs/icon-cancel.png">
             </div>
         </div>
         <div style="width:40rem;height:18rem;">
@@ -479,9 +494,9 @@ a:active {
                 <div>剩余支付金额：￥{{incomeStatus.paidMoney | number : 2}}</div>
                 <div>请选择结算方式：</div>
             </div>
-            <div style="font-size:0;margin-top:1rem;">
-                <div ng-tap="secondCardCheckout()" class="checkout-record-way">充值卡结算</div>
-                <div ng-tap="secondCashCheckout()" class="checkout-record-way ml-2">现金结算</div>
+            <div class="second-card-check">
+                <div ng-tap="secondCardCheckout()" class=" m-button-pink inlinebl">充值卡结算</div>
+                <div ng-tap="secondCashCheckout()" class=" ml-2 m-button-pink inlinebl">现金结算</div>
             </div>
         </div>
     </div>
@@ -495,8 +510,8 @@ a:active {
     <div class="dialog-title">
         <%= checkout.checkout %>
     </div>
-    <div class="delete-icon" ng-tap="closeCheckoutDia()">
-        <i class="icon-remove-circle fancybox-close-icon-s"></i>
+    <div class="delete-icon" ng-tap="modalDialogClose()">
+       <img src="imgs/icon-cancel.png">
     </div>
 </div>
 <div class="m-area-msg" style=""></div>
@@ -624,22 +639,22 @@ a:active {
                         <label for="record-radio">扣次</label>
                     </span>
         </div>
-        <div style="position: relative; height: 4rem; background-color: #363636; width:90%; margin: 0px auto;">
-            <span style="color: #fff; position: absolute; bottom:0;">消费次数:</span>
+        <div style="position: relative; height: 4rem; background-color: #efeff4; width:90%; margin: 0px auto;">
+            <span style="color: #565656; position: absolute; bottom:0;">消费次数:</span>
             <span style="color: #8fc31f; float: right; font-size: 2.5rem; line-height: 4rem;">-{{pay.cardTimes}}</span>
         </div>
-        <div style="position: relative; height: 3rem; background-color: #7d7d7d; width:90%; margin-left: auto; margin-right: auto; margin-top: 1rem; margin-bottom: 1rem;">
-            <span style="color: #fff; position: absolute; bottom:0;">剩余次数：</span>
-            <span style="float: right; line-height: 3rem; font-size: 1.6rem; color: #fff">{{memberSelected.currentMoney - pay.cardTimes}}次</span>
+        <div style="position: relative; height: 3rem; background-color: #f8f8f8; width:90%; margin-left: auto; margin-right: auto; margin-top: 1rem; margin-bottom: 1rem;">
+            <span style="color: #565656; position: absolute; bottom:0;">剩余次数：</span>
+            <span style="float: right; line-height: 3rem; font-size: 1.6rem; color: #000">{{memberSelected.currentMoney - pay.cardTimes}}次</span>
         </div>
     </div>
     <div class="mt-1"
-         style="background-color: #fff; width:90%; margin: 10px auto; height: 7rem; position: relative">
+         style=" width:90%; margin: 10px auto; height: 7rem; position: relative; border-top: 1px solid #9b9e9e">
         <div style="font-size: 1rem;width: 90%; margin: 0 auto; padding-top: 1rem; padding-bottom: 0.6rem;">
             <%= checkout.employee %>：
         </div>
         <div class="checkout-selected-employee">
-            <div ng-tap="showCheckoutSelectEmployee()" class="checkout-selected-employee-name">
+            <div ng-tap="showCheckoutSelectEmployee()" class="checkout-selected-employee-name m-button-pink">
                 {{employeeSelected.name}}
             </div>
         </div>
@@ -661,22 +676,22 @@ a:active {
                             <label for="memberCard-radio"><%= checkout.member_card %></label>
                         </span>
         </div>
-        <div style="position: relative; height: 4rem; background-color: #363636; width:90%; margin: 0px auto;">
-            <span style="color: #fff; position: absolute; bottom:0;">{{payMode === "cash" ? "<%= checkout.actual_earn %>：" : "实扣："}}</span>
+        <div style="position: relative; height: 4rem; background-color: #efeff4; width:90%; margin: 0px auto;">
+            <span style="color: #565656; position: absolute; bottom:0;">{{payMode === "cash" ? "<%= checkout.actual_earn %>：" : "实扣："}}</span>
             <span style="color: #8fc31f; float: right; font-size: 2.5rem; line-height: 4rem;">{{temp.realPayMoney | number : 2}}</span>
         </div>
-        <div style="position: relative; height: 3rem; background-color: #7d7d7d; width:90%; margin-left: auto; margin-right: auto; margin-top: 1rem; margin-bottom: 1rem;">
-            <span style="color: #fff; position: absolute; bottom:0;"><%= checkout.change %>:</span>
-            <span style="float: right; line-height: 3rem; font-size: 1.6rem; color: #fff">{{(temp.changeMoney  >= 0 ? (temp.changeMoney | number : 2) : "<%= checkout.cash_not_enough %>")}}</span>
+        <div style="position: relative; height: 3rem; background-color: #f8f8f8; width:90%; margin-left: auto; margin-right: auto; margin-top: 1rem; margin-bottom: 1rem;">
+            <span style="color: #565656; position: absolute; bottom:0;"><%= checkout.change %>:</span>
+            <span style="float: right; line-height: 3rem; font-size: 1.6rem; color: #000">{{(temp.changeMoney  >= 0 ? (temp.changeMoney | number : 2) : "<%= checkout.cash_not_enough %>")}}</span>
         </div>
     </div>
     <div class="mt-1"
-         style="background-color: #fff; width:90%; margin: 10px auto; height: 7rem; position: relative">
+         style=" width:90%; margin: 10px auto; height: 7rem; position: relative ; border-top: 1px solid #9b9e9e">
         <div style="font-size: 1rem;width: 90%; margin: 0 auto; padding-top: 1rem; padding-bottom: 0.6rem;">
             <%= checkout.employee %>：
         </div>
         <div class="checkout-selected-employee">
-            <div ng-tap="showCheckoutSelectEmployee()" class="checkout-selected-employee-name">
+            <div ng-tap="showCheckoutSelectEmployee()" class="checkout-selected-employee-name m-button-pink">
                 {{employeeSelected.name}}
             </div>
         </div>
@@ -714,9 +729,9 @@ a:active {
 <ul>
     <li>
         <div class="m-save-button">
-            <a ng-tap="closeCheckoutDia()" class="m-save-button-cancel bg-color-ededed"><%= common.label.cancel
+            <a ng-tap="closeCheckoutDia()" class="m-save-button-cancel bg-color-ededed border-top-ios"><%= common.label.cancel
                 %></a><a
-                class="m-save-button-confirm">
+                class="bg-color-ededed border-top-ios">
             <!--覆盖按钮、类似disable-->
             <div id="checkout-button-cover" class="button-disable-cover" style="display: none;">
 
@@ -734,7 +749,7 @@ a:active {
             <%= checkout.license_info %>
         </div>
         <div class="delete-icon" ng-tap="modalDialogClose()">
-            <i class="icon-remove-circle fancybox-close-icon-s"></i>
+            <img src="imgs/icon-cancel.png">
         </div>
     </div>
     <div class="m-area-msg" style=""></div>
@@ -763,8 +778,8 @@ a:active {
             <div class="dialog-title">
                 <%= checkout.choose_member %>
             </div>
-            <div class="delete-icon" ng-tap="closeMemberSelDia()">
-                <i class="icon-remove-circle fancybox-close-icon-s"></i>
+            <div class="delete-icon" ng-tap="modalDialogClose()">
+                <img src="imgs/icon-cancel.png">
             </div>
         </div>
         <div class="m-area-msg" style=""></div>
@@ -776,7 +791,7 @@ a:active {
                            style="width:85%; font-size: 1.1rem; padding-top: 1rem; padding-bottom: 0;"
                            placeholder="<%= checkout.member_search_placeholder %>" ng-model="search"
                            type="text"/>
-                    <hr style="width: 100%; margin-left: 12px; border:none; border-top:1px solid #b02e7d; ">
+                    <hr style="width: 97%; margin-left: 12px; border:none; border-top:1px solid #b02e7d; ">
                 </div>
                 <div id="pos-member-list" class="p-list" style="height: 20rem;">
                     <div id="member-result-list" ng-repeat="item in memberList">
@@ -813,7 +828,7 @@ a:active {
                 </div>
             </div>
         </div>
-        <div class="m-checkout-popup-detail-three" style="background-color: #f6f6f6; height: 24.5rem;">
+        <div class="m-checkout-popup-detail-three" style="height: 24.5rem;">
             <ul style="margin-left: 0.8rem;">
                 <li ng-repeat="item in numKeyboard.key">
                     <div class="button-calculator" ng-tap="memberSearchInput(item)">
@@ -825,9 +840,9 @@ a:active {
         <ul>
             <li>
                 <div class="m-save-button">
-                    <a ng-tap="selMemberPend()" class="m-save-button-cancel bg-color-ededed"><%= checkout.hold_bill
+                    <a ng-tap="selMemberPend()" class="m-save-button-cancel bg-color-ededed border-top-ios"><%= checkout.hold_bill
                         %></a><a
-                        ng-tap="selMemberSave()" class="m-save-button-confirm"><%= checkout.checkout %></a>
+                        ng-tap="selMemberSave()" class="m-save-button-confirm bg-color-ededed border-top-ios"><%= checkout.checkout %></a>
                 </div>
             </li>
         </ul>
@@ -842,7 +857,7 @@ a:active {
                 <%= checkout.discount_info %>
             </div>
             <div class="delete-icon" ng-tap="modalDialogClose()">
-                <i class="icon-remove-circle fancybox-close-icon-s"></i>
+                <img src="imgs/icon-cancel.png">
             </div>
         </div>
         <div class="m-area-msg" style=""></div>
@@ -854,7 +869,6 @@ a:active {
 
         <div class="m-checkout-popup-detail-three" style="
     padding-left: 1.5rem;
-    background-color: #f6f6f6;
     padding-right: 2.5rem;
     padding-bottom: 1rem;
     padding-top: 0.3rem;
@@ -870,9 +884,54 @@ a:active {
         <ul>
             <li>
                 <div class="m-save-button">
-                    <a ng-tap="modalDialogClose()" class="m-save-button-cancel bg-color-ededed"><%= common.label.cancel
+                    <a ng-tap="modalDialogClose()" class="m-save-button-cancel bg-color-ededed border-top-ios"><%= common.label.cancel
                         %></a><a
-                        ng-tap="discountSave()" class="m-save-button-confirm"><%= common.label.confirm %></a>
+                        ng-tap="discountSave()" class="m-save-button-confirm bg-color-ededed border-top-ios"><%= common.label.confirm %></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<!--修改产品单价-->
+<div id="m-pos-change-productprice-popup" class="" style="display: none;">
+    <div class="dialog-body">
+        <div class="dialog-header">
+            <div class="dialog-title">
+                <%= checkout.change_price%>
+            </div>
+            <div class="delete-icon" ng-tap="modalDialogClose()">
+                <img src="imgs/icon-cancel.png">
+            </div>
+        </div>
+        <div class="m-area-msg" style=""></div>
+
+        <input ng-model="temp.changed_price" class="m-input ml-1" disabled
+               style="width:85%; font-size: 1rem; padding-top: 1rem; padding-bottom: 0;"
+               placeholder="<%= checkout.changed_price_placeholder %>" type="text"/>
+        <hr style="width: 90%; margin-left: 12px; border:none; border-top:1px solid #b02e7d; ">
+
+        <div class="m-checkout-popup-detail-three" style="
+    padding-left: 1.5rem;
+    padding-right: 2.5rem;
+    padding-bottom: 1rem;
+    padding-top: 0.3rem;
+    ">
+            <ul style="margin-left: 1.3rem;">
+                <li ng-repeat="item in numKeyboard.key">
+                    <div class="button-calculator" ng-tap="changePriceInput(item)">
+                        <div>{{item}}</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <ul>
+            <li>
+                <div class="m-save-button">
+                    <a ng-tap="modalDialogClose()" class="m-save-button-cancel bg-color-ededed border-top-ios"><%= common.label.cancel
+                        %></a><a
+                        ng-tap="changeProductPriceCommit(temp.changed_price)" class="m-save-button-confirm bg-color-ededed border-top-ios"><%= common.label.confirm %></a>
                 </div>
             </li>
         </ul>
@@ -887,7 +946,7 @@ a:active {
                 <%= checkout.hold_bill %>
             </div>
             <div class="delete-icon" ng-tap="modalDialogClose()">
-                <i class="icon-remove-circle fancybox-close-icon-s"></i>
+                <img src="imgs/icon-cancel.png">
             </div>
         </div>
         <div class="m-area-msg" style=""></div>
@@ -913,12 +972,9 @@ a:active {
 <!--过期提醒-->
 <div id="m-pos-checkout-licence-popup" class="none dialog-delete">
     <div class="dialog-body">
-        <div class="dialog-header" style="background-color: #ec5870;">
+        <div class="dialog-header delete-dialog-ios">
             <div class="dialog-title">
                 <%= checkout.license_info_ing %>
-            </div>
-            <div class="delete-icon" ng-tap="modalDialogClose()">
-                <i class="icon-remove-circle fancybox-close-icon-s"></i>
             </div>
         </div>
         <div class="m-area-msg" style=""></div>
@@ -935,8 +991,25 @@ a:active {
 
         <div class="m-save-button">
             <a
-                    ng-tap="modalDialogClose()" class="m-save-button-cancel bg-color-ededed"><%= common.label.confirm
+                    ng-tap="modalDialogClose()" class="m-save-button-cancel bg-color-ededed border-top-ios"><%= common.label.confirm
                 %></a>
+        </div>
+    </div>
+</div>
+<!--重新打印-->
+<div id="m-pos-checkout-reprint" class="none dialog-delete">
+    <div class="dialog-body">
+        <div class="dialog-header delete-dialog-ios">
+            <div class="dialog-title">
+                小票打印失败是否重新打印?
+            </div>
+        </div>
+        <div class="m-area-msg" style=""></div>
+
+        <div class="m-save-button">
+            <a ng-tap="cancelReprint()" class="m-save-button-cancel bg-color-ededed"><%= common.label.cancel
+                %></a><a
+                ng-tap="reprintCommit()" class="bg-color-ededed"><%= common.label.confirm %></a>
         </div>
     </div>
 </div>

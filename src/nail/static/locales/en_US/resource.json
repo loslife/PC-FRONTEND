@@ -286,6 +286,11 @@
             "service_performance":"服务业绩",
             "client_stream":"客流量"
         },
+        "finance":{
+            "title":"财务",
+            "checkoutrevenuelist":"收入流水",
+            "cardrevenuelist":"办卡流水"
+        },
         "employee": {
             "employee":"员工",
             "employee_manage":"员工管理",

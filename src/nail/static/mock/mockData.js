@@ -1,7 +1,6 @@
 //辅助生成随机员工数据数据
 define(function (require, exports, module) {
     var database = require("mframework/static/package").database;
-    var cache = require("mframework/static/package").utils.getCache();
     var dbInstance = database.getDBInstance();
     var mockTargets = require("./mockTargets").controlTargets;
     var account = require("./account.js");

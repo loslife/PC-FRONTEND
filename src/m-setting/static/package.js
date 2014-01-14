@@ -13,4 +13,5 @@ define(function (require, exports, module) {
     exports.messageCenter = require("./messageCenter.js");
     exports.terminal = require("./terminal.js");
     exports.newGuide = require("./newGuide.js");
+    exports.finance = require("./finance.js");
 });

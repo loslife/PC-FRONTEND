@@ -16,9 +16,6 @@
     background-color: #f6f6f6;
 
 }
-.check-content-area{
-    padding: 0 0.8rem 0rem 0rem;
-}
 
 .pos-order-title,.pos-money-title{
     font-size: 1.4rem;
@@ -27,7 +24,7 @@
     height: 3.2rem;
     color: #bd438e;
     margin: 0 auto;
-    border-bottom: 0.2rem solid #bd438e;
+    border-bottom: 1px solid #bd438e;
     padding-bottom: 0.3rem;
     -webkit-box-align: end;
     -webkit-box-pack: start;
@@ -36,6 +33,9 @@
     white-space: wrap;
     overflow: hidden;
     word-break: break-all;
+}
+.pos-money-title{
+    height: 1px;
 }
 .pos-order-title>span:first-child{
     display: -webkit-box;
@@ -143,27 +143,40 @@
     -webkit-box-align: center;
 }
 .pos-money-operation{
+    padding-top: 0.5rem;
     display: -webkit-box;
     line-height: 5rem;
     overflow: hidden;
 }
+.pos-money-operation>div{
+    display: -webkit-box;
+    width: 100%;
+}
+.pos-money-operation>div>a{
+    display: -webkit-box;
+    -webkit-box-flex: 3;
+    padding-left: 1rem;
+}
+.pos-money-operation>div>a>div{
+    width: 100%;
+}
+
+.pos-money-operation .checkout-button{
+    -webkit-box-flex: 4;
+}
+
 .pos-money-operation .member,.pos-money-operation .suspend,.pos-money-operation .checkout{
     display: -webkit-box;
     -webkit-box-pack: center;
     -webkit-box-align: center;
     font-size: 1rem;
     line-height: 4.7rem;
-    padding-right: 1rem;
-    padding-left: 1rem;
 }
 
 .pos-money-operation .suspend{
-    margin-left: 0.8rem;
 }
 .pos-money-operation .checkout{
     -webkit-box-flex: 1;
-    margin-left: 0.8rem;
-    line-height: 4.8rem;
 }
 
 .pos-money-items>li{
@@ -236,8 +249,11 @@
 .pos-operation,.selected-product,.product-operation,product-operation>li{
     display: -webkit-box;
 }
-.pos-operation,.pos-money-operation{
+.pos-operation{
     -webkit-box-flex: 1;
+    padding: 0.5rem;
+    padding-bottom: 0rem;
+
 }
 
 
@@ -259,8 +275,7 @@
     margin-right: 0.3rem;
 }
 .product-operation .button-big{
-    border-left: solid 1px #dddddd;
-    border-right: solid 1px #dddddd;
+
     min-width: 6rem;
     text-align: center;
     -webkit-box-orient: horizontal;
@@ -284,10 +299,7 @@
 .pos-operation .button-big{
     background-color: #eeeeee;
     color: #555555;
-    border-top: solid 1px #fbfbfb;
-    border-left: solid 1px #fbfbfb;
-    border-right: solid 1px #bbbbbb;
-    border-bottom: solid 1px #bbbbbb;
+    border-bottom: solid 1px #767676;
 }
 .pos-operation .button-big:active{
     background-color: #c8c8c8;
@@ -350,9 +362,6 @@
         min-width: 5rem;
     }
     .pos-money-operation .member,.pos-money-operation .suspend,.pos-money-operation .checkout{
-        display: -webkit-box;
-        -webkit-box-pack: center;
-        -webkit-box-align: center;
         font-size: 1.4rem;
     }
 }
@@ -380,10 +389,9 @@
         min-width: 5rem;
     }
     .pos-money-operation .member,.pos-money-operation .suspend,.pos-money-operation .checkout{
-        display: -webkit-box;
-        -webkit-box-pack: center;
-        -webkit-box-align: center;
-        font-size: 1.4rem;
-        padding-right: 0.6rem;
+    }
+}
+@media screen and (min-width: 800px) and (max-width: 1024px){
+    .pos-money-operation .member,.pos-money-operation .suspend,.pos-money-operation .checkout{
     }
 }

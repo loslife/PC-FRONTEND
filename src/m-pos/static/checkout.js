@@ -8,7 +8,7 @@ define(function (require, exports, module) {
     exports.checktimeout = true;
 
     require("./pos.css");
-    var utils = require("mframework/package").utils,
+    var utils = require("mframework/static/package").utils,
         cache = utils.getCache(),
         self = this,
         CONSTANT = {
@@ -86,6 +86,7 @@ define(function (require, exports, module) {
     //初始化页面数据模型
     function initPageData(model, callback) {
         async.waterfall([transferModel, initServiceData, initEmployeeData, initPendOrder, initCateServiceList, initMsgSwitch, initStoreInfo, initTicketSwitch ], function (error, model) {
+//        async.waterfall([transferModel, initServiceData, initEmployeeData, initPendOrder, initCateServiceList, initMsgSwitch, initTicketSwitch ], function (error, model) {
             if (error) {
                 utils.log("m-pos checkout.js initPageData", error);
                 return;
@@ -235,6 +236,16 @@ define(function (require, exports, module) {
             }
         };
 
+        //尝试重新打印
+        $scope.reprintCommit = function () {
+            checkoutCommit.reprintCommit();
+        };
+
+        //放弃重新打印
+        $scope.cancelReprint = function () {
+            checkoutCommit.cancelReprint();
+        };
+
         $scope.closeMemberSelDia = function () {
             $.fancybox.close();
             if ($scope.temp.isSecondStep) {
@@ -252,8 +263,8 @@ define(function (require, exports, module) {
         };
 
         //选择类别
-        $scope.choiceCate = function (cate, key,$index) {
-            $("#m-pos-checkout-area .pos-product-nav").css("left",$index*9+"rem")
+        $scope.choiceCate = function (cate, key, $index) {
+            $("#m-pos-checkout-area .pos-product-nav").css("left", $index * 9 + "rem")
             $scope.productViewArray = cate;
             $scope.productCategorySelected = key;
         };
@@ -261,13 +272,15 @@ define(function (require, exports, module) {
         //选择所有类别
         $scope.choiceAllCate = function () {
             var $index = _.pairs($scope.productCategorieMap).length;
-            $("#m-pos-checkout-area .pos-product-nav").css("left",$index*9+"rem")
+            $("#m-pos-checkout-area .pos-product-nav").css("left", $index * 9 + "rem")
             $scope.productViewArray = $scope.productList;
             $scope.productCategorySelected = "all";
         };
 
         //选择消费商品
         $scope.selectProduct = function (product, count) {
+
+
             //添加至左边消费列表中
             addProductRecord(product, count);
             //底部显示选中的商品项信息
@@ -324,6 +337,66 @@ define(function (require, exports, module) {
                 }
             }
         };
+
+        //修改单项产品价格弹出框
+        $scope.changeProductPrice = function(productId,price){
+            if ($scope.buyProductRecords.length > 0) {
+                $scope.temp.changed_price = price;
+                $scope.temp.changed_price_productId = productId;
+                $scope.numKeyboard.value = "";
+                $scope.numKeyboard.keyStack = [];
+                $.fancybox.open({href: "#m-pos-change-productprice-popup"},
+                    {
+                        openEffect: 'none',
+                        closeEffect: 'none',
+                        closeBtn: false,
+                        closeClick: false,
+                        autoSize: false,
+                        autoHeight: true,
+                        autoWidth: true,
+                        fitToView: true,
+                        padding: 0,
+                        margin: 0,
+                        helpers: {
+                            overlay: {
+                                closeClick: false
+                            }
+                        }
+                    });
+            }
+        }
+
+        $scope.changePriceInput = function (key) {
+            var keyValueTemp = clickKeyboard(key);
+            //以"."开始
+            if (keyValueTemp.indexOf(".") === 0) {
+                keyValueTemp = "0" + keyValueTemp;
+            }
+            $scope.temp.changed_price = parseInt(keyValueTemp) ;
+            $scope.temp.changed_price_tempMap = $scope.temp.changed_price_tempMap || {};
+            $scope.temp.changed_price_tempMap[$scope.temp.changed_price_productId] = $scope.temp.changed_price;
+        };
+
+        //修改单项产品价格提交
+        $scope.changeProductPriceCommit = function(price){
+            var rowIndex = $scope.productSelected.index;
+            $scope.buyProductRecords[rowIndex].unitPrice = price;
+            $scope.productSelected.unitPrice = price;
+
+            //修改产品列表中的原始价格
+            _.each($scope.productList,function(product){
+                if(product.id == $scope.productSelected.id){
+                    product.prices_salesPrice =   price;
+                    return;
+                }
+            });
+
+            $scope.buyProductRecords[rowIndex].money  = $scope.buyProductRecords[rowIndex].unitPrice * $scope.buyProductRecords[rowIndex].saleNum;
+            indexCountCost();
+            $scope.temp.changed_price = 0;
+            $scope.modalDialogClose();
+        }
+
 
         //挂单确认
         $scope.showPendingConfirm = function () {
@@ -1121,6 +1194,13 @@ define(function (require, exports, module) {
         //添加消费商品
         //count:添加的数量、不传递默认为1
         function addProductRecord(product, count) {
+            //如果有价格改动标示
+            if($scope.temp.changed_price_tempMap
+                && $scope.temp.changed_price_tempMap[product.id]){
+                product.prices_salesPrice =   $scope.temp.changed_price_tempMap[product.id];
+            }
+
+
             var proIsExist = false;         //商品是否已在购买列表中
             _.each($scope.buyProductRecords, function (item, index) {
                 if (item.id === product.id) {
@@ -1188,7 +1268,7 @@ define(function (require, exports, module) {
                     $scope.temp.discountDisplay = "无";
                 }
                 else {
-                    $scope.temp.discountDisplay = $scope.globalDis + "折";
+                    $scope.temp.discountDisplay = $scope.globalDis.toFixed(2) + "折";
                 }
             }
             //会员卡折扣优先级低于全局折扣信息
@@ -1264,8 +1344,13 @@ define(function (require, exports, module) {
             cache.clear("service.category.map", true);
             cache.clear("service.itemList", true);
             cache.clear("service.productCategories", true);
+            //show缓存
+            cache.clear("show.category.map", true);
+            cache.clear("show.itemList", true);
+            cache.clear("show.productCategories", true);
             initPageData(moduleScope, function () {
                 moduleScope.digestScope();
+                adjustHeight();
             });
         });
 
@@ -1305,21 +1390,21 @@ define(function (require, exports, module) {
         }
         var productCategoryMinwidth = $("#main-container").outerWidth() - $(".pos-order").outerWidth() - 15;
 
-        var productCategorieMapLen = _.pairs(moduleScope.productCategorieMap).length+2;
+        var productCategorieMapLen = _.pairs(moduleScope.productCategorieMap).length + 2;
 
         if (!$("#m-pos-checkout-area").is(":hidden")) {
             if ($(document).width() <= 800) {
-                $(".pos-order-list").height(main_container_h - (operation_area_h + $(".pos-checkout").outerHeight() + $(".pos-order-title").outerHeight() + 8));
+                $(".pos-order-list").height(main_container_h - (operation_area_h + $(".pos-checkout").outerHeight() + $(".pos-order-title").outerHeight() + 2));
                 $(".product-list").height(main_container_h - (operation_area_h + $(".product-category").outerHeight() + 20));
                 $(".pos-product>div").width($("#main-container").outerWidth() - $(".pos-order").outerWidth() - 15);
-                $(".product-category").css("width",productCategorieMapLen*9+"rem");
-                $(".product-category").css("min-width",productCategoryMinwidth+"px");
+                $(".product-category").css("width", productCategorieMapLen * 9 + "rem");
+                $(".product-category").css("min-width", productCategoryMinwidth + "px");
             } else {
-                $(".pos-order-list").height(main_container_h - (operation_area_h + $(".pos-checkout").outerHeight() + $(".pos-order-title").outerHeight() + permanentMenuKeyHeight) + 50);
+                $(".pos-order-list").height(main_container_h - (operation_area_h + $(".pos-checkout").outerHeight() + $(".pos-order-title").outerHeight() + permanentMenuKeyHeight) + 56);
                 $(".product-list").height(main_container_h - (operation_area_h + $(".product-category").outerHeight() + permanentMenuKeyHeight) + 20);
                 $(".pos-product>div").width($("#main-container").outerWidth() - $(".pos-order").outerWidth() - 15);
-                $(".product-category").css("width",productCategorieMapLen*9+"rem");
-                $(".product-category").css("min-width",productCategoryMinwidth+"px");
+                $(".product-category").css("width", productCategorieMapLen * 9 + "rem");
+                $(".product-category").css("min-width", productCategoryMinwidth + "px");
             }
         }
     }

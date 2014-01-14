@@ -1,6 +1,6 @@
 define(function (require, exports, module) {
-    var tb_servicebill_sql = "CREATE TABLE tb_serviceBill("
-        + "id varchar(64) NOT NULL,"
+    var serviceBill = "CREATE TABLE IF NOT EXISTS tb_serviceBill("
+        + "id varchar(64) NOT NULL primary key,"
         + "amount REAL,"
         + "score integer,"
         + "befDisMoney REAL,"
@@ -28,12 +28,10 @@ define(function (require, exports, module) {
         + "def_str2 varchar(64),"
         + "def_str3 varchar(128),"
         + "def_int1 integer,"
-        + "def_int2 integer,"
-        + "def_int3 integer,"
-        + "def_text1 text);";
+        + "def_int2 integer," + "def_int3 integer," + "def_text1 text);";
 
-    var tb_rechargeMemberBill_sql = "CREATE TABLE tb_rechargeMemberBill("
-        + "id varchar(64) NOT NULL,"
+    var rechargeBill = "CREATE TABLE IF NOT EXISTS tb_rechargeMemberBill("
+        + "id varchar(64) NOT NULL primary key,"
         + "billNo varchar(64),"
         + "amount REAL,"
         + "pay_cash REAL,"
@@ -60,12 +58,10 @@ define(function (require, exports, module) {
         + "def_str2 varchar(64),"
         + "def_str3 varchar(128),"
         + "def_int1 integer,"
-        + "def_int2 integer,"
-        + "def_int3 integer,"
-        + "def_text1 text);";
+        + "def_int2 integer," + "def_int3 integer," + "def_text1 text);";
 
-    var tb_servicebill_temp_sql = "CREATE TABLE tb_serviceBill_temp("
-        + "id varchar(64) NOT NULL,"
+    var serviceBillTemp = "CREATE TABLE IF NOT EXISTS tb_serviceBill_temp("
+        + "id varchar(64) NOT NULL primary key,"
         + "amount REAL,"
         + "score integer,"
         + "befDisMoney REAL,"
@@ -94,8 +90,7 @@ define(function (require, exports, module) {
         + "def_int3 integer,"
         + "def_text1 text);";
 
-
-    var tb_billproject_sql = "CREATE TABLE IF NOT EXISTS tb_billProject("
+    var billProject = "CREATE TABLE IF NOT EXISTS tb_billProject("
         + "id varchar(64) NOT NULL,"
         + "serviceBill_id varchar(64),"
         + "project_id varchar(64),"
@@ -121,8 +116,8 @@ define(function (require, exports, module) {
         + "def_int3 integer,"
         + "def_text1 text);";
 
-    var tb_billproject_temp_sql = "CREATE TABLE IF NOT EXISTS tb_billProject_temp("
-        + "id varchar(64) NOT NULL,"
+    var billProjectTemp = "CREATE TABLE IF NOT EXISTS tb_billProject_temp("
+        + "id varchar(64) NOT NULL primary key,"
         + "serviceBill_id varchar(64),"
         + "project_id varchar(64),"
         + "saleNum integer,"
@@ -137,45 +132,19 @@ define(function (require, exports, module) {
         + "def_int3 integer,"
         + "def_text1 text);";
 
-    //记次卡类型与服务项的对应关系
-    var tb_recordCateServices = "CREATE TABLE IF NOT EXISTS tb_recordCateServices("
-        + "id varchar(64) NOT NULL,"
-        + "cardCateId varchar(64),"
-        + "cardCateName varchar(64),"
-        + "serviceId varchar(64),"
-        + "serviceName varchar(64),"
-        + "create_date REAL,"
-        + "modify_date REAL,"
-        + "enterprise_id varchar(64),"
-        + "def_str1 varchar(32),"
-        + "def_str2 varchar(64),"
-        + "def_str3 varchar(128),"
-        + "def_int1 integer,"
-        + "def_int2 integer,"
-        + "def_int3 integer,"
-        + "def_text1 text);";
-
-
     exports.initData = function (callback) {
-        var dbInstance = require("mframework/package").database.getDBInstance();
+        var dbInstance = require("mframework/static/package").database.getDBInstance();
+        var sqlArray = [serviceBill, serviceBillTemp, rechargeBill, billProject, billProjectTemp];
+
         dbInstance.transaction(function (trans) {
-            console.info("初始化流水表开始");
-            var sqlArray = [tb_servicebill_sql, tb_rechargeMemberBill_sql, tb_servicebill_temp_sql, tb_billproject_sql, tb_billproject_temp_sql, tb_recordCateServices];
-            async.eachSeries(sqlArray, function (sql, callback) {
-                trans.executeSql(sql, [], function () {
+            async.each(sqlArray, function (item, callback) {
+                trans.executeSql(item, [], function (trans, result) {
                     callback(null);
                 }, function (trans, error) {
-                    console.error("初始化流水表失败");
-                    console.error(error);
-                    callback(null);
+                    callback(error);
                 });
             }, function (error) {
-                if (error) {
-                    callback(error);
-                    return;
-                }
-                console.info("初始化流水表成功");
-                callback(null);
+                callback(error);
             });
         });
     }

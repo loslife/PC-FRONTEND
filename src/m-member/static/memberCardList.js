@@ -13,7 +13,7 @@ define(function (require, exports, module) {
     exports.initContoller = initContoller;
 
     //基础服务
-    var utils = require("mframework/package").utils, 			        //全局公共函数
+    var utils = require("mframework/static/package").utils, 			        //全局公共函数
 
         CONSTANT = {										    //模块私有常量
             "_abbr": "mmcl",                                    //模块私有ID前缀，全局唯一

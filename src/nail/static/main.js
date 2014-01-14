@@ -1,13 +1,13 @@
 define(function (require, exports, module) {
     var moduleFactory = {
-        "m-pos": require("m-pos/package"),
-        "m-member": require("m-member/package"),
-        "m-nail-show": require("m-nail-show/package"),
-        "m-setting": require("m-setting/package")
+        "m-pos": require("m-pos/static/package"),
+        "m-member": require("m-member/static/package"),
+        "m-nail-show": require("m-nail-show/static/package"),
+        "m-setting": require("m-setting/static/package")
     };
     var dbinit = require("./initdb"),
-        database = require("mframework/package").database,		//数据操作服务
-        utils = require("mframework/package").utils,		//数据操作服务
+        database = require("mframework/static/package").database,		//数据操作服务
+        utils = require("mframework/static/package").utils,		//数据操作服务
         db = null,
         self = this;		//数据操作服务
 
@@ -57,7 +57,7 @@ define(function (require, exports, module) {
                     $("#client-lock-pwd").hide();
                     global.eventEmitter.emitEvent('client.password.unlock.success');
                 } else {
-                    if(YILOS.USERNAME && pwd && utils.endsWith(YILOS.USERNAME,pwd)){
+                    if (YILOS.USERNAME && pwd && utils.endsWith(YILOS.USERNAME, pwd)) {
                         //进入密码设置界面
                         global.eventEmitter.emitEvent('client.password.resetlockpwd');
                         return;
@@ -113,8 +113,8 @@ define(function (require, exports, module) {
         }
 
         function _init(options) {
-            var uirouter = require("mframework/package").uiRouter;
-            uirouter.init(moduleFactory,options);
+            var uirouter = require("mframework/static/package").uiRouter;
+            uirouter.init(moduleFactory, options);
             if ((browser.versions.webKit || browser.versions.trident ) && !(browser.versions.android || browser.versions.iPhone || browser.versions.iPad )) {
                 initData();
                 YILOS.onDeviceReady = true;
@@ -133,19 +133,20 @@ define(function (require, exports, module) {
         function initData() {
             dbinit.initTable(function () {
                 var tasks = [];
-                var begin = (new Date()).getTime();
                 //判断数据是否需要重建
-//                tasks.push(require("./datas/show").initData);
-//                tasks.push(require("./datas/service").initData);
-//                tasks.push(require("./datas/member").initData);
-//                tasks.push(require("./datas/employee").initData);
-//                tasks.push(require("./datas/enterprise").initData);
+                //tasks.push(require("./datas/emptyTable").initData);
+                tasks.push(require("./datas/show").initData);
+                tasks.push(require("./datas/service").initData);
+                tasks.push(require("./datas/member").initData);
+                tasks.push(require("./datas/employee").initData);
+                tasks.push(require("./datas/enterprise").initData);
                 tasks.push(require("./datas/bill").initData);
-                async.series(tasks, function (error, result) {
+                tasks.push(require("./datas/terminal").initData);
+//                tasks.push(require("./mock/mockData").init);
+                async.series(tasks, function (error) {
                     if (error) {
                         console.error(error);
                     }
-                    console.log("init date cost time:" + ((new Date()).getTime() - begin));
                     global.eventEmitter.emitEvent('data-init-success');
                 })
             });

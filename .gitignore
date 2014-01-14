@@ -17,3 +17,6 @@ YAE
 apk
 *.log
 *.dylib
+*_US.html
+*_CN.html
+*-min.html

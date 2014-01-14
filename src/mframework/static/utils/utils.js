@@ -578,16 +578,14 @@ define(function (require, exports, module) {
         }
 
         function queryFromDB(callback) {
-            dbInstance.transaction(function (trans) {
-                var selStore = "select name,contact_phoneMobile,addr_state_city_area,addr_detail from tb_enterprise;";
-                trans.executeSql(selStore, [], function (trans, result) {
-                    if (result.rows.length !== 0) {
-                        setStoreInfo(_.clone(result.rows.item(0)));
-                    }
-                    callback(null, storeInfo);
-                }, function (trans, error) {
-                    callback(error);
-                });
+            var selStore = "select name,contact_phoneMobile,addr_state_city_area,addr_detail from tb_enterprise;";
+            dbInstance.execQuery(selStore, [], function (result) {
+                if (result.rows.length !== 0) {
+                    setStoreInfo(_.clone(result.rows.item(0)));
+                }
+                callback(null, storeInfo);
+            }, function (error) {
+                callback(error);
             });
         }
     }
@@ -627,31 +625,29 @@ define(function (require, exports, module) {
             }
 
             var querySwitchStatus = "select name,value from sys_config where name in (" + replaceArg.join(",") + ");";
-            dbInstance.transaction(function (trans) {
-                trans.executeSql(querySwitchStatus, switchList, function (trans, result) {
-                    var rowsLen = result.rows.length;
-                    var temp;
-                    for (var i = 0; i < rowsLen; i++) {
-                        temp = result.rows.item(i);
-                        msgSwitchFlag[temp.name] = temp.value;
-                    }
+            dbInstance.execQuery(querySwitchStatus, switchList, function (result) {
+                var rowsLen = result.rows.length;
+                var temp;
+                for (var i = 0; i < rowsLen; i++) {
+                    temp = result.rows.item(i);
+                    msgSwitchFlag[temp.name] = temp.value;
+                }
 
-                    //查询开关数量不一致、可能新加入了某些短信模版
-                    if (rowsLen !== switchList.length) {
-                        var insertSwitch = [];//需要新增的某些开关项
-                        _.each(switchList, function (item) {
-                            if (!msgSwitchFlag[item]) {
-                                msgSwitchFlag[item] = "0";//默认关闭状态
-                                insertSwitch.push([item, "0"]);
-                            }
-                        });
-                        insertNewSwitch(insertSwitch);
-                    }
-                    setMsgSwitch(msgSwitchFlag);
-                    callback(null, msgSwitch);
-                }, function (trans, error) {
-                    callback(error);
-                });
+                //查询开关数量不一致、可能新加入了某些短信模版
+                if (rowsLen !== switchList.length) {
+                    var insertSwitch = [];//需要新增的某些开关项
+                    _.each(switchList, function (item) {
+                        if (!msgSwitchFlag[item]) {
+                            msgSwitchFlag[item] = "0";//默认关闭状态
+                            insertSwitch.push([item, "0"]);
+                        }
+                    });
+                    insertNewSwitch(insertSwitch);
+                }
+                setMsgSwitch(msgSwitchFlag);
+                callback(null, msgSwitch);
+            }, function (error) {
+                callback(error);
             });
 
             function insertNewSwitch(switchFlag) {
@@ -663,6 +659,7 @@ define(function (require, exports, module) {
                         value: item
                     });
                 });
+
                 dataUtils.batchExecuteSql(sqlArray, function (error) {
                     if (error) {
                         logger("mframework utils.js getMsgSwitch.insertNewSwitch", error);
@@ -704,31 +701,35 @@ define(function (require, exports, module) {
             }
 
             var querySwitchStatus = "select name,value from sys_config where name in (" + replaceArg.join(",") + ");";
-            dbInstance.transaction(function (trans) {
-                trans.executeSql(querySwitchStatus, switchList, function (trans, result) {
-                    var rowsLen = result.rows.length;
-                    var temp;
-                    for (var i = 0; i < rowsLen; i++) {
-                        temp = result.rows.item(i);
-                        ticketSwitchFlag[temp.name] = temp.value;
-                    }
+            dbInstance.execQuery(querySwitchStatus, switchList, function (result) {
+                var rowsLen = result.rows.length;
+                var temp;
+                for (var i = 0; i < rowsLen; i++) {
+                    temp = result.rows.item(i);
+                    ticketSwitchFlag[temp.name] = temp.value;
+                }
 
-                    //查询开关数量不一致、可能新加入了某些小票设置项
-                    if (rowsLen !== switchList.length) {
-                        var insertSwitch = [];//需要新增的某些开关项
-                        _.each(switchList, function (item) {
-                            if (!ticketSwitchFlag[item]) {
-                                ticketSwitchFlag[item] = "1";//默认关闭状态
+                //查询开关数量不一致、可能新加入了某些小票设置项
+                if (rowsLen !== switchList.length) {
+                    var insertSwitch = [];//需要新增的某些开关项
+                    _.each(switchList, function (item) {
+                        if (!ticketSwitchFlag[item]) {
+                            if (item == "discount_amount" || item == "balance") {
+                                ticketSwitchFlag[item] = "1";
                                 insertSwitch.push([item, "1"]);
                             }
-                        });
-                        insertNewSwitch(insertSwitch);
-                    }
-                    setTicketSwitch(ticketSwitchFlag);
-                    callback(null, ticketSwitch);
-                }, function (trans, error) {
-                    callback(error);
-                });
+                            else {
+                                ticketSwitchFlag[item] = "0";
+                                insertSwitch.push([item, "0"]);
+                            }
+                        }
+                    });
+                    insertNewSwitch(insertSwitch);
+                }
+                setTicketSwitch(ticketSwitchFlag);
+                callback(null, ticketSwitch);
+            }, function (error) {
+                callback(error);
             });
 
             function insertNewSwitch(switchFlag) {

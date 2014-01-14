@@ -744,28 +744,31 @@ label {
   position: fixed;
 }
 .dialog-header {
-  background-color: #565656;
+  background-color: #f8f8f8;
   position: relative;
   width: 100%;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  height: 4rem;
+  line-height: 4rem;
   font-size: 1.2rem;
+  border-top-left-radius: 0.813rem;
+  border-top-right-radius: 0.813rem;
   font-family: Microsoft YaHei;
+  border-bottom: 1px solid #9b9e9e;
 }
 .dialog-delete {
-  min-width: 450px;
+  min-width: 29.166rem;
   width: auto;
 }
 .dialog-header div {
   display: inline-block;
-  color: #fff;
+  color: #000;
 }
 .dialog-title {
   padding-left: 1.5rem;
 }
 .delete-icon {
   top: 0rem;
-  line-height: 3.2rem;
+  line-height: 3.8rem;
   right: 0rem;
   position: absolute;
   width: 5rem;
@@ -782,6 +785,7 @@ label {
 }
 .dialog-body {
   min-height: 6rem;
+  border-radius: 0.813rem;
   height: auto;
   background-color: #fff;
 }
@@ -802,18 +806,18 @@ label {
   padding-left: 0.5rem;
 }
 .m-checkout-popup-detail-two {
-  width: 19rem;
+  width: 18.8rem;
   height: auto;
   float: left;
-  min-height: 24rem;
-  background-color: #ededed;
-  margin-bottom: 0.5rem;
+  min-height: 25rem;
+  border-left: 1px solid #9b9e9e;
+  border-right: 1px solid #9b9e9e;
 }
 .m-checkout-popup-detail-two > div:first-child {
   width: 90%;
   margin: 1rem auto;
-  background-color: #fff;
   min-height: 12.5rem;
+  border-radius: 0.833rem;
 }
 .m-checkout-popup-detail-three {
   width: 19rem;
@@ -834,29 +838,22 @@ label {
 }
 .button-calculator {
   font-size: 1.6rem;
-  line-height: 5.5rem;
+  line-height: 5rem;
   text-align: center;
   display: inline-block;
-  width: 5.5rem;
-  height: 5.5rem;
-  background-color: #7d7d7d;
-  color: #fff;
-  border-top: solid 1px #fbfbfb;
-  border-left: solid 1px #fbfbfb;
-  border-right: solid 1px #bbbbbb;
-  border-bottom: solid 1px #bbbbbb;
-  border-radius: 0.416666rem;
+  width: 5rem;
+  height: 5rem;
+  color: #93ccf2;
+  border: 1px solid #93ccf2;
+  border-radius: 3rem;
+  margin-right: 0.5rem ;
+  margin-top: 0.5rem;
 }
 .button-calculator:active {
-  box-shadow: 2px 2px 5px #665655 inset;
-  background-color: #999;
-  text-shadow: 1px 1px 1px #fff;
-  color: #555555;
-  border-top: solid 1px #fbfbfb;
-  border-left: solid 1px #fbfbfb;
-  border-right: solid 1px #bbbbbb;
-  border-bottom: solid 1px #bbbbbb;
-  border-radius: 0.416666rem;
+  background-color: #93ccf2;
+  border: 1px solid #93ccf2;
+  border-radius: 3rem;
+  color: #fff;
 }
 .m-input-underline {
   border-bottom: solid 0.15rem #d0d0d0;
@@ -908,10 +905,21 @@ label {
   line-height: 1.4rem;
   padding: 0.6rem 1rem 0.6rem 1rem;
   margin-right: 0.8rem;
-  color: #565656;
-  background-color: #f6f6f6;
-  border: 1px solid #d0d0d0;
+  color: #007aff;
+  border: 1px solid #007aff;
+  border-radius: 0.416666rem;
   display: inline-block;
+}
+/*开关选择*/
+.switch-btn-status-s {
+  width: 5rem;
+  padding: 1px;
+  background: #ffffff !important;
+  overflow: hidden;
+  margin-bottom: 5px;
+  border: 0.2rem solid #e5e5e5;
+  border-radius: 18px !important;
+  cursor: pointer;
 }
 /*开关选择*/
 .switch-btn-status-s {
@@ -946,11 +954,9 @@ label {
 .status-on-s {
   background-color: #4cd764 !important;
 }
-
-.status-on-s>span {
-    float: right;
+.status-on-s > span {
+  float: right;
 }
-
 .m-list-display {
   width: 96%;
   background-color: #ededed;
@@ -977,15 +983,20 @@ label {
   background-color: #fff;
   width: 80%;
   margin: 0 auto;
-  box-shadow: 0px 3px 5px #d0d0d0;
   padding-top: 1rem;
   padding-bottom: 3rem;
   padding-left: 1rem;
   padding-right: 1rem;
   position: relative;
+  border-bottom: 1px solid #c8c7cc;
+  border-left: 1px solid #c8c7cc;
+  border-right: 1px solid #c8c7cc;
+  min-height: 6rem;
+  border-bottom-left-radius: 0.833rem !important;
+  border-bottom-right-radius: 0.833rem !important;
 }
 .bg-color-ededed {
-  background-color: #ededed !important;
+  background-color: #e3e7e6 !important;
   height: 100%;
 }
 .bg-color-eeeeee {
@@ -1040,8 +1051,8 @@ label {
   z-index: 3;
 }
 .active {
-  color: #fff;
-  background-color: #ff66cc;
+  color: #fff !important;
+  background-color: #007aff;
   border-radius: 0.1rem;
 }
 .m-save-button {
@@ -1052,29 +1063,27 @@ label {
 .m-save-button > a {
   background-color: #bd438e;
   font-size: 1.2rem;
-  color: #fff;
+  color: #007aff;
   display: table-cell;
   width: 50%;
   line-height: 5rem;
   text-align: center;
 }
 .m-save-button > a:first-child {
-  border-right: 1px solid #d0d0d0;
+  border-right: 1px solid #9b9e9e;
+  border-bottom-left-radius: 0.813rem;
+}
+.m-save-button > a:last-child {
+  border-bottom-right-radius: 0.813rem;
 }
 .m-save-button-cancel {
-  color: #565656 !important;
+  color: #007aff !important;
 }
 .m-save-button-cancel:hover {
   background-color: #b5b5b5 !important;
 }
 .m-save-button-cancel:active {
   background-color: #b5b5b5 !important;
-}
-.m-save-button-confirm {
-  color: #fff !important;
-}
-.m-save-button-confirm:hover {
-  background-color: #9b3795 !important;
 }
 .m-save-button-confirm:active {
   background-color: #9b3795 !important;
@@ -1185,15 +1194,15 @@ label {
 .m-tag {
   height: 3rem;
   line-height: 3rem;
-  background-color: #eee;
-  border: 1px solid #d0d0d0;
-  color: #565656;
+  border: 1px solid #007aff;
+  color: #007aff;
+  border-radius: 0.416666rem;
   text-align: center;
   margin-right: 1rem !important;
   margin-bottom: 1rem !important;
 }
 .m-tag.selected {
-  background-color: #398acb;
+  background-color: #007aff;
   opacity: 1;
   text-align: center;
   color: #fff;
@@ -1325,8 +1334,8 @@ label {
   border-right: none;
 }
 .m-button-pink {
-  color: #fff;
-  background-color: #bd438e;
+  color: #007aff;
+  border: 1px solid #007aff;
   line-height: 2.5rem;
   font-size: 1rem;
   min-width: 6rem;
@@ -1386,8 +1395,8 @@ label {
   top: 0px;
 }
 .time-day-select .active {
-  color: #565656 !important;
-  background-color: #d0d0d0 !important;
+  color: #fff !important;
+  background-color: #007aff !important;
 }
 .font-color-message {
   color: #71737f !important;
@@ -1416,4 +1425,17 @@ label {
   position: absolute;
   right: 1rem;
   bottom: 1.54rem;
+}
+.delete-dialog-ios {
+  background-color: #e3e7e6;
+  border-bottom: 1px solid #b2b2b2;
+  height: 6rem;
+  line-height: 6rem;
+  text-align: center;
+}
+.border-top-ios {
+  border-top: 1px solid #9b9e9e;
+}
+.bg-color-efeff4 {
+  background-color: #efeff4!important;
 }
