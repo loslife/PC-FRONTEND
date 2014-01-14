@@ -1,0 +1,300 @@
+<!--remove pr-1-->
+<div id="m-member-consumeList-area" class="featureSpace fh">
+<style type="text/css">
+    .direction-right-triangle {
+        width: 0;
+        height: 0;
+        border: 0.8rem solid transparent;
+        border-right-color: #398acb;
+        position: absolute;
+        left: 2rem;
+        top: 0.7rem;
+    }
+
+    .consume-record {
+        position: relative;
+        left: 3.4rem;
+    }
+
+    .consume-record-title {
+        background-color: #398acb;
+        height: 3rem;
+        line-height: 3rem;
+        color: #ffffff;
+        font-size: 1.333333rem;
+    }
+
+    .consume-record-content {
+        height: 4rem;
+        line-height: 4rem;
+        border: 1px solid #d0d0d0;
+        border-top: none;
+        font-size: 1.333333rem;
+        color: #655665;
+        background-color: #f7f7f7;
+        overflow: hidden;
+    }
+
+    #m-member-left-timeMenu {
+        font-size: 1.4rem;
+    }
+
+    #m-member-right-consumeList {
+        width: 80%;
+        height: inherit;
+    }
+
+    .mid-line {
+        position: absolute;
+        border: 1.5px solid #c7c7c7;
+        height: inherit;
+        left: 0.5rem;
+    }
+
+    .sel-icon-out {
+        position: absolute;
+        left: -0.1em;
+        top: 0.8rem;
+        font-size: 1rem;
+        font-weight: 800;
+        color: #398acb;
+        background-color: #FFFFFF;
+    }
+
+    .record-time {
+        display: inline-block;
+    }
+
+    .record-money {
+        color: #e60012;
+        font-size: 1.666666rem;;
+        font-weight: 500;
+    }
+
+    .time-select-item {
+        border-right: 6px solid #898989;
+    }
+
+    .consume-record-item {
+        position: relative;
+        width: 100%;
+        height: 8rem;
+
+    }
+
+    .consume-record-item-selected {
+        border-right-color: #bd438e !important;
+        color: #bd438e !important;
+    }
+
+    .wait-top {
+        width: 100%;
+        height: inherit;
+        position: absolute;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+
+    .wait-icon {
+        margin: 10rem auto;
+        font-size: 4rem;
+        position: absolute;
+        left: 50%;
+        color: #000000;
+    }
+
+    #m-member-left-timeMenu li {
+        font-size: 1.166666rem;
+        color: #898989;
+    }
+
+    .newCard .consume-record-title {
+        background-color: #70aa00;
+    }
+
+    .newCard .direction-right-triangle {
+        border-right-color: #70aa00;
+    }
+
+    .newCard .sel-icon-out {
+        color: #70aa00;
+    }
+
+    .recharge .consume-record-title {
+        background-color: #00ab97;
+    }
+
+    .recharge .direction-right-triangle {
+        border-right-color: #00ab97;
+    }
+
+    .recharge .sel-icon-out {
+        color: #00ab97;
+    }
+
+    .mid-record-consume {
+        display: inline-block;
+        min-width: 20rem;
+    }
+
+    .record-card-balance {
+        display: inline-block;
+    }
+
+    .consumeList-scroll-warp {
+        overflow: hidden;
+        height: inherit;
+    }
+
+    .consumeList-content {
+        width: 100%;
+        position: relative;
+        height: inherit;
+    }
+
+    .month-head-tip {
+        height: 3rem;
+        margin-bottom: 2rem;
+        position: relative;
+    }
+
+    .month-head-tip .sel-icon-out {
+        display: inline-block;
+        width: 1.25em;
+        text-align: center;
+        color: #ec5870;
+    }
+
+    .month-head-tip .direction-right-triangle {
+        border-right-color: #ec5870
+    }
+
+    .month-head-tip .pre-month-content {
+        position: absolute;
+        width: 9rem;
+        height: inherit;
+        background-color: #ec5870;
+        left: 3.4rem;
+        /*-webkit-box-shadow: 3px 2px 5px black;*/
+        line-height: 3rem;
+        font-size: 1.5rem;
+        color: #FFFFFF;
+    }
+
+
+</style>
+<div id="m-setting-consumeList-title" class="m-setting-title">
+    <ul>
+        <li style="float: left;">
+            <a ng-tap="backto('/m-member/allMemberList')">
+                <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+            </a>
+            <span style="font-size: 1.4rem;">
+                {{member.name}}({{member.cardNo}})<%= member.consumption_detail %>
+            </span>
+        </li>
+    </ul>
+</div>
+
+<!--等待提示层-->
+<div id="m-member-wait-tip" class="wait-top" style="display: none;">
+    <i id="wait-icon" class="wait-icon icon-spinner icon-spin"></i>
+</div>
+
+<!--会员消费详情内容页-->
+<div id="m-member-consumeList-content" style="overflow: hidden;">
+    <!--左侧时间菜单-->
+    <div id="m-member-left-timeMenu" class="fl">
+        <div class="mt-2 w-8 ml-1" style="text-align: center;">
+            <ul>
+                <li id="{{item.date.getTime()}}"
+                    ng-tap="{{item.type == 'month' ? 'selMonthMenu(item)' : 'selYearMenu(item)'}}"
+                    ng-repeat="item in consumeTimeLine"
+                    class="{{item.type + '-' + item.date.getFullYear()}} pt-1 pb-1 pr-1 time-select-item"
+                    ng-style="item.type == 'month' ? {display:'none'} : {}">
+                    {{item.display}}
+                </li>
+                <li class="pt-1 pb-1 pr-1 time-select-item">
+                </li>
+                <li class="pt-1 pb-1 pr-1 time-select-item">
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--右侧消费记录-->
+    <div id="m-member-right-consumeList" class="inlinebl ml-4">
+        <div class="consumeList-content">
+            <div class="mid-line"></div>
+            <div id="consumeList-scroll-warp" class="consumeList-scroll-warp pt-1">
+                <ul>
+                    <li ng-repeat-start="item in historyList">
+                        <div ng-if="item.lastMonth" class="month-head-tip">
+                            <i class="sel-icon-out icon-circle-blank "></i>
+
+                            <div class="direction-right-triangle inlinebl"></div>
+                            <div class="pre-month-content pl-1">
+                                {{item.date | date : 'yyyy年MM月'}}
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class=" mb-1 consume-record-item"
+                        ng-repeat-end ng-style="item.item ? {} : {'height':'4rem'}"
+                        ng-class="{newCard:item.type == '开卡',recharge:item.type == '充值'}">
+                        <i class="sel-icon-out icon-circle-blank "></i>
+
+                        <div class="direction-right-triangle inlinebl"
+                             style=""></div>
+                        <div class="consume-record inlinebl">
+                            <div class="consume-record-title">
+                                <div class="record-time ml-1 mr-2">
+                                    {{item.date | date:'dd日 HH:mm'}}
+                                </div>
+
+                                <div class="mid-record-consume mr-2">
+                                    <span>
+                                        {{item.typeDetail}}：
+                                    </span>
+                                    <span class="record-money"
+                                          ng-show="member.baseInfo_type !== 'recordTimeCard' || item.type == '开卡'">
+                                         ￥{{item.money | number : 2}}
+                                    </span>
+                                    <span class="record-money"
+                                          ng-show="member.baseInfo_type === 'recordTimeCard' && item.type != '开卡'">
+                                         {{item.times | number : 0}}次
+                                    </span>
+                                    <span>
+                                    ({{item.type}})
+                                    </span>
+                                </div>
+
+                                <div class="record-card-balance mr-2">
+                                    <span>
+                                        <img src="imgs/member-card.png" style="
+                                        width: 1.6rem;
+                                        height: 1.6rem;
+                                        vertical-align: middle;
+                                        margin-top: -0.3rem;">
+                                        <%= member.card_balance %>：
+                                    </span>
+                                    <span ng-show="member.baseInfo_type !== 'recordTimeCard'">
+                                        ￥{{item.balance | number : 2}}
+                                    </span>
+                                    <span ng-show="member.baseInfo_type === 'recordTimeCard'">
+                                        {{item.balance | number : 0}}次
+                                    </span>
+                                </div>
+                            </div>
+                            <div ng-if="item.item" class="consume-record-content pl-3">
+                                {{"<%= member.item_name %>：" + item.item}}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="h-20"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

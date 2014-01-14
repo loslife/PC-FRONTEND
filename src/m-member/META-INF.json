@@ -1,0 +1,32 @@
+{
+    "interface": {
+        "services": {
+
+        },
+        "sdk": {
+
+        },
+        "url": {
+
+        },
+        "fragment": {
+
+        }
+    },
+    "services":[
+    ],
+    "statics": [
+        {
+            "name": "m-member",
+            "path": "/m-member",
+            "comment": ""
+        }
+    ],
+    "dataModelSchema": {
+
+    },
+    "configuration": {
+
+    }
+
+}

@@ -1,0 +1,32 @@
+{
+    "interface": {
+        "services": {
+
+        },
+        "sdk": {
+
+        },
+        "url": {
+
+        },
+        "fragment": {
+
+        }
+    },
+    "services":[
+    ],
+    "statics": [
+        {
+            "name": "m-setting",
+            "path": "/m-setting",
+            "comment": ""
+        }
+    ],
+    "dataModelSchema": {
+
+    },
+    "configuration": {
+
+    }
+
+}

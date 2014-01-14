@@ -1,0 +1,54 @@
+<div id="member-memberCardList-area" class="featureSpace pr-1">
+    <style>
+        .member_info {
+            background: #dff0d8;
+            padding: 6px;
+        }
+        .member_info ul {
+            overflow: hidden;
+            float: none;
+        }
+
+        .member_info li {
+            min-width: 110px;
+            float: left;
+            margin-left: 20px;
+        }
+
+        #pmcl_cr_dialog .modal-body {
+            height: 555px;
+            padding-top: 0px;
+        }
+
+        #pmcl_rr_dialog .modal-body {
+            height: 555px;
+            padding-top: 0px;
+        }
+    </style>
+
+    <div class="toolbar clearfix">
+        <div id="mmcl-search-area" class="fl">
+            <span class="fl">
+                <%= member.search %>：
+            </span>
+            <span class="fl" style="display:inline-block;">
+                <input class="searchinput mb-0" id="mmcl_search" type="text" ng-model="search.keyWord"
+                       ng-keydown="search_keypress($event)"/>
+            </span>
+
+            <span class="fl searchbtn pl-1" style="display:inline-block;" ng-click="searchMember()">
+                <li><a class="btn btn-red icon24"><%= member.search %></a></li>
+            </span>
+        </div>
+    </div>
+
+    <div class="member_info" ui-if="memberDeatilData">
+        <ul>
+            <li>{{cardNo}}<%= member.card_information %></li>
+            <li><%= member.member_name %>：{{memberDeatilData.name}}</li>
+            <li><%= member.birthday %>：{{memberDeatilData.birthday}}</li>
+            <li><%= member.phone_number %>：{{memberDeatilData.phoneMobile}}</li>
+            <li><%= member.create_date %>：{{convertTime(memberDeatilData.startDate)}}</li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,462 @@
+<div id="m-setting-service-area" class="featureSpace m-setting">
+<div class="m-setting-title">
+    <ul>
+        <li ng-style="action=='index'?{}:{'display':'none'}" style="float: left;">
+            <a ng-tap="backto('/m-setting/setting')">
+                <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+            </a>
+                <span style="font-size: 1.4rem;">
+                    <%= setting.service.service %>
+                </span>
+        </li>
+        <li ng-style="action!='index'?{}:{'display':'none'}" style="float: left;">
+            <a ng-tap="backIndex()">
+                <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+            </a>
+                <span style="font-size: 1.4rem;">
+                    <%= setting.service.service %>
+                </span>
+        </li>
+    </ul>
+</div>
+<style type="text/css">
+    a {
+        color: #bd438e
+    }
+
+    .underline {
+        border-bottom: solid 0.15rem #d0d0d0;
+    }
+</style>
+<div class="m-two-column-area top-area" ng-style="action=='index'?{}:{'display':'none'}">
+    <div class="service-category ">
+        <ul class="service-category-list  ofauto">
+            <li ng-repeat="(key,value) in productCategorieMap" ng-tap="choiceCate(value,key)" class="button"
+                ng-class="productCategorySelected==key?'selected':''">
+                <div ng-class="productCategorySelected==key?'selected':''"></div>
+                <span class="fs-12 valign-m inlinebl">{{productCategories[key].name}}</span>
+                <a class="bl fancybox-media service-category-trash" ng-tap="initDeleteServiceCate()">
+                    <img src="imgs/icon-trash.png" style="width: 1.6rem; height: 1.6rem; vertical-align: middle;
+                        margin-top: -0.4rem">
+                </a>
+            </li>
+            <li class="button" ng-tap="choiceAllCate()" ng-class="productCategorySelected=='all'?'selected':''"><div ng-class="productCategorySelected=='all'?'selected':''"></div><%= common.label.all %></li>
+        </ul>
+        <ul class="service-category-option">
+            <li class="button fs-12"
+                ng-tap="newProductCate()"
+                style="border-top: solid 0.15rem #bcbcbc; color: #bd438e; ">
+                <img src="imgs/icon-plus-pink.png"
+                     style="
+                                width:1.2rem;
+                                margin-top: -0.2rem;
+                                 height: 1.2rem;
+                                 vertical-align: middle;">
+                <a style="width: 6rem"
+                   class="fh fw bl"><%= setting.service.add_classify %></a>
+            </li>
+        </ul>
+    </div>
+    <div class="m-area-msg" style=""></div>
+    <div class="setting-service">
+        <ul class="product-list ml-1 mb-1">
+            <div>
+                <li ng-if="productCategorySelected!='all'" style="background-color: #fff; border: none; position: relative">
+                    <a
+                            class="fh fw bl"
+                            ng-click="newProduct(productCategorySelected)">
+                        <div class="abs fs-12" style="top: 3.5rem;left: 2rem;">
+                            <img src="imgs/dashed-background.png"
+                                 style="width: 8rem; height: 8rem; margin-left: -2rem; margin-top: -3.5rem; ">
+
+                            <div style="height: 0.8rem; width: 3.5rem; background-color: #d0d0d0; left: 0.3rem; top:0; position: absolute"></div>
+                            <div style="height: 3.5rem; width: 0.8rem; background-color: #d0d0d0; left: 1.6rem; top:-1.3rem;  position: absolute;"></div>
+                        </div>
+                    </a>
+                </li>
+                <!--<li ng-if="productCategorySelected!='all'" style="background-color: #fff; border: none; position: relative">
+                                <a
+                                        class="fh fw bl"
+                                        ng-click="showDeleteControl()">
+                                    <div class="abs fs-12" style="top: 3.5rem;left: 2rem;">
+                                        <img src="imgs/dashed-background.png" style="width: 8rem; height: 8rem; margin-left: -2rem; margin-top: -3.5rem; ">
+                                        <div style="height: 0.8rem; width: 3.5rem; background-color: #d0d0d0; left: 0.3rem; top:0; position: absolute"></div>
+                                    </div>
+                                </a>
+                            </li>-->
+                <li ng-repeat="product in productViewArray" style="position: relative"
+                        >
+                    <a
+                            class="fh fw bl"
+                            ng-class="productSelected.id == product.id?'selected':''"
+                            style="background-image: url({{product.baseInfo_image | urlEncode}})"
+                            ng-click="selectProduct(product)"
+                            >
+                        <div class="price">￥{{product.prices_salesPrice | number: 2}}</div>
+                        <div class="title">{{product.name}}</div>
+                    </a>
+
+                    <div class="deletion-control" ng-tap=""
+                         style="position: absolute; left: 0rem; top: 0rem; display: none; width: 3rem; height: 3rem;">
+                        <img src="imgs/deletion-control.png" width="25" height="25">
+                    </div>
+                </li>
+            </div>
+        </ul>
+    </div>
+</div>
+
+<div id="m-setting-more-servicecate" class="abs abs-left-top fw fh bg-color-ededed"
+     style="display: none; background: #ededed url(imgs/bg-line.png) center repeat;"
+     ng-style="action=='newcate'?{}:{'display':'none'}">
+
+    <div class="m-setting-title" style="width: 100%">
+        <ul>
+            <li style="float: left;">
+                <a ng-tap="backIndex()">
+                    <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+                </a>
+                    <span style="font-size: 1.4rem;">
+                        <%= setting.service.new_classify %>
+                    </span>
+            </li>
+            <li style=" float: right;" ng-tap="commitNewServiceCate(newServiceCateRecord)">
+                <a>
+                            <span style="font-size: 1.2rem;">
+                                <i class="icon-save"></i>
+                                <%= common.label.save %>
+                            </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="m-area-msg" style=""></div>
+
+    <div class="dialog-body m-setting-form-bg">
+        <ul>
+            <li class="m-input-underline">
+                <div class="caption ">
+                    <%= setting.service.category %>：
+                </div>
+                <input id="m-setting-serviceCate-add" type="text" class="m-input fs-20" placeholder="<%= setting.service.category_input_placeholder %>"
+                       ng-model="newServiceCateRecord.name" style="width: 80%;" maxlength="14"/>
+                <cite class="error-hint error-hint-cate fr">
+                    <img src="../../resource/images/alarmIcon.png">
+                    <span><%= setting.service.category_input_error_info %></span>
+                </cite>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div id="m-setting-service-morePopup" class="abs abs-left-top fw bg-color-ededed"
+     style="display: none;background: #ededed url(imgs/bg-line.png) center repeat;"
+     ng-style="action=='new'?{}:{'display':'none'}">
+    <div class="m-setting-title" style="width: 100%">
+        <ul>
+            <li style="float: left;">
+                <a ng-tap="backIndex()">
+                    <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+                </a>
+                    <span style="font-size: 1.4rem;">
+                        <%= setting.service.add_service %>
+                    </span>
+            </li>
+            <li style="float: right;">
+                <a ng-tap="commitNewService(newProductRecord)">
+                            <span style="font-size: 1.2rem;">
+                                <i class="icon-save"></i>
+                                <%= common.label.save %>
+                            </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="m-area-msg" style=""></div>
+    <div class="dialog-body">
+        <div class="detail-area ">
+            <div class="service-detail ofauto tac">
+                <div class="service-info m-form-two-column ofh">
+                    <div class="l-left">
+                        <div class="service-img ofh tac">
+                            <li class="selected-service-img" ng-style="showImageStyle(newProductRecord)"></li>
+                        </div>
+                    </div>
+
+                    <div class="l-right info">
+                        <li class="">
+                                <span class="icon-camera-retro w-10 clickable"
+                                      style="width: auto; height: 4rem; line-height: 4rem;"
+                                      ng-tap="getPicture(newProductRecord,'camera','item')">
+                                    <span><%= setting.service.take_photo %></span>
+                                </span>
+                                <span class="icon-folder-open-alt w-15 clickable"
+                                      style="width: auto; height: 4rem; line-height: 4rem;"
+                                      ng-tap="getPicture(newProductRecord,'folder','item')">
+                                    <span><%= setting.service.choose_local_file %></span>
+                                </span>
+                        </li>
+
+                        <li class="m-input-underline">
+                            <label class="caption"><%= setting.service.name %>：</label>
+                            <input id="m-setting-service-add-name" type="text" class="m-input fs-20" placeholder="<%= setting.service.service_name %>"
+                                   ng-model="newProductRecord.name" maxlength="14"/>
+                            <cite class="error-hint error-hint-service-name fr">
+                                <img src="../../resource/images/alarmIcon.png">
+                                <span><%= setting.service.category_input_error_info_12 %></span>
+                            </cite>
+                        </li>
+
+                        <li class="m-input-underline">
+                            <label class="caption"><%= common.label.price %>：</label>
+                            <input type="number" class="m-input fs-20" placeholder="<%= setting.service.service_price %>"
+                                   ng-model="newProductRecord.prices_salesPrice"/>
+                            <cite class="error-hint error-hint-service-price fr">
+                                <img src="../../resource/images/alarmIcon.png">
+                                <span><%= setting.service.necessary %></span>
+                            </cite>
+                        </li>
+                        <li class="">
+                            <label class="caption" style="padding-bottom: 2rem;"><%= setting.service.detail %>：</label>
+                            <textarea name="" class="m-input fw-95" rows="4" placeholder="<%= setting.service.tell_something %>"
+                                      ng-model="newProductRecord.comment">
+
+                            </textarea>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="m-setting-service-eidtPopup" class="abs abs-left-top fw bg-color-ededed" style="display: none"
+     ng-style="action=='edit'?{}:{'display':'none'}">
+
+    <div class="m-setting-title" style="width: 100%">
+        <ul>
+            <li style="float: left;">
+                <a ng-tap="cancelEditService(editSelected)">
+                    <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+                </a>
+                    <span style="font-size: 1.4rem;">
+                        <%= setting.service.edit_service %>
+                    </span>
+            </li>
+            <li style="float: right;">
+                <a ng-tap="editService(editSelected)">
+                            <span style="font-size: 1.2rem;">
+                                <i class="icon-save"></i>
+                                <%= common.label.save %>
+                            </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="m-area-msg" style=""></div>
+    <div class="dialog-body">
+        <div class="detail-area ">
+            <div class="service-detail ofauto tac">
+                <div class="service-info m-form-two-column ofh">
+                    <div class="l-left">
+                        <div class="service-img ofh tac">
+                            <li class="selected-service-img" ng-style="showImageStyle(editSelected)"></li>
+                        </div>
+                    </div>
+
+                    <div class="l-right info">
+                        <li class="">
+                            <span class="icon-camera-retro w-10 clickable"
+                                  style="width:auto; height: 4rem; line-height: 4rem;"
+                                  ng-tap="getPicture(editSelected,'camera','item')">
+                                <span><%= setting.service.take_photo %></span>
+                            </span>
+                            <span class="icon-folder-open-alt w-15 clickable"
+                                  ng-tap="getPicture(editSelected,'folder','item')"
+                                  style="width:auto; height: 4rem; line-height: 4rem;">
+                                <span><%= setting.service.choose_local_file %></span>
+                            </span>
+                        </li>
+
+                        <li>
+                            <label for="" class="caption"><%= setting.service.classify %>：</label>
+                            <label for="" class="light-text">{{productCategories[productCategorySelected].name}}</label>
+                        </li>
+                        <li class="m-input-underline">
+                            <label class="caption"><%= setting.service.service_name %>：</label>
+                            <input id="m-setting-service-edit-name" type="text" class="m-input fs-20" placeholder="<%= setting.service.service_name %>"
+                                   ng-model="editSelected.name" maxlength="14"/>
+                            <cite class="fr error-hint error-hint-service-name">
+                                <img src="../../resource/images/alarmIcon.png">
+                                <span><%= setting.service.category_input_error_info_12 %></span>
+                            </cite>
+                        </li>
+
+                        <li class="m-input-underline">
+                            <label class="caption"><%= setting.service.service_price %>：</label>
+                            <input type="number" class="m-input fs-20" placeholder="<%= setting.service.service_price %>"
+                                   ng-model="editSelected.prices_salesPrice"/>
+                            <cite class="fr error-hint error-hint-service-price">
+                                <img src="../../resource/images/alarmIcon.png">
+                                <span><%= setting.service.necessary %></span>
+                            </cite>
+                        </li>
+                        <li>
+                            <label class="caption" style="padding-bottom: 2rem;"><%= setting.service.detail %>：</label>
+                            <textarea name="" id="" class="m-input fw-95" rows="4" placeholder="<%= setting.service.tell_something %>"
+                                      ng-model="editSelected.comment">
+
+                            </textarea>
+                        </li>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="m-setting-service-infopopup" class="abs abs-left-top fw bg-color-ededed" style="display: none"
+     ng-style="action=='info'?{}:{'display':'none'}">
+    <div class="m-setting-title" style="width: 100%">
+        <ul>
+            <li style="float: left;">
+                <a ng-tap="backIndex()">
+                    <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+                </a>
+                    <span style="font-size: 1.4rem;">
+                        <%= setting.service.service_detail %>
+                    </span>
+            </li>
+            <li style="" class="fr">
+                <a class=" fancybox-media" ng-tap="initDeleteServiceItem()">
+                    <span style="font-size: 1.2rem;">
+                        <img src="imgs/icon-trash-white.png"
+                             style="
+                                width:1.2rem;
+                                margin-top: -0.2rem;
+                                 height: 1.2rem;
+                                 vertical-align: middle;">
+                        <%= common.label.delete %>
+                    </span>
+                </a>
+            </li>
+            <li style="float: right;">
+                <a ng-tap="initEditService(productSelected)">
+                    <span style="font-size: 1.2rem;">
+                        <img src="imgs/icon-edit.png"
+                             style="
+                                width:1.2rem;
+                                margin-top: -0.2rem;
+                                 height: 1.2rem;
+                                 vertical-align: middle;">
+                        <%= common.label.edit %>
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="m-area-msg" style=""></div>
+    <div class="dialog-body">
+        <div class="detail-area ">
+            <div class="service-detail ofauto tac fw">
+                <div class="service-info m-form-two-column ofh">
+                    <div class="l-left">
+                        <div class="service-img ofh tac">
+                            <li class="selected-service-img" ng-style="showImageStyle(productSelected)"></li>
+                        </div>
+                    </div>
+
+                    <div class="l-right info readonly">
+                        <li class="ofh">
+                            <div for="" class="fs-16 mt-1 light-label">{{productSelected.name}}</div>
+                        </li>
+                        <li class="ofh underline">
+                            <label class="caption"><%= common.label.price %>：</label>
+
+                            <div for="" class="fs-14 light-label inlinebl">{{productSelected.prices_salesPrice | number
+                                : 2}}
+                            </div>
+                        </li>
+                        <li class="ofh underline">
+                            <label class="caption"><%= setting.service.create_time %>：</label>
+
+                            <div for="" class="fs-14 light-label inlinebl">
+                                {{productSelected.create_date|date:'yyyy-MM-dd'}}
+                            </div>
+                        </li>
+                        <li class="ofh underline item-desc">
+                            <label class="caption"><%= setting.service.detail %>：</label>
+
+                            <div for="" style="word-break: break-all;" class="pl-1 pr-1 fs-16 light-label">
+                                {{productSelected.comment}}
+                            </div>
+                        </li>
+
+                        <div class="m-share caption">
+                            <ul>
+                                <li ng-tap="shareToSinaWeibo()" class="clickable">
+                                    <a href="#" class="bds_tsina xlwb"></a>
+                                    <cite><%= setting.service.share_micro_blog %></cite>
+                                </li>
+                                <li ng-tap="shareToWeixin()" class="ml-1 clickable">
+                                    <a href="#" class="bds_tqq txwb"></a>
+                                    <cite><%= setting.service.share_micro_message %></cite>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="m-setting-service-delete" class="none dialog-delete">
+    <div class="dialog-body">
+        <div class="dialog-header" style="background-color: #ec5870;">
+            <div class="dialog-title">
+                <%= setting.service.delete_service_confirm %>？
+            </div>
+            <div class="delete-icon" ng-tap="modalDialogClose()">
+                <i class="icon-remove-circle fancybox-close-icon-s"></i>
+            </div>
+        </div>
+        <div class="m-area-msg" style=""></div>
+
+        <ul>
+            <li>
+                <div class="m-save-button">
+                    <a ng-tap="modalDialogClose()" class="m-save-button-cancel bg-color-ededed"><%= common.label.cancel %></a><a
+                        ng-tap="deleteService(productSelected)" class="m-save-button-cancel bg-color-ededed"><%= common.label.confirm %></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div id="m-setting-service-cate-delete" class="none dialog-delete">
+    <div class="dialog-body">
+        <div class="dialog-header" style="background-color: #ec5870;">
+            <div class="dialog-title">
+                <%= setting.service.delete_classify_confirm %>？
+            </div>
+            <div class="delete-icon" ng-tap="modalDialogClose()">
+                <i class="icon-remove-circle fancybox-close-icon-s"></i>
+            </div>
+        </div>
+        <div class="m-area-msg" style=""></div>
+
+        <ul>
+            <li>
+                <div class="m-save-button">
+                    <a ng-tap="modalDialogClose()" class="m-save-button-cancel bg-color-ededed"><%= common.label.cancel %></a><a
+                        ng-tap="deleteServiceCate(productCategories[productCategorySelected])"
+                        class="m-save-button-cancel bg-color-ededed"><%= common.label.confirm %></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+</div>

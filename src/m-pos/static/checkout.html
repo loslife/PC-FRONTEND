@@ -1,0 +1,944 @@
+<!-- 特性模块缩写 example-feature1-area = [模块ID]-[特性ID]-area;特性ID必须与菜单链接上的特性ID保持一致-->
+<div id="m-pos-checkout-area" class="featureSpace padding-l-l">
+<div class="check-content-area">
+<style>
+a {
+    outline: none;
+}
+
+a:active {
+    star: expression(this.onFocus=this.blur());
+}
+
+:focus {
+    outline: 0;
+}
+
+.white-dot-dot {
+    margin-top: -0.3rem;
+    width: 0.3rem;
+    height: 0.3rem;
+    background-color: #fff;
+    margin-left: 0.4rem;
+    display: inline-block;
+}
+
+.white-dot-dot:first-child {
+    margin-left: 1.4rem;
+}
+
+.white-dot-dot:last-child {
+    margin-right: 1.4rem;
+}
+
+.m-pos-checkout-guadan-position {
+    position: absolute;
+    top: -5rem;
+    left: 18.5rem;
+    color: #fff;
+    height: 5rem;
+    z-index: 1;
+}
+
+.m-pos-checkout-guadan-position li {
+    display: inline-block;
+    line-height: 5rem;
+    height: 5rem;
+    vertical-align: top;
+}
+
+#pos-member-list {
+    overflow: auto;
+}
+
+#m-pos-hide-pend ul {
+    position: absolute;
+    top: 5rem;
+    left: 50rem;
+}
+
+#m-pos-hide-pend li {
+    padding-left: 1rem;
+    position: relative;
+    display: block;
+    border-bottom: 1px solid #d0d0d0;
+    background-color: #565656;
+    z-index: 3;
+}
+
+#m-pos-hide-pend li:active {
+    background-color: #b02e7d;
+}
+
+#m-pos-hide-pend li:first-child {
+    border-top: 1px solid #d0d0d0;
+}
+
+.pend-sel-employee-list {
+    margin-top: 1rem;
+    margin-left: 1rem;
+    height: 20rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.pend-sel-employee-list>li {
+    display: inline-block;
+}
+
+.pend-sel-employee-list>li>div {
+    position: relative;
+    width: 8rem;
+    height: 8rem;
+}
+
+.employee-pend-name {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 8rem;
+    height: 2rem;
+    line-height: 2rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+
+.checkout-selected-employee {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background-color: #bd438e;
+}
+
+.checkout-selected-employee-name {
+    height: 3rem;
+    line-height: 3rem;
+    font-size: 1.4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: #ffffff;
+}
+
+.checkout-keyboard-employeeSel {
+    width: 19rem;
+    float: left;
+    height: 24rem;
+    overflow: auto;
+}
+
+.checkout-employee {
+    height: 6rem;
+    display: inline-block;
+    width: 6rem;
+    line-height: 6rem;
+    margin: 0.166666rem;
+    position: relative;
+}
+
+.checkout-employee .employee-name {
+    height: 2rem;
+    line-height: 2rem;
+    position: absolute;
+    bottom: 0;
+    width: 6rem;
+    overflow: hidden;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+}
+
+.button-disable-cover {
+    position: absolute;
+    width: 50%;
+    height: 5rem;
+    z-index: 1;
+}
+
+.pending-disable-cover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+}
+
+.selected-pend {
+    font-size: 1.2rem;
+    color: #bd438e;
+}
+
+.selected-pend .pending-icon {
+    font-size: 1.4rem;
+}
+
+.pending-icon {
+    font-size: 1.4rem;
+    margin-top: -4.5rem;
+    vertical-align: middle;
+    margin-right: 0.2rem;
+}
+
+.m-pos-checkout-licence-content {
+    font-size: 1.6rem;
+    padding: 2rem;
+}
+
+#m-pos-checkout-licence-popup {
+    width: 450px;
+}
+
+.checkout-service-bill {
+    border-bottom: 0.1rem solid #bd438e;
+    font-size: 1.2rem;
+    width: 100%;
+    color: #bd438e;
+}
+
+.checkout-record-way {
+    display: inline-block;
+    height: 6rem;
+    width: 16rem;
+    background: #bd438e;
+    margin-left: 3rem;
+    font-size: 1.6rem;
+    line-height: 6rem;
+    text-align: center;
+    color: #ffffff;
+}
+.guadan-top-pink{
+    background: url("imgs/icon-guadan-pink.png") no-repeat;
+    background-size: 1.4rem 1.4rem;
+    width: 1.4rem;
+    height: 1.4rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+.guadan-top{
+    background: url("imgs/icon-guadan.png") no-repeat;
+    background-size: 1.4rem 1.4rem;
+    width: 1.4rem;
+    height: 1.4rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+.pos-product-nav{
+    width: 9rem;
+    position: absolute;
+    bottom: 0rem;
+    height: 0.4rem;
+    border-bottom: 0.2rem solid #b02e7d;
+    -webkit-transition-duration: .5s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -moz-transition-duration: .5s;
+    -o-transform-style: preserve-3d;
+    -o-transition-duration: .5s;
+
+}
+.pos-product-nav-san{
+    height: 0;
+    width: 0;
+    margin-top: 0.15rem;
+    margin-right: auto;
+    margin-left:auto;
+    border-bottom: 0.4rem solid #b02e7d;
+    border-left: 0.4rem solid transparent;
+    border-right: 0.4rem solid transparent;
+}
+.product-category>li .active {
+    background-color: transparent !important;
+}
+</style>
+<!--挂单位置-->
+<ul class="m-pos-checkout-guadan-position">
+    <li ng-repeat="item in pendShowList" ng-tap="resumePendingOrder(item)"
+        ng-class="pendBill.id == item.id ? 'selected-pend' : ''">
+        <div ng-class="pendBill.id == item.id ? 'guadan-top-pink' : 'guadan-top'"></div>
+        <span>
+            {{getEmpName(item.employee_id)}}
+        </span>
+        <img src="imgs/cutting-line.png" style="width: 5px;height: 5rem; vertical-align: middle">
+    </li>
+    <li id="m-pos-more-pend" style="display: none;" ng-tap="showHiddenPend()">
+        <div style="margin-bottom: 2.5rem; width: 0.3rem; height: 0.3rem; background-color: #fff; margin-left: 1.4rem; display: inline-block;"></div>
+        <div style="margin-bottom: 2.5rem; width: 0.3rem; height: 0.3rem; background-color: #fff; margin-left: 0.1rem; display: inline-block"></div>
+        <div style="margin-bottom: 2.5rem; width: 0.3rem; height: 0.3rem; background-color: #fff; margin-left: 0.1rem; margin-right: 1.4rem; display: inline-block"></div>
+        <img src="imgs/cutting-line.png" style="width: 5px;height: 5rem;">
+    </li>
+    <!--挂单隐藏的项-->
+    <!--使用绝对定位保持与挂单最后的...对齐-->
+    <ul id="m-pos-hide-pend"
+        style="display: none;height: 30rem;overflow: auto;width: 16rem;position: absolute;right: 0;">
+        <li ng-repeat="item in pendHiddenList" ng-tap="resumePendingOrder(item)"
+            ng-class="{'selected-pend':pendBill.id == item.id}">
+            <i class="icon-file-alt" style="font-size:1.4rem;"></i>{{getEmpName(item.employee_id)}}
+        </li>
+    </ul>
+</ul>
+
+
+<div class="pos-left">
+    <div class="pos-order">
+        <div class="pos-order-title">
+                    <span ng-tap="cancelOrder()">
+                        <%= checkout.service_bill %>
+                        <img src="imgs/icon-trash.png" style="width: 1.6rem; height: 1.6rem; vertical-align: middle;
+                        margin-top: -0.5rem">
+                    </span>
+            <span style="font-size: 1.2rem;">{{buyProductRecords.length}}<%= checkout.service_number %></span>
+        </div>
+        <div class="pos-order-list" id="pos-order-list">
+            <div class="scroller">
+                <ul>
+                    <li class="unselected" id="pos-order-list-{{product.id}}"
+                        ng-tap="selectProductOrder(product.id)"
+                        ng-class="productSelected.id == product.id?'selected':''"
+                        ng-repeat="product in buyProductRecords">
+                        <cite class="order-num-unselected">
+                            <span>{{product.saleNum}}</span>
+                        </cite>
+                        <cite class="order-name">
+                            <span>{{product.name}}</span>
+                        </cite>
+                        <cite class="order-money">
+                            <span>￥{{product.unitPrice | number : 2}}</span>
+                        </cite>
+                    </li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="pos-checkout" style="color: #665655">
+        <div class="pos-money-title">
+        </div>
+        <ul class="pos-money-items mt-1">
+            <li>
+                <div><%= checkout.total %></div>
+                <div>￥{{incomeStatus.totalMoney | number : 2}}</div>
+            </li>
+            <li style="font-size:0;color: #bd438e;white-space: nowrap;"
+                ng-show="!memberSelected || memberSelected.baseInfo_type !== 'recordTimeCard'">
+                <a style="display: inline-block; color: #bd438e;" ng-tap="showDiscountConfirm()">
+                    <div style="display: inline-block; font-size: 1.4rem;"><%= common.label.discount %>
+                        <img src="imgs/icon-discount.png" style="width: 1.6rem ; height: 1.6rem;
+                        vertical-align: middle;
+                        margin-top: -0.3rem">
+                    </div>
+                </a>
+
+                <div style="font-size: 1.4rem">{{temp.discountDisplay + (temp.discountDisplay == '无'? '' : '(-￥' +
+                    (incomeStatus.discountMoney | number : 2) + ')')}}
+                </div>
+            </li>
+            <li style="font-size: 0; color: #bd438e;white-space: nowrap;"
+                ng-show="memberSelected && memberSelected.baseInfo_type === 'recordTimeCard'">
+                <div style="font-size:1.4rem;display: inline-block;">
+                    扣次
+                </div>
+                <div style="font-size:1.4rem;">
+                    {{incomeStatus.payTimes + '次(-￥' + (incomeStatus.recordTolMoney | number : 2) + ')'}}
+                </div>
+            </li>
+
+            <li>
+                <div><%= checkout.should_earn %></div>
+                <div>￥{{incomeStatus.paidMoney | number : 2}}</div>
+            </li>
+        </ul>
+        <ul id="pos-member-info" class="pos-money-items">
+            <li style="border-top:1pt solid #d0d0d0; width: 88%; margin-left: 0.5rem;"></li>
+            <li style="line-height: 2.5rem;" ng-if="memberSelected.name">
+                <!--当内容摆放不下时、可左右滑动-->
+                <div style="width:75%;height: 2.5rem;overflow: auto;white-space: nowrap;">
+                    <span><%= checkout.member %>:{{memberSelected.name}}({{memberSelected.cardNo}})</span>
+                </div>
+                <!--当类型名字过长超出的隐藏-->
+                <div style="text-align: center; font-size: 1.2rem; color: #fff; background-color: #64b1a9; width: 3rem;white-space: nowrap;overflow: hidden;">
+                    {{memberSelected.memberCardCategoryName}}卡
+                </div>
+            </li>
+            <li style="line-height: 2.5rem;" ng-if="!memberSelected.name">
+                <div style="width: 75%;"><span></span></div>
+                <div style="text-align: center; font-size: 1.2rem; color: #fff; background-color: #64b1a9; width: 3rem;">
+                    <%= checkout.not_member %>
+                </div>
+            </li>
+            <li></li>
+        </ul>
+    </div>
+</div>
+<div class="pos-right">
+    <div class="pos-product">
+        <div style="position: relative; overflow-x: auto;">
+            <div class="pos-product-nav">
+                <div class="pos-product-nav-san">
+
+                </div>
+            </div>
+            <ul class="product-category">
+                <li ng-repeat="(key,value) in productCategorieMap" ng-tap="choiceCate(value,key,$index)" class="button"
+                    ng-class="productCategorySelected==key?'selected':''">{{productCategories[key].name}}
+                </li>
+                <li class="button" ng-tap="choiceAllCate()" ng-class="productCategorySelected=='all'?'selected':''"><%=
+                    common.label.all %>
+                </li>
+            </ul>
+        </div>
+        <ul class="product-list">
+            <div>
+                <li ng-repeat="product in productViewArray">
+                    <a href="#none"
+                       class="fh fw bl"
+                       ng-class="productSelected.id == product.id?'selected':''"
+                       style="background-image: url({{product.baseInfo_image | urlEncode}})"
+                       ng-tap="selectProduct(product)"
+                            >
+                        <div class="price">￥{{product.prices_salesPrice | number : 2}}</div>
+                        <div class="title">{{product.name}}</div>
+                    </a>
+                </li>
+            </div>
+
+        </ul>
+    </div>
+</div>
+</div>
+<div class="operation-area " style="margin-top: 0.5rem;">
+    <div class=" pos-money-operation" style="margin-left: 0.3rem; min-width: 20rem; width:9%; margin-top: 0.1rem;">
+        <a ng-tap="showMemberSel()">
+            <div class="button-big member button-big-grey">
+                <span class="btn-icon-member btn-icon-l" style=""></span>
+                <span style="font-size: 1rem;"><%= checkout.member %></span>
+            </div>
+        </a>
+        <a ng-tap="showPendingConfirm()">
+            <div class="button-big suspend button-big-grey">
+                <span class="btn-icon-guadan btn-icon-l" style=""></span>
+                <span style="font-size: 1rem;"><%= checkout.hold_bill %></span>
+            </div>
+        </a>
+        <a ng-tap="checkoutConfirm()">
+            <div class="button-big checkout" style="width: 5rem; min-height: 2.4rem;">
+                <span class="btn-icon-checkout btn-icon-l" style=""></span>
+                <span><%= checkout.checkout %></span>
+            </div>
+        </a>
+    </div>
+
+    <div class="pos-operation">
+        <div class="selected-product-img"
+             style="background-image: url({{productSelected.baseInfo_image}}) "></div>
+        <div class="selected-product-label">
+            <span class="light-label" style="font-size: 1.4rem;">{{productSelected.name}}</span>
+        </div>
+        <ul class="product-operation" style="padding-right: 0.2rem;">
+            <li>
+                <label for="" class="light-label"><%= common.label.price %></label><br>
+                <label for="" class="light-text">￥{{productSelected.unitPrice | number : 2}}</label>
+            </li>
+            <li>
+                <div class="button-big button-big-grey" ng-tap="reduceProductOrderNum()">
+                    <a href="#">
+                        <div class="reduce-order-num"></div>
+                    </a>
+                </div>
+                <div class="product-num">
+                    <label for="" class="light-label"><%= checkout.number %></label><br>
+                    <label for="" class="light-text">{{productSelected.saleNum}}</label>
+                </div>
+                <div class="button-big" ng-tap="addProductOrderNum()">
+                    <a href="#">
+                        <div class="add-order-num"></div>
+                    </a>
+                </div>
+                <div class="button-big " ng-tap="deleteProductOrderNum()">
+                    <a href="#">
+                        <div class="" style="font-size: 2rem; font-weight: normal; color: red">Del</div>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+<div id="m-pos-popup">
+<div id="m-pos-checkout-second-popup" style="display: none;">
+    <div class="dialog-body normal">
+        <div class="dialog-header">
+            <div class="dialog-title">
+                <%= checkout.checkout %>
+            </div>
+            <div class="delete-icon" ng-tap="modalDialogClose()">
+                <i class="icon-remove-circle fancybox-close-icon-s"></i>
+            </div>
+        </div>
+        <div style="width:40rem;height:18rem;">
+            <div style="padding-left: 3rem;line-height: 3rem;font-size:1.6rem;margin-top:1rem;">
+                <div>剩余支付金额：￥{{incomeStatus.paidMoney | number : 2}}</div>
+                <div>请选择结算方式：</div>
+            </div>
+            <div style="font-size:0;margin-top:1rem;">
+                <div ng-tap="secondCardCheckout()" class="checkout-record-way">充值卡结算</div>
+                <div ng-tap="secondCashCheckout()" class="checkout-record-way ml-2">现金结算</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--结算弹出窗-->
+<div id="m-pos-checkout-popup" class="" style="display: none;">
+<div class="dialog-body normal">
+<div class="dialog-header">
+    <div class="dialog-title">
+        <%= checkout.checkout %>
+    </div>
+    <div class="delete-icon" ng-tap="closeCheckoutDia()">
+        <i class="icon-remove-circle fancybox-close-icon-s"></i>
+    </div>
+</div>
+<div class="m-area-msg" style=""></div>
+
+<div ng-show="memberSelected && memberSelected.baseInfo_type === 'recordTimeCard'" class="m-checkout-popup-detail-one">
+    <ul class="pos-money-items-copy">
+        <li>
+            <div class="m-input-underline checkout-service-bill">
+                <cite><%= checkout.service_bill %></cite>
+            </div>
+            <div></div>
+        </li>
+        <li>
+            <div><%= checkout.total %></div>
+            <div>￥{{incomeStatus.totalMoney | number : 2}}</div>
+        </li>
+        <li style="color: #bd438e">
+            <div>扣次项目</div>
+            <div>-￥{{incomeStatus.recordTolMoney | number : 2}}</div>
+        </li>
+        <li>
+            <div class="m-input-underline mt-1" style="width:100%"><%= checkout.should_earn %></div>
+            <div>&nbsp;</div>
+        </li>
+        <li>
+            <div>￥{{incomeStatus.paidMoney | number : 2}}</div>
+            <div></div>
+        </li>
+    </ul>
+    <ul id="m-pos-checkout-record-memberInfo" class="pos-money-items-copy">
+        <li>
+            <div class="m-input-underline"
+                 style="border-bottom: 0.1rem solid #bd438e; font-size: 1rem; width: 100%; color:#bd438e ">
+                <cite><%= checkout.card_information %></cite>
+                <span>{{memberSelected.validStr}}</span>
+            </div>
+            <div></div>
+        </li>
+        <li style="font-size: 1rem; color: #665655">
+            <div>{{memberSelected.name}}</div>
+            <div>{{memberSelected.cardNo}}</div>
+        </li>
+        <li style="color: #bd438e; font-size: 1rem;">
+            <div>剩余次数</div>
+            <div>{{memberSelected.currentMoney}}次</div>
+        </li>
+        <li style="color:#bd438e; font-size: 1rem;">
+            <div>服务项目</div>
+            <div style="text-align: left;padding-left: 1rem;">{{getServiceNameStr(memberSelected.cardCateId)}}</div>
+        </li>
+        <li></li>
+    </ul>
+</div>
+
+<div ng-show="!memberSelected || memberSelected.baseInfo_type !== 'recordTimeCard'" class="m-checkout-popup-detail-one">
+    <ul class="pos-money-items-copy">
+        <li>
+            <div class="m-input-underline checkout-service-bill">
+                <cite><%= checkout.service_bill %></cite>
+            </div>
+            <div></div>
+        </li>
+        <!--记次卡第二步需不需要显示扣次的金额-->
+        <!--<li>-->
+        <!--<div><%= checkout.total %></div>-->
+        <!--<div>￥{{(incomeStatus.totalMoney + recordContext.recordTolMoney) | number : 2}}</div>-->
+        <!--</li>-->
+        <li>
+            <div><%= checkout.total %></div>
+            <div>￥{{(incomeStatus.totalMoney) | number : 2}}</div>
+        </li>
+        <li style="color: #bd438e">
+            <div><%= common.label.discount %></div>
+            <div>{{temp.discountDisplay + (temp.discountDisplay == '无'? '' : '(-￥' +
+                (incomeStatus.discountMoney
+                | number : 2) + ')')}}
+            </div>
+        </li>
+        <!--<li style="color: #bd438e" ng-show="recordContext.recordTolMoney > 0">-->
+        <!--<div>扣次</div>-->
+        <!--<div>-->
+        <!--{{incomeStatus.payTimes + '次(-￥' + (incomeStatus.recordTolMoney | number : 2) + ')'}}-->
+        <!--</div>-->
+        <!--</li>-->
+        <li>
+            <div>{{payMode === "cash" ? "<%= checkout.actual_earn %>：" : "实扣："}}</div>
+            <div>￥{{temp.realPayMoney | number : 2}}</div>
+        </li>
+        <li>
+            <div class="m-input-underline mt-1" style="width:100%"><%= checkout.should_earn %></div>
+            <div>&nbsp;</div>
+        </li>
+        <li>
+            <div>￥{{incomeStatus.paidMoney | number : 2}}</div>
+            <div></div>
+        </li>
+    </ul>
+    <ul id="m-pos-checkout-member-info" class="pos-money-items-copy" style="display: none;">
+        <li>
+            <div class="m-input-underline"
+                 style="border-bottom: 0.1rem solid #bd438e; font-size: 1rem; width: 100%; color:#bd438e ">
+                <cite><%= checkout.card_information %></cite>
+                <span>{{memberSelected.validStr}}</span>
+            </div>
+            <div></div>
+        </li>
+        <li style="font-size: 1rem; color: #665655">
+            <div>{{memberSelected.name}}</div>
+            <div>{{memberSelected.cardNo}}</div>
+        </li>
+        <li style="color: #bd438e; font-size: 1rem;">
+            <div><%= checkout.balance %></div>
+            <div>￥{{memberSelected.currentMoney | number : 2}}</div>
+        </li>
+        <li></li>
+    </ul>
+</div>
+
+<div ng-show="memberSelected && memberSelected.baseInfo_type === 'recordTimeCard'" class="m-checkout-popup-detail-two">
+    <div>
+        <div style="width: 90%; margin: 0 auto; padding-top: 1rem; padding-bottom: 1rem;"><%=
+            checkout.pay_style%>：
+                    <span id="pay-record-radio">
+                        <input id="record-radio" ng-model="payMode" value="record" type="radio" name="payMode">
+                        <label for="record-radio">扣次</label>
+                    </span>
+        </div>
+        <div style="position: relative; height: 4rem; background-color: #363636; width:90%; margin: 0px auto;">
+            <span style="color: #fff; position: absolute; bottom:0;">消费次数:</span>
+            <span style="color: #8fc31f; float: right; font-size: 2.5rem; line-height: 4rem;">-{{pay.cardTimes}}</span>
+        </div>
+        <div style="position: relative; height: 3rem; background-color: #7d7d7d; width:90%; margin-left: auto; margin-right: auto; margin-top: 1rem; margin-bottom: 1rem;">
+            <span style="color: #fff; position: absolute; bottom:0;">剩余次数：</span>
+            <span style="float: right; line-height: 3rem; font-size: 1.6rem; color: #fff">{{memberSelected.currentMoney - pay.cardTimes}}次</span>
+        </div>
+    </div>
+    <div class="mt-1"
+         style="background-color: #fff; width:90%; margin: 10px auto; height: 7rem; position: relative">
+        <div style="font-size: 1rem;width: 90%; margin: 0 auto; padding-top: 1rem; padding-bottom: 0.6rem;">
+            <%= checkout.employee %>：
+        </div>
+        <div class="checkout-selected-employee">
+            <div ng-tap="showCheckoutSelectEmployee()" class="checkout-selected-employee-name">
+                {{employeeSelected.name}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-show="!memberSelected || memberSelected.baseInfo_type !== 'recordTimeCard'" class="m-checkout-popup-detail-two">
+    <div>
+        <div style="width: 90%; margin: 0 auto; padding-top: 1rem; padding-bottom: 1rem;"><%=
+            checkout.pay_style
+            %>：
+                        <span id="pay-cash-radio">
+                            <input id="cash-radio" ng-model="payMode" value="cash" type="radio" name="payMode">
+                            <label for="cash-radio"><%= checkout.cash %></label>
+                        </span>
+                        <span id="pay-memberCard-radio">
+                            <input id="memberCard-radio" ng-model="payMode" value="memberCard" type="radio"
+                                   name="payMode">
+                            <label for="memberCard-radio"><%= checkout.member_card %></label>
+                        </span>
+        </div>
+        <div style="position: relative; height: 4rem; background-color: #363636; width:90%; margin: 0px auto;">
+            <span style="color: #fff; position: absolute; bottom:0;">{{payMode === "cash" ? "<%= checkout.actual_earn %>：" : "实扣："}}</span>
+            <span style="color: #8fc31f; float: right; font-size: 2.5rem; line-height: 4rem;">{{temp.realPayMoney | number : 2}}</span>
+        </div>
+        <div style="position: relative; height: 3rem; background-color: #7d7d7d; width:90%; margin-left: auto; margin-right: auto; margin-top: 1rem; margin-bottom: 1rem;">
+            <span style="color: #fff; position: absolute; bottom:0;"><%= checkout.change %>:</span>
+            <span style="float: right; line-height: 3rem; font-size: 1.6rem; color: #fff">{{(temp.changeMoney  >= 0 ? (temp.changeMoney | number : 2) : "<%= checkout.cash_not_enough %>")}}</span>
+        </div>
+    </div>
+    <div class="mt-1"
+         style="background-color: #fff; width:90%; margin: 10px auto; height: 7rem; position: relative">
+        <div style="font-size: 1rem;width: 90%; margin: 0 auto; padding-top: 1rem; padding-bottom: 0.6rem;">
+            <%= checkout.employee %>：
+        </div>
+        <div class="checkout-selected-employee">
+            <div ng-tap="showCheckoutSelectEmployee()" class="checkout-selected-employee-name">
+                {{employeeSelected.name}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="checkout-keyboard-employeeSel" style="position: relative;overflow: hidden;">
+    <div id="back" class="flipped">
+        <div id="checkout-employee-select" class="checkout-keyboard-employeeSel page">
+            <ul>
+                <li ng-repeat="item in employeeList" class="checkout-employee"
+                    ng-tap="selectEmployeeCheckout(item)">
+                    <img ng-src="{{item.baseInfo_image ? item.baseInfo_image : ($index == 0 ? '' : 'imgs/man-icon.jpg')}}"
+                         style="width: 6rem;height: 6rem;background-color: #d0d0d0; ">
+
+                    <div class="employee-name">{{item.name}}</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="front" class="normal">
+        <div id="checkout-keyboard" class="m-checkout-popup-detail-three page">
+            <ul>
+                <li ng-repeat="item in numKeyboard.key">
+                    <div class="button-calculator" ng-tap="indexPayInput(item)">
+                        <div>{{item}}</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<ul>
+    <li>
+        <div class="m-save-button">
+            <a ng-tap="closeCheckoutDia()" class="m-save-button-cancel bg-color-ededed"><%= common.label.cancel
+                %></a><a
+                class="m-save-button-confirm">
+            <!--覆盖按钮、类似disable-->
+            <div id="checkout-button-cover" class="button-disable-cover" style="display: none;">
+
+            </div>
+            <div ng-tap="checkout()">{{isRecordEnough() ? "下一步" : "<%= common.label.confirm %>"}}</div>
+        </a>
+        </div>
+    </li>
+</ul>
+</div>
+
+<div class="dialog-body out-of-date" style="display: none;width:450px;">
+    <div class="dialog-header" style="background-color: #ec5870;">
+        <div class="dialog-title">
+            <%= checkout.license_info %>
+        </div>
+        <div class="delete-icon" ng-tap="modalDialogClose()">
+            <i class="icon-remove-circle fancybox-close-icon-s"></i>
+        </div>
+    </div>
+    <div class="m-area-msg" style=""></div>
+
+    <div id="m-pos-checkout-licence-out-content" class="m-pos-checkout-licence-content">
+        <%= checkout.license_info_out_detail_one%>
+    </div>
+    <div class="m-pos-checkout-licence-content android-display-special" style="padding-top: 0;">
+        <%= checkout.license_info_out_detail_two%>
+    </div>
+    <div class="m-pos-checkout-licence-content ios-display-special" style="padding-top: 0;">
+        <%= checkout.license_info_out_detail_two_ios%>
+    </div>
+
+    <div class="m-save-button">
+        <a ng-tap="modalDialogClose()" class="m-save-button-cancel bg-color-ededed"><%= common.label.confirm %></a>
+    </div>
+
+</div>
+</div>
+
+<!--会员弹出窗-->
+<div id="m-pos-member-popup" class="" style="display: none;">
+    <div class="dialog-body">
+        <div class="dialog-header">
+            <div class="dialog-title">
+                <%= checkout.choose_member %>
+            </div>
+            <div class="delete-icon" ng-tap="closeMemberSelDia()">
+                <i class="icon-remove-circle fancybox-close-icon-s"></i>
+            </div>
+        </div>
+        <div class="m-area-msg" style=""></div>
+        <div class="m-pos-member-popup-detail-one" style="width: 37rem;">
+
+            <div id="member-left-content" class="member-left">
+                <div id="member-search-input">
+                    <input ng-model="memberSearch" class="m-input ml-1" disabled
+                           style="width:85%; font-size: 1.1rem; padding-top: 1rem; padding-bottom: 0;"
+                           placeholder="<%= checkout.member_search_placeholder %>" ng-model="search"
+                           type="text"/>
+                    <hr style="width: 100%; margin-left: 12px; border:none; border-top:1px solid #b02e7d; ">
+                </div>
+                <div id="pos-member-list" class="p-list" style="height: 20rem;">
+                    <div id="member-result-list" ng-repeat="item in memberList">
+                        <a class="member-result-item ml-1" ng-click="selectMember(item)">
+                            <ul class="pl-1">
+                                <li style="width: 12.5rem;">
+                                <span style="color: #b02e7d;">
+                                    <div class="mt-1" style="display: inline-block;">
+                                        <img ng-src="{{item.sex == 0? 'imgs/icon-member-color.png' :'imgs/icon-member-blue.png'}}"
+                                             style="width:1.6rem;height: 1.6rem;" class="m-img-middle">
+                                    </div>
+                                    {{item.cardNo}}
+                                </span>
+                                </li>
+                                <li style="width:6rem;">
+                                    <span>{{item.name}}</span>
+                                </li>
+                                <li style="width:12rem;">
+                                <span>
+                                    <div class="mt-1" style="display: inline-block;">
+                                        <img src="imgs/icon-iphone.png" style="width:1.4rem;
+                                    height: 1.2rem;
+                                    vertical-align: middle;
+                                    margin-top: -0.3rem;">
+                                    </div>{{item.phoneMobile}}
+                                </span>
+                                </li>
+                                <li>
+                                    <span>{{item.memberCardCategoryName}}卡</span>
+                                </li>
+                            </ul>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="m-checkout-popup-detail-three" style="background-color: #f6f6f6; height: 24.5rem;">
+            <ul style="margin-left: 0.8rem;">
+                <li ng-repeat="item in numKeyboard.key">
+                    <div class="button-calculator" ng-tap="memberSearchInput(item)">
+                        <div>{{item}}</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <ul>
+            <li>
+                <div class="m-save-button">
+                    <a ng-tap="selMemberPend()" class="m-save-button-cancel bg-color-ededed"><%= checkout.hold_bill
+                        %></a><a
+                        ng-tap="selMemberSave()" class="m-save-button-confirm"><%= checkout.checkout %></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--修改折扣-->
+<div id="m-pos-change-discount-popup" class="" style="display: none;">
+    <div class="dialog-body">
+        <div class="dialog-header">
+            <div class="dialog-title">
+                <%= checkout.discount_info %>
+            </div>
+            <div class="delete-icon" ng-tap="modalDialogClose()">
+                <i class="icon-remove-circle fancybox-close-icon-s"></i>
+            </div>
+        </div>
+        <div class="m-area-msg" style=""></div>
+
+        <input ng-model="temp.globalDis" class="m-input ml-1" disabled
+               style="width:85%; font-size: 1rem; padding-top: 1rem; padding-bottom: 0;"
+               placeholder="<%= checkout.discount_info_placeholder %>" type="text"/>
+        <hr style="width: 90%; margin-left: 12px; border:none; border-top:1px solid #b02e7d; ">
+
+        <div class="m-checkout-popup-detail-three" style="
+    padding-left: 1.5rem;
+    background-color: #f6f6f6;
+    padding-right: 2.5rem;
+    padding-bottom: 1rem;
+    padding-top: 0.3rem;
+    ">
+            <ul style="margin-left: 1.3rem;">
+                <li ng-repeat="item in numKeyboard.key">
+                    <div class="button-calculator" ng-tap="discountInput(item)">
+                        <div>{{item}}</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <ul>
+            <li>
+                <div class="m-save-button">
+                    <a ng-tap="modalDialogClose()" class="m-save-button-cancel bg-color-ededed"><%= common.label.cancel
+                        %></a><a
+                        ng-tap="discountSave()" class="m-save-button-confirm"><%= common.label.confirm %></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--挂单弹出窗-->
+<div id="m-pos-checkout-hangup-popup" class="" style="width:450px; display: none;">
+    <div class="dialog-body">
+        <div class="dialog-header">
+            <div class="dialog-title">
+                <%= checkout.hold_bill %>
+            </div>
+            <div class="delete-icon" ng-tap="modalDialogClose()">
+                <i class="icon-remove-circle fancybox-close-icon-s"></i>
+            </div>
+        </div>
+        <div class="m-area-msg" style=""></div>
+        <div class="mt-1 ml-1">
+            <img src="imgs/icon-list.png" width="14rem" height="14rem"
+                 style="vertical-align: middle; margin-top: -5px;">
+            <span style="font-size: 1.2rem; color: #878787; "><%= checkout.employee %></span>
+        </div>
+
+        <ul class="pend-sel-employee-list">
+            <div id="pending-disable-cover" class="pending-disable-cover" style="display: none;"></div>
+            <li ng-repeat="item in employeeList" class="mb-1 mr-1">
+                <div ng-tap="pendSelectEmployee(item)">
+                    <img ng-src="{{item.baseInfo_image ? item.baseInfo_image : ($index == 0 ? '' : 'imgs/man-icon.jpg')}}"
+                         style="width: 8rem;height: 8rem;background-color: #d0d0d0">
+
+                    <div class="employee-pend-name">{{item.name}}</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--过期提醒-->
+<div id="m-pos-checkout-licence-popup" class="none dialog-delete">
+    <div class="dialog-body">
+        <div class="dialog-header" style="background-color: #ec5870;">
+            <div class="dialog-title">
+                <%= checkout.license_info_ing %>
+            </div>
+            <div class="delete-icon" ng-tap="modalDialogClose()">
+                <i class="icon-remove-circle fancybox-close-icon-s"></i>
+            </div>
+        </div>
+        <div class="m-area-msg" style=""></div>
+
+        <div id="m-pos-checkout-licence-content" class="m-pos-checkout-licence-content">
+        </div>
+        <div class="m-pos-checkout-licence-content android-display-special" style="padding-top: 0;">
+            <%= checkout.license_info_ing_detail_one %><span style="color: #ec5870"><%= checkout.license_info_ing_detail_two %></span><%=
+            checkout.license_info_ing_detail_three %>
+        </div>
+        <div class="m-pos-checkout-licence-content ios-display-special" style="padding-top: 0;">
+            <%= checkout.license_info_out_detail_two_ios %>
+        </div>
+
+        <div class="m-save-button">
+            <a
+                    ng-tap="modalDialogClose()" class="m-save-button-cancel bg-color-ededed"><%= common.label.confirm
+                %></a>
+        </div>
+    </div>
+</div>
+</div>
+</div>

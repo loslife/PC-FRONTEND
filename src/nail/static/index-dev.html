@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]>
+<html class="ie6"> <![endif]-->
+<!--[if IE 7 ]>
+<html class="ie7"> <![endif]-->
+<!--[if IE 8 ]>
+<html class="ie8"> <![endif]-->
+<!--[if IE 9 ]>
+<html class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html>
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <title>乐斯生活</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name = "format-detection" content = "telephone=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=10,chrome=1" />
+    <link href="../../3rd-lib/base.css" rel="stylesheet"/>
+    <link href="../../3rd-lib/jquery.fancybox.css" rel="stylesheet"  />
+    <link href="../../3rd-lib/slidfast.css" rel="stylesheet"  />
+    <link href="../../3rd-lib/font-awesome.min.css" rel="stylesheet"  />
+    <link href="nail.css" rel="stylesheet"/>
+    <link href="css/ios_special.css" rel="stylesheet"/>
+</head>
+
+<body ng-controller="mainController">
+<div class="m-global-msg"></div>
+<div class="page-container">
+    <div id="header-container">
+        <div id="header">
+            <div class="navbar">
+                <div class="nav-logo">
+                    <img src="imgs/logo_yilos.png" alt=""/>
+                </div>
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li  data-moduleid="pos" class="selected" ng-tap="clickMainMenu('/m-pos/checkout','m-pos','checkout',$event)">
+                            <a href="javascript:void(0);">
+                                <span class="btn-icon-pos btn-icon-l"></span>
+                                <span class="button-text">收银</span>
+                            </a>
+                        </li><li data-moduleid="member" ng-tap="clickMainMenu('/m-member/allMemberList','m-pos','allMemberList', $event)">
+                        <a href="javascript:void(0);" >
+                            <span class="btn-icon-member btn-icon-l"></span>
+                            <span class="button-text">会员</span>
+                        </a>
+                        </li><li data-moduleid="product" ng-tap="clickMainMenu('/m-nail-show/show','m-nail-show','show',$event)">
+                        <a
+                                href="javascript:void(0);">
+                            <span class="btn-icon-show btn-icon-l"></span>
+                            <span class="button-text">秀</span>
+                        </a>
+                        </li><li data-moduleid="employee" ng-tap="clickMainMenu('/m-setting/setting','m-setting','setting',$event)">
+                        <a
+                                href="javascript:void(0);">
+                            <span class="btn-icon-setting btn-icon-l"></span>
+                            <span class="button-text">管理台</span>
+                        </a>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="main-container" style="">
+        <div id="main-content" class="main-content">
+            <div id="f-workspace" class="padding-l-m f-workspace">
+                <div id="pos-pad-checkout-area">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="client-lock-pwd" style="display: none;">
+        <div class="pt-10">
+            <div id="client-lock-title" class="pb-1"></div>
+
+            <ul id="pwd-input" style="text-align: center;">
+                <li><input type="password" id="pwd-1" data-index="1" readonly maxlength="1"/></li>
+                <li><input type="password" id="pwd-2" data-index="2" readonly maxlength="1"/></li>
+                <li><input type="password" id="pwd-3" data-index="3" readonly maxlength="1"/></li>
+                <li><input type="password" id="pwd-4" data-index="4" readonly maxlength="1"/></li>
+            </ul>
+            <ul class="pwd-calculator mt-1" style="width: 30rem;margin: auto;text-align: center;">
+                <li style="width: 28rem;">
+                    <div class="button-calculator" style="line-height: 6rem" data-num="0">
+                        <div>0</div>
+                    </div>
+                    <div class="button-calculator" style="line-height: 6rem" data-num="1">
+                        <div>1</div>
+                    </div>
+                    <div class="button-calculator" style="line-height: 6rem" data-num="2">
+                        <div>2</div>
+                    </div>
+                    <div class="button-calculator" style="line-height: 6rem" data-num="3">
+                        <div>3</div>
+                    </div>
+                    <div class="button-calculator" style="line-height: 6rem" data-num="4">
+                        <div>4</div>
+                    </div>
+                    <div class="button-calculator" style="line-height: 6rem; margin-top: 3px" data-num="5">
+                        <div>5</div>
+                    </div>
+                    <div class="button-calculator" style="line-height: 6rem" data-num="6">
+                        <div>6</div>
+                    </div>
+                    <div class="button-calculator" style="line-height: 6rem" data-num="7">
+                        <div>7</div>
+                    </div>
+                    <div class="button-calculator" style="line-height: 6rem" data-num="8">
+                        <div>8</div>
+                    </div>
+                    <div class="button-calculator" style="line-height: 6rem; margin-top: 3px" data-num="9">
+                        <div>9</div>
+                    </div>
+                    <div class="button-calculator" style="line-height: 6rem" data-num="-1">
+                        <div>←</div>
+                    </div>
+                    <div class="button-calculator" style="line-height: 6rem" id="client-lock-pwd-conform" data-num="ok">
+                        <div>确定</div>
+                    </div>
+                    <div class="button-calculator" style="line-height: 6rem" id="client-lock-pwd-setting" data-num="setting" style="display: none;">
+                        <div>设置</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="page-loader none">
+    进度条
+    加载数量
+</div>
+<script src="../../../cordova.js"></script>
+<script src="../../../cordova_plugins.js"></script>
+<script src="../../../plugins-ext/yilos-extend.js"></script>
+<script src="../../../plugins-ext/SQLitePlugin.js"></script>
+<script src="../../3rd-lib/sea.js"></script>
+<script src="../../3rd-lib/jquery-2.0.3.js"></script>
+<script src="../../3rd-lib/angular/angular.js"></script>
+<script src="../../3rd-lib/underscore.js"></script>
+<script src="../../3rd-lib/jquery.cookie.js"></script>
+<script src="../../3rd-lib/async.js"></script>
+<script src="../../3rd-lib/iscroll-5.js"></script>
+<script src="../../3rd-lib/EventEmitter.js"></script>
+<script src="../../3rd-lib/highcharts.js"></script>
+<script src="../../3rd-lib/jquery.fancybox.js"></script>
+<script src="../../3rd-lib/slidfast.js"></script>
+<script src="../../3rd-lib/baiduMap.js"></script>
+<script src="../../3rd-lib/i18next-1.7.1.js"></script>
+
+
+<!-- main js -->
+
+<!-- Only This Demo Page -->
+<script type="text/javascript">
+//    function onDeviceReady() {
+//        if (window.losnail) {
+//
+////            if (window.losnail.getDocumentsDirPath) {
+////                window.losnail.getDocumentsDirPath(function (docPath) {
+////                    YILOS.DOCPATH = docPath + "/";
+////                });
+////            }
+//
+//            var registed = "";
+//            window.weixin.registerApp(function () {
+//                registed = true;
+//                window.weixin.textContent(function () {
+//                    alert("分享成功");
+//                }, function () {
+//                    alert("分享失败");
+//
+//
+//                }, "send", "huangzhi", 1);
+//            }, function () {
+//            }, "wxbffa2fa68ab9e7c0");// 填入申请的微信应用开发appId
+//            console.log(window.losnail.getLanguage());
+//            console.log(window.losnail.getDeviceName());
+//            console.log(window.losnail.getDeviceId());
+//            console.log(window.losnail.getVersion());
+//            console.log(window.losnail.getNetworkState());
+//            window.LosNailActivity.getLicenseInfo(
+//                    function (license) {
+//                        console.log(license.userId);
+//                        console.log(license.enterpriseId);
+//                        console.log(license.expiresTime);
+//                    }
+//            );
+//
+//            var begin = (new Date()).getTime();
+//            window.losnail.getInfo(function (info) {
+//                console.log((new Date()).getTime() - begin);
+//                console.log(info);
+//                console.log(info.version);
+//
+//            });
+//        }
+//
+//    }
+//
+//
+//    document.addEventListener('deviceready', onDeviceReady, false);
+
+    function getRequest()
+    {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if(url.indexOf("?") != -1)
+        {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for(var i = 0; i < strs.length; i ++)
+            {
+                theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+    window.global = {_g_server:{},setting:{lockable:true}};
+    global["_g_server"].protocol="http";
+    global["_g_server"].ip="";
+    global["_g_server"].staticurl="";
+    global["_g_server"].uploadurl="http://www.yilos.com/svc/file-upload";
+    global["_g_server"].authurl="http://www.yilos.com/svc";
+    global["_g_server"].serviceurl="http://www.yilos.com/svc";
+    global["_g_env"] ="dev";
+    var YILOS = {
+        model:"dev",
+        dbinstance:null,
+        startTime:(new Date()).getTime(),
+        deviceID: getRequest()["deviceRequestId"],
+        USERNAME:getRequest()["username"],
+        LANGUAGE: getRequest()["language"],
+        INITCLEANCACHE: getRequest()["cleanWebCache"],
+        ENTERPRISEID: getRequest()["enterpriseId"],
+        DOCPATH: getRequest()["docpath"]
+    }
+
+    if(!YILOS.DOCPATH){
+        YILOS.DOCPATH = "/sdcard/yilos/nailshop/";
+    }
+
+    var YILOS_NAIL_MODULE = {
+        MEMBER:"member",
+        EMPLOYEE:"employee",
+        SERVICE:"service",
+        SHOW:"show",
+        SERVICEBILL:"serviceBill",
+        USERS:"users",
+        ENTERPRISE:"enterprise"
+    }
+
+    var ENV = {
+        OFFLINE: 1,
+        MOBILE: 2,
+        NORMAL: 0
+    }
+    var planx = {},                                   //全局名字空间，放全局对象
+            dbVersion,                                        //数据库schema版本号，代表数据库表结构版本，如果版本号发生变化会出发客户端重新创建表结构
+            localtag = false;
+    global.ismobile = true;
+    global.eventEmitter = new EventEmitter();
+
+    function PlanxIndex(scope) {
+        this.rootScope = scope;
+        this.rootScope.main = {subMenus: []};
+        this.viewMap = {currentFeatureId: ""};
+    };
+    PlanxIndex.prototype.layout = {
+        showAll: function (options) {
+        },
+        hideLeft: function () {
+        },
+        hideRight: function () {
+        }
+    }
+
+    //主页面控制器，构造全局的控制模型
+    var mainController = function ($scope, $location, $rootScope) {
+        $rootScope.language = "zh_CN";
+        if(window.LosNailActivity){
+            $rootScope.language = window.LosNailActivity.getLanguage();
+        }
+        planx = new PlanxIndex($scope.$parent);
+
+        $scope.clickMainMenu = function (path, module,feature,$event) {
+            YILOS.startTime = (new Date()).getTime();
+            $("#header .nav>li").removeClass("selected");
+            $($event.target).closest("li").addClass("selected");
+
+            //如果超时，提示用户输入密码
+            if(global.setting.lockable && path =="/m-setting/setting"){
+                global.eventEmitter.emitEvent('client.password.lock');
+            }else{
+                global.eventEmitter.emitEvent('client.password.disablelock');
+            }
+            $location.path(path);
+        }
+        $rootScope.backto = function(url){
+            $location.path(url);
+        }
+    };
+
+    window.activeLoadingFinished = false;
+    seajs.config({
+        base: "../../"
+    });
+    //seajs初始化
+    seajs.use(['./main.js', 'mframework/static/package.js',
+        'm-widgets/static/package.js'], function (main, framework,  widgets) {
+        framework.utils.global.enterpriseId  = $.cookie('enterpriseId');
+        framework.utils.global.username  = $.cookie('username');
+        framework.utils.global.userId  = $.cookie('userId');
+        widgets.init();
+        $.i18n.init({
+            lng: YILOS.LANGUAGE,
+            fallbackLng:false,
+            ns: { namespaces: ['resource'], defaultNs: 'resource'},
+            useLocalStorage: false,
+            debug: false
+        }, function() {
+            main.init();
+        });
+    });
+
+    /**
+     * 初始化测试数据
+     */
+    function initTestData(){
+        seajs.use(['./mock/mockData.js'], function (mock_data) {
+            mock_data.init();
+        });
+    }
+
+    //用例数据初始化完成
+    function guideDataInitFinish() {
+        global.eventEmitter.emitEvent("guideData.checkout.finish");
+    }
+
+    $(function () {
+        $("#client-lock-pwd .button-calculator").bind('touchstart',function(){
+            var num = this.dataset["num"];
+            if(num == "-1"){
+                for(var i=4;i>0;i--){
+                    if($("#pwd-"+i).val()){
+                        $("#pwd-"+i).val("");
+                        return;
+                    }
+                }
+            }
+            else if(num == "setting"){
+                var pwd = "";
+                for(var i=1;i<=4;i++){
+                    if($("#pwd-"+i).val()){
+                        pwd += $("#pwd-"+i).val();
+
+                    }
+                }
+                //设置客户端密码
+                global.eventEmitter.emitEvent('client.password.setting',[pwd]);
+            }
+            else if(num == "ok"){
+                var pwd = "";
+                //比较数据,解锁
+                for(var i=1;i<=4;i++){
+                    if($("#pwd-"+i).val()){
+                        pwd += $("#pwd-"+i).val();
+
+                    }
+                }
+                global.eventEmitter.emitEvent('client.password.unlock',[pwd]);
+            }else{
+                $("#client-lock-pwd>div>ul>li input").each(function(i){
+                    if(!$(this).val()){
+                        $(this).val(num)
+                        var pwd = "";
+                        for(var i=1;i<=4;i++){
+                            if($("#pwd-"+i).val()){
+                                pwd += $("#pwd-"+i).val();
+                            }
+                        }
+                        if($("#client-lock-pwd-setting").is(":hidden") && pwd.length == 4 ){
+                            global.eventEmitter.emitEvent('client.password.unlock',[pwd]);
+                        }
+                        return false;
+                    }
+                });
+            }
+
+        });
+    });
+
+    function validateAccessToken(){
+        var locationhash = window.location.hash;
+        if(locationhash.indexOf("#/")==0){
+            locationhash = locationhash.replace("#/","");
+        }
+        var  hash_data={
+        };
+        $.each(locationhash.replace("#", "").split("&"), function (i, value) {
+                    value = value.split("=");
+                    if(!hash_data[value[0]]){
+                        hash_data[value[0]] = [];
+                    }
+                    hash_data[value[0]].push( value[1]);
+                }
+        );
+        if($.cookie('accessToken')){
+            ENV.access_token = $.cookie('accessToken');
+        }
+        if(hash_data["access_token"]){
+            $.cookie('accessToken',hash_data["access_token"][0]);
+            ENV.access_token = hash_data["access_token"][0];
+        }
+
+        if(ENV.access_token){
+            //校验token有效性，如果无效跳转登陆界面
+            $.ajax({
+                type: "GET",
+                url: global["_g_server"].authurl+"/oauth/validate",
+                dataType:"json",
+                headers: {
+                    "Authorization":"Bearer "+$.cookie('accessToken')
+                },
+                success: function(response,status,xhr){
+                    //设置全局对象
+                    $.cookie('enterpriseId',response.enterpriseId)
+
+                    $.cookie('userId',response.userId)
+
+                    $.cookie('username',response.username)
+
+                    $(".search-global .badge .username").html(response.username);
+                },
+                error: function(xhr, textStatus, errorThrown) {
+                    if(xhr.status == 401){
+                        window.location.href=global["_g_server"].staticurl+"/portal/index.html"
+                    }
+                }
+            });
+        }else{
+            //跳转登陆界面
+            window.location.href=global["_g_server"].staticurl+"/portal/index.html"
+        }
+    }
+
+</script>
+</body>
+</html>

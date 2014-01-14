@@ -1,0 +1,67 @@
+<div id="m-setting-backup-area" class="featureSpace">
+
+    <style type="text/css">
+        #m-setting-backup-area {
+            text-align: center;
+            background: #ededed url("imgs/bg-line.png") center repeat;
+        }
+
+        #setting-backup-area {
+            padding: 6rem;
+            position: relative;
+            display: inline-block;
+            margin: auto;
+        }
+
+        #setting-backup-area>div>ul {
+            padding: 0.5rem;
+            width: 25rem;
+            text-align: left;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        #setting-backup-area ul>li {
+            display: inline-block;
+            vertical-align: middle;
+            text-align: left;
+        }
+
+    </style>
+    <div class="m-setting-title">
+        <ul>
+            <li style="float: left;">
+                <a ng-tap="backto('/m-setting/setting')">
+                    <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+                </a>
+                <span style="font-size: 1.4rem;">
+                    <%= setting.backup.system_backup %>
+                </span>
+
+            </li>
+        </ul>
+    </div>
+    <div id="setting-backup-area">
+        <div class="fs-20 mainColor-1 mb-5">
+            {{tips}}
+        </div>
+        <div id="setting-backup-tocloud" class="inlinebl mr-2" ng-tap="backup()">
+            <ul style="border: 1px solid #d0d0d0">
+                <span class="cloudup-icon"></span>
+                <li class="ml-2">
+                    <div class="fs-20 mt-1 mainColor-1"> <%= setting.backup.backup_local_data %></div>
+                    <div class="font-color-message"> <%= setting.backup.upload_local_data %></div>
+                </li>
+            </ul>
+        </div>
+        <div id="setting-backup-tolocal" class="inlinebl" ng-tap="resume()">
+            <ul style="border: 1px solid #d0d0d0">
+                <span class="clouddown-icon"></span>
+                <li class="ml-2">
+                    <div class="fs-20 mt-1 mainColor-1"> <%= setting.backup.recover_data %></div>
+                    <div class="font-color-message"> <%= setting.backup.download_cloud_data %></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

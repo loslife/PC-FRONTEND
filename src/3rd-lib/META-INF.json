@@ -1,0 +1,33 @@
+{
+    "interface": {
+        "services": {
+
+        },
+        "sdk": {
+
+        },
+        "url": {
+
+        },
+        "fragment": {
+
+        }
+    },
+    "services": [
+    ],
+    "statics": [
+        {
+            "name": "3rd-lib",
+            "path": "/3rd-lib",
+            "dir": "/",
+            "comment": ""
+        }
+    ],
+    "dataModelSchema": {
+
+    },
+    "configuration": {
+
+    }
+
+}

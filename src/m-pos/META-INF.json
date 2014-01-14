@@ -1,0 +1,32 @@
+{
+    "interface": {
+        "services": {
+
+        },
+        "sdk": {
+
+        },
+        "url": {
+
+        },
+        "fragment": {
+
+        }
+    },
+    "services":[
+    ],
+    "statics": [
+        {
+            "name": "m-pos",
+            "path": "/m-pos",
+            "comment": ""
+        }
+    ],
+    "dataModelSchema": {
+
+    },
+    "configuration": {
+
+    }
+
+}

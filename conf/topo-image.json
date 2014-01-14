@@ -1,0 +1,48 @@
+{
+    "env": "image",
+    "cluster": [
+        {
+            "name": "baseService",
+            "ip": "192.168.1.111",
+            "port": 8080,
+            "protocol": "http",
+            "baseurl": "http://192.168.1.111:8080/svc",
+            "workerno": 1,
+            "applications": [
+                "uiframework",
+                "portal",
+                "auth",
+                "billing",
+                "graph",
+                "admin",
+                "backup",
+                "widgets",
+                "sms",
+                "nail",
+                "enterprise"
+            ]
+        }
+    ],
+    "dataServer": {
+        "mysql": {
+            "ip": "192.168.1.111",
+            "port": 3306,
+            "user": "root",
+            "password": "yilos_mysql"
+        },
+        "mongodb": {
+            "ip": "192.168.1.111",
+            "port": "2222",
+            "connectionurl": "192.168.1.111:2222",
+            "user": "",
+            "password": ""
+        }
+    },
+    "clientAccess": {
+        "staticurl": "http://192.168.1.111",
+        "authurl": "http://192.168.1.111/svc",
+        "serviceurl": "http://192.168.1.111/svc",
+        "uploadurl": "http://192.168.1.111/svc/file-upload"
+    },
+    "ip-whitelist": ["127.0.0.1", "localhost", "www.yilos.com", "192.168.1.111", "192.168.1.118"]
+}

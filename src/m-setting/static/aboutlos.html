@@ -1,0 +1,94 @@
+<div id="m-setting-aboutlos-area" class="featureSpace">
+    <style>
+        #m-setting-aboutlos-area{
+            background: #ededed url("imgs/bg-line.png") center repeat;
+        }
+        .m-aboutlos-content{overflow: auto;}
+        .m-aboutlos-content>div:first-child{ font-size: 2rem; color: #565656; min-width: 4rem; text-align: center;}
+        .m-aboutlos-detail {padding-left: 2rem; padding-right: 2rem; text-indent: 2em; font-size: 1.2rem;}
+        .m-setting-about-los>div:last-child ul li { height: 4.166666666666rem;
+            border: 1px solid #d0d0d0;
+            line-height: 4.166666666666rem;
+            background-color: #fff;
+            border-radius: 0.416666rem;
+            padding-left: 1.5rem;
+            margin-top: 1rem;
+            display: inline-block;
+            width:46.5%;
+            color:#565656;
+            font-size: 1.4rem;}
+        .version-update-img{
+            height: 2.66rem; vertical-align: middle; margin-top: -0.5rem;
+            display: none;
+        }
+    </style>
+    <div class="m-setting-about-los " ng-style="action=='aboutlos'?{}:{'display':'none'}">
+        <div class="m-setting-title">
+            <ul>
+                <li style="float: left;">
+                    <a ng-tap="backto('/m-setting/setting')">
+                        <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+                    </a>
+                    <span style="font-size: 1.4rem;">
+                        <%= setting.aboutlos.aboutlos %>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="m-aboutlos-content m-setting-form-bg" style="width: 92.5%;">
+            <div class="mt-2"><%= setting.aboutlos.aboutlos %></div>
+            <div class="m-aboutlos-detail">
+                <p><%= setting.aboutlos.paragraph_one %></p>
+                <p><%= setting.aboutlos.paragraph_two %></p>
+                <p><%= setting.aboutlos.paragraph_three %></p>
+                <p><%= setting.aboutlos.paragraph_four %></p>
+            </div>
+            <div class="inlinebl ml-3 mt-1" style=" width:23%; font-size: 1.2rem">
+                <img src="imgs/qq-icon.png" style="vertical-align: middle; margin-top: -0.3rem; width: 1.6rem; height: 1.6rem">
+                <%= setting.aboutlos.customer_service %>QQ：1994714502</div>
+            <div class="inlinebl" style=" width:28%; font-size: 1.2rem">
+                <img src="imgs/icon-tele.png" style="vertical-align: middle; margin-top: -0.3rem; width: 1.6rem; height: 1.6rem">
+                <%= setting.aboutlos.customer_service_phone %>：0755-28890800
+            </div>
+            <div class="inlinebl" style=" width:28%; font-size: 1.2rem">
+                <img src="imgs/icon-compass.png" style="vertical-align: middle; margin-top: -0.3rem; width: 1.6rem; height: 1.6rem">
+                <%= setting.aboutlos.website %>：www.yilos.com
+            </div>
+        </div>
+         <div id="suggestion-feed">
+            <ul class="ml-2 mt-2">
+                <li ng-tap="suggestion()"><%= setting.aboutlos.feedback %><i class="icon-angle-right fr mt-1 mr-1" style="font-size: 1.8rem;"></i></li>
+                <li ng-tap="checkNewVersion()"><%= setting.aboutlos.version_update %>
+                    <img src="imgs/update-caution-icon.png" class="version-update-img" style="">
+                    <i class="icon-angle-right fr mt-1 mr-1" style="font-size: 1.8rem;"></i><span class="fr">{{versionName}}</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="m-aboutlos-suggestion" id="m-aboutlos-suggestion"  ng-style="action=='suggestion'?{}:{'display':'none'}">
+        <div class="m-setting-title">
+            <ul>
+                <li style="float: left;" id="m-replace-area" >
+                        <a ng-tap="backIndex()">
+                            <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+                        </a>
+                    <span style="font-size: 1.4rem;">
+                        <%= setting.aboutlos.feedback %>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="m-area-msg" style=""></div>
+        <div class="m-setting-form-bg" style="padding-bottom: 2rem; overflow: hidden;">
+            <div class="" style="margin: 0 1rem;">
+                <div class="caption inlinebl font-color-message">
+                    <%= setting.aboutlos.feedback_detail %>
+                </div>
+                <div class="ml-1 mr-1" style="padding-right: 0.5rem;">
+                <textarea ng-model="feedback" style="padding-top: 0;font-size: 1.2rem;border-radius: 0.416666rem;width:100%; min-height: 7rem; border-color:#d0d0d0">
+                </textarea>
+                </div>
+            </div>
+            <div class="m-button-pink mr-2 mt-1 inlinebl fr" style="" ng-tap="sendFeedback()"><span><%= setting.aboutlos.send %></span></div>
+        </div>
+    </div>
+</div>

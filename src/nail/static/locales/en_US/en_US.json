@@ -1,0 +1,22 @@
+{
+    "common":{
+        "sys":{
+            "title":"YilosLife"
+        },
+        "label":{
+            "confirm":"确定",
+            "setting":"设置"
+        }
+    },
+    "nail": {
+        "menu": {
+            "checkout":"收银",
+            "member":"会员",
+            "show":"秀",
+            "admin":"管理台"
+        }
+    },
+    "setting":{
+        "aboutlos":"关于乐斯"
+    }
+}

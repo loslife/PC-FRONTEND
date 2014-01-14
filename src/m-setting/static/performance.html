@@ -1,0 +1,713 @@
+<div id="m-setting-performance-area" class="featureSpace">
+<style type="text/css">
+
+
+.report-data {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.time-condition {
+    height: 10%;
+    max-height: 5rem;
+    position: relative;
+}
+
+.time-condition>div {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.time-condition {
+
+}
+
+.time-day-select {
+    position: relative;
+    top: 6px;
+}
+
+.time-day-select>span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.time-day-select .text {
+    text-align: center;
+    width: 18rem;
+    font-size: 1.4rem;
+    color: #565656;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-bottom: 1px solid #d0d0d0;
+    border-top: 1px solid #d0d0d0;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    background-color: #f7f7f7;
+}
+
+.time-day-select .prev, .time-day-select .next {
+    width: 3.5rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    text-align: center;
+    display: inline-block;
+    background-color: #bd438e;
+    border-bottom: 1px solid #bd438e;
+    border-top: 1px solid #bd438e;
+    color: #fff;
+    font-size: 2.5rem;
+}
+
+.time-day-select .prev>i, .time-day-select .next>i {
+    position: relative;
+    top: -1px;
+}
+
+.time-day-select .disable {
+    border-bottom: 1px solid #d0d0d0;
+    border-top: 1px solid #d0d0d0;
+    background-color: #eeeeee;
+    color:#d0d0d0;
+}
+
+.report-content {
+    height: 90%;
+}
+
+.report-content  .report-total {
+    width: 34.382%;
+    height: 100%;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.report-total .total {
+    padding-top: 1rem;
+    color: #ff3101;
+    font-size: 4.5rem;
+    letter-spacing: 0.1rem;
+    line-height: 7.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.report-content .report-chart {
+    width: 65.618%;
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.report-type-detail {
+    position: relative;
+    height: 72%;
+    /**overflow: hidden;**/
+    overflow: hidden;
+}
+
+.report-type-detail>div {
+    height: 100%;
+}
+
+.report-type-summary {
+    height: 28%;
+    bottom: 0px;
+    right: 0px;
+}
+
+.report-type-summary>ul {
+    height: 90%;
+}
+
+.report-item-summary {
+    width: 22.5%;
+    height: 100%;
+    margin-right: 1rem;
+    background-color: #f7f7f7;
+    border: 1px solid #e3e3e3;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.report-item-summary.selected {
+    background-color: #4ea8a9;
+    color: #fff;
+}
+
+.report-item-summary>.title {
+    font-size: 1.2rem;
+    display: block;
+    padding-top: 1rem;
+    padding-left: 2rem;
+}
+
+.report-item-summary>.current {
+    font-size: 1.6rem;
+    display: block;
+    padding-top: 1.5rem;
+    padding-left: 4.5rem;
+    letter-spacing: 2px;
+}
+
+.report-item-summary>.prev {
+    padding-right: 2rem;
+    padding-top: 1.5rem;
+    text-align: right;
+    display: block;
+    color: #fff;
+}
+
+.report-item-summary>.prev-rate {
+    display: block;
+    text-align: right;
+    padding-right: 2rem;
+
+}
+
+.up .icon-play {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    filter: progidXImageTransform.Microsoft.BasicImage(rotation=3);
+    color: #ff3101;
+    font-size: 1.6rem;
+    margin-left: 4rem;
+}
+
+.down .icon-play {
+    -webkit-transform: rotate(-270deg);
+    -moz-transform: rotate(-270deg);
+    filter: progidXImageTransform.Microsoft.BasicImage(rotation=3);
+    color: #00ff00;
+    font-size: 1.6rem;
+    margin-left: 4rem;
+}
+
+.report-item-summary.up .prev, .report-item-summary.up .prev-rate {
+    color: #ff3101;
+
+}
+
+.report-item-summary.down .prev, .report-item-summary.down .prev-rate {
+    color: #00ff00;
+
+}
+
+.report-total .detail-item {
+    line-height: 2rem;
+    color: #fff;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: right;
+}
+
+.report-total>ul {
+    position: relative;
+    text-align: left;
+    display: inline-block;
+}
+
+.report-total .top1>img {
+    width: 2.3333rem;
+    height: 2.3333rem;
+}
+
+.report-total .top2>img {
+    width: 1.8rem;
+    height: 1.8rem;
+}
+
+.report-total .top3>img {
+    width: 1.6rem;
+    height: 1.6rem;
+}
+
+.report-total .top1>.value {
+    font-size: 1.5rem;
+}
+
+.report-total .top2>.value {
+    font-size: 1.3333rem;
+}
+
+.report-total .top3>.value {
+    font-size: 1.2rem;
+}
+
+.report-total .top1 {
+    font-size: 1.6rem;
+}
+
+.report-total .top2 {
+    font-size: 1.4rem;
+}
+
+.report-total .top3 {
+    font-size: 1.2rem;
+}
+
+#report-employee  .detail-item>.type {
+    display: inline-block;
+    margin-right: 1.5rem;
+    vertical-align: middle;
+}
+
+#report-employee  .detail-item>.name {
+    display: inline-block;
+    margin-right: 2rem;
+    vertical-align: middle;
+}
+
+#report-employee  .detail-item>.value {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#report-employee  .detail-item>img {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+}
+
+#report-operate .detail-item {
+    font-size: 1.4rem;
+    text-align: left;
+}
+
+#report-operate .detail-item .compare {
+    font-size: 1rem;
+}
+
+#report-consumer .report-total {
+    display: block;
+    height: auto;
+    width: 100%;
+    text-align: left;
+}
+
+#report-consumer .report-chart {
+    display: block;
+    width: 100%;
+
+}
+
+#report-consumer .detail-item {
+    text-align: left;
+}
+
+#report-consumer .detail-item .all {
+    font-size: 3.3rem;
+    color: #565656;
+}
+
+#report-consumer .detail-item .member, #report-consumer .detail-item .temp {
+    font-size: 1.6rem;
+    padding: 0.5rem;
+}
+
+#report-consumer .detail-item .member {
+    font-size: 2.2rem;
+    padding-bottom: 0.4rem;
+}
+
+#report-consumer .all>.num, #report-consumer .member>.num, #report-consumer .temp>.num {
+    color: #ff3101;
+}
+
+.up .compare {
+    color: #ff3101;
+    text-align: right;
+}
+
+.down .compare {
+    color: #00ff00;
+    text-align: right;
+}
+
+@media screen and (max-height: 640px) {
+    .report-item-summary>.current {
+        padding-top: 0.5rem;
+    }
+
+    .report-item-summary>.prev {
+        padding-top: 0.5rem;
+    }
+
+    .report-total  .detail-item {
+        padding-bottom: 0.5rem;
+        line-height: 1.6rem
+    }
+
+    #report-operate .detail-item {
+        padding-bottom: 0.5rem;
+    }
+
+    .report-total .total {
+        font-size: 4rem;
+        padding-bottom: 0rem;
+        line-height: 6rem;
+    }
+}
+
+    /*.bg-color-one{background-color: #0080ff;}
+    .bg-color-two{background-color: #1688fa;}
+    .bg-color-three{background-color: #3399ff;}
+    .bg-color-four{background-color: #68b4ff;}*/
+.bg-color-one {
+    background-color: #499e9f;
+}
+
+.bg-color-two {
+    background-color: #4ea8a9;
+}
+
+.bg-color-three {
+    background-color: #56bbbc;
+}
+
+.bg-color-four {
+    background-color: #5ecdce;
+}
+.performance-left{
+    width: 9rem !important;
+}
+.day-performance-left{
+     background: url("imgs/day-performance.png");
+     background-size: 1.4rem 1.4rem;
+     width: 1.4rem !important;
+     height: 1.4rem !important;
+     vertical-align: middle;
+     margin-left: 1rem;
+     display: inline-block;
+     position: relative !important;
+     margin-right: 0.1rem;
+     margin-top: -0.2rem;
+ }
+
+.day-performance-left-pink{
+    background: url("imgs/day-performance-pink.png");
+    background-size: 1.4rem 1.4rem;
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+    vertical-align: middle;
+    margin-left: 1rem;
+    display: inline-block;
+    position: relative !important;
+    margin-right: 0.1rem;
+    margin-top: -0.2rem;
+}
+.week-performance-left{
+    background: url("imgs/week-performance.png");
+    background-size: 1.4rem 1.4rem;
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+    vertical-align: middle;
+    margin-left: 1rem;
+    display: inline-block;
+    position: relative !important;
+    margin-right: 0.1rem;
+    margin-top: -0.2rem;
+}
+
+.week-performance-left-pink{
+    background: url("imgs/week-performance-pink.png");
+    background-size: 1.4rem 1.4rem;
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+    vertical-align: middle;
+    margin-left: 1rem;
+    display: inline-block;
+    position: relative !important;
+    margin-right: 0.1rem;
+    margin-top: -0.2rem;
+}
+.month-performance-left{
+    background: url("imgs/month-performance.png");
+    background-size: 1.4rem 1.4rem;
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+    vertical-align: middle;
+    margin-left: 1rem;
+    display: inline-block;
+    position: relative !important;
+    margin-right: 0.1rem;
+    margin-top: -0.2rem;
+}
+
+.month-performance-left-pink{
+    background: url("imgs/month-performance-pink.png");
+    background-size: 1.4rem 1.4rem;
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+    vertical-align: middle;
+    margin-left: 1rem;
+    display: inline-block;
+    position: relative !important;
+    margin-right: 0.1rem;
+    margin-top: -0.2rem;
+}
+
+
+</style>
+
+<div class="m-setting-title">
+    <ul>
+        <li style="float: left;">
+            <a ng-tap="backto('/m-setting/setting')">
+                <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+            </a>
+                <span style="font-size: 1.4rem;">
+                    <%= setting.performance.analysis_report %>
+                </span>
+
+        </li>
+    </ul>
+</div>
+<div class="m-two-column-area">
+<div class="left performance-left">
+    <ul class="left-nav">
+        <li ng-class="chartMenuType=='day'?'selected':''" ng-tap="clickNavMenu('day',$event)"
+            id="performance-total-menu" data-tag="report-service">
+            <div ng-class="chartMenuType=='day'?'selected':''"></div>
+            <div ng-class="chartMenuType=='day'?'day-performance-left-pink':'day-performance-left'"></div>
+            <span><%= setting.performance.day_performance %></span>
+        </li>
+        <li ng-class="chartMenuType=='week'?'selected':''" id="performance-service-menu"
+            ng-tap="clickNavMenu('week',$event)" data-tag="report-service">
+            <div ng-class="chartMenuType=='week'?'selected':''" ></div>
+            <div ng-class="chartMenuType=='week'?'week-performance-left-pink':'week-performance-left'"></div>
+            <span><%= setting.performance.week_performance %></span>
+        </li>
+        <li ng-class="chartMenuType=='month'?'selected':''" id="performance-card-menu"
+            ng-tap="clickNavMenu('month',$event)" data-tag="report-card">
+            <div ng-class="chartMenuType=='month'?'selected':''" ></div>
+            <div ng-class="chartMenuType=='month'?'month-performance-left-pink':'month-performance-left'"></div>
+            <span><%= setting.performance.month_performance %></span>
+        </li>
+    </ul>
+</div>
+<div class="right">
+    <div id="performance-day" class="report-data" style="display: none;">
+        <div class="time-condition"></div>
+        <div class="report-content"></div>
+    </div>
+
+    <div id="performance-week" class="report-data">
+        <div class="time-condition">
+            <div style="height: 100%;"></div>
+            <div class="time-day-select setting-day" ng-if="chartMenuType=='day'">
+                <span class="prev" ng-tap="prevDay()"><i class="icon-angle-left"></i></span><span class="text">{{dayCondition.year}}<%= setting.performance.year %>{{dayCondition.month+1}}<%= setting.performance.month %>{{dayCondition.date}}<%= setting.performance.day %></span><span
+                    class="next" ng-tap="nextDay($event)"><i class="icon-angle-right"></i></span>
+            </div>
+            <div class="time-day-select setting-week" ng-if="chartMenuType=='week'">
+                <span class="prev" ng-tap="prevWeek()"><i class="icon-angle-left"></i></span><span class="text">{{weekCondition.year_weekStart}}<%= setting.performance.year %>{{weekCondition.month_weekStart+1}}<%= setting.performance.month %>{{weekCondition.date_weekStart}}<%= setting.performance.day %>-<span
+                    ng-if="weekCondition.year_weekEnd!=weekCondition.year_weekStart">{{weekCondition.year_weekEnd}}<%= setting.performance.year %></span><span
+                    ng-if="weekCondition.month_weekEnd!=weekCondition.month_weekStart">{{weekCondition.month_weekEnd+1}}<%= setting.performance.month %></span>{{weekCondition.date_weekEnd}}<%= setting.performance.day %></span><span
+                    class="next" ng-tap="nextWeek($event)"><i class="icon-angle-right"></i></span>
+            </div>
+            <div class="time-day-select setting-month" ng-if="chartMenuType=='month'">
+                <span class="prev" ng-tap="prevMonth()"><i class="icon-angle-left"></i></span><span class="text">{{monthCondition.year}}<%= setting.performance.year %>{{monthCondition.month+1}}<%= setting.performance.month %></span><span
+                    class="next" ng-tap="nextMonth($event)"><i class="icon-angle-right"></i></span>
+            </div>
+        </div>
+        <div class="report-content">
+            <div class="report-type-detail page-container">
+                <div id="report-operate" class="page">
+                    <ul class="report-total">
+                        <li class="total"><cite style="margin-right: 0.4rem">￥</cite>{{viewData.report_operate.total.all|toFixed:2}}
+                        </li>
+                        <ul>
+                            <li class="detail-item top1 bg-color-one"
+                                ng-class="viewData.report_operate.compare_prev.cash_consume.value>=0?'up':'down'">
+                                <i class="icon-play ml-1"></i>
+                                <cite class="type"><%= setting.performance.currency_performance %></cite>
+                                <cite class="name">￥{{viewData.report_operate.total_detail.cash_consume|toFixed:2}}</cite>
+
+                                <div class="compare">
+                                    <cite class="value" ng-if="chartMenuType=='day'"><%= setting.performance.than_yesterday %></cite>
+                                    <cite class="value" ng-if="chartMenuType=='week'"><%= setting.performance.than_last_week %></cite>
+                                    <cite class="value" ng-if="chartMenuType=='month'"><%= setting.performance.than_last_month %></cite>
+                                    <cite class="value">:</cite>
+                                    <cite class="value">￥{{viewData.report_operate.compare_prev.cash_consume.value|toFixed:2}}
+                                        {{viewData.report_operate.compare_prev.cash_consume.rate}}%</cite>
+                                </div>
+                            </li>
+                            <li class="detail-item top1 bg-color-two"
+                                ng-class="viewData.report_operate.compare_prev.card_consume.value>=0?'up':'down'">
+                                <i class="icon-play ml-1"></i>
+                                <cite class="type"><%= setting.performance.card_performance %></cite>
+                                <cite class="name">￥{{viewData.report_operate.total_detail.card_consume|toFixed:2}}</cite>
+
+                                <div class="compare">
+                                    <cite class="value" ng-if="chartMenuType=='day'"><%= setting.performance.than_yesterday %></cite>
+                                    <cite class="value" ng-if="chartMenuType=='week'"><%= setting.performance.than_last_week %></cite>
+                                    <cite class="value" ng-if="chartMenuType=='month'"><%= setting.performance.than_last_month %></cite>
+                                    <cite class="value">:</cite>
+                                    <cite class="value">￥{{viewData.report_operate.compare_prev.card_consume.value}}
+                                        {{viewData.report_operate.compare_prev.card_consume.rate}}%</cite>
+                                </div>
+                            </li>
+                            <li class="detail-item top1 bg-color-three"
+                                ng-class="viewData.report_operate.compare_prev.card_new.value>=0?'up':'down'">
+                                <i class="icon-play ml-1"></i>
+                                <cite class="type"><%= setting.performance.new_card_performance %></cite>
+                                <cite class="name">￥{{viewData.report_operate.total_detail.card_new}}</cite>
+
+                                <div class="compare">
+                                    <cite class="value" ng-if="chartMenuType=='day'"><%= setting.performance.than_yesterday %></cite>
+                                    <cite class="value" ng-if="chartMenuType=='week'"><%= setting.performance.than_last_week %></cite>
+                                    <cite class="value" ng-if="chartMenuType=='month'"><%= setting.performance.than_last_month %></cite>
+                                    <cite class="value">:</cite>
+                                    <cite class="value">￥{{viewData.report_operate.compare_prev.card_new.value|toFixed:2}}
+                                        {{viewData.report_operate.compare_prev.card_new.rate}}%</cite>
+                                </div>
+                            </li>
+                            <li class="detail-item top1 bg-color-four"
+                                ng-class="viewData.report_operate.compare_prev.card_recharge.value>=0?'up':'down'">
+                                <i class="icon-play ml-1"></i>
+                                <cite class="type"><%= setting.performance.recharge_card_performance %></cite>
+                                <cite class="name">￥{{viewData.report_operate.total_detail.card_recharge|toFixed:2}}</cite>
+
+                                <div class="compare">
+                                    <cite class="value" ng-if="chartMenuType=='day'"><%= setting.performance.than_yesterday %></cite>
+                                    <cite class="value" ng-if="chartMenuType=='week'"><%= setting.performance.than_last_week %></cite>
+                                    <cite class="value" ng-if="chartMenuType=='month'"><%= setting.performance.than_last_month %></cite>
+                                    <cite class="value">:</cite>
+                                    <cite class="value">￥{{viewData.report_operate.compare_prev.card_recharge.value|toFixed:2}}
+                                        {{viewData.report_operate.compare_prev.card_recharge.rate}}%</cite>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </ul><ul class="report-chart">
+                    </ul>
+                </div>
+
+                <div id="report-employee" class="page stage-right">
+                    <ul class="report-total">
+                        <li class="total"><cite style="margin-right: 0.4rem">￥</cite>{{viewData.report_employee.total.all|toFixed:2}}
+                        </li>
+                        <ul>
+                            <li class="detail-item fr top1 bg-color-two" style="width: 90%">
+                                <cite class="type">Top1:</cite>
+                                <cite class="name">{{report_total_employee.top_1.name}}</cite>
+                                <cite class="value">￥{{report_total_employee.top_1.value|toFixed:2}}</cite>
+                            </li>
+                            <li class="detail-item fr top2 bg-color-three" style="width: 81%">
+                                <cite class="type">Top2:</cite>
+                                <cite class="name">{{report_total_employee.top_2.name}}</cite>
+                                <cite class="value">￥{{report_total_employee.top_2.value|toFixed:2}}</cite>
+                            </li>
+                            <li class="detail-item fr top3 bg-color-four" style="width:71%">
+                                <cite class="type">Top3:</cite>
+                                <cite class="name">{{report_total_employee.top_3.name}}</cite>
+                                <cite class="value">￥{{report_total_employee.top_3.value|toFixed:2}}</cite>
+                            </li>
+                        </ul>
+
+                    </ul><ul class="report-chart">
+                    </ul>
+                </div>
+
+                <div id="report-service" class="page stage-right">
+                    <ul class="report-total">
+                        <li class="total"><cite style="margin-right: 0.4rem">￥</cite>{{viewData.report_service.total.all|toFixed:2}}
+                        </li>
+                        <ul>
+                            <li class="detail-item top1 fr bg-color-two" style="width: 90%">
+                                <cite class="type">Top1:</cite>
+                                <cite class="name">{{report_total_service.top_1.name}}</cite>
+                                <cite class="value">￥{{report_total_service.top_1.value|toFixed:2}}</cite>
+                            </li>
+                            <li class="detail-item top2 fr bg-color-three" style="width: 81%">
+                                <cite class="type">Top2:</cite>
+                                <cite class="name">{{report_total_service.top_2.name}}</cite>
+                                <cite class="value">￥{{report_total_service.top_2.value|toFixed:2}}</cite>
+                            </li>
+                            <li class="detail-item top3 fr bg-color-four" style="width: 71%">
+                                <cite class="type">Top3:</cite>
+                                <cite class="name">{{report_total_service.top_3.name}}</cite>
+                                <cite class="value">￥{{report_total_service.top_3.value|toFixed:2}}</cite>
+                            </li>
+                        </ul>
+
+                    </ul><ul class="report-chart">
+                    </ul>
+                </div>
+
+                <div id="report-consumer" class="page stage-right">
+                    <ul class="report-total">
+                        <li class="detail-item ">
+                            <span class="all mr-3"><cite class="num">{{viewData.report_consumer.consumer.memberNo+viewData.report_consumer.consumer.tempNo}}</cite><%= setting.performance.client_number %></span>
+                            <span class="member bg-color-three"><%= setting.performance.member %><cite class="num">{{viewData.report_consumer.consumer.memberNo}}</cite><%= setting.performance.client_number %></span><span
+                                class="temp bg-color-four">
+                                    <%= setting.performance.not_member %><cite class="num">{{viewData.report_consumer.consumer.tempNo}}</cite><%= setting.performance.client_number %></span>
+                        </li>
+                    </ul><ul class="report-chart">
+                    </ul>
+                </div>
+            </div>
+
+            <div class="report-type-summary mt-1">
+                <ul>
+                    <li ng-tap="switchReportType('operate')" id="report-menu-operate"
+                        class="report-item-summary selected " data-kpi="operate"
+                        ng-class="viewData.report_operate.compare_prev.total.value>=0?'up':'down'">
+                        <span class="title"><%= setting.performance.manage_performance %><i class="icon-play"></i></span>
+                        <span class="current">￥{{viewData.report_operate.total.all|toFixed:2}}</span>
+                        <span class="prev" ng-if="chartMenuType=='day'"><%= setting.performance.than_yesterday %>:￥{{viewData.report_operate.compare_prev.total.value}}</span>
+                        <span class="prev" ng-if="chartMenuType=='week'"><%= setting.performance.than_last_week %>:￥{{viewData.report_operate.compare_prev.total.value}}</span>
+                        <span class="prev" ng-if="chartMenuType=='month'"><%= setting.performance.than_last_month %>:￥{{viewData.report_operate.compare_prev.total.value}}</span>
+
+                        <span class="prev-rate">{{viewData.report_operate.compare_prev.total.rate}}%</span>
+                    </li>
+                    <li ng-tap="switchReportType('employee')" id="report-menu-employee"
+                        class="report-item-summary " data-kpi="employee"
+                        ng-class="viewData.report_operate.compare_prev.total.value>=0?'up':'down'">
+                        <span class="title"><%= setting.performance.employee_performance %><i class="icon-play"></i></span>
+                        <span class="current">￥{{viewData.report_employee.total.all|toFixed:2}}</span>
+                        <span class="prev" ng-if="chartMenuType=='day'" ><%= setting.performance.than_yesterday %>:￥{{viewData.report_employee.compare_prev.total.value}}</span>
+                        <span class="prev" ng-if="chartMenuType=='week'"><%= setting.performance.than_last_week %>:￥{{viewData.report_employee.compare_prev.total.value}}</span>
+                        <span class="prev" ng-if="chartMenuType=='month'"><%= setting.performance.than_last_month %>:￥{{viewData.report_employee.compare_prev.total.value}}</span>
+                        <span class="prev-rate">{{viewData.report_employee.compare_prev.total.rate}}%</span>
+                    </li>
+                    <li ng-tap="switchReportType('service')" id="report-menu-service"
+                        class="report-item-summary " data-kpi="service"
+                        ng-class="viewData.report_operate.compare_prev.total.value>=0?'up':'down'">
+                        <span class="title"><%= setting.performance.service_performance %><i class="icon-play"></i></span>
+                        <span class="current">￥{{viewData.report_service.total.all|toFixed:2}}</span>
+                        <span class="prev" ng-if="chartMenuType=='day'"><%= setting.performance.than_yesterday %>:￥{{viewData.report_service.compare_prev.total.value}}</span>
+                        <span class="prev" ng-if="chartMenuType=='week'"><%= setting.performance.than_last_week %>:￥{{viewData.report_service.compare_prev.total.value}}</span>
+                        <span class="prev" ng-if="chartMenuType=='month'"><%= setting.performance.than_last_month %>:￥{{viewData.report_service.compare_prev.total.value}}</span>
+                        <span class="prev-rate">{{viewData.report_service.compare_prev.total.rate}}%</span>
+                    </li>
+                    <li ng-tap="switchReportType('consumer')" id="report-menu-consumer"
+                        class="report-item-summary " data-kpi="consumer"
+                        ng-class="viewData.report_operate.compare_prev.total.value>=0?'up':'down'">
+                        <span class="title"><%= setting.performance.client_stream %> <i class="icon-play"></i></span>
+                        <span class="current">{{viewData.report_consumer.consumer.memberNo+viewData.report_consumer.consumer.tempNo}}<%= setting.performance.client_number %></span>
+                        <span class="prev" ng-if="chartMenuType=='day'"><%= setting.performance.than_yesterday %>:{{viewData.report_consumer.compare_prev.total.value}}<%= setting.performance.client_number %></span>
+                        <span class="prev" ng-if="chartMenuType=='week'"><%= setting.performance.than_last_week %>:{{viewData.report_consumer.compare_prev.total.value}}<%= setting.performance.client_number %></span>
+                        <span class="prev" ng-if="chartMenuType=='month'"><%= setting.performance.than_last_month %>:{{viewData.report_consumer.compare_prev.total.value}}<%= setting.performance.client_number %></span>
+                        <span class="prev-rate">{{viewData.report_consumer.compare_prev.total.rate}}%</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="performance-month" style="display: none;">
+        <div class="time-condition"></div>
+        <div class="report-content"></div>
+    </div>
+
+    <div id="report-template">
+
+    </div>
+</div>
+</div>
+</div>

@@ -1,0 +1,742 @@
+<!--remove pr-1-->
+<div id="m-member-allMemberList-area" class="featureSpace fh">
+<style>
+#member-operating {
+    text-align: center;
+}
+
+#member-operating a {
+    text-decoration: none;
+    color: #fff
+}
+
+#m-member-allMemberList-area {
+    display: -webkit-box;
+    height: 100%;
+    color: #565656;
+    background: #ededed url("imgs/bg-line.png") center repeat;
+}
+
+#m-member-allMemberList-area>div {
+    display: -webkit-box;
+}
+
+#m-member-allMemberList-area .member-left {
+    width: 56%;
+    padding: 1rem;
+    -webkit-box-flex: 1;
+    position: relative;
+    background-color: #fff;
+}
+
+#out-result-list {
+    width: 100%;
+    position: absolute;
+    overflow: auto;
+}
+
+#m-member-allMemberList-area .member-right {
+    width: 44%;
+    /*右侧背景色*/
+    position: relative;
+    min-width: 20rem;
+    background-color: #f6f6f6;
+    display: -webkit-box;
+}
+
+#m-member-allMemberList-area .member-right>div {
+    width: 97%;
+}
+
+#member-info-display {
+    padding: 1rem;
+    padding-right: 0;
+}
+
+#member-info-display ul>li {
+    display: block;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 1.4rem;
+}
+
+#member-info-display li>div {
+    margin-bottom: 0.4rem;
+    font-size: 1.2rem;
+}
+
+#member-info-display li>div label {
+    margin-right: 0.5rem;
+    font-size: 1.4rem;
+}
+
+#member-info-display li:first-child>div:first-child {
+    color: #565656;
+    font-size: 2rem;
+}
+
+#member-operating {
+    overflow: hidden;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    padding: 0 0.5rem;
+}
+
+#member-operating span {
+    background-color: #767676;
+    border: 0px;
+    text-align: center;
+    display: inline-block;
+    width: 22%;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    font-size: 1.6rem;
+    padding: 1rem 0;
+
+}
+
+#member-operating span:last-child {
+    margin-right: 0;
+}
+
+.member-total-info div {
+    display: inline-block;
+    font-size: 1.4rem;
+    margin-right: 4rem;
+    margin-left: 2rem;
+}
+
+#member-recharge ul>li:last-child>div {
+    margin-bottom: 0.5rem;
+}
+
+#member-recharge ul>li:last-child input[type=text] {
+    width: 60%;
+}
+
+.member-save-button>a {
+    background-color: #bd438e;
+    height: 4rem;
+    margin-top: 1rem;
+    font-size: 1.6rem;
+    padding-bottom: 1rem;
+    color: #fff;
+    display: inline-block;
+    width: 50%;
+    line-height: 5rem;
+    text-align: center;
+}
+
+.member-save-button>a:first-child {
+}
+
+#member-cancel>ul>li {
+    display: block;
+    border-bottom: solid 0.1rem #000000;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.m-link-search {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.m-member-result-list .active {
+    background-color: transparent;
+}
+
+#member-new {
+    position: absolute;
+    top: -5rem;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#member-recharge {
+    position: absolute;
+    top: -5rem;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.member-memberCount li {
+    font-size: 1.6rem;
+}
+
+.label-width {
+    min-width: 6rem;
+    display: inline-block;
+}
+
+.member-result-item {
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-bottom: 1.5rem;
+    font-size: 1.2rem;
+    color: #333333;
+    height: 3rem;;
+}
+
+.m-member-result-list {
+    border-bottom: 1px solid #ebebeb;
+}
+
+.m-member-result-list ul {
+    position: relative;
+    display: -webkit-box;
+}
+
+.m-member-result-list ul > li {
+    display: inline-block;
+    color: #565656;
+    -webkit-box-flex: 1;
+}
+
+.m-member-result-list ul > li:last-child {
+    width: 5rem;
+    position: absolute;
+    right: 0;
+    top: 2rem;
+    overflow: hidden;
+    height: 1.4rem;
+    margin-right: 2rem;
+}
+
+.caps-tip {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.member-save-disable-cover {
+    z-index: 1;
+    width: 7rem;
+    height: 5rem;
+    position: absolute;
+}
+
+.record-cate-minMoney>span {
+    font-size: 1.2rem;
+    margin-left: 4rem;
+    padding-top: 1em;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    height: 3rem;
+}
+
+.cate-serviceList-nowrap {
+    width: 30rem;
+    overflow: auto;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.member-cate-label {
+    overflow: hidden;
+    text-align: center;
+    display: inline-block;
+    background-color: #64b1a9;
+    color: #fff;
+    height: 2rem;
+    line-height: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 10rem;
+}
+
+.m-member-memberList {
+
+}
+
+.m-member-memberList>li {
+    border-bottom: 1px solid #ebebeb;
+    padding-left: 1rem;
+}
+
+.m-member-listItme {
+    height: 5rem;
+    line-height: 5rem;
+}
+
+.m-member-listItme>li {
+    display: inline-block;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.m-member-listItme>li:last-child {
+    float: right;
+    margin-right: 2rem;
+}
+
+.member-sex-icon {
+    height: 1.6rem;
+    width: 1.6rem;
+    vertical-align: middle;
+}
+
+</style>
+
+<div id="page-content" ng-show="pageIndex === 'memberList'" class="fh fw">
+    <div id="member-left-content" class="member-left">
+        <div id="member-search-input">
+            <input class="m-input ml-1"
+                   style="font-size: 1.2rem; padding-top:0.5rem; padding-bottom: 0.5rem; width:85%;"
+                   placeholder="<%= member.search_member_placeholder %>"
+                   type="search" ng-model="search"/>
+            <hr style="width: 99%; margin-left: 2px; border:none; border-top:2px solid #b02e7d; ">
+        </div>
+        <div id="out-result-list">
+            <div id="scroll-result-list">
+                <div>
+                    <ul class="m-member-memberList">
+                        <li id="{{'member-' + item.id}}" ng-repeat="item in memberList" ng-tap="selectMember(item)">
+                            <ul class="m-member-listItme">
+                                <li style="width: 12.5rem">
+                                <span>
+                                <img ng-src="{{item.sex == 0? 'imgs/icon-member-color.png' :'imgs/icon-member-blue.png'}}"
+                                     class="member-sex-icon">
+                                </span>
+                                    <span style="color:#b02e7d;">{{item.cardNo}}</span>
+                                </li>
+                                <li style="min-width: 6rem;max-width: 8rem;">
+                                    <span>{{item.name}}</span>
+                                </li>
+                                <li style="min-width: 10rem;max-width: 12rem">
+                                    <span><img src="imgs/icon-iphone.png" style="width:1.4rem;height: 1.2rem;"></span>
+                                    <span>{{item.phoneMobile}}</span>
+                                </li>
+                                <li>
+                                    <span>{{item.memberCardCategoryName}}卡</span>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!--<div id="{{'member-' + item.id}}" class="m-member-result-list" ng-repeat="item in memberList">-->
+                <!--<ul class="member-result-item" ng-tap="selectMember(item)">-->
+                <!--<li style="width: 12.5rem">-->
+                <!--<span style="color: #b02e7d;">-->
+                <!--<div class="mt-1" style="display: inline-block;">-->
+                <!--<img ng-src="{{item.sex == 0? 'imgs/icon-member-color.png' :'imgs/icon-member-blue.png'}}"-->
+                <!--style="width: 1.6rem;height: 1.6rem;" class="m-img-middle">-->
+                <!--</div>-->
+                <!--{{item.cardNo}}-->
+                <!--</span>-->
+                <!--</li>-->
+                <!--<li style="min-width: 6rem;max-width: 8rem;">-->
+                <!--<span>{{item.name}}</span>-->
+                <!--</li>-->
+                <!--<li style="min-width: 10rem;max-width: 12rem">-->
+                <!--<span>-->
+                <!--<div class="mt-1" style="display: inline-block;">-->
+                <!--<img src="imgs/icon-iphone.png" style="width:1.4rem;-->
+                <!--height: 1.2rem;-->
+                <!--vertical-align: middle;-->
+                <!--margin-top: -0.3rem;">-->
+                <!--</div>{{item.phoneMobile}}-->
+                <!--</span>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<span>{{item.memberCardCategoryName}}卡</span>-->
+                <!--</li>-->
+                <!--</ul>-->
+                <!--</div>-->
+                <div class="caps-tip" style="display: none;">
+                    <%= member.search_tips %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="member-right-content" class="member-right">
+        <div id="member-operating" style="margin-bottom: 0.5rem;">
+            <a href="">
+            <span ng-tap="addMember()" class="button-big button-big-grey " style="margin-right: 0.6rem">
+                    <div>
+                        <%= member.add %>
+                    </div></span></a><a href=""><span
+                class="button-big button-big-grey " style="margin-right: 0.6rem" ng-tap="rechargeMember()">
+                <div>
+                    <%= member.recharge %>
+                </div></span></a><a href=""><span ng-tap="updateMember()"
+                                                  class="button-big button-big-grey"
+                                                  style="margin-right: 0.6rem">
+                <div>
+                    <%= member.edit %>
+                </div></span></a><a><span
+                class="button-big button-big-grey" ng-tap="cancelMember()" style="margin-right: 0">
+            <div><%= member.delete %></div></span></a>
+        </div>
+
+        <div id="member-info-display">
+            <div style="background-color: #fff; padding: 1.5rem; height: 100%; margin-right: 1rem;">
+                <ul>
+                    <li>
+                        <div style="display: inline-block; heigth: 2rem;line-height: 2rem;">{{memberInfo.name}}</div>
+                        <div class="fr member-cate-label">
+                            {{memberInfo.memberCardCategory}}卡
+                        </div>
+                        <div style="color: #b02e7d; display: inline-block;">
+                            <img ng-src="{{memberInfo.sex == 0? 'imgs/icon-member-color.png' :'imgs/icon-member-blue.png'}}"
+                                 width="16" height="16" class="m-img-middle"
+                                 style="margin-top: -0.3rem; margin-left: 0.5rem; margin-right: -0.2rem;">
+                            {{memberInfo.cardNo}}
+                        </div>
+                    </li>
+                    <hr style="width: 99%; border:none; border-top:2px solid #b02e7d; ">
+                    <li class="relative">
+                        <label class="label-width"><%= member.balance %>：</label>
+                        <span ng-show="memberInfo.baseInfo_type !== 'recordTimeCard'">￥{{memberInfo.currentMoney | number:2}}</span>
+                        <span ng-show="memberInfo.baseInfo_type === 'recordTimeCard'">{{memberInfo.currentMoney | number:0}}次</span>
+
+                        <div ng-if="memberInfo.cardId" style="color: #b02e7d">
+                            <a href="" ng-tap="consumeDetail(memberInfo.cardId)"
+                               style="position: absolute;right: 0px;top: 0.5rem; color:#b02e7d ">
+                                <img src="imgs/icon-list-pink.png" style="width:1.6rem;
+                                height: 1.6rem;
+                                margin-top: -0.4rem;
+                                vertical-align: middle;">
+                                <label><%= member.consumption_detail %></label>
+                            </a>
+                        </div>
+                    </li>
+                    <li ng-show="memberInfo.baseInfo_type === 'recordTimeCard'">
+                        <label class="label-width">服务项目：</label>
+                        <span style="line-height: 2.4rem;">{{cateServiceNameMap[memberInfo.memberCardCategoryId].join('，')}}</span>
+                    </li>
+                    <li>
+                        <label class="label-width"><%= member.birthday %>：</label>
+                        <span>{{memberInfo.birthday | date : 'yyyy-MM-dd'}}</span>
+                    </li>
+                    <li>
+                        <label class="label-width"><%= member.create_date %>：</label>
+                        <span>{{getBefCurrentDate(memberInfo.create_date)}}</span>
+
+                        <span id="m-setting-memberInfo-invalid" class="fr" style="color: #888888;display: none;">
+                            <%= member.disabled %>
+                        </span>
+                    </li>
+                    <li>
+                        <label class="label-width">
+                            <%= member.mobile_phone %>
+                            <div class="" style="display: inline-block;">
+                                <img src="imgs/icon-iphone.png" style="width:1.4rem;
+                                        height: 1.2rem;
+                                        vertical-align: middle;
+                                        margin-top: -0.3rem;">：
+                            </div>
+                        </label>
+                        {{memberInfo.phoneMobile}}
+                    </li>
+                </ul>
+                <hr style="width: 99%; border:none; border-top:1px solid #d0d0d0; ">
+                <div class="member-memberCount">
+                    <ul>
+                        <li ng-show="memberInfo.baseInfo_type !== 'recordTimeCard'">
+                            <label class="label-width"><%= member.accumulative_consumption %>：</label>
+                            ￥{{memberCount.pileCost | number:2}}
+                        </li>
+                        <li ng-show="memberInfo.baseInfo_type === 'recordTimeCard'">
+                            <label class="label-width"><%= member.accumulative_consumption %>：</label>
+                            {{memberCount.pileTimes | number:0}}次
+                        </li>
+                        <li ng-show="memberInfo.baseInfo_type !== 'recordTimeCard'">
+                            <label class="label-width"><%= member.accumulative_recharge %>：</label>
+                            ￥{{memberCount.pileRecharge | number:2}}
+                        </li>
+                        <li ng-show="memberInfo.baseInfo_type !== 'recordTimeCard'">
+                            <label class="label-width"><%= member.client_unit_price %>：</label>
+                            ￥{{memberCount.customerPrice | number:2}}
+                        </li>
+                        <li>
+                            <label class="label-width"><%= member.consumption_recently %>：</label>
+                            {{memberCount.recentlyCost}}
+                        </li>
+                        <li>
+                            <label class="label-width"><%= member.consumption_frequency %>：</label>
+                            {{memberCount.frequency}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div id="member-cancel" style="width:450px; display: none">
+    <div class="dialog-body">
+        <div class="dialog-header" style="background-color: #ec5870;">
+            <div class="dialog-title">
+                <%= member.delete_member_confirm %>？
+            </div>
+            <div class="delete-icon" ng-tap="closeDialog()">
+                <i class="icon-remove-circle fancybox-close-icon-s"></i>
+            </div>
+        </div>
+        <div class="m-area-msg" style=""></div>
+        <div class="dialog-centent">
+            <ul>
+                <li>
+                    <div class="">
+                        <div style="font-size: 2.6rem; display: inline-block;height: 3rem;line-height: 3rem;">
+                            {{memberInfo.name}}
+                        </div>
+                        <div style="color: #b02e7d; font-size: 1.6rem; display: inline-block;">
+                            <img src="imgs/icon-member-color.png" width="20" height="20" class="m-img-middle">
+                            {{memberInfo.cardNo}}
+                        </div>
+                        <hr style="width: 100%; margin-left: 2px; border:none; border-top:2px solid #b02e7d; ">
+                        <div class="mt-2" style="font-size: 1.4rem;"><span><%= member.balance %>：</span>￥{{memberInfo.currentMoney
+                            | number : 2}}
+                        </div>
+                        <div class="mt-1" style="font-size: 1.6rem;">
+                            <span style="font-size: 1.4rem;"><%= member.mobile_phone %>：</span>
+                            {{memberInfo.phoneMobile}}
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <ul>
+            <li>
+                <div class="m-save-button">
+                    <a ng-tap="closeDialog()" class="m-save-button-cancel bg-color-ededed"><%= common.label.cancel
+                        %></a><a ng-tap="cancelMember_yes()" class="m-save-button-cancel bg-color-ededed"><%=
+                    common.label.confirm %></a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="member-new" ng-show="pageIndex === 'memberNewOrUpdate'" style="display: block">
+    <div class="m-setting-title" style="width: 100%">
+        <ul>
+            <li style="float: left;">
+                <a ng-tap="cancel()">
+                    <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+                </a>
+                    <span style="font-size: 1.4rem;">
+                        {{action}}
+                    </span>
+            </li>
+            <li style=" float: right;">
+                <a>
+                    <!--覆盖层、模拟disable-->
+                    <div id="member-save-disable-cover" class="member-save-disable-cover"
+                         style="display: none;">
+                    </div>
+                    <div ng-tap="newMember_save()" style="height: 5rem;">
+                        <span style="font-size: 1.2rem;">
+                           <i class="icon-save"></i>
+                            <%= common.label.save %>
+                        </span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="m-area-msg" style=""></div>
+    <div id="m-setting-addMember" class="dialog-centent m-setting-form-bg">
+        <ul>
+            <li>
+                <div class="m-input-underline">
+                    <label class="caption"><%= member.name %>：</label>
+                    <input type="text" ng-model="newMember.name" class="m-input" placeholder="<%= member.name %>"
+                           ng-blur="checkName()" maxlength="12"/>
+                    <cite class="error-hint error-hint-one">
+                        <img src="imgs/alarmIcon.png">
+                        <span><%= setting.service.category_input_error_info_12 %></span>
+                    </cite>
+                </div>
+            </li>
+            <li>
+                <div class="m-input-underline">
+                    <label class="caption"><%= member.mobile_phone %>：</label>
+                    <input type="tel" ng-model="newMember.phoneMobile" class="m-input"
+                           placeholder="<%= member.mobile_phone %>"
+                           ng-blur="checkPhone()"/>
+                    <cite class="error-hint error-hint-three">
+                        <img src="imgs/alarmIcon.png">
+                        <span><%= setting.employee.mobile_phone_input_error_info %></span>
+                    </cite>
+                </div>
+            </li>
+            <li>
+                <div class="m-input-underline" ng-show="action == '开卡'">
+                    <label class="caption">卡类型：</label>
+
+                    <div class="select-tags-s">
+                        <ul>
+                            <li ng-repeat="item in cardTypeList"
+                                ng-style="item === cardTypeSelected ? {'background-color' : '#398acb' , 'color' : '#fff'} : {}"
+                                ng-tap="selectCardType(item)">
+                                {{item}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li ng-show="cardTypeSelected === cardTypeList[0]">
+                <div class="m-input-underline">
+                    <label class="caption">充值卡：</label>
+
+                    <div class="select-tags-s">
+                        <ul>
+                            <li ng-repeat="item in rechargeCateList"
+                                ng-style="newMember.memberCardCategory.id === item.id ? {'background-color' : '#398acb' , 'color':'#fff'}:{}"
+                                ng-tap="selectMemberCate(item)">
+                                {{item.name}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <!--记次卡不支持卡类型修改-->
+            <li ng-show="cardTypeSelected === cardTypeList[1] && action == '开卡'">
+                <div class="m-input-underline">
+                    <label class="caption">记次卡：</label>
+
+                    <div class="select-tags-s">
+                        <ul>
+                            <li ng-repeat="item in recordCateList"
+                                ng-style="newMember.memberCardCategory.id === item.id ? {'background-color' : '#398acb' , 'color':'#fff'}:{}"
+                                ng-tap="selectMemberCate(item)">
+                                {{item.name}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <!--卡金与卡类型有关联性-->
+            <li id="addMember-recharge" ng-show="action == '开卡'">
+                <div class="m-input-underline" ng-show="cardTypeSelected === cardTypeList[0]">
+                    <label class="caption"><%= member.create_card_money %>：</label>
+                    <input type="number" ng-model="memberRecharge.rechargeMoney" class="m-input"
+                           placeholder="<%= member.create_card_money %>"
+                           ng-blur="checkRecharge()"/>
+                    <cite id="error-new-recharge" class=" error-hint error-hint-four">
+                        <img src="imgs/alarmIcon.png">
+                        <span id="newCard-minMoney-error"></span>
+                    </cite>
+                </div>
+                <div class="m-input-underline record-cate-minMoney"
+                     ng-show="cardTypeSelected === cardTypeList[1]">
+                    <label class="caption">开卡金额：</label>
+                    <span style="margin-left: 7.8rem;">{{newMember.memberCardCategory.baseInfo_minMoney}}</span>
+                    <span>服务次数：{{newMember.memberCardCategory.discounts_serviceDiscount}}</span>
+                    <span class="cate-serviceList-nowrap">服务项目：{{newMember.memberCardCategory.serviceNameStr}}</span>
+                </div>
+            </li>
+            <li>
+                <div class="m-input-underline">
+                    <label class="caption"><%= member.birthday %>：</label>
+                    <input class="m-input" type="text" ng-tap="selBirthday($event)"
+                           placeholder="<%= member.birthday_input_placeholder %>"
+                           ng-model="newMember.birthday" disabled/>
+                </div>
+            </li>
+            <li>
+                <div class="m-input-underline" style="position: relative;">
+                    <label class="caption"><%= common.sys.sex %>：</label>
+
+                    <div class="select-tags-s">
+                        <ul>
+                            <li ng-repeat="item in sexConstant"
+                                ng-style="newMember.sex.name === item.name ? {'background-color' : '#398acb' , 'color' : '#fff'} : {}"
+                                ng-tap="selectMemberSex(item)">
+                                {{item.name}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+
+            <li id="addMember-employee" ng-show="action == '开卡'">
+                <div class="m-input-underline" style="position: relative">
+                    <label class="caption"><%= member.sale_employee %>：</label>
+
+                    <div class="select-tags-s">
+                        <ul>
+                            <li ng-repeat="item in employeeList"
+                                ng-style="newMember.employee.id === item.id ? {'background-color' : '#398acb' , 'color' : '#fff'} : {}"
+                                ng-tap="selectMemberEmpBonus(item)">
+                                {{item.name}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="member-recharge" ng-show="pageIndex == 'memberRecharge'" style="display: block;">
+    <div class="m-setting-title" style="width: 100%">
+        <ul>
+            <li style="float: left;">
+                <a ng-tap="cancel()">
+                    <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+                </a>
+                <span style="font-size: 1.4rem;">
+                   <%= member.recharge %>
+                </span>
+            </li>
+            <li style="float: right;">
+                <a>
+                    <!--覆盖层、模拟disable-->
+                    <div id="recharge-save-disable-cover" class="member-save-disable-cover"
+                         style="display: none;">
+                    </div>
+                    <div ng-tap="rechargeMember_save()" style="height: 5rem;">
+                        <span style="font-size: 1.2rem;">
+                            <i class="icon-save"></i>
+                            <%= common.label.save %>
+                        </span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="m-area-msg" style=""></div>
+    <div id="m-setting-member-recharge" class="dialog-centent m-setting-form-bg">
+        <ul>
+            <li class="member-total-info mt-1">
+                <div><span><%= member.recharge_account %>：</span>{{memberInfo.name}}</div>
+                <div><span><%= member.current_balance %>：</span>￥{{memberInfo.currentMoney | number : 2}}</div>
+                <hr style="width: 100%; margin-left: 2px; border:none; border-top:2px solid #b02e7d; ">
+            </li>
+            <li>
+                <div class="m-input-underline">
+                    <label class="caption"><%= member.recharge_money %>：</label>
+                    <input type="number" ng-model="memberRecharge.rechargeMoney" class="m-input"
+                           placeholder="<%= member.recharge_money_input_placeholder %>"/>
+                    <cite class=" error-hint error-hint-four">
+                        <img src="imgs/alarmIcon.png">
+                        <span><%= setting.employee.reward_input_error_info %></span>
+                    </cite>
+                </div>
+            </li>
+            <li>
+                <div class="m-input-underline" style="position: relative;">
+                    <label class="caption"><%= member.recharge_employee %>：</label>
+
+                    <div class="select-tags-s">
+                        <ul>
+                            <li ng-repeat="item in employeeList"
+                                ng-style="newMember.employee.id === item.id ? {'background-color' : '#398acb', 'color':'#fff'} : {}"
+                                ng-tap="selectMemberEmpBonus(item)">
+                                {{item.name}}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+</div>

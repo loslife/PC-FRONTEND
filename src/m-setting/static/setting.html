@@ -1,0 +1,302 @@
+<!-- 特性模块缩写 example-feature1-area = [模块ID]-[特性ID]-area;特性ID必须与菜单链接上的特性ID保持一致-->
+<div id="m-setting-setting-area" class="featureSpace padding-l-l">
+<style>
+    #m-setting-setting-area {
+        background-color: #000;
+        overflow: auto;
+    }
+
+    .lisence-msg {
+        font-size: 1rem;
+        height: 0px;
+        border-right: 10px solid transparent;
+        border-top: 10px solid #f6f6f6;
+        border-left: 10px solid #f6f6f6;
+        border-bottom: 10px solid #f6f6f6;
+        width: 100%;
+        margin-top: 1rem;
+        color: #ff3b30;
+        position: absolute;
+        bottom: 1rem;
+    }
+
+    .lisence-msg-char {
+        position: absolute;
+        left: 0;
+        top: -0.7rem;
+    }
+
+    .setting-inline-block img {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .setting-title-one > i {
+        font-size: 2.5rem;
+        vertical-align: middle;
+    }
+
+    #setting-content-newbie {
+        overflow: hidden;
+    }
+
+    .z-index-2 {
+        z-index: 2;
+        overflow: visible !important;
+    }
+
+    .z-index-2:after {
+        content: "";
+        position: absolute;
+        top: 6rem;
+        right: 0px;
+        z-index: 0;
+        background: no-repeat center url(imgs/icon-hander.png);
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
+
+    .cover-box-rows {
+        width: 100%;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 1;
+        height: 100px;
+    }
+    .performance-setting{
+        position: absolute;
+        top: 1.4rem;
+        width: 100%;
+        text-align: right;
+        color:#eee;
+        margin-right: 1rem;
+    }
+    .performance-setting>span:first-child{
+        margin-right: 0.2rem;
+        font-size: 1.2rem;
+    }
+    .performance-setting>span:last-child{
+        margin-right: 1rem;
+        font-size:1.2rem;
+        color: #eee;
+    }
+</style>
+
+<div class="setting-content-area" id="setting-content-area" style="position: relative;">
+    <div class="setting-box" id="box-rows-1">
+        <div class="cover-box-rows" style="display: none;">
+
+        </div>
+        <div id="my-account" class="list-one  bg-color-green"
+             style="width: 20%; overflow: hidden; text-align: center;"
+             ng-tap="clickSettingMenu('account',$event)">
+            <div class="setting-inline-block setting-user"><span class="setting-title-one  ">
+                        <img src="imgs/user.png" style="vertical-align: middle; margin-right:10px; "><%= setting.account.my_account %></span>
+            </div>
+            <div class="setting-inline-block lisence-msg" style="display: none;"><span class="lisence-msg-char">
+                        <img src="imgs/icon-info-sign.png" style="width: 1.2rem;
+                        vertical-align: middle;
+                        margin-top: -0.2rem;
+                        height: 1.2rem;
+                       ">
+                     <cite>还可以使用14天</cite></span>
+            </div>
+        </div>
+
+
+        <div class="list-one  bg-color-purple "
+             style="margin-right: 9px; width:30%; min-width: 168px; margin-left: 9px; overflow: hidden; text-align: center; position: relative"
+             ng-tap="clickSettingMenu('performance',$event)">
+            <div class="setting-inline-block setting-user"><span class="setting-title-one  ">
+                    <img src="imgs/performance-setting.png" style="vertical-align: middle; margin-right: 0.8rem;
+margin-top: -0.5rem;"><%= setting.performance.analysis_report %></span>
+            </div>
+            <div class="performance-setting">
+                <span class="setting-title-one">
+                <%= setting.performance.current_performance %>
+                </span>
+                <span id="m-setting-performance-total" class=""
+                     >¥ 0
+                </span>
+            </div>
+        </div>
+
+        <div class="list-one bg-color-blue"
+             ng-tap="clickSettingMenu('member',$event)"
+             style="width:25%; margin-right: 9px; overflow: hidden; min-width: 168px; text-align: center">
+            <div class="setting-inline-block setting-user"><span class="setting-title-one  ">
+                    <img src="imgs/member-card.png" style="vertical-align: middle; margin-right: 0.8rem;
+margin-top: -0.5rem;"><%= setting.member.member_type %>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+            <div class="performance-setting">
+                <span class="setting-title-one">
+                <%= setting.member.current_member %>
+                </span>
+                <span id="m-setting-member-total" class=""
+                        >0
+                </span>
+                <span>
+                    人
+                </span>
+            </div>
+        </div>
+
+        <div class="list-one bg-color-grass-green "
+             ng-tap="clickSettingMenu('employee',$event)"
+             style="width: 25%; overflow: hidden; min-width: 148px;text-align: center;">
+            <div class="setting-inline-block setting-user"><span class="setting-title-one  ">
+                    <img src="imgs/icon-employee-admin.png" style="vertical-align: middle; margin-right: 0.8rem;
+margin-top: -0.5rem;"><%= setting.employee.employee %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+            <div class="performance-setting">
+                <span class="setting-title-one">
+                <%= setting.employee.current_employee %>
+                </span>
+                <span id="m-setting-employee-total" class=""
+                        >0
+                </span>
+                <span>
+                    人
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="setting-box" id="box-rows-2">
+        <div class="cover-box-rows" style="display: none;">
+
+        </div>
+        <div class="list-one bg-color-red"
+             ng-tap="clickSettingMenu('store',$event)"
+             style="width:20%; margin-right: 9px; overflow: hidden; text-align: center;">
+            <div class="setting-inline-block setting-user"><span class="setting-title-one  ">
+               <img src="imgs/home-setting.png" style="vertical-align: middle; margin-right: 0.8rem;
+margin-top: -0.5rem;">
+                <%= setting.store.store %></span>
+            </div>
+        </div>
+        <div class="list-one bg-color-orange"
+             ng-tap="clickSettingMenu('show',$event)"
+             style="text-align: center;width:30%; margin-right: 9px; overflow: hidden; min-width: 168px;">
+            <div class="setting-inline-block setting-user"><span class="setting-title-one  ">
+                    <img src="imgs/show.png" style="vertical-align: middle; margin-right: 0.8rem;
+margin-top: -0.5rem;"><%= setting.show.show %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+        </div>
+        <div class="list-one bg-color-green"
+             ng-tap="clickSettingMenu('service',$event)"
+             style="width:25%; margin-right: 9px; overflow: hidden; min-width: 168px; text-align: center">
+            <div class="setting-inline-block setting-user"><span class="setting-title-one  ">
+                    <img src="imgs/product.png" style="vertical-align: middle; margin-right: 0.8rem;
+margin-top: -0.5rem;"><%= setting.service.service %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+            <div class="performance-setting">
+                <span class="setting-title-one">
+                 <%= setting.service.current_service %>
+                </span>
+                <span id="m-setting-service-total" class=""
+                        >0
+                </span>
+                <span>项</span>
+            </div>
+        </div>
+        <div id="system-backup" class="list-one bg-color-blue"
+             ng-tap="clickSettingMenu('backup',$event)"
+             style="width: 25%; overflow: hidden; text-align: center;min-width: 148px;">
+            <div class="setting-inline-block setting-user"><span class="setting-title-one  ">
+               <img src="imgs/backUp-icon.png" style="vertical-align: middle; margin-right: 0.8rem;
+margin-top: -0.5rem;">
+                <%= setting.backup.system_backup %></span>
+            </div>
+            <div class="setting-inline-block lisence-msg" style="display: none;"><span
+                    class="lisence-msg-char">
+                       <img src="imgs/icon-info-sign.png" style="width: 1.2rem;
+                        vertical-align: middle;
+                        margin-top: -0.2rem;
+                        height: 1.2rem;
+                       ">
+                     <cite></cite></span>
+            </div>
+        </div>
+    </div>
+    <div class="setting-box" id="box-rows-3">
+        <div class="cover-box-rows" style="display: none;">
+
+        </div>
+        <div class="list-one bg-color-purple"
+             ng-tap="clickSettingMenu('aboutlos',$event)"
+             style="width:20%; margin-right: 9px; overflow: hidden; text-align: center;">
+            <div class="setting-inline-block setting-user"><span class="setting-title-one  ">
+                    <img src="imgs/losLogo.png" style="vertical-align: middle; margin-right: 0.8rem;
+margin-top: -0.5rem;"><%= setting.aboutlos.aboutlos %></span>
+            </div>
+        </div>
+        <div class="list-one bg-color-grass-green"
+             ng-tap="clickSuggestion('aboutlos',$event)"
+             style="text-align: center;width:30%; margin-right: 9px; overflow: hidden; min-width: 168px;">
+            <div class="setting-inline-block setting-user"><span class="setting-title-one  ">
+                    <img src="imgs/feedback.png" style="vertical-align: middle; margin-right: 0.8rem;
+margin-top: -0.5rem;"><%= setting.aboutlos.feedback %></span>
+            </div>
+        </div>
+        <div id="setting-content-newbie" class="list-one bg-color-orange"
+             ng-tap="clickSettingMenu('newGuide',$event)"
+             style="width:25%; margin-right: 9px; min-width: 168px;text-align: center;">
+            <div class="setting-inline-block setting-user"><span class="setting-title-one">
+                <img src="imgs/newGuide-icon.png" style="vertical-align: middle; margin-right: 0.8rem;
+margin-top: -0.5rem;">
+                    <%= setting.newGuide.newGuide %></span>
+            </div>
+        </div>
+        <div class="list-one bg-color-red"
+             ng-tap="clickSettingMenu('messageCenter',$event)"
+             style="width: 25%; overflow: hidden; text-align: center;min-width: 148px;">
+            <div class="setting-inline-block setting-user"><span class="setting-title-one" >
+               <img src="imgs/message-sales.png" style="vertical-align: middle; margin-right: 0.8rem;
+margin-top: -0.5rem;">
+                <%= setting.message_center.message_center %></span>
+            </div>
+        </div>
+    </div>
+    <div class="setting-box android-display-special" id="box-rows-4">
+        <div class="cover-box-rows" style="display: none;">
+
+        </div>
+        <div class="list-one bg-color-blue"
+             ng-tap="clickSettingMenu('terminal',$event)"
+             style="width:20%; margin-right: 9px; overflow: hidden; text-align: center;"
+             >
+            <div class="setting-inline-block setting-user"><span class="setting-title-one  ">
+                 <img src="imgs/print-icon-setting.png" style="vertical-align: middle; margin-right: 0.8rem;
+margin-top: -0.5rem;">
+                    <%= setting.terminal.terminal %></span>
+            </div>
+        </div>
+        <div class="list-one "
+             ng-tap="clickMessage()"
+             style="text-align: center;width:30%; margin-right: 9px; overflow: hidden; min-width: 168px; background-color: #a0a0a0 ">
+            <div class="setting-inline-block setting-user"><span class="setting-title-one  " style="color: #565656">
+                    <img src="imgs/icon-comments-alt.png" style="vertical-align: middle; margin-right: 0.8rem;
+margin-top: -0.5rem;">
+                <%= setting.message.message %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+        </div>
+        <div class="list-one bg-color-orange"
+             ng-tap="clickMessage()"
+             style="width:25%; margin-right: 9px; overflow: hidden; min-width: 168px;background-color: #a0a0a0; text-align: center ">
+            <div class="setting-inline-block setting-user"><span class="setting-title-one  " style="color: #565656">
+                    <img src="imgs/icon-hdd.png" style="vertical-align: middle; margin-right: 0.8rem;
+margin-top: -0.5rem;">
+                <%= setting.repertory.repertory %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </div>
+        </div>
+        <div class="list-one "
+             style="width: 25%; overflow: hidden; text-align: center;min-width: 148px; background-color: #000 ">
+            <div class="setting-inline-block setting-user"><span class="setting-title-one  "
+                                                                 style="color: #565656"></span>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>

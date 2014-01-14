@@ -1,0 +1,670 @@
+<div id="m-setting-member-area" class="featureSpace">
+<style>
+#m-setting-title {
+    font-size: 2rem;
+    color: #b02e7d;
+}
+
+#m-setting-member-area {
+    background: #ededed url("imgs/bg-line.png") center repeat;
+}
+
+#m-setting-type-content {
+    overflow: auto;
+}
+
+.m-list-display-account .active {
+    background-color: transparent !important;
+}
+
+#m-setting-addInput {
+    position: relative;
+    top: -5rem;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+}
+
+#m-setting-addInput>div>input {
+    padding: 1rem;
+}
+
+#m-setting-addInput>div>a {
+    display: inline-block;
+    font-size: 1.6rem;
+    margin-right: 0.5rem;
+    width: 48%;
+    height: 4.8rem;
+    color: #fff;
+    padding-top: 2rem;
+}
+
+#m-setting-typeList {
+    overflow: auto;
+    display: block;
+}
+
+#m-setting-typeList ul li:last-child a:active {
+    background-color: #ff66cc !important;
+}
+
+.m-setting-dashed-line {
+    border-bottom: 1px dashed #000;
+    margin-top: 3rem;
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.m-list-display {
+    width: 24.75rem;
+    height: 15.08rem;
+    border: none;
+    border-radius: 10px;
+    display: inline-block;
+    margin-left: 2.3rem;
+    background-color: #dde4bb;
+    box-shadow: 0 0 5px #bfbfbf;
+    margin-top: 1.6rem;
+    margin-bottom: 0;
+    position: relative;
+}
+
+.m-list-display-chargename {
+    padding: 1rem;
+}
+
+.m-list-display ul {
+    position: absolute;
+    bottom: 2.5rem;
+    background-color: #ec5870;
+    color: #fff;
+    padding-top: 0.3rem;
+    padding-left: 1rem;
+    padding-bottom: 0.3rem;
+}
+
+.m-list-display ul li {
+    display: inline-block;
+    width: 48%;
+}
+
+.m-list-display-chargename>div:first-child {
+    font-size: 1.4rem;
+    font-weight: bold;
+    padding-bottom: 0.2rem;
+}
+
+.m-list-display-chargename>div:last-child>span:first-child {
+    background-color: #398acb;
+    color: #fff;
+    margin-right: 0.5rem;
+    padding: 0.1rem;
+}
+
+.custom-options {
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    background-color: #8eccfd;
+    margin-right: 0.8rem;
+    color: #fff;
+    padding: 0.6rem 1rem 0.6rem 1rem;
+}
+
+.m-setting-card-valid {
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    font-size: 1.2rem;
+    padding-left: 7.8rem;
+}
+
+.m-list-display-account {
+    width: 24.75rem;
+    height: 15.08rem;
+    border: none;
+    border-radius: 10px;
+    display: inline-block;
+    margin-left: 2.3rem;
+    background-color: #f3c7a2;
+    box-shadow: 0 0 5px #bfbfbf;
+    margin-top: 1.6rem;
+    margin-bottom: 0;
+    position: relative;
+}
+
+.m-list-display-account>div:first-child>span:first-child {
+
+}
+
+.m-setting-card-bar {
+    height: 3.2rem;
+    background-color: #313131;
+}
+
+.m-list-display-accountname {
+    padding-left: 1rem;
+    padding-top: 1rem;
+}
+
+.m-list-display-accountname>span:first-child {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.m-list-display-accountname>span:last-child {
+    font-size: 1.2rem;
+    margin-top: -0.3rem;
+}
+
+.m-list-display-account ul {
+    position: absolute;
+    bottom: 0.5rem;
+    padding-top: 0.3rem;
+    padding-left: 1rem;
+    padding-bottom: 0.3rem;
+}
+
+.m-list-display-account ul li {
+    display: inline-block;
+    width: 48%;
+}
+
+.m-cancel-circle {
+    position: absolute;
+    top: 0.3rem;
+    right: 0.5rem;
+}
+
+.m-list-card-cat {
+    padding-left: 1rem;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+.m-list-card-cat>span:first-child {
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+}
+
+.m-list-card-display {
+    width: 24.75rem;
+    height: 15.08rem;
+}
+
+.sameLine-second {
+    width: inherit !important;
+    margin-left: 0 !important;
+    border: none;
+    background-color: #fff;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-size: 1.2rem;
+}
+
+.countCate-serviceList {
+    display: inline-block;
+    width: 23rem;
+    white-space: nowrap;
+    overflow: auto;
+}
+
+.delete-cardCate {
+    font-size: 1.4rem;
+    float: right;
+    width: 3rem;
+    height: 2rem;
+    text-align: center;
+    line-height: 2rem;
+}
+
+.service-select-cate {
+    display: -webkit-box;
+    border-bottom: solid 0.2rem #bd438e;
+    overflow: auto;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.service-select-cate>li {
+    display: -webkit-box;
+    position: relative;
+    padding: 0.6rem;
+    text-align: center;
+    -webkit-box-flex: 1;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+}
+
+.service-select-cate .selected {
+    border-bottom: solid 0.1rem #bd438e;
+    color: #bd438e;
+}
+
+.service-select-item {
+    overflow: auto;
+    padding-left: 1rem;
+    padding-right: 0.4rem;
+    padding-bottom: 0.6rem;
+    height: 20rem;
+}
+
+.service-select-item>li {
+    display: inline-block;
+    width: 6rem;
+    height: 6rem;
+    margin-top: 0.6rem;
+    margin-right: 0.6rem;
+    background-color: #eeeeee;
+    color: black;
+    position: relative;
+    overflow: hidden;
+    background-size: 6rem 6rem;
+}
+
+.service-select-item>li .price {
+    position: absolute;
+    font-size: 1rem;
+    top: 0.2rem;
+    right: 0.2rem;
+    padding: 0.1rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #ff3101;
+}
+
+.service-select-item>li .title {
+    text-align: center;
+    font-size: 1rem;
+    position: absolute;
+    bottom: 0;
+    left: 1px;
+    width: 5.6rem;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 0.2rem;
+}
+
+.service-selected:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(imgs/selected-icon.png);
+    background-size: 2rem 2rem;
+    display: block;
+    height: 2rem;
+    width: 2rem;
+}
+
+.selected-serviceList {
+    height: 4rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    overflow: hidden;
+}
+
+.selected-serviceList-word {
+    font-size: 1.2rem;
+    line-height: 3rem;
+    border-bottom: 1px solid #d0d0d0;
+    white-space: nowrap;
+    overflow: auto;
+}
+
+
+</style>
+<div class="m-setting-title" ng-show="pageIndex == 'memberTypeList'">
+    <ul>
+        <li style="float: left;">
+            <a ng-tap="backto('/m-setting/setting')">
+                <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+            </a>
+                <span style="font-size: 1.4rem;">
+                     <%= setting.member.member_type %>
+                </span>
+        </li>
+
+        <li style="float: right;"
+            ng-tap="newMemberCate()"
+            class=" m-setting-employee-head-right-tab-select">
+            <a style="width: 10rem;">
+                <span style="font-size: 1.2rem;">
+                    <img src="imgs/icon-plus-white.png"
+                         style="
+                                width:1.2rem;
+                                margin-top: -0.2rem;
+                                 height: 1.2rem;
+                                 vertical-align: middle;">
+                    <%= setting.member.add_new_type %>
+                </span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="m-setting-typeList" ng-show="pageIndex == 'memberTypeList'">
+    <div class="m-list-display-account" ng-repeat="item in memberTypeList">
+        <div class="m-list-card-display" ng-tap="isEditAble(item)">
+            <div class="m-list-card-cat"><span><%= setting.member.recharge_card %></span><span>(<%= setting.member.expiry_date %>：{{transValidToName(item.cardValid)}})</span>
+            </div>
+            <div class="m-setting-card-bar"></div>
+            <div class="m-list-display-accountname">
+                <span>{{item.name}}卡</span><br>
+            </div>
+            <ul>
+                <li style="text-align: left;">
+                    <%= setting.member.card_prefix %>：<span>{{item.cardNoGenRule_cardNoPrefix}}</span>
+                </li>
+                <li style="text-align: left;">
+                    办理人数：<span>{{cateMemberCount[item.id] ? cateMemberCount[item.id] : 0}}</span>
+                </li>
+                <li style="text-align: left;"><%= setting.member.new_card_money %>：<span>￥{{item.baseInfo_minMoney | number: 2}}</span>
+                </li>
+                <li style="text-align: left;">
+                    <%= setting.member.default_discount %>：<span>{{item.discounts_serviceDiscount | number : 1}}<%= setting.member.discount %></span>
+                </li>
+            </ul>
+        </div>
+        <div class="m-cancel-circle">
+            <i class="icon-remove-circle delete-cardCate" ng-tap="showDelCateDia(item)"></i>
+        </div>
+    </div>
+
+    <div class="m-setting-dashed-line" style=""></div>
+    <div class="m-list-display-account" ng-repeat="item in recordTimeCateList" style="background-color: #b0c17a;">
+        <div class="m-list-card-display" ng-tap="isEditAble(item)">
+            <div class="m-list-card-cat">
+                <span>计次卡</span><span>(有效期：{{transValidToName(item.cardValid)}})</span>
+            </div>
+            <div class="m-setting-card-bar"></div>
+            <div class="m-list-display-accountname">
+                <span>{{item.name}}</span><br>
+                <span class="countCate-serviceList">计次项目：{{item.selectServiceNameString}}</span>
+            </div>
+            <ul>
+                <li style="text-align: left;">
+                    卡前缀：<span>{{item.cardNoGenRule_cardNoPrefix}}</span>
+                </li>
+                <li style="text-align: left;">
+                    办理人数：<span>{{cateMemberCount[item.id] ? cateMemberCount[item.id] : 0}}</span>
+                </li>
+                <li style="text-align: left;">开卡金额：<span>{{item.baseInfo_minMoney | number : 2}}</span>
+                </li>
+                <li style="text-align: left;">服务次数：<span>{{item.discounts_serviceDiscount | number : 0}}</span>
+                </li>
+            </ul>
+        </div>
+        <div class="m-cancel-circle">
+            <i class="icon-remove-circle delete-cardCate" ng-tap="showDelCateDia(item)"></i>
+        </div>
+    </div>
+
+    <!--删除确认-->
+    <div id="m-setting-memberCard-delete" class="none dialog-delete">
+        <div class="dialog-body">
+            <div class="dialog-header" style="background-color: #ec5870;">
+                <div class="dialog-title">
+                    <%= setting.member.delete_memberCard_confirm %>？
+                </div>
+                <div class="delete-icon" ng-tap="modalDialogClose()">
+                    <i class="icon-remove-circle fancybox-close-icon-s"></i>
+                </div>
+            </div>
+            <div class="m-area-msg" style=""></div>
+            <div class="m-save-button">
+                <a ng-tap="modalDialogClose()" class="m-save-button-cancel bg-color-ededed"><%= common.label.cancel
+                    %></a><a
+                    ng-tap="deleteItemConfirm()" class="m-save-button-cancel bg-color-ededed"><%= common.label.confirm
+                %></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="m-setting-type-content " class="area-fullscreen"
+     ng-show="pageIndex == 'newMemberType' || pageIndex == 'editMemberType'">
+<div id="m-setting-addInput" class="bg-color-ededed"
+     style="background: #ededed url(imgs/bg-line.png) center repeat;">
+<div class="m-setting-title">
+    <ul>
+        <li style="float: left;">
+            <a ng-tap="backIndex()">
+                <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+            </a>
+                    <span style="font-size: 1.4rem;">
+                      {{action}}<%= setting.member.member_type %>
+                    </span>
+        </li>
+        <li style="float: right;">
+            <a ng-tap="switchSaveCateType()">
+                    <span style="font-size: 1.2rem;">
+                        <i class="icon-save"></i>
+                        <%= common.label.save %>
+                    </span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="m-area-msg" style=""></div>
+<div class="m-setting-form-bg">
+    <div ng-show="action=='新增'" class="m-input-underline">
+        <div class="caption">
+            卡类型：
+        </div>
+        <div class="select-tags-s">
+            <ul>
+                <li ng-repeat="item in cardTypeList"
+                    ng-style="item === cardTypeSelected ? {'background-color' : '#398acb' , 'color' : '#fff'} : {}"
+                    ng-tap="selectCardType(item)">
+                    {{item}}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div ng-show="cardTypeSelected == cardTypeList[1]">
+        <div class="m-input-underline">
+            <div class="caption">
+                <%= setting.member.type_name %>：
+            </div>
+            <input id="m-setting-countType-name" class="m-input" required="required"
+                   ng-model="memberType.name"
+                   placeholder="<%= setting.member.type_name %>"
+                   ng-blur="checkName()" type="text" maxlength="12"/>
+            <cite id="new-count-name-error" class="error-hint error-hint-one">
+                <img src="../../resource/images/alarmIcon.png">
+                <span><%= setting.member.type_name_input_error_info %></span>
+            </cite>
+        </div>
+        <div class="m-input-underline">
+            <div class="caption">
+                服务项目：
+            </div>
+            <input id="m-setting-countType-serviceList" class="m-input" required="required"
+                   ng-model="memberType.selectServiceNameString" ng-tap="showSelectCateService()"
+                   placeholder="选择服务项目" disabled/>
+            <cite id="new-count-serviceList-error" class="error-hint">
+                <img src="../../resource/images/alarmIcon.png">
+                <span>服务项目不能为空</span>
+            </cite>
+        </div>
+        <div class="m-input-underline">
+            <div class="caption">
+                <%= setting.member.new_card_money %>：
+            </div>
+            <input id="m-setting-countType-minMoney" required="required" class="m-input" style="width:inherit;"
+                   ng-model="memberType.baseInfo_minMoney"
+                   placeholder="开卡金额" type="number"/>
+            <span class="ml-2 fs-12">服务次数：</span>
+            <input id="m-setting-countType-count" required="required" class="sameLine-second"
+                   ng-model="memberType.discounts_serviceDiscount"
+                   placeholder="服务次数" type="number"/>
+            <cite id="new-count-minMoney-error" class="error-hint">
+                <img src="../../resource/images/alarmIcon.png">
+                <span>开卡金额大于0、服务次数大于1</span>
+            </cite>
+        </div>
+        <div class="m-input-underline">
+            <div class="caption">
+                <%= setting.member.card_prefix %>：
+            </div>
+            <input id="m-setting-countType-prefix" class="m-input"
+                   ng-model="memberType.cardNoGenRule_cardNoPrefix" maxlength="6"
+                   placeholder="<%= setting.member.none_prefix %>" type="text"/>
+        </div>
+
+        <div class="m-input-underline">
+            <div class="caption">
+                <%= setting.member.expiry_date %>：
+            </div>
+            <div class="select-tags-s">
+                <ul>
+                    <li ng-repeat="item in validList"
+                        ng-style="selValidIndex === $index ? {'background-color' : '#398acb' , 'color' : '#fff'} : {}"
+                        ng-tap="selectValid($index)">
+                        {{item.name}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="m-input-underline">
+            <div class="caption">
+                <%= setting.member.card_number_example %>：
+            </div>
+            <span class="m-input readonly-row inlinebl">
+                <span>{{memberType.cardNoGenRule_cardNoPrefix?memberType.cardNoGenRule_cardNoPrefix:'VIP'}}</span><span>35088888</span>
+                <span> [<%= setting.member.card_prefix %>+<%= setting.member.three_random_number %>+<%= setting.member.five_number %>] </span>
+            </span>
+        </div>
+    </div>
+
+    <div ng-show="cardTypeSelected == cardTypeList[0]">
+        <div class="m-input-underline">
+            <div class="caption">
+                <%= setting.member.type_name %>：
+            </div>
+            <input id="m-setting-memberType-add-name" class="m-input" required="required"
+                   ng-model="memberType.name"
+                   placeholder="<%= setting.member.type_name %>"
+                   ng-blur="checkName()" type="text" maxlength="12"/>
+            <cite class="error-hint error-hint-one">
+                <img src="../../resource/images/alarmIcon.png">
+                <span><%= setting.member.type_name_input_error_info %></span>
+            </cite>
+        </div>
+        <div class="m-input-underline">
+            <div class="caption">
+                <%= setting.member.type_discount %>：
+            </div>
+            <input id="m-setting-memberType-add-discount" class="m-input"
+                   ng-model="memberType.discounts_serviceDiscount"
+                   placeholder="<%= setting.member.type_discount %>(<%= setting.member.representative_eight_discount %>)"
+                   required="required"
+                   ng-blur="checkDiscount()" type="number"/>
+            <cite class="error-hint error-hint-two">
+                <img src="../../resource/images/alarmIcon.png">
+                <span><%= setting.member.type_discount_input_error_info %></span>
+            </cite>
+        </div>
+        <div class="m-input-underline">
+            <div class="caption">
+                <%= setting.member.new_card_money %>：
+            </div>
+            <input class="m-input" ng-model="memberType.baseInfo_minMoney"
+                   placeholder="<%= setting.member.minimum_new_card_money %>"
+                   ng-blur="checkMinMoney()" type="number"/>
+            <cite id="error-minMoney" class="error-hint">
+                <img src="../../resource/images/alarmIcon.png">
+                <span><%= setting.member.new_card_input_error_info %></span>
+            </cite>
+        </div>
+        <div class="m-input-underline">
+
+            <div class="caption">
+                <%= setting.member.card_prefix %>：
+            </div>
+            <input class="m-input" ng-model="memberType.cardNoGenRule_cardNoPrefix"
+                   placeholder="<%= setting.member.none_prefix %>"
+                   ng-blur="checkCardFix()" type="text" maxlength="6"/>
+            <cite id="error-cardPrefix" class="error-hint">
+                <img src="../../resource/images/alarmIcon.png">
+                <span><%= setting.member.prefix_input_error_info %></span>
+            </cite>
+        </div>
+        <div class="m-input-underline">
+            <div class="caption">
+                <%= setting.member.expiry_date %>：
+            </div>
+            <div class="select-tags-s">
+                <ul>
+                    <li ng-repeat="item in validList"
+                        ng-style="selValidIndex === $index ? {'background-color' : '#398acb' , 'color' : '#fff'} : {}"
+                        ng-tap="selectValid($index)">
+                        {{item.name}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="m-input-underline">
+            <div class="caption">
+                <%= setting.member.card_number_example %>：
+            </div>
+            <span class="m-input readonly-row inlinebl">
+                <span>{{memberType.cardNoGenRule_cardNoPrefix?memberType.cardNoGenRule_cardNoPrefix:'VIP'}}</span><span>35088888</span>
+                <span> [<%= setting.member.card_prefix %>+<%= setting.member.three_random_number %>+<%= setting.member.five_number %>] </span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div id="newCountCate-selectService-dialog" style="display: none;width:55rem;">
+    <div class="dialog-body">
+        <div class="dialog-header">
+            <div class="dialog-title">
+                选择服务项
+            </div>
+            <div class="delete-icon" ng-tap="closeCateSelDia()">
+                <i class="icon-remove-circle fancybox-close-icon-s"></i>
+            </div>
+        </div>
+        <div class="m-area-msg"></div>
+        <div class="">
+            <ul class="service-select-cate">
+                <li ng-repeat="(key,value) in serviceCateMap" ng-tap="choiceCate(value,key)"
+                    ng-class="serviceCateSelected == key ? 'selected' : ''">
+                    {{serviceCate[key].name}}
+                </li>
+                <li ng-tap="choiceAllCate()" ng-class="serviceCateSelected == 'all' ? 'selected':''">
+                    所有
+                </li>
+            </ul>
+            <ul class="service-select-item">
+                <li ng-repeat="service in serviceViewArray">
+                    <a class="fh fw bl"
+                       ng-class="temp.selectServiceIdList.indexOf(service.id) === -1 ? '' : 'service-selected'"
+                       ng-tap="selectCateService(service)">
+                        <img src="{{service.baseInfo_image}}" style="height: 6rem;width: 6rem;position: absolute;"/>
+
+                        <div class="price">￥{{service.prices_salesPrice | number : 2}}</div>
+                        <div class="title">{{service.name}}</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="selected-serviceList">
+            <div class="selected-serviceList-word">
+                <span>选中项目：</span>
+                <span>{{temp.selectServiceNameString}}</span>
+            </div>
+        </div>
+        <div class="m-save-button">
+            <a ng-tap="closeCateSelDia()" class="m-save-button-cancel bg-color-ededed">取消</a><a
+                class="m-save-button-confirm" ng-tap="selectCateServiceCommit()">确定
+        </a>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>

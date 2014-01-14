@@ -1,0 +1,875 @@
+<div id="m-setting-messageCenter-area" class="featureSpace">
+<style>
+#m-setting-messageCenter-area {
+    background-color: #ededed;
+}
+
+#m-aboutlos-suggestion {
+    background: #ededed url("imgs/bg-line.png") center repeat;
+}
+
+.m-setting-messageCenter {
+    overflow: auto;
+}
+
+.up-tips {
+    text-align: center;
+    height: 12rem;
+    line-height: 12rem;
+    font-size: 1.6rem;
+}
+
+.sms-software-point {
+    color: #ec5870;
+}
+
+.down-content {
+    height: 26rem;
+    text-align: center;
+}
+
+.left-msg-dimensional {
+    display: inline-block;
+    height: 24rem;
+    width: 24rem;
+    background-color: #005580;
+    vertical-align: top;
+}
+
+.right-guide-way {
+    margin-left: 8rem;
+    display: inline-block;
+    height: 24rem;
+    width: 40rem;
+    background-color: #0d3349;
+    vertical-align: top;
+}
+
+.top-content {
+    background-color: #fff;
+}
+
+.filter-member-result {
+    height: 3rem;
+    display: inline-block;
+    font-size: 1rem;
+    min-width: 13rem;
+    margin-left: 1rem;
+    background-color: #f6f6f6;
+    color: #555555;
+    padding-left: 0.5rem;
+    padding-right: 2rem;
+    line-height: 3rem;
+    margin-right: 1rem;
+    margin-top: 0.8rem;
+    border-radius: 0.416666rem;
+    border: 1px solid #d0d0d0;
+    position: relative;
+}
+
+.msg-wordsize-info {
+    display: inline-block;
+    font-size: 1.2rem;
+    position: relative;
+    width: 100%;
+}
+
+.msg-wordsize-info>div {
+    display: inline-block;
+}
+
+.msg-wordsize-info>div:last-child {
+    position: absolute;
+    right: 0;
+    top: 0.8rem;
+}
+
+.foot-note {
+    position: absolute;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    right: 0.5rem;
+    height: 2rem;
+}
+
+.msg-edit-area {
+    max-width: 96%;
+    min-width: 96%;
+    max-height: 8rem;
+    min-height: 8rem;
+    display: block;
+    border: none;
+    font-size: 1.2rem;
+    margin: 0.5rem auto;
+}
+
+.msg-edit-out {
+    position: relative;
+    width: 100%;
+    height: 12rem;
+    border: 1px solid #d0d0d0;
+}
+
+.del-icon {
+    color: #d65b39;
+    font-size: 1.6rem;
+    position: absolute;
+    right: 1rem;
+    top: 0.8rem;
+}
+
+.member-card-left {
+    width: 11rem;
+    display: inline-block;
+}
+
+.member-card-middle {
+    display: inline-block;
+    width: 7%;
+}
+
+.member-card-right {
+    width: 74%;
+    display: inline-block;
+}
+
+.message-line {
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 4rem;
+    line-height: 4rem;
+    border-bottom: solid 0.15rem #d0d0d0;
+}
+
+.member-card-right .select-tags-s {
+    margin-left: 1rem !important;
+}
+
+.member-category {
+    display: inline-block;
+    vertical-align: middle;
+    padding-bottom: 0 !important;
+}
+
+.member-category ul li {
+    margin-top: 0 !important;
+}
+
+.search-left {
+    width: 67%;
+    display: inline-block;
+}
+
+.search-right {
+    width: 32%;
+    display: inline-block;
+}
+
+.search-right label {
+    vertical-align: middle;
+    margin-top: 1rem;
+}
+
+.user-defined-input {
+    border: 1px solid #d0d0d0;
+    width: 25% !important;
+    margin-left: 0.3rem !important;
+    height: 2rem;
+    border-radius: 0.416666rem;
+    text-align: center;
+}
+
+.confirm-button {
+    border-radius: 0.416666rem;
+    height: 2.2rem;
+    margin-left: 0.2rem;
+    line-height: 2.2rem;
+    text-align: center;
+    background-color: #ededed;
+    width: 4rem;
+    display: inline-block;
+}
+
+.confirm-button:active {
+    background-color: #ff66cc;
+    color: #fff;
+}
+
+.top-content {
+    margin-bottom: 1rem;
+    padding-bottom: 1.5rem;
+}
+
+.search-left>label:first-child {
+    width: 10rem;
+    display: inline-block;
+}
+
+.search-select-radio {
+    display: inline-block;
+}
+
+.search-select-radio>li {
+    font-size: 0;
+    display: inline-block;
+    margin-right: 0.8rem;
+}
+
+.search-select-radio>li>label {
+    font-size: 1.2rem;
+}
+
+.cateSelected {
+    background-color: #398acb !important;
+    color: #fff !important;
+}
+
+.mesLeft {
+    margin-right: 0 !important;
+}
+
+.message-cate-name {
+    font-size: 1.2rem;
+    color: #bd438e;
+    width: 95%;
+    padding-bottom: 0.7rem;
+    border-bottom: 2px solid;
+}
+
+.message-model {
+    margin-top: 1rem;
+}
+
+.message-switch-button .active {
+
+}
+
+.message-content {
+    width: 80%;
+    font-size: 1.2rem;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.message-content-text {
+    line-height: 2rem;
+    padding-left: 1rem;
+}
+
+.message-status {
+    width: 20%;
+    display: inline-block;
+}
+
+.message-switch-button {
+    text-align: right;
+    padding-right: 1rem;
+}
+
+.message-info {
+    color: #00a0e9;
+    font-size: 1.2rem;
+    text-align: right;
+    padding-right: 1rem;
+}
+
+.tag-example {
+    height: 1.4rem;
+    line-height: 1.4rem;
+    width: 1.4rem;
+    font-size: 1rem !important;
+    text-align: center;
+    color: #fff;
+    background-color: #4cd764;
+    vertical-align: middle;
+    display: inline-block;
+    border-radius: 0.25rem;
+    margin-top: -0.3rem;
+}
+
+.client-service-left {
+    background: url("imgs/client-service.png");
+    background-size: 1.4rem 1.4rem;
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+    vertical-align: middle;
+    margin-left: 1rem;
+    display: inline-block;
+    position: relative !important;
+    margin-right: 0.1rem;
+    margin-top: -0.2rem;
+}
+
+.client-service-left-pink {
+    background: url("imgs/client-service-pink.png");
+    background-size: 1.4rem 1.4rem;
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+    vertical-align: middle;
+    margin-left: 1rem;
+    display: inline-block;
+    position: relative !important;
+    margin-right: 0.1rem;
+    margin-top: -0.2rem;
+}
+
+.sales-activity-left {
+    background: url("imgs/sales-activity.png");
+    background-size: 1.4rem 1.4rem;
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+    vertical-align: middle;
+    margin-left: 1rem;
+    display: inline-block;
+    position: relative !important;
+    margin-right: 0.1rem;
+    margin-top: -0.2rem;
+}
+
+.sales-activity-left-pink {
+    background: url("imgs/sales-activity-pink.png");
+    background-size: 1.4rem 1.4rem;
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+    vertical-align: middle;
+    margin-left: 1rem;
+    display: inline-block;
+    position: relative !important;
+    margin-right: 0.1rem;
+    margin-top: -0.2rem;
+}
+</style>
+<div class="m-setting-messageCenter" ng-style="action=='messageCenter'?{}:{'display':'none'}">
+<div class="m-setting-title">
+    <ul>
+        <li style="float: left;">
+            <a ng-tap="backto('/m-setting/setting')">
+                <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+            </a>
+            <span style="font-size: 1.4rem;">
+                短信营销
+            </span>
+        </li>
+    </ul>
+</div>
+
+<div class="m-two-column-area">
+<div class="left mesLeft" style="z-index: 10;">
+    <ul class="left-nav">
+        <li ng-tap="showMessageCenter()" ng-class="selectedStyle=='clientService'?'selected':''">
+            <div ng-class="selectedStyle=='clientService'?'selected':''"></div>
+            <div ng-class="selectedStyle=='clientService'?'client-service-left-pink':'client-service-left'"></div>
+            <span>
+                客户服务
+            </span>
+        </li>
+        <li ng-tap="showMesAd()" class="android-display-special" ng-class="selectedStyle=='mesAd'?'selected':''">
+            <div ng-class="selectedStyle=='mesAd'?'selected':''"></div>
+            <div ng-class="selectedStyle=='mesAd'?'sales-activity-left-pink':'sales-activity-left'"></div>
+            <span>
+                营销活动
+            </span>
+        </li>
+    </ul>
+</div>
+<div class="right">
+<div class="pl-2 pt-1" ng-style="actionMes=='clientService'?{}:{'display':'none'}"
+     style="height: 100%; background-color: #fff;overflow: auto;">
+<div class="message-cate">
+    <!--类别-->
+    <div class="message-cate-name">消费提醒类</div>
+    <!--模版-->
+    <div class="message-model">
+        <div class="message-model-list">
+            <div class="m-message-title">
+                <span>
+                    消费提醒
+                </span>
+            </div>
+            <div class="m-message-body">
+                <div class="message-content">
+                    <div class="message-content-text">
+                        您当前消费项目夹心水晶指甲，总价160元，折后价128元，会员卡余额2886元。祝您好心情！ - 发自{{storeInfo.name}}
+                        <div class="tag-example">
+                            <span>例</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="message-status">
+                    <div class="message-switch-button">
+                        <button ng-tap="msgStatusSwitch('consumeMsgSwitch')"
+                                ng-class="msgSwitch.consumeMsgSwitch == 1 ? 'status-on-s' : 'status-off-s'"
+                                class="switch-btn-status-s">
+                            <span>{{msgSwitch.consumeMsgSwitch == 0 ? '关' : '开'}}</span>
+                        </button>
+                    </div>
+                    <div ng-show="templateCount != null" class="message-info">已发送：{{templateCount.template_4}}条</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="message-model-list mt-2">
+            <div class="m-message-title">
+                <span>
+                    办充值卡提醒
+                </span>
+            </div>
+            <div class="m-message-body">
+                <div class="message-content">
+                    <div class="message-content-text">
+                        您当前办理金卡成功，金额2000元。祝您好心情！ - 发自{{storeInfo.name}}
+                        <div class="tag-example">
+                            <span>例</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="message-status">
+                    <div class="message-switch-button">
+                        <button ng-tap="msgStatusSwitch('newRecordMsgSwitch')"
+                                ng-class="msgSwitch.newRecordMsgSwitch == 1 ? 'status-on-s' : 'status-off-s'"
+                                class="switch-btn-status-s">
+                            <span>{{msgSwitch.newRecordMsgSwitch == 1 ? '开' : '关'}}</span>
+                        </button>
+                    </div>
+                    <div ng-show="templateCount != null" class="message-info">已发送：{{templateCount.template_5}}条</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="message-model-list mt-2">
+            <div class="m-message-title">
+                <span>
+                    办记次卡提醒
+                </span>
+            </div>
+            <div class="m-message-body">
+                <div class="message-content">
+                    <div class="message-content-text">
+                        您当前办理美甲护理记次卡成功，金额1000元，总计10次。祝您好心情！ - 发自{{storeInfo.name}}
+                        <div class="tag-example">
+                            <span>例</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="message-status">
+                    <div class="message-switch-button">
+                        <button ng-tap="msgStatusSwitch('newCardMsgSwitch')"
+                                ng-class="msgSwitch.newCardMsgSwitch == 1 ? 'status-on-s' : 'status-off-s'"
+                                class="switch-btn-status-s">
+                            <span>{{msgSwitch.newCardMsgSwitch == 1 ? '开' : '关'}}</span>
+                        </button>
+                    </div>
+                    <div ng-show="templateCount != null" class="message-info">已发送：{{templateCount.template_6}}条</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="message-model-list mt-2">
+            <div class="m-message-title">
+                <span>
+                    卡变更提醒
+                </span>
+            </div>
+            <div class="m-message-body">
+                <div class="message-content">
+                    <div class="message-content-text">
+                        您当前银卡变更为金卡。祝您好心情！ - 发自{{storeInfo.name}}
+                        <div class="tag-example">
+                            <span>例</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="message-status">
+                    <div class="message-switch-button">
+                        <button ng-tap="msgStatusSwitch('cardCateChangeMsgSwitch')"
+                                ng-class="msgSwitch.cardCateChangeMsgSwitch == 1 ? 'status-on-s' : 'status-off-s'"
+                                class="switch-btn-status-s">
+                            <span>{{msgSwitch.cardCateChangeMsgSwitch == 1 ? '开' : '关'}}</span>
+                        </button>
+                    </div>
+                    <div ng-show="templateCount != null" class="message-info">已发送：{{templateCount.template_7}}条</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="message-model-list mt-2">
+            <div class="m-message-title">
+                <span>
+                    卡充值提醒
+                </span>
+            </div>
+            <div class="m-message-body">
+                <div class="message-content">
+                    <div class="message-content-text">
+                        您当前金卡（卡号：GC00097867）充值500元。祝您好心情！ - 发自{{storeInfo.name}}
+                        <div class="tag-example">
+                            <span>例</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="message-status">
+                    <div class="message-switch-button">
+                        <button ng-tap="msgStatusSwitch('cardRechargeMsgSwitch')"
+                                ng-class="msgSwitch.cardRechargeMsgSwitch == 1 ? 'status-on-s' : 'status-off-s'"
+                                class="switch-btn-status-s">
+                            <span>{{msgSwitch.cardRechargeMsgSwitch == 1 ? '开' : '关'}}</span>
+                        </button>
+                    </div>
+                    <div ng-show="templateCount != null" class="message-info">已发送：{{templateCount.template_8}}条</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="message-cate mt-2 mb-2">
+    <!--类别-->
+    <div class="message-cate-name">问候祝福类</div>
+    <!--模版-->
+    <div class="message-model">
+        <div class="message-model-list">
+            <div class="m-message-title">
+                <span>
+                    生日祝福
+                </span>
+            </div>
+            <div class="m-message-body">
+                <div class="message-content">
+                    <div class="message-content-text">
+                        5月12日是您的生日，在这样特别的日子里，为您送上最诚挚的生日祝福。七天内到店，马上又惊喜！祝您好心情！ - 发自{{storeInfo.name}}
+                        <div class="tag-example">
+                            <span>例</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="message-status">
+                    <div class="message-switch-button">
+                        <button ng-tap="tipsMsgLimit()"
+                                class="switch-btn-status-s status-off-s">
+                            <span>关</span>
+                        </button>
+                    </div>
+                    <!--<div class="message-info">已发送：0条</div>-->
+                </div>
+            </div>
+        </div>
+
+        <div class="message-model-list mt-2">
+            <div class="m-message-title">
+                <span>
+                    非活跃用户激活
+                </span>
+            </div>
+            <div class="m-message-body">
+                <div class="message-content">
+                    <div class="message-content-text">
+                        您已经有一段时间没来体验我们的服务了，愿我们的努力，为您带来好心情！七天内到店，马上又惊喜！ - 发自{{storeInfo.name}}
+                        <div class="tag-example">
+                            <span>例</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="message-status">
+                    <div class="message-switch-button">
+                        <button ng-tap="tipsMsgLimit()"
+                                class="switch-btn-status-s status-off-s">
+                            <span>关</span>
+                        </button>
+                    </div>
+                    <!--<div class="message-info">已发送：0条</div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div id="m-setting-messageCenter" ng-style="actionMes=='mesAd'?{}:{'display':'none'}"
+     style="overflow-y: auto;overflow-x: hidden;">
+    <div class="top-content ">
+        <div class="message-line">
+            <div class="member-card-left">
+                <label class="ml-1 label-left">会员卡类型：</label>
+            </div>
+            <div class="member-card-middle">
+                <input style="width: 1rem;margin-left: 0;" value="cateNoLimit" type="radio"
+                       ng-model="condition.cardCate"
+                       id="cardCate"><label
+                    for="cardCate" style="margin-left: 0;">不限</label>
+            </div>
+            <div class="member-card-right">
+                <div class="select-tags-s inlinebl member-category">
+                    <ul>
+                        <li ng-repeat="item in cardCateList"
+                            ng-class="condition.cardCate.indexOf(item) != -1 ? 'cateSelected' : ''"
+                            ng-tap="selectCardCate(item)">
+                            {{item.name}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="message-line">
+            <div class="search-left">
+                <label class="pl-1 label-left">办卡日期：</label>
+                <ul class="search-select-radio">
+                    <li ng-repeat="item in dateSelList">
+                        <input type="radio" value="{{item.index}}" ng-model="condition.newCardDate"
+                               id="newCard-{{item.index}}"
+                               name="newCard">
+                        <label for="newCard-{{item.index}}">{{item.name}}</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="search-right">
+                <label>自定义</label>
+                <input ng-model="newCardDateOffline"
+                       ng-tap="newCardStart()"
+                       disabled class="user-defined-input" placeholder="起始日期" type="text">
+                -
+                <input ng-model="newCardDateCaps"
+                       ng-tap="newCardEnd()"
+                       disabled class="user-defined-input" placeholder="截止日期" type="text">
+
+                <div class="confirm-button" ng-tap="newCardInputCommit()">
+                    <b>确定</b>
+                </div>
+            </div>
+        </div>
+        <div class="message-line">
+            <div class="search-left">
+                <label class="pl-1 label-left">卡内余额：</label>
+                <ul class="search-select-radio">
+                    <li ng-repeat="item in moneySelList">
+                        <input type="radio" value="{{item.index}}" ng-model="condition.cardBalance"
+                               id="cardBalance-{{item.index}}"
+                               name="cardBalance">
+                        <label for="cardBalance-{{item.index}}">{{item.name}}</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="search-right">
+                <label>自定义</label>
+                <input ng-model="cardBalanceOffline"
+                       class="user-defined-input" placeholder="最低金额" type="tel">
+                -
+                <input ng-model="cardBalanceCaps"
+                       class="user-defined-input" placeholder="最高金额" type="tel">
+
+                <div class="confirm-button" ng-tap="cardBalanceInputCommit()">
+                    <b>确定</b>
+                </div>
+            </div>
+        </div>
+        <div class="message-line">
+            <div class="search-left">
+                <label class="pl-1 label-left">累计消费金额：</label>
+                <ul class="search-select-radio">
+                    <li ng-repeat="item in moneySelList">
+                        <input type="radio" value="{{item.index}}" ng-model="condition.consume"
+                               id="consume-{{item.index}}"
+                               name="consume">
+                        <label for="consume-{{item.index}}">{{item.name}}</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="search-right">
+                <label>自定义</label>
+                <input ng-model="consumeOffline"
+                       class="user-defined-input" placeholder="最低金额" type="tel">
+                -
+                <input ng-model="consumeCaps"
+                       class="user-defined-input" placeholder="最高金额" type="tel">
+
+                <div class="confirm-button" ng-tap="consumeInputCommit()">
+                    <b>确定</b>
+                </div>
+            </div>
+        </div>
+        <div class="message-line">
+            <div class="search-left">
+                <label class="pl-1 label-left">最近消费时间：</label>
+                <ul class="search-select-radio">
+                    <li ng-repeat="item in dateSelList">
+                        <input type="radio" value="{{item.index}}" ng-model="condition.recently"
+                               id="recently-{{item.index}}"
+                               name="recently">
+                        <label for="recently-{{item.index}}">{{item.name}}</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="search-right">
+                <label>自定义</label>
+                <input ng-model="recentlyOffline"
+                       ng-tap="recentlyStart()"
+                       disabled class="user-defined-input" placeholder="起始日期" type="text">
+                -
+                <input ng-model="recentlyCaps"
+                       ng-tap="recentlyEnd()"
+                       disabled class="user-defined-input" placeholder="截止日期" type="text">
+
+                <div class="confirm-button" ng-tap="recentlyInputCommit()">
+                    <b>确定</b>
+                </div>
+            </div>
+        </div>
+        <div class="message-line" style="border-bottom: none;">
+            <div class="search-left">
+                <label class="pl-1 label-left">最近未消费时间：</label>
+                <ul class="search-select-radio">
+                    <li ng-repeat="item in dateSelList">
+                        <input type="radio" value="{{item.index}}" ng-model="condition.noConsume"
+                               id="noConsume-{{item.index}}"
+                               name="noConsume">
+                        <label for="noConsume-{{item.index}}">{{item.name}}</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="search-right">
+                <label>自定义</label>
+                <input ng-model="noConsumeOffline"
+                       ng-tap="noConsumeStart()"
+                       disabled class="user-defined-input" placeholder="起始日期" type="text">
+                -
+                <input ng-model="noConsumeCaps"
+                       ng-tap="noConsumeEnd()"
+                       disabled class="user-defined-input" placeholder="截止日期" type="text">
+
+                <div class="confirm-button" ng-tap="noConsumeInputCommit()">
+                    <b>确定</b>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="bottom-content ">
+        <div class="inlinebl ml-2" style="width:35.742187%;">
+            <div class="" style="margin-top: 0.5rem; width: 6.5rem; display: inline-block;
+                                padding-top: 1em;
+                                padding-bottom: 0.8em;
+                                padding-left: 0.8rem;
+                                font-size: 1.2rem;">搜索结果：
+            </div>
+            <input class="m-input-tiny" type="text" readonly placeholder="搜索结果" value="{{memberList.length}}人"
+                   style="border-bottom:1px solid #bd438e; padding-bottom: 0; width: 65%;  background-color: #ededed; font-size: 1.2rem; color: red;">
+        </div>
+        <div class="inlinebl" style="width:35.742187%;">
+            <div class="" style=" width: 6.5rem; display: inline-block;
+                                padding-bottom: 0.8em;
+                                padding-left: 0.8rem;
+                                font-size: 1.2rem;">电话号码：
+            </div>
+            <input ng-model="addPhoneNumber" class="m-input-tiny" type="tel" placeholder="请输入您想要添加的电话号码"
+                   style="border-bottom:1px solid #d0d0d0; padding-bottom: 0; width: 65%; background-color: #ededed">
+        </div>
+        <div ng-tap="addPhoneBySelf()" class="m-button-pink inlinebl" style="margin-left:14.304687%;">
+            <span>手工添加</span></div>
+        <div class="mt-1 ml-2">
+            <div style="width:96.359374%; height: 16.666666rem; border: 1px solid #d0d0d0;background-color: #FFFFFF;overflow-x: hidden;overflow-y: auto;padding-bottom: 1rem; border-radius: 0.416666rem;">
+                <div class="filter-member-result" ng-repeat="item in memberList" ng-tap="delMsgItem(item)">
+                    {{item.name}}
+                    ({{item.phoneMobile}})
+                    <i class="icon-remove-circle del-icon"></i>
+                </div>
+            </div>
+        </div>
+        <div class="m-button-pink inlinebl mb-1 mt-1"
+             ng-tap="nextStep()"
+             style="background-color: #767676; margin-left: 88.91875%;"><span>下一步</span><i
+                class="icon-chevron-right ml-1"></i></div>
+    </div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+<div id="m-aboutlos-suggestion" class="m-aboutlos-suggestion"
+     ng-show="action=='sendMessage'">
+    <div class="m-setting-title">
+        <ul>
+            <li style="float: left;">
+                <a ng-tap="backIndex()">
+                    <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+                </a>
+                <span style="font-size: 1.4rem;">
+                    编辑短信
+                </span>
+            </li>
+        </ul>
+    </div>
+    <div class="m-setting-form-bg">
+        <div class="" style="margin: 0 20px;">
+            <div class="msg-wordsize-info">
+                <div class="caption">
+                    编辑短信
+                </div>
+                <div>
+                    共
+                    <span style="font-size: 1.6rem;">{{temp.msgCount}}</span>
+                    条
+                </div>
+                <div class="ml-1">
+                    <span>{{temp.msg.length + temp.msgLast.length}}/{{400}}</span>
+                    字
+                </div>
+                <div>
+                    一条短信的长度为70字、一次最多发送400字
+                </div>
+            </div>
+            <div class="msg-edit-out">
+                <textarea class="msg-edit-area" type="text" ng-model="temp.msg" rows="6" placeholder="输入短信内容">
+                </textarea>
+
+                <div class="foot-note">
+                    {{temp.msgLast}}
+                </div>
+            </div>
+        </div>
+        <div class="m-button-pink mt-1 mr-1" ng-tap="sendSwitch()" style="width:2rem; float: right; "><span>发送</span>
+        </div>
+        <div class="clear" style="height: 2.5rem;">&nbsp;</div>
+    </div>
+</div>
+
+<div id="m-setting-dimensional-code" class="m-aboutlos-suggestion"
+     ng-show="action=='dimensional'">
+    <div class="m-setting-title">
+        <ul>
+            <li style="float: left;">
+                <a ng-tap="backIndex()">
+                    <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+                </a>
+                <span style="font-size: 1.4rem;">
+                    扫描二维码
+                </span>
+            </li>
+        </ul>
+    </div>
+    <!--短信二维码扫描页面-->
+    <div>
+        <!--提示内容-->
+        <div class="up-tips">
+            <div>
+                <span>您的设备不具有短信功能，请使用您手机中的</span><span
+                    class="sms-software-point">乐斯短信软件</span><span
+                    >扫描左侧二维码，获取您刚才编辑的内容
+                </span>
+            </div>
+        </div>
+        <!--二维码及引导部分-->
+        <div class="down-content">
+            <div>
+                <div class="left-msg-dimensional">
+                    <img src=""/>
+                </div>
+                <div class="right-guide-way">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

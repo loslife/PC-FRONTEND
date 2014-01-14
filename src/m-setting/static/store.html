@@ -1,0 +1,500 @@
+<div id="m-setting-store-area" class="featureSpace">
+<style>
+    #m-setting-store-edit {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .manage-item {
+        background-color: #eeeeee;
+        color: #555555;
+        border-top: solid 1px #fbfbfb;
+        border-left: solid 1px #fbfbfb;
+        border-right: solid 1px #bbbbbb;
+        border-bottom: solid 1px #bbbbbb;
+        width: auto;
+        min-width: 8rem;
+        height: 2.8rem;
+        padding-left: 0.5rem;
+        padding-right: 2rem;
+        line-height: 3rem;
+        margin-right: 1rem;
+        margin-top: 0.8rem;
+        position: relative;
+    }
+
+    #m-setting-content {
+        background: #ededed url("imgs/bg-line.png") center repeat;
+    }
+
+    #m-setting-store-edit {
+        background: #ededed url("imgs/bg-line.png") center repeat;
+    }
+
+    #store-up-section-content {
+        height: 26.333333rem;
+    }
+
+    #store-left-section-content {
+        height: inherit;
+        padding-right: 37rem;
+        padding-left: 1.5rem;
+        padding-top: 1.166666rem;
+    }
+
+    #store-right-map {
+        display: inline-block;
+        width: 36rem;
+        margin-top: 3px;
+        height: inherit;
+    }
+
+    #store-down-section-content {
+        padding: 1.5rem 1.5rem 0 1.5rem;
+        height: 20rem;
+    }
+
+    .store-logo-image {
+        width: 9rem;
+        display: inline-block;
+    }
+
+    .store-name-user {
+        height: 9.333333rem;
+        padding-left: 8rem;
+    }
+
+    .sel-logo-image-button {
+        margin-left: auto;
+        margin-right: auto;
+        width: 7rem;
+        height: 2rem;
+        border: none;
+        background-color: #a6428b;
+        color: #fff;
+        font-size: 1.2rem;
+        border-radius: 0.416666rem;
+    }
+
+    .store-left-up {
+        overflow: hidden;
+        height: 10.6rem;
+    }
+
+    .store-info-line {
+        height: 4rem;
+        line-height: 4rem;
+        margin-bottom: 1.166666rem;
+        background-color: #FFFFFF;
+        font-size: 1.2rem;
+        padding-left: 1.5rem;
+        padding-right: 3.5rem;
+        border: 1px solid #d0d0d0;
+        position: relative;
+        overflow: hidden;
+        border-radius: 0.416666rem;
+    }
+
+    .store-info-line>i {
+        float: right;
+        line-height: 4rem;
+        font-size: 1.8rem;
+        font-weight: 100;
+        margin-right: 2rem;
+        position: absolute;
+        right: 0;
+        top: 0;
+        color: #565656;
+    }
+
+    .address-select {
+        height: 40rem;
+        padding-left: 4rem;
+        overflow: auto;
+    }
+
+    .address-select>div {
+        font-size: 1.6rem;
+        line-height: 2.6rem;
+        display: inline-block;
+        min-width: 16rem;
+    }
+
+    .m-setting-edit-address-map {
+        width: 90%;
+        margin: 2rem auto;
+        height: 40rem;
+    }
+
+    .m-setting-store-exists-operate {
+
+    }
+
+    .standOperate-item {
+        display: inline-block;
+        width: 7rem;
+        font-size: 1.2rem;
+    }
+
+    .operate-add-button {
+        background-color: #a6428b;
+        height: 3rem;
+        line-height: 2.8rem;
+        text-align: center;
+        color: #fff;
+        border: none;
+        outline: none;
+        width: 7rem;
+        position: absolute;
+        right: 1.2rem;
+        top: 0.5rem;
+        font: 1.2rem;
+    }
+
+    .m-setting-store-add-operate {
+        position: relative;
+    }
+
+    .operate-list>li:first-child {
+        margin-left: 11.7rem;
+    }
+
+    .operate-del-img {
+        position: absolute;
+        margin-top: 0.8rem;
+        right: 0;
+        top: 0;
+        margin-right: 0.5rem;
+
+    }
+
+    .m-setting-store-exists-operate {
+        margin-bottom: 1.5rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #d0d0d0;
+    }
+
+    .time-select {
+        font-size: 1.2rem;
+        width: 5rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        text-align: center;
+        border: none;
+        outline: none;
+    }
+
+    .stand-operate-color {
+        background-color: #398acb;
+        color: #fff;
+    }
+
+    .underline {
+        border-bottom: solid 0.15rem #d0d0d0;
+    }
+
+</style>
+<div id="m-setting-title" class="m-setting-title">
+    <ul>
+        <li style="float: left;">
+            <a ng-tap="backto('/m-setting/setting')">
+                <img src="imgs/back-arrow.png" width="20" height="20">
+            </a>
+            <span style="font-size: 1.4rem;">
+                 <%= setting.store.store %>
+            </span>
+        </li>
+    </ul>
+</div>
+
+<div class="m-area-msg" style=""></div>
+<!--店铺资料内容-->
+<div id="m-setting-content" style="overflow-y: auto;overflow-x: hidden;">
+    <div id="store-up-section-content">
+        <!--右边地图展示区域-->
+        <div id="store-right-map" class="fr">
+            <img id="store-right-map-image" ng-src="{{store.location ? store.location : 'imgs/default_store_map.png'}}"
+                 style="width:34rem ;height:25rem ;margin-top: 1rem;"/>
+        </div>
+        <!--左边部分内容-->
+        <div id="store-left-section-content">
+            <div id="store-left-up" class="store-left-up">
+                <!--logo图片选择-->
+                <div id="store-logo-image" class="store-logo-image fl">
+                    <img ng-src="{{store.logo ? store.logo : 'imgs/default_store.png'}}"
+                         style="width: 7rem;height: 7rem;">
+                    <br/>
+                    <button type="button" ng-tap="getPicture(store,'folder')" class="sel-logo-image-button">
+                        <%= setting.account.choose_photo %>
+                    </button>
+                </div>
+                <!--与loge图片并列的两项店铺名、注册账号-->
+                <div id="store-name-user" class="store-name-user">
+                    <div class="store-info-line" ng-tap="editStoreInfo('name')" style="font-size: 1.2rem;">
+                        <span>
+                            <%= setting.store.store_name %>：
+                        </span>
+                        <span>
+                            {{store.name}}
+                        </span>
+                        <i class="icon-angle-right"></i>
+                    </div>
+                    <div class="store-info-line">
+                        <span>
+                             <%= setting.store.admin_account %>：
+                        </span>
+                        <span>
+                            {{store.admin_account}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div id="store-right-down">
+                <div class="store-info-line" ng-tap="editStoreInfo('phone')">
+                    <span>
+                         <%= setting.store.phone %>：
+                    </span>
+                    <span>
+                        {{store.contact_phoneMobile}}
+                    </span>
+                    <i class="icon-angle-right"></i>
+                </div>
+
+                <div class="store-info-line" ng-tap="editStoreInfo('address')">
+                    <span>
+                         <%= setting.store.address %>：
+                    </span>
+                    <span>
+                        {{store.addr_state_city_area + store.addr_detail}}
+                    </span>
+                    <i class="icon-angle-right"></i>
+                </div>
+
+                <div class="store-info-line" ng-tap="editStoreInfo('hours')">
+                    <span>
+                        <%= setting.store.work_hour %>：
+                    </span>
+                    <span>
+                        {{store.hours_begin + '-' + store.hours_end}}
+                    </span>
+                    <i class="icon-angle-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="store-down-section-content">
+        <div class="store-info-line" ng-tap="editStoreInfo('operate')">
+            <span>
+                <%= setting.store.manage_item %>：
+            </span>
+            <span ng-repeat="item in operateItem">
+                {{item.name}}
+                {{$last ? '' : ','}}
+            </span>
+            <i class="icon-angle-right"></i>
+        </div>
+        <div class="store-info-line" style="line-height:3rem;height:12rem;overflow: auto;"
+             ng-tap="editStoreInfo('comment')">
+            <span>
+                <%= setting.store.detail %>：
+            </span>
+            <span>
+                  {{store.comment}}
+            </span>
+            <i class="icon-angle-right fr" style="line-height: 12rem;"></i>
+        </div>
+    </div>
+</div>
+
+<!--店铺资料编辑-->
+<div id="m-setting-store-edit" class="none bg-color-ededed" style="overflow: hidden;">
+    <div class="m-setting-title">
+        <ul>
+            <li class="fl">
+                <a ng-tap="cancel()">
+                    <img src="imgs/back-arrow.png" width="20" height="20">
+                </a>
+                <span style="font-size: 1.4rem;">
+                    {{transAction(temp.action)}}
+                </span>
+            </li>
+            <li class="fr">
+                <a ng-tap="editInfoSave({{'temp.action'}})">
+                <span style="font-size: 1.2rem;">
+                    <i class="icon-save"></i>
+                    <%= common.label.save %>
+                </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="m-area-msg" style=""></div>
+    <div class="m-setting-form-bg">
+        <div class="m-input-underline" ng-if="temp.action=='name'">
+            <div class="caption ">
+                <%= setting.store.store_name_input %>：
+            </div>
+            <input id="m-setting-store-edit-name" class="m-input" type="text" ng-model="storeTemp.name"
+                   placeholder="<%= setting.store.store_name_input %>" maxlength="12">
+            <cite id="store-error-name" class="fr error-hint">
+                <img src="../../resource/images/alarmIcon.png">
+                <span><%= setting.store.store_name_input_error_info %></span>
+            </cite>
+        </div>
+
+        <div class="m-input-underline" ng-if="temp.action=='phone'">
+            <div class="caption ">
+                <%= setting.store.phone_number %>：
+            </div>
+            <input id="m-setting-store-edit-phone" class="m-input" placeholder="<%= setting.store.phone_number %>"
+                   type="tel"
+                   ng-model="storeTemp.contact_phoneMobile">
+            <cite id="store-error-phoneMobile" class="fr error-hint">
+                <img src="../../resource/images/alarmIcon.png">
+                <span><%= setting.store.phone_number_error_info %></span>
+            </cite>
+        </div>
+        <div class="m-input-underline" ng-if="temp.action=='comment'">
+            <div class="caption fl">
+                <%= setting.store.detail %>：
+            </div>
+            <textarea id="m-setting-store-edit-comment"
+                      class="m-input pl-7" type="text" ng-model="storeTemp.comment" rows="4"
+                      placeholder="<%= setting.store.detail_placeholder %>"
+                      style="width: 80%" maxlength="600">
+            </textarea>
+            <cite id="store-error-comment" class="fr error-hint">
+                <img src="../../resource/images/alarmIcon.png">
+                <span><%= setting.store.detail_error_info %></span>
+            </cite>
+        </div>
+
+        <div class="underline pt-1 pb-1" ng-if="temp.action=='hours'">
+            <div class="caption ">
+                <%= setting.store.work_hour %>：
+            </div>
+            <div class="inlinebl">
+                <input ng-tap="selBeginHours($event)" type="text" ng-model="storeTemp.hours_begin"
+                       placeholder="<%= setting.store.start_time %>"
+                       class="time-select" disabled/>
+                <span style="font-size: 1.2rem;"><%= setting.store.to %></span>
+                <input ng-tap="selEndHours($event)" type="text" ng-model="storeTemp.hours_end"
+                       placeholder="<%= setting.store.end_time %>"
+                       class="time-select" disabled/>
+            </div>
+        </div>
+
+        <div ng-style="temp.action=='address' ? {} : {'display' : 'none'}">
+            <div class="underline" style="font-size:1.2rem;">
+                <div class="caption">
+                    <%= setting.store.location %>：
+                </div>
+                <div style="display: inline-block;">
+                    <span ng-tap="showAddSel('province')" style="height: 4rem;line-height: 4rem;"
+                          ng-style="storeTemp.selectedProvince?{'display' : 'inline-block'}:{'display':'none'}">
+                        {{storeTemp.selectedProvince.name}}
+                    </span>
+                    <span ng-tap="showAddSel('city')" style="height: 4rem;line-height: 4rem;"
+                          ng-style="storeTemp.selectedCity?{'display' : 'inline-block'}:{'display':'none'}">
+                        -{{storeTemp.selectedCity.name}}
+                    </span>
+                    <span ng-tap="showAddSel('area')" style="height: 4rem;line-height: 4rem;"
+                          ng-style="storeTemp.selectedArea?{'display' : 'inline-block'}:{'display':'none'}">
+                        -{{storeTemp.selectedArea.name}}
+                    </span>
+                </div>
+            </div>
+
+            <div id="m-setting-store-addr_detail" class="m-input-underline">
+                <div class="caption">
+                    <%= setting.store.block_address %>：
+                </div>
+                <input class="m-input" type="text" ng-model="storeTemp.addr_detail"
+                       placeholder="<%= setting.store.block_address %>"
+                       style="width: 60%" maxlength="64">
+                <button type="button" class="sel-logo-image-button h-3" ng-tap="showAddPointOfMap()">
+                    <%= setting.store.map_location %>
+                </button>
+                <cite id="store-error-addr_detail" class="fr error-hint">
+                    <img src="../../resource/images/alarmIcon.png">
+                    <%= setting.store.input_error %>
+                </cite>
+            </div>
+
+            <div id="no-network-map-image">
+                <img id="static-map-image" ng-src="{{store.location ? store.location : 'imgs/default_store_map.png'}}"
+                     width="621"
+                     height="456"
+                     style="display: block;margin: 1rem auto;"/>
+            </div>
+
+            <div id="m-setting-edit-address-map" class="m-setting-edit-address-map">
+
+            </div>
+
+            <div id="m-setting-store-province-select" class="province-select" style="display: none;">
+                <div class="address-select">
+                    <div ng-repeat="item in address" ng-tap="selProvince(item)">
+                        {{item.name}}
+                    </div>
+                </div>
+            </div>
+
+            <div id="m-setting-store-city-select" class="city-select" style="display: none;">
+                <div class="address-select">
+                    <div ng-repeat="item in storeTemp.selectedProvince.cities" ng-tap="selCity(item)">
+                        {{item.name}}
+                    </div>
+                </div>
+            </div>
+
+            <div id="m-setting-store-area-select" class="area-select" style="display: none;">
+                <div class="address-select">
+                    <div ng-repeat="item in storeTemp.selectedCity.areas" ng-tap="selArea(item)">
+                        {{item.name}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin: 0 20px;" ng-style="temp.action=='operate' ? {} : {'display' : 'none'}">
+            <!--已有经营项目-->
+            <div class="m-setting-store-exists-operate">
+                <div class="caption" style="position: absolute;">
+                    <%= setting.store.manage_item %>：
+                </div>
+                <ul class="operate-list inlinebl">
+                    <li class="inlinebl manage-item" ng-repeat="item in operateItemTemp"
+                        ng-tap="delOperateItem(item)">
+                        {{item.name}}
+                        <i class="icon-remove-circle operate-del-img" style="color: #d65b39; font-size: 1.6rem;"></i>
+                    </li>
+                </ul>
+            </div>
+
+            <!--标准经营项目-->
+            <div class="m-setting-store-stand-operate">
+                <div id="standOperate-{{item.id}}" class="standOperate-item m-tag" ng-repeat="item in standOperate"
+                     ng-tap="selStandOperate(item)">
+                    {{item.name}}
+                </div>
+            </div>
+
+            <!--手工添加经营项目-->
+            <div class="m-setting-store-add-operate m-input-underline">
+                <div class="caption">
+                    <%= setting.store.add_by_hand %>：
+                </div>
+                <input class="m-input" style="width: 60%" ng-model="temp.newOperateStr"
+                       placeholder="<%= setting.store.add_by_hand_placeholder %>"
+                       type="text"/>
+                <button class="operate-add-button" ng-tap="addOperateItem()"><%= common.label.confirm %></button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

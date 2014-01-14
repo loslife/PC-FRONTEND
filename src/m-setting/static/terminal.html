@@ -1,0 +1,354 @@
+<div id="m-setting-terminal-area" class="featureSpace" xmlns="http://www.w3.org/1999/html">
+<style>
+    .left {
+        min-width: 9rem;
+        width: 9rem;
+        background-color: #ededed;
+        margin-right: 2rem;
+    }
+
+    .terminal-title {
+        font-size: 1.2rem;
+        color: #bd438e;
+        padding-left: 2rem;
+        padding-bottom: 0.7rem;
+        border-bottom: 2px solid;
+        margin-right: 2rem;
+    }
+
+    button {
+        color: #ffffff;
+        border: 1px solid;
+        background-color: #bd438e;
+        border-radius: 0.416666rem;
+    }
+
+    .btn-0 {
+        height: 4rem;
+        min-width: 10rem;
+        font-size: 1.5rem;
+        margin-right: 0rem;
+    }
+
+        /** "-","+"按钮样式 **/
+    .btn-1 {
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.2rem;
+    }
+
+    .printerSetting {
+        margin-top: 1rem;
+        margin-left: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .terminal-content > div {
+        height: 100%;
+        padding-top: 1.2rem;
+        overflow: auto;
+    }
+
+    table {
+        border-collapse: separate;
+        border-spacing: 0.4rem;
+    }
+
+    td > input {
+        width: 30rem;
+        height: 2.5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin-left: 1rem;
+        border: 1px solid #d0d0d0;
+        background-color: #fff;
+        border-radius: 0.416666rem;
+    }
+
+        /**控制第一列样式**/
+    td:first-child {
+        text-align: left;
+        width: 7rem;
+    }
+
+        /**控制第二列样式**/
+    td:nth-child(2) {
+        width: 33rem;
+        text-align: right;
+        padding-right: 0rem;
+    }
+
+    td:nth-child(2) > ul > li {
+        text-align: center;
+        min-width: 5rem;
+        max-width: 7rem;
+        font-size: 1.2rem;
+        line-height: 2.5rem;
+        height: 2.5rem;
+        margin-left: 1rem;
+        color: #565656;
+        background-color: #eee;
+        border: 1px solid #d0d0d0;
+        display: inline-block;
+    }
+
+        /**在移动设备上，虽然设置了input的disable属性为false，但是样式没有变化**/
+    input[disabled] {
+        background-color: #f7f7f7;
+    }
+
+    .ticket-switch-status {
+        width: 6rem;
+    }
+
+    .print-setting-left {
+        background: url("imgs/print-setting.png");
+        background-size: 1.4rem 1.4rem;
+        width: 1.4rem !important;
+        height: 1.4rem !important;
+        vertical-align: middle;
+        margin-left: 1rem;
+        display: inline-block;
+        position: relative !important;
+        margin-right: 0.1rem;
+        margin-top: -0.2rem;
+    }
+
+    .print-setting-left-pink {
+        background: url("imgs/print-setting-pink.png");
+        background-size: 1.4rem 1.4rem;
+        width: 1.4rem !important;
+        height: 1.4rem !important;
+        vertical-align: middle;
+        margin-left: 1rem;
+        display: inline-block;
+        position: relative !important;
+        margin-right: 0.1rem;
+        margin-top: -0.2rem;
+    }
+
+    .xiaopiao-style-left {
+        background: url("imgs/xiaopiao-style.png");
+        background-size: 1.4rem 1.4rem;
+        width: 1.4rem !important;
+        height: 1.4rem !important;
+        vertical-align: middle;
+        margin-left: 1rem;
+        display: inline-block;
+        position: relative !important;
+        margin-right: 0.1rem;
+        margin-top: -0.2rem;
+    }
+
+    .xiaopiao-style-left-pink {
+        background: url("imgs/xiaopiao-style-pink.png");
+        background-size: 1.4rem 1.4rem;
+        width: 1.4rem !important;
+        height: 1.4rem !important;
+        vertical-align: middle;
+        margin-left: 1rem;
+        display: inline-block;
+        position: relative !important;
+        margin-right: 0.1rem;
+        margin-top: -0.2rem;
+    }
+
+</style>
+
+<div class="m-setting-title">
+    <ul>
+        <li ng-style="action!='small_ticket'?{}:{'display':'none'}" style="float: left;">
+            <a ng-tap="back_setting()"><img src="imgs/back-arrow.png" width="20rem" height="20rem"></a>
+            <span style="font-size: 1.4rem;">小票打印</span>
+        </li>
+    </ul>
+</div>
+
+<div class="m-two-column-area">
+    <div class="left">
+        <ul class="left-nav">
+            <li ng-tap="terminalMgr()" ng-class="selectedStyle=='terminal'?'selected':''">
+                <div ng-class="selectedStyle=='terminal'?'selected':''"></div>
+                <div ng-class="selectedStyle=='terminal'?'print-setting-left-pink':'print-setting-left'"></div>
+                <span>
+                    打印设置
+                </span>
+            </li>
+            <li ng-tap="setSmallTicket()" ng-class="selectedStyle=='smallTicket'?'selected':''">
+                <div ng-class="selectedStyle=='smallTicket'?'selected':''"></div>
+                <div ng-class="selectedStyle=='smallTicket'?'xiaopiao-style-left-pink':'xiaopiao-style-left'"></div>
+                <span>
+                    小票格式
+                </span>
+
+            </li>
+        </ul>
+    </div>
+
+    <div class="right terminal-content">
+        <!---终端设置界面-->
+        <div ng-show="selectedStyle=='terminal'">
+            <div class="terminal-title">打印机连接</div>
+            <div class="printerSetting">
+                <table style="margin-bottom: 3rem;">
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div ng-tap="searchBluetoothPrinter()" class="m-button-pink inlinebl">搜索打印机</div>
+                            <div ng-tap="history()" class="m-button-pink inlinebl">历史打印机</div>
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="terminal-title">打印机设置</div>
+            <div class="printerSetting">
+                <table>
+                    <tr>
+                        <td><label for="printerName">小票打印机 :</label></td>
+                        <td class=""><input id="printerName" ng-model="printer.printer_name" type="text"
+                                            disabled placeholder="小票机实际名称"/></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><label>打印机地址 :</label></td>
+                        <td><input id="printerAddress" ng-model="printer.printer_address" type="text" disabled
+                                   placeholder="实际检测适配到的蓝牙地址"/></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><label>打印份数 :</label></td>
+                        <td><input id="printNumber" ng-model="printer.print_number" type="text" disabled/></td>
+                        <td>
+                            <div ng-tap="minusPrintNumber()" class="m-button-pink" style="display: inline-block;
+                            width:2.5rem;
+                            min-width: 2.5rem;
+                            height: 2.5rem;
+                            ">
+                                <i class="icon-minus"></i>
+                            </div>
+                            <div ng-tap="addPrintNumber()" class="m-button-pink" style="display: inline-block;
+                            width: 2.5rem;
+                            min-width: 2.5rem;
+                            height: 2.5rem;
+                            ">
+                                <i class="icon-plus"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <!--<div ng-tap="savePrinter()" class="m-button-pink inlinebl">保存设置</div>-->
+                            <!--<div ng-tap="testPrinter()" class="m-button-pink inlinebl">测试打印机</div>-->
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!--小票设置界面-->
+        <div ng-show="selectedStyle=='smallTicket'">
+            <div class="terminal-title">小票样式设置</div>
+            <div class="printerSetting">
+                <table>
+                    <tr>
+                        <td><label>店名 :</label></td>
+                        <td class=""><input id="shopName" ng-model="storeInfo.name" type="text" disabled="false"/></td>
+                        <td><label style="margin-left: 1.5rem;" ng-tap="toStorePage()">店铺资料内设置</label></td>
+                    </tr>
+                    <tr>
+                        <td><label>电话 :</label></td>
+                        <td><input id="phone" ng-model="storeInfo.contact_phoneMobile" type="text" disabled="false"/>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><label>地址 :</label></td>
+                        <td><input id="address" value="{{storeInfo.addr_state_city_area + storeInfo.addr_detail}}"
+                                   type="text" disabled="false"/></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><label>优惠金额 :</label></td>
+                        <td>
+                            <div class="ticket-switch-status">
+                                <button ng-tap="switchTicket('discount_amount')"
+                                        ng-class="ticketSwitch.discount_amount == 1 ? 'status-on-s' : 'status-off-s'"
+                                        class="switch-btn-status-s">
+                                    <span>{{ticketSwitch.discount_amount == 1 ? '开' : '关'}}</span>
+                                </button>
+                            </div>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><label>开内余额 :</label></td>
+                        <td>
+                            <div class="ticket-switch-status">
+                                <button ng-tap="switchTicket('balance')"
+                                        ng-class="ticketSwitch.balance == 1 ? 'status-on-s' : 'status-off-s'"
+                                        class="switch-btn-status-s">
+                                    <span>{{ticketSwitch.balance == 1 ? '开' : '关'}}</span>
+                                </button>
+                            </div>
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="terminal-title">小票类型设置</div>
+            <div class="printerSetting">
+                <table>
+                    <tr>
+                        <td><label>收银打印 :</label></td>
+                        <td>
+                            <div class="ticket-switch-status">
+                                <button ng-tap="switchTicket('checkoutTicketSwitch')"
+                                        ng-class="ticketSwitch.checkoutTicketSwitch == 1 ? 'status-on-s' : 'status-off-s'"
+                                        class="switch-btn-status-s">
+                                    <span>{{ticketSwitch.checkoutTicketSwitch == 1 ? '开' : '关'}}</span>
+                                </button>
+                            </div>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><label>办卡打印 :</label></td>
+                        <td>
+                            <div class="ticket-switch-status">
+                                <button ng-tap="switchTicket('newCardTicketSwitch')"
+                                        ng-class="ticketSwitch.newCardTicketSwitch == 1 ? 'status-on-s' : 'status-off-s'"
+                                        class="switch-btn-status-s">
+                                    <span>{{ticketSwitch.newCardTicketSwitch == 1 ? '开' : '关'}}</span>
+                                </button>
+                            </div>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><label>充卡打印 :</label></td>
+                        <td>
+                            <div class="ticket-switch-status">
+                                <button ng-tap="switchTicket('rechargeTicketSwitch')"
+                                        ng-class="ticketSwitch.rechargeTicketSwitch == 1 ? 'status-on-s' : 'status-off-s'"
+                                        class="switch-btn-status-s">
+                                    <span>{{ticketSwitch.rechargeTicketSwitch == 1 ? '开' : '关'}}</span>
+                                </button>
+                            </div>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div ng-tap="testPrinter()" class="m-button-pink inlinebl">测试打印机</div>
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

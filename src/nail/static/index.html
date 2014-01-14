@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title><%=common.sys.title%></title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name = "format-detection" content = "telephone=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=10,chrome=1"/>
+    <link href="../../3rd-lib/mobile.min.css" rel="stylesheet"/>
+    <link href="nail-min.css" rel="stylesheet"/>
+    <link href="css/ios_special.css" rel="stylesheet"/>
+</head>
+
+<body ng-controller="mainController">
+<div class="m-global-msg"></div>
+<div class="page-container">
+    <div id="header-container">
+        <div id="header">
+            <div class="navbar">
+                <div class="nav-logo">
+                    <img src="imgs/logo_yilos.png" alt=""/>
+                </div>
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li data-moduleid="pos" class="selected"
+                            ng-tap="clickMainMenu('/m-pos/checkout','m-pos','checkout',$event)">
+                            <a href="javascript:void(0);">
+                                <span class="btn-icon-pos btn-icon-l"></span>
+                                <span class="button-text"><%= nail.menu.checkout%></span>
+                            </a>
+                        </li>
+                        <li data-moduleid="member"
+                            ng-tap="clickMainMenu('/m-member/allMemberList','m-pos','allMemberList', $event)">
+                            <a href="javascript:void(0);">
+                                <span class="btn-icon-member btn-icon-l"></span>
+                                <span class="button-text"><%= nail.menu.member%></span>
+                            </a>
+                        </li>
+                        <li data-moduleid="product"
+                            ng-tap="clickMainMenu('/m-nail-show/show','m-nail-show','show',$event)">
+                            <a
+                                    href="javascript:void(0);">
+                                <span class="btn-icon-show btn-icon-l"></span>
+                                <span class="button-text"><%= nail.menu.show%></span>
+                            </a>
+                        </li>
+                        <li data-moduleid="employee"
+                            ng-tap="clickMainMenu('/m-setting/setting','m-setting','setting',$event)">
+                            <a
+                                    href="javascript:void(0);">
+                                <span class="btn-icon-setting btn-icon-l"></span>
+                                <span class="button-text"><%= nail.menu.admin%></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="main-container" style="">
+        <div id="main-content" class="main-content">
+            <div id="f-workspace" class="padding-l-m f-workspace">
+                <div id="pos-pad-checkout-area">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="client-lock-pwd" style="display: none;">
+        <div class="pt-10">
+            <div id="client-lock-title" class="pb-1"></div>
+
+            <ul id="pwd-input" style="text-align: center;">
+                <li><input type="password" id="pwd-1" data-index="1" readonly maxlength="1"/></li>
+                <li><input type="password" id="pwd-2" data-index="2" readonly maxlength="1"/></li>
+                <li><input type="password" id="pwd-3" data-index="3" readonly maxlength="1"/></li>
+                <li><input type="password" id="pwd-4" data-index="4" readonly maxlength="1"/></li>
+            </ul>
+            <ul class="pwd-calculator mt-1" style="width: 30rem;margin: auto;text-align: center;">
+                <li style="width: 28rem;">
+                    <div class="button-calculator" style="line-height: 6rem" data-num="0">
+                        <div>0</div>
+                    </div>
+                    <div class="button-calculator" style="line-height: 6rem" data-num="1">
+                        <div>1</div>
+                    </div>
+                    <div class="button-calculator" style="line-height: 6rem" data-num="2">
+                        <div>2</div>
+                    </div>
+                    <div class="button-calculator" style="line-height: 6rem" data-num="3">
+                        <div>3</div>
+                    </div>
+                    <div class="button-calculator" style="line-height: 6rem" data-num="4">
+                        <div>4</div>
+                    </div>
+                    <div class="button-calculator" style="line-height: 6rem; margin-top: 3px" data-num="5">
+                        <div>5</div>
+                    </div>
+                    <div class="button-calculator" style="line-height: 6rem" data-num="6">
+                        <div>6</div>
+                    </div>
+                    <div class="button-calculator" style="line-height: 6rem" data-num="7">
+                        <div>7</div>
+                    </div>
+                    <div class="button-calculator" style="line-height: 6rem" data-num="8">
+                        <div>8</div>
+                    </div>
+                    <div class="button-calculator" style="line-height: 6rem; margin-top: 3px" data-num="9">
+                        <div>9</div>
+                    </div>
+                    <div class="button-calculator" style="line-height: 6rem" data-num="-1">
+                        <div>←</div>
+                    </div>
+                    <div class="button-calculator" style="line-height: 6rem" id="client-lock-pwd-conform" data-num="ok">
+                        <div><%= common.label.confirm%></div>
+                    </div>
+                    <div class="button-calculator" style="line-height: 6rem" id="client-lock-pwd-setting"
+                         data-num="setting" style="display: none;">
+                        <div><%= common.label.setting%></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="index-loadding-area" class="index-loadding-area">
+    <div class="index-loadding">
+        <img src="imgs/loading.gif" alt="" />
+        <span class="text">正在加载...</span>
+    </div>
+</div>
+
+<script src="../../3rd-lib/sea.js"></script>
+<script src="../../3rd-lib/mobile-android.min.js"></script>
+<script src="../../../../cordova_plugins.js"></script>
+<script src="../../../../cordova.js"></script>
+<script src="../../../../plugins-ext/yilos-extend.js"></script>
+<script src="../../../../plugins-ext/SQLitePlugin.js"></script>
+
+<script src="index-min.js"></script>
+
+<!-- main js -->
+
+<!-- Only This Demo Page -->
+<script type="text/javascript">
+</script>
+</body>
+</html>

@@ -1,0 +1,590 @@
+<div class="m-setting-account-area featureSpace padding-l-l" id="m-setting-account-area">
+<style>
+    #m-setting-account-edit {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .m-setting-account-right-two {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .m-service-bill-content {
+        color: #565656;
+        font-size: 1.2rem;
+    }
+
+    .m-service-bill-title {
+        background-color: #ec5870;
+        font-weight: normal;
+        width: 93%;
+        height: 3.5rem;
+        color: #fff;
+        line-height: 3.5rem;
+        font-size: 1.4rem;
+    }
+
+    #userInfo-content ul li {
+        height: 4.166666666666rem;
+        border: 1px solid #d0d0d0;
+        line-height: 4.166666666666rem;
+        background-color: #f7f7f7;
+        padding-left: 1.5rem;
+        margin-top: 1rem;
+        border-radius: 0.416666rem;
+        color: #565656;
+        font-size: 1.2rem;
+    }
+
+    .m-pay-style {
+        font-size: 1.2rem;
+    }
+
+    .style-title {
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .pay-style-content {
+        overflow: auto;
+    }
+
+    .pay-style-comment {
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+        color: #ec5870;
+        margin-bottom: 0.5rem;
+    }
+    .personal-info{
+        background: url("imgs/personal-info.png");
+        background-size: 1.4rem 1.4rem;
+        width: 1.4rem !important;
+        height: 1.4rem !important;
+        vertical-align: middle;
+        margin-left: 1rem;
+        display: inline-block;
+        position: relative !important;
+        margin-right: 0.1rem;
+        margin-top: -0.2rem;
+    }
+
+    .personal-info-pink{
+        background: url("imgs/personal-info-pink.png");
+        background-size: 1.4rem 1.4rem;
+        width: 1.4rem !important;
+        height: 1.4rem !important;
+        vertical-align: middle;
+        margin-left: 1rem;
+        display: inline-block;
+        position: relative !important;
+        margin-right: 0.1rem;
+        margin-top: -0.2rem;
+    }
+    .logout-left{
+        background: url("imgs/logout-left.png");
+        background-size: 1.4rem 1.4rem;
+        width: 1.4rem !important;
+        height: 1.4rem !important;
+        vertical-align: middle;
+        margin-left: 1rem;
+        display: inline-block;
+        position: relative !important;
+        margin-right: 0.1rem;
+        margin-top: -0.2rem;
+    }
+    .logout-left-pink{
+        background: url("imgs/logout-left-pink.png");
+        background-size: 1.4rem 1.4rem;
+        width: 1.4rem !important;
+        height: 1.4rem !important;
+        vertical-align: middle;
+        margin-left: 1rem;
+        display: inline-block;
+        position: relative !important;
+        margin-right: 0.1rem;
+        margin-top: -0.2rem;
+    }
+    .modify-password-left
+    {
+        background: url("imgs/modify-password.png");
+        background-size: 1.4rem 1.4rem;
+        width: 1.4rem !important;
+        height: 1.4rem !important;
+        vertical-align: middle;
+        margin-left: 1rem;
+        display: inline-block;
+        position: relative !important;
+        margin-right: 0.1rem;
+        margin-top: -0.2rem;
+    }
+    .modify-password-left-pink
+    {
+        background: url("imgs/modify-password-pink.png");
+        background-size: 1.4rem 1.4rem;
+        width: 1.4rem !important;
+        height: 1.4rem !important;
+        vertical-align: middle;
+        margin-left: 1rem;
+        display: inline-block;
+        position: relative !important;
+        margin-right: 0.1rem;
+        margin-top: -0.2rem;
+    }
+    .service-bill-left{
+        background: url("imgs/service-bill.png");
+        background-size: 1.4rem 1.4rem;
+        width: 1.4rem !important;
+        height: 1.4rem !important;
+        vertical-align: middle;
+        margin-left: 1rem;
+        display: inline-block;
+        position: relative !important;
+        margin-right: 0.1rem;
+        margin-top: -0.2rem;
+    }
+    .service-bill-left-pink{
+        background: url("imgs/service-bill-pink.png");
+        background-size: 1.4rem 1.4rem;
+        width: 1.4rem !important;
+        height: 1.4rem !important;
+        vertical-align: middle;
+        margin-left: 1rem;
+        display: inline-block;
+        position: relative !important;
+        margin-right: 0.1rem;
+        margin-top: -0.2rem;
+    }
+
+    .pay-style-left{
+        background: url("imgs/pay-style.png");
+        background-size: 1.4rem 1.4rem;
+        width: 1.4rem !important;
+        height: 1.4rem !important;
+        vertical-align: middle;
+        margin-left: 1rem;
+        display: inline-block;
+        position: relative !important;
+        margin-right: 0.1rem;
+        margin-top: -0.2rem;
+    }
+
+    .pay-style-left-pink{
+        background: url("imgs/pay-style-pink.png");
+        background-size: 1.4rem 1.4rem;
+        width: 1.4rem !important;
+        height: 1.4rem !important;
+        vertical-align: middle;
+        margin-left: 1rem;
+        display: inline-block;
+        position: relative !important;
+        margin-right: 0.1rem;
+        margin-top: -0.2rem;
+    }
+
+</style>
+<div class="m-setting-title">
+    <ul>
+        <li style="float: left;">
+            <a ng-tap="backto('/m-setting/setting')">
+                <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+            </a>
+            <span style="font-size: 1.4rem;">
+                <%= setting.account.my_account %>
+            </span>
+        </li>
+    </ul>
+</div>
+<div class="m-two-column-area">
+<div class="left" style="z-index: 10;">
+    <ul class="left-nav">
+        <li ng-tap="myAccount()" ng-class="selectedStyle=='account'?'selected':''">
+            <div ng-class="selectedStyle=='account'?'selected':''"></div>
+            <div ng-class="selectedStyle=='account'?'personal-info-pink':'personal-info'"></div>
+            <span>
+                <%= setting.account.personal_information %>
+            </span>
+        </li>
+        <li ng-tap="serviceBill()" ng-class="selectedStyle=='serviceBill'?'selected':''"
+            class="android-display-special">
+            <div ng-class="selectedStyle=='serviceBill'?'selected':''" class="android-display-special"></div>
+            <div ng-class="selectedStyle=='serviceBill'?'service-bill-left-pink':'service-bill-left'"></div>
+            <span>
+                <%= setting.account.service_bill %>
+            </span>
+        </li>
+        <li ng-tap="payStyle()" ng-class="selectedStyle=='payStyle'?'selected':''" class="android-display-special">
+            <div ng-class="selectedStyle=='payStyle'?'selected':''"></div>
+            <div ng-class="selectedStyle=='payStyle'?'pay-style-left-pink':'pay-style-left'"></div>
+            <span>
+                <%= setting.account.pay_method %>
+            </span>
+        </li>
+        <li ng-tap="modifyPassword()" ng-class="selectedStyle=='modifyPassword'?'selected':''">
+            <div ng-class="selectedStyle=='modifyPassword'?'selected':''"></div>
+            <div ng-class="selectedStyle=='modifyPassword'?'modify-password-left-pink':'modify-password-left'"></div>
+            <span>
+                <%= setting.account.modify_password %>
+            </span>
+        </li>
+        <li ng-tap="adminLoginOut()" ng-class="selectedStyle=='logOut'?'selected':''">
+            <div ng-class="selectedStyle=='logOut'?'selected':''"></div>
+            <div ng-class="selectedStyle=='logOut'?'logout-left-pink':'logout-left'"></div>
+            <span>
+                <%= setting.account.login_out %>
+            </span>
+        </li>
+    </ul>
+</div>
+<div class="right">
+<div class="">
+    <div class="m-setting-account-right-one m-setting-account-hidden" ng-style="action=='index'?{}:{'display':'none'}">
+        <div id="userInfo-content">
+            <div class="m-area-msg" style=""></div>
+            <div class="fl mt-2 " style="width: auto;
+text-align: center;
+min-width: 8rem;
+margin-right: 1rem;">
+                <img ng-src="{{user.baseInfo_image ? user.baseInfo_image : 'imgs/man-icon.jpg'}}"
+                     style="width: 7rem; height: 7rem; border-radius: 0.833rem">
+                <br>
+                <button type="button" ng-tap="getPicture(user,'folder')"
+                        style="margin-left: auto; margin-right: auto; width:7rem; height: 2.5rem; border:none; margin-top: 0.5rem; background-color: #a6428b; color: #fff; border-radius: 0.416666rem">
+                    <%= setting.account.choose_photo %>
+                </button>
+            </div>
+            <div class="fl " style="width: 75%">
+                <ul class="mt-2">
+                    <li><%= setting.account.account %>：{{user.username}}</li>
+                    <li ng-tap="editUser('name')"><%= setting.account.name %>：{{user.baseInfo_name}}<i
+                            class="icon-angle-right fr mt-1 mr-1"
+                            style="font-size: 1.8rem;"></i></li>
+                    <li ng-tap="editUser('email')"><%= setting.account.email %>：{{user.contact_email}}<i
+                            class="icon-angle-right fr mt-1 mr-1"
+                            style="font-size: 1.8rem;"></i></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-setting-account-hidden m-setting-account-edit bg-color-ededed" id="m-setting-account-edit" style="display: none;
+                background: #ededed url(imgs/bg-line.png) center repeat;"
+         ng-style="action=='modifyAccount'?{}:{'display':'none'}">
+        <div class="m-setting-title">
+            <ul>
+                <li style="float: left;">
+                    <a ng-tap="myAccount()">
+                        <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+                    </a>
+                    <span style="font-size: 1.4rem;">
+                         {{transField(temp.modifyField)}}
+                    </span>
+                </li>
+                <li style=" float: right;">
+                    <a ng-tap="modifyUserConfirm()">
+                        <span style="font-size: 1.2rem;">
+                            <i class="icon-save"></i>
+                            <%= common.label.save %>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="m-area-msg" style=""></div>
+        <div class="m-setting-form-bg">
+            <div class="m-input-underline"
+                 ng-style="temp.modifyField == 'name'?{'display':'block'}:{'display':'none'}">
+                <div class="caption">
+                    <%= setting.account.name %>：
+                </div>
+                <input id="account-edit-name" class="m-input" type="text" ng-model="userTemp.baseInfo_name"
+                       placeholder="<%= setting.account.name_input_placeholder %>" maxlength="12">
+                <cite id="account-error-name" class="fr error-hint" style="padding-top:1rem">
+                    <img src="../../resource/images/alarmIcon.png">
+                    <%= setting.account.name_input_error_info %>
+                </cite>
+            </div>
+            <div class="m-input-underline"
+                 ng-style="temp.modifyField == 'email'?{'display':'block'}:{'display':'none'}">
+                <div class="caption">
+                    <%= setting.account.email %>：
+                </div>
+                <input id="account-edit-email" class="m-input" type="text" ng-model="userTemp.contact_email"
+                       placeholder="<%= setting.account.email_input_placeholder %>">
+                <cite id="account-error-email" class="fr error-hint" style="padding-top:1rem">
+                    <img src="../../resource/images/alarmIcon.png">
+                    <%= setting.account.email_input_error_info %>
+                </cite>
+            </div>
+        </div>
+    </div>
+
+    <div id="m-setting-modifyPassword"
+         class="m-setting-account-right-two  m-setting-account-hidden " style="display: none"
+         ng-style="action=='modifyPassword'?{}:{'display':'none'}">
+        <div class="m-setting-title">
+            <ul>
+                <li style="float: left;">
+                    <a ng-tap="backto('/m-setting/setting')">
+                        <img src="imgs/back-arrow.png" width="20rem" height="20rem">
+                    </a>
+                        <span style="font-size: 1.4rem;">
+                                <%= setting.account.modify_login_password %>
+                        </span>
+                </li>
+                <li style=" float: right;">
+                    <a ng-tap="modifyPasswordConfirm()">
+                        <span style="font-size: 1.2rem;">
+                            <i class="icon-save"></i>
+                            <%= common.label.save %>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="m-two-column-area">
+            <div class="left" style="margin-right: 0; ">
+                <ul class="left-nav">
+                    <li ng-tap="myAccount()" ng-class="selectedStyle=='account'?'selected':''">
+                        <div ng-class="selectedStyle=='account'?'selected':''"></div>
+                        <div ng-class="selectedStyle=='account'?'personal-info-pink':'personal-info'"></div>
+                        <span>
+                            <%= setting.account.personal_information %>
+                        </span>
+                    </li>
+                    <li ng-tap="serviceBill()" ng-class="selectedStyle=='serviceBill'?'selected':''"
+                        class="android-display-special">
+                        <div ng-class="selectedStyle=='serviceBill'?'selected':''"></div>
+                        <div ng-class="selectedStyle=='serviceBill'?'service-bill-left-pink':'service-bill-left'"></div>
+                        <span>
+                            <%= setting.account.service_bill %>
+                        </span>
+                    </li>
+                    <li ng-tap="payStyle()" ng-class="selectedStyle=='payStyle'?'selected':''"
+                        class="android-display-special">
+                        <div ng-class="selectedStyle=='payStyle'?'selected':''"></div>
+                        <div ng-class="selectedStyle=='payStyle'?'pay-style-left-pink':'pay-style-left'"></div>
+                        <span>
+                            <%= setting.account.pay_method %>
+                        </span>
+                    </li>
+                    <li ng-tap="modifyPassword()" ng-class="selectedStyle=='modifyPassword'?'selected':''">
+                        <div ng-class="selectedStyle=='modifyPassword'?'selected':''"></div>
+                        <div ng-class="selectedStyle=='modifyPassword'?'modify-password-left-pink':'modify-password-left'"></div>
+                        <span>
+                            <%= setting.account.modify_password %>
+                        </span>
+                    </li>
+                    <li ng-tap="adminLoginOut()" ng-class="selectedStyle=='logOut'?'selected':''">
+                        <div ng-class="selectedStyle=='logOut'?'selected':''"></div>
+                        <div ng-class="selectedStyle=='logOut'?'logout-left-pink':'logout-left'"></div>
+                        <span>
+                            <%= setting.account.login_out %>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="right">
+                <div class="m-area-msg" style=""></div>
+                <div class="">
+                    <div class="m-input-underline" style=" margin:0 20px; height: 4rem">
+                        <div class="caption">
+                            <%= setting.account.prime_password %>：
+                        </div>
+                        <input class="m-input" type="password" placeholder="输入原始密码" ng-model="password.oldWord"
+                               style="width: 80%">
+                    </div>
+                    <div class="m-input-underline" style=" margin:0 20px; height: 4rem">
+                        <div class="caption">
+                            <%= setting.account.new_password %>：
+                        </div>
+                        <input class="m-input" type="password" placeholder="新密码，字母和数字的组合" ng-model="password.newWord"
+                               style="width: 80%">
+                    </div>
+                    <div class="m-input-underline" style=" margin:0 20px; height: 4rem">
+                        <div class="caption">
+                            <%= setting.account.confirm_password %>：
+                        </div>
+                        <input class="m-input" type="password" placeholder="再次输入新密码" ng-model="password.reNewWord"
+                               style="width: 80%">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="m-setting-account-right-three m-setting-account-hidden" style="display: none"
+     ng-style="action=='logOut'?{}:{'display':'none'}">
+    <div class="" style="margin-left: rem;">
+        <a href="#m-setting-account-loginout" class="m-setting-account-fancybox-media"
+           style=" display: inline-block; color: #fff; width: 100%;">
+            <div class="m-setting-account-password mt-1" id="m-setting-account-loginout-confirm"
+                 style="padding-bottom: 0; padding-top: 0;">
+                <div class="list-one ">
+                    <span style="line-height: 4.8em"><%= setting.account.login_out %></span>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div id="m-setting-account-loginout" class="none dialog-delete">
+        <div class="dialog-body">
+            <div class="dialog-header" style="background-color: #ec5870;">
+                <div class="dialog-title">
+                    <%= setting.account.login_out_confirm %>？
+                </div>
+                <div class="delete-icon" ng-tap="modalDialogClose()">
+                    <i class="icon-remove-circle fancybox-close-icon-s"></i>
+                </div>
+            </div>
+            <div class="m-setting-addMsg" style="display: none;"></div>
+            <ul>
+                <li>
+                    <div class="m-save-button">
+                        <a ng-tap="modalDialogClose() " class="m-save-button-cancel bg-color-ededed"><%=
+                            common.label.cancel %></a><a
+                            ng-tap="accountLoginOut()" class="m-save-button-cancel bg-color-ededed"><%=
+                        common.label.confirm %></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="m-service-bill mt-2" style="display: none ; overflow: auto;"
+     ng-style="action=='serviceBill'?{}:{'display':'none'}">
+    <div class="m-service-bill-content">
+        <div class="m-service-bill-title" style="background-color: #398acb"><span class="ml-1"><%= setting.account.current_bill %></span>
+        </div>
+        <div class="inlinebl mt-2 ml-2" style="width:35%">
+            <span><%= setting.account.purchase_version %>：{{payment.version_type | versionNameFilter}}</span>
+        </div>
+        <div class="inlinebl" style="width:50%">
+            <span><%= setting.account.use_limit %>：{{payment.lastrecharge_time | date:'yyyy年MM月dd日'}}－{{payment.expires_time | date:'yyyy年MM月dd日'}}</span>
+        </div>
+        <div class="inlinebl mt-1 ml-2" style="width:35%">
+            <span><%= setting.account.payment_money %>：￥{{payment.money}}</span>
+        </div>
+        <div class="inlinebl" style="width:50%">
+            <span><%= setting.account.purchase_date %>：{{payment.register_time | date:'yyyy年MM月dd日'}}
+                <i ng-if="payment.useDay>=0" class="ml-4"><%= setting.account.use_date_detail %> <b style="color: red">{{payment.useDay}}<%=
+                    setting.account.day %></b></i>
+                <i ng-if="payment.useDay<0" class="ml-4"><b style="color: red"><%=
+                    setting.account.exceed_time_limit_info %> </b></i>
+            </span>
+        </div>
+        <!--
+        <div class="m-button-pink mt-1 ml-2"
+             style="width: 11rem; background-color: #398acb; font-size: 1rem; height: 2rem; line-height: 2rem;">
+            剩余短信：1200/条
+        </div>
+        -->
+    </div>
+    <div class="m-service-bill-content mt-3">
+        <div class="m-service-bill-title" style="background-color: #eeeeee;"><span class="ml-1" style="color: #565656"><%= setting.account.history_bill %></span>
+        </div>
+        <div ng-repeat="item in payment.history">
+            <div class="inlinebl mt-2 ml-2" style="width:35%">
+                <span><%= setting.account.purchase_version %>：{{item.version_type | versionNameFilter}}</span>
+            </div>
+            <div class="inlinebl" style="width:50%">
+                <span><%= setting.account.deadline %>：{{item.expires_time | date:'yyyy年MM月dd日'}}（{{item.month}}<%= setting.account.month %>）</span>
+            </div>
+            <div class="inlinebl mt-1 ml-2" style="width:35%">
+                <span><%= setting.account.payment_money %>：￥{{item.money}}</span>
+            </div>
+            <div class="inlinebl" style="width:50%">
+                <span><%= setting.account.purchase_date %>：{{item.pay_date | date:'yyyy年MM月dd日'}}</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="m-pay-style" style="display: none" ng-style="action=='payStyle'?{}:{'display':'none'}">
+    <div class="m-service-bill-title mt-2 pay-style-title" style="margin-bottom:1rem; width: 95%">
+        <span style="margin-left: 1rem;">
+        网银汇款、银行转账、支付宝转账、支付宝收款页面
+        </span>
+    </div>
+    <div class="pay-style-content">
+        <div style=" width: 95%" class="m-input-underline">
+            <span class="style-title font-color-message">1.网银或银行卡转账</span>
+
+            <div class="" style="font-size: 1.2rem; color: #b02e7d;">
+                <ul>
+                    <li class="m-input-underline m-tb-head" style="height: 3rem; line-height: 3rem;
+                    border-top: solid 0.15rem #d0d0d0;">
+                        <div class="inlinebl" style="width:15%">
+                            开户名
+                        </div>
+                        <div class="inlinebl " style="width:40%">
+                            开户行
+                        </div>
+                        <div class="inlinebl " style="width:40%">
+                            卡号
+                        </div>
+                    </li>
+                    <li class="m-tb-body">
+                        <div class="inlinebl" style="width:15%;">
+                            赵星
+                        </div>
+                        <div class="inlinebl" style="width:40%">
+                            招商银行南京分行龙江支行
+                        </div>
+                        <div class="inlinebl" style="width:40%">
+                            6226090250952146
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="mt-1 pay-style-comment">
+                在网银转账页面或银行汇款单“备注”中填写“姓名+注册乐斯的手机号+想要购买的软件版本+购买期限”，如果您忘记填写，请把转账页面或汇款单拍照，发送给payment@yilos.com。
+            </div>
+        </div>
+        <div class="mt-2 m-input-underline" style=" width: 95%">
+            <span class="style-title font-color-message">2.支付宝转账</span>
+
+            <div class="font-color-message" style="font-size: 1.2rem;">
+                登录支付宝网站或者支付宝移动客户端，在“转账到支付宝”页面收款人处填写账号
+                <span style="color: #ec5870">“xing.zhao@yilos.com“</span>
+            </div>
+            <div>
+                <img src="../../resource/images/pay-style-1.jpg" style="width: 100%; max-width: 641px;">
+            </div>
+            <div class="mt-1 pay-style-comment">
+                在“付款说明”中填写“姓名+注册乐斯的手机号+想要购买的软件版本+购买期限”，如果您忘记填写，请把转账页面或汇款单拍照，发送给payment@yilos.com。
+            </div>
+        </div>
+        <div class="mt-2 m-input-underline" style=" width: 95%">
+            <span class="style-title font-color-message">3.支付宝收款主页</span>
+
+            <div class="font-color-message" style="font-size: 1.2rem;">
+                进入我们的收款主页<span style="color: #ec5870">http://me.alipay.com/yilos</span>，填写付款信息
+            </div>
+            <div>
+                <img src="../../resource/images/pay-style-2.jpg" style="width: 100%; max-width:638px;">
+            </div>
+            <div class="mt-1 pay-style-comment">
+                在“付款说明“中填写“姓名+注册乐斯的手机号+想要购买的软件版本+购买期限”，如果您忘记填写，请把转账页面或汇款单拍照，发送给payment@yilos.com。
+            </div>
+        </div>
+        <div class="mt-2" style=" width: 95%">
+            <span class="style-title font-color-message">特别提醒：</span>
+
+            <div style="font-size: 1.2rem; line-height: 1.6rem; color: #ec5870;">
+                支付时，请务必填写详细的备注或说明信息。如有需要，我们会通过电话与您联系，保证您的用户权益。<br>
+                如果没有其他支付渠道，请和我们联系 QQ客服：1994714502、 电话客服：0755-28890800。
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>

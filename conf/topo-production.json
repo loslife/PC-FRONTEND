@@ -1,0 +1,48 @@
+{
+    "env": "production",
+    "cluster": [
+        {
+            "name": "baseService",
+            "ip": "10.160.26.76",
+            "port": 8080,
+            "protocol": "http",
+            "baseurl": "http://10.160.26.76:8080/svc",
+            "workerno": 1,
+            "applications": [
+                "uiframework",
+                "portal",
+                "auth",
+                "billing",
+                "graph",
+                "admin",
+                "backup",
+                "widgets",
+                "sms",
+                "nail",
+                "enterprise"
+            ]
+        }
+    ],
+    "dataServer": {
+        "mysql": {
+            "ip": "rdsn3m2ybn3m2yb.mysql.rds.aliyuncs.com",
+            "port": 3306,
+            "user": "yilos",
+            "password": "yilos123456"
+        },
+        "mongodb": {
+            "ip": "10.160.26.76",
+            "port": "27017",
+            "connectionurl": "10.160.26.76:27017",
+            "user": "",
+            "password": ""
+        }
+    },
+    "clientAccess": {
+        "staticurl": "http://www.yilos.com",
+        "authurl": "http://www.yilos.com/svc",
+        "serviceurl": "http://www.yilos.com/svc",
+        "uploadurl": "http://www.yilos.com/svc/file-upload"
+    },
+    "ip-whitelist": ["127.0.0.1", "localhost", "www.yilos.com", "10.160.26.76", "112.124.28.115", "192.168.1.118"]
+}

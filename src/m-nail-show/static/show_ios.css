@@ -1,0 +1,63 @@
+.service-detail .m-share {
+    display: none;
+}
+.service-detail .show-style,.service-detail .item-desc{
+    border-bottom: solid 0rem #d0d0d0;
+}
+#setting-serviceBill{
+    display: none !important;
+}
+#setting-payStyle{
+    display: none !important;
+}
+
+/**秀展示**/
+.show-detail{
+    padding: 0rem !important;
+}
+.show-detail  .m-share{
+    display: none !important;
+    padding-left: 1rem;
+    padding-top: 2rem;
+    width: 22rem;
+    position: absolute;
+    bottom: 0px;
+}
+.show-detail .desc{
+    height: auto !important;
+    margin-left: 0rem !important;
+    border: 0px solid #eee !important;
+    width: 100% !important;
+}
+
+.show-detail .desc .title {
+    margin-left: 2rem !important;
+    background: none !important;
+    text-align: left !important;
+    color: #ffffff !important;
+    font-size: 1.6rem !important;
+    opacity: 1 !important;
+    width: auto !important;
+}
+.show-detail .l-left{
+    border: 0px solid #eee !important;
+    position: absolute !important;
+    display: block !important;
+    bottom: 0px !important;
+    left: 0px !important;
+    width: 100% !important;
+}
+.show-detail .l-left>ul{
+    padding-left:0 !important;
+}
+.show-detail .content{
+    margin-left: 2rem !important;
+    height: 5rem !important;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: left !important;
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+    color: #ffffff !important;
+    font-size: 1.4rem !important;
+}

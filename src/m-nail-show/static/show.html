@@ -1,0 +1,147 @@
+<div id="m-nail-show-show-area" class="featureSpace padding-l-l">
+    <style>
+        .show-bg-active{
+            background-color: #fff !important;
+        }
+        #show-detail-img{
+            display: table-cell;
+        }
+        #show-detail-img .img{
+            position: relative;
+            display: inline-block;
+
+        }
+        .img-transition{
+            -webkit-backface-visibility: hidden;
+            -webkit-transition-duration: .5s;
+            -webkit-transform-style: preserve-3d;
+            -moz-backface-visibility: hidden;
+            -moz-transform-style: preserve-3d;
+            -moz-transition-duration: .5s;
+            -o-backface-visibility: hidden;
+            -o-transform-style: preserve-3d;
+            -o-transition-duration: .5s;
+        }
+
+        .nextImage{
+            position: absolute;
+            left: 100%;
+
+        }
+        .prevImage{
+            position: absolute;
+            right: 100%;
+        }
+        .pos-product-nav{
+            width: 9rem;
+            position: absolute;
+            bottom: 0rem;
+            height: 0.4rem;
+            border-bottom: 0.2rem solid #b02e7d;
+            -webkit-transition-duration: .5s;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -moz-transition-duration: .5s;
+            -o-transform-style: preserve-3d;
+            -o-transition-duration: .5s;
+
+        }
+        .pos-product-nav-san{
+            height: 0;
+            width: 0;
+            margin-top: 0.15rem;
+            margin-right: auto;
+            margin-left:auto;
+            border-bottom: 0.4rem solid #b02e7d;
+            border-left: 0.4rem solid transparent;
+            border-right: 0.4rem solid transparent;
+        }
+    </style>
+    <div class="showarea">
+        <div class="show-table">
+            <div class="pos-product-nav">
+                <div class="pos-product-nav-san">
+
+                </div>
+            </div>
+            <ul class="show-cate fh">
+                <li ng-repeat="(key,cate) in categories"
+                    ng-class="productCategorySelected==key?'selected':''"
+                    ng-tap="selectCate(cate,$index)" class="fh "><cite>{{cate.name}}</cite></li>
+            </ul>
+        </div>
+        <div class="show-main">
+            <div id="wrapper"  class="wrapper">
+                <div id="scroller" class="p-list">
+                    <ul id="thelist"   class="show-dash"
+                        style="height:{{page_height}}px;width: {{w_width}}px;"
+                        ng-repeat="page in showViewArray"
+                        >
+                        <li class="cell_1 show-bg-active" ng-repeat="item in page"
+                            ng-tap="choiceShow(item,$index)"
+                            style="width:{{item.__position.width}}px;top:{{item.__position.top}}px;left:{{item.__position.left}}px;height:{{item.__position.height}}px">
+                                <img src="{{item.img}}" alt="" width="{{item.__position.width-10}}px" height="{{item.__position.height-10}}px"/>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+ </div>
+
+
+<div id="m-show-info" class="fancybox-media" style="display: none">
+    <div class="dialog-body">
+        <div class="dialog-header">
+            <div class="dialog-title">
+                <%= show.detail %>
+            </div>
+            <div class="delete-icon" ng-tap="modalDialogClose()">
+                <i class="icon-remove-circle fancybox-close-icon-s"></i>
+            </div>
+        </div>
+
+        <div class="show-detail m-form-two-column">
+                    <div id="show-detail-img" style="position: relative;overflow: hidden;">
+                        <div id="show-detail-scroll" class="scroll-out-result-list">
+                            <div class="scroll-inner-list p-list">
+                                <li class="img selected-service-img" ng-style="showImageStyle(showSelected)">
+                                    <!-- <label for="" class="title">{{showSelected.name}}</label>-->
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="l-left">
+                        <ul class="" style="padding-left: 0.5rem">
+                            <li class="desc">
+                                <div class="title">{{showSelected.name}}</div>
+                                <div class="content" ng-if="showSelected.desc">{{showSelected.desc}}</div>
+                                <div class="content" style="text-align: center;font-size: 1.6rem;color: #565656;" ng-if="!showSelected.desc"><%= show.no_comment %></div>
+                            </li>
+                            <li class="m-share">
+                                <ul>
+                                    <li ng-tap="shareToSinaWeibo()" class="clickable mr-1 mb-1">
+                                        <a href="#" class="bds_tsina xlwb"></a>
+                                        <cite><%= show.share_micro_blog %></cite>
+                                    </li>
+                                    <li ng-tap="shareToWeixin()" class="clickable">
+                                        <a href="#" class="bds_tqq txwb"></a>
+                                        <cite><%= show.share_micro_message %></cite>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </ul>
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+<style type="text/css">
+
+
+
+
+</style>

@@ -1,0 +1,261 @@
+/*  setting  */
+ul li{list-style: none;}
+.setting-box {display: box; display: -moz-box; display: -webkit-box; margin:auto; padding-top: 9px;   height: 100px;}
+.setting-box .active{
+    -webkit-transform: scale(0.95); /* for Chrome || Safari */
+    background-image: url("imgs/zhi-wen-icon.png") ;
+    background-repeat: no-repeat ;
+    background-position: center ;
+    background-size: 8rem 8rem;
+}
+p{display: block; margin: 4px; padding: 4px;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;}
+.list-one {
+    -moz-box-flex: 1;
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    cursor: pointer;
+    position: relative;
+}
+.list-two{
+    -moz-box-flex: 2;
+    -webkit-box-flex: 2;
+    box-flex: 2;
+}
+.setting-inline-block{}
+.setting-content-area img{display: inline-block;}
+.setting-title-one{color: #fff; font-size:16px; display: inline-block;}
+.bg-color-green{background-color: #00ab97;}
+.bg-color-purple{background-color: #a54eb9;}
+.bg-color-grass-green{background-color: #70aa00;}
+.bg-color-red{background-color: #ec5870;}
+.bg-color-orange{background-color: #f38321;}
+.bg-color-blue{background-color: #398acb;}
+.setting-user { line-height: 100px; }
+
+/*  accout  */
+body{height: 100%   }
+input,button,select,textarea{outline:none}
+.m-setting-account-area{width:100%; height: 100%;}
+.m-setting-account-left{width:15%;float: left; background-color: #ededed; min-width: 10%;}
+.m-setting-account-image{ text-align: center; margin-top: 20px;}
+.m-setting-account-image img{border:5px solid #fff;}
+.m-setting-account-left ul{
+    position:fixed;
+    bottom: 0;
+    padding-bottom: 1rem;
+    font-size: 1.6rem;
+    font-family:Microsoft YaHei,Tahoma,SimSun,Verdana;
+    color: #737373;
+    font-weight: normal;
+    width:15%;
+    list-style: none;
+    text-align: center;}
+.m-setting-account-left ul li{ border-bottom: 1px solid #d0d0d0; line-height: 3.5em;}
+.m-setting-account-left ul li:first-child{border-top:1px solid #d0d0d0;}
+.m-setting-account-right{width:85%; height: 100%; float: left;}
+
+.m-setting-account-password{
+    background-color: #bd438e;
+    padding-top: 1rem;
+    padding-bottom:1rem;
+    color: #fff;
+    text-align: center;
+    text-align: center;
+    display: box;
+    display: -moz-box;
+    display: -webkit-box;
+    margin-right: 20px;
+    border-radius: 0.416666rem;
+    font-size: 1.6rem}
+.m-setting-account-edit-confirm{
+    color: #fff;
+    text-align: center;
+    display: box;
+    display: -moz-box;
+    display: -webkit-box;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 1.6rem}
+
+.m-setting .top-area{
+    display: -webkit-box;
+    height: 100%;
+}
+
+.m-setting .setting-service{
+    display: -webkit-box;
+    -webkit-box-flex: 1;
+}
+
+.m-setting .operation-area>.button-big{
+    -webkit-box-flex: 1;
+}
+
+.m-setting .detail-area{
+}
+.m-setting .service-detail{
+    width: 100%;
+}
+.m-setting .service-detail .info>li{
+    list-style: none;
+    font-size: 1.4rem;
+    padding-top: 1rem;
+}
+.m-setting .service-detail .info>li:first-child{
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+    border-bottom: 2px solid #b02e7d;
+}
+.m-setting .service-detail .info label{
+    font-size: 1.2rem;
+}
+
+.m-setting .service-detail input{
+    width: 20rem;
+}
+
+.m-setting .service-detail .info>li:last-child{
+    padding-bottom: 0.8rem;
+}
+
+.m-setting .service-detail .info>li.kucun{
+    list-style: none;
+    position: relative;
+    display: -webkit-box;
+}
+
+.m-setting .service-detail .info>li.kucun>ul:first-child{
+    -webkit-box-flex: 1;
+}
+.m-setting .service-detail .info>li.kucun>ul>li{
+    list-style: none;
+    display: inline-block;
+}
+
+.m-setting .service-detail .info>li textarea{
+    border: 1px solid #eee;
+    border-radius: 0.416666rem;
+    margin-left: 0.8rem;
+    margin-top: -1rem;
+    width: 90%;
+}
+.m-setting .service-detail .readonly>li{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+
+.m-setting .service-img{
+    padding-top: 0.5rem;
+    padding-left: 0rem;
+    padding-right: 0rem;
+    padding-bottom: 0.5rem;
+}
+.m-setting .service-img>li{
+    display: inline-block;
+}
+.m-setting .icon-camera{
+    height: 5rem;
+    line-height: 5rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+.m-setting .selected-service-img{
+    display: block;
+    text-align: center;
+    border: solid 0.15rem #bcbcbc;;
+}
+
+.m-setting .service-category{
+    min-width: 10rem;
+    width: 14%;
+    background-color: #f6f6f6;
+}
+
+.m-setting .service-category>.header{
+    display: -webkit-box;
+}
+
+.m-setting .service-category-list a.fancybox-media{
+    display: none;
+}
+
+.m-setting .service-category-list .selected a.fancybox-media{
+    display: block;
+}
+
+.m-setting .service-category-list{
+    -webkit-box-pack: center;
+    -webkit-box-orient:vertical;
+}
+.m-setting .service-category-list>li{
+    cursor: pointer;
+    text-align: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    position: relative;
+    padding-right: 2rem;
+    display: -webkit-box;
+    font-size: 1.2rem;
+    min-width: 4em;
+    height: 3rem;
+    border-bottom: 1px solid #d0d0d0;
+}
+.m-setting .service-category-list>li>div{
+    width: 4px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.m-setting .service-category-list>li>div.selected{
+    background-color: #bd438e;
+}
+
+.m-setting .service-category-list>li.selected{
+    background-color: #fff;
+    color: #bd438e;
+}
+
+.m-setting .service-category-list>.selected>.del-icon{
+    content: "";
+    display: block;
+    width: 1.6rem;
+    height: 1.6rem;
+    right: 0.5rem;
+    top: 1.8rem;
+    position: absolute;
+    background-size: 1.6rem 1.6rem;
+    background-image: url(../../resource/images/cancel.png);
+}
+.clouddown-icon{
+    display: inline-block;
+    vertical-align: middle;
+    width: 5rem;
+    height: 5rem;
+    background-size: 5rem 5rem;
+    background-image: url(../../resource/images/clouddown-icon.png);
+}
+.cloudup-icon{
+    display: inline-block;
+    vertical-align: middle;
+    width: 5rem;
+    height: 5rem;
+    background-size: 5rem 5rem;
+    background-image: url(../../resource/images/cloudup-icon.png);
+}
+
+
+@media screen and (min-width: 400px) and (max-width: 640px){
+    .m-setting .service-detail .info>li {
+        list-style: none;
+        font-size: 1.6rem;
+        padding-top: 0.5rem;
+    }
+}
+

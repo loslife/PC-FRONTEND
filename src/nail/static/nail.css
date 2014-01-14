@@ -1,0 +1,502 @@
+html, body {
+    font-size: 12px;
+    -webkit-touch-callout:none ;
+    -webkit-user-select:none ;
+}
+*:not(input,textarea) {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+}
+
+i, cite, em, var, address, dfn {
+    font-style: normal;
+}
+
+a {
+    color: red;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #005580;
+}
+
+.ios-display-special{
+    display: none;
+}
+.android-display-special{
+    display: block;
+}
+
+.page-container {
+    height: 100%;
+}
+
+#header-container {
+    z-index: 1;
+    position: relative;
+}
+
+#main-container {
+    position: relative;
+}
+
+.f-workspace {
+}
+
+.featureSpace {
+    overflow: auto;
+}
+
+.index-loadding-area{
+}
+.index-loadding-area .index-loadding{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #767676;
+}
+
+.index-loadding-area .index-loadding>img,.index-loadding-area .index-loadding>.text{
+    padding-left: 0.5rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#main-content, .page-content, .feature_area, .f-workspace {
+    height: 100%;
+}
+
+#client-lock-pwd {
+    margin: auto;
+    overflow: auto;
+    height: 100%;
+    position: relative;
+    top: -5rem;
+    z-index: 0;
+    background: #ededed url("imgs/bg-line.png") center repeat;
+}
+
+#client-lock-pwd>div>ul>li {
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
+#client-lock-pwd>div>ul>li input {
+    height: 5.5rem;
+    width: 5.3rem;
+    text-align: center;
+    font-size: 5rem;
+    border-radius: 0.416666rem;
+}
+
+#client-lock-pwd>div>ul>li input.error-pwd {
+    border: 1px solid red;
+}
+
+#client-lock-title {
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+.input-transformed0 {
+    -webkit-transform: rotate(5deg);
+    -moz-transform: rotate(5deg);
+    -ms-transform: rotate(5deg);
+    transform: rotate(5deg);
+}
+
+.input-transformed1 {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+.input-transformed2 {
+    -webkit-transform: rotate(355deg);
+    -moz-transform: rotate(355deg);
+    -ms-transform: rotate(35deg);
+    transform: rotate(355deg);
+}
+
+#client-lock-pwd .button-calculator {
+    width: 6rem;
+    height: 6rem;
+}
+
+/*********************
+按钮
+**********************/
+
+.button {
+    cursor: pointer;
+    padding: 0.8rem;
+    text-align: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    position: relative;
+    display: -webkit-box;
+}
+
+.button-big {
+    background-color: #bd438e;
+    border-top: solid 1px #bd438e;
+    border-left: solid 1px #bd438e;
+    border-right: solid 1px #bd438e;
+    border-bottom: solid 1px #bd438e;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    display: -webkit-box;
+    border-radius: 0.416666rem;
+
+}
+
+.button-big-grey {
+    background-color: #767676;
+    border-top: solid 1px #767676;
+    border-left: solid 1px #767676;
+    border-right: solid 1px #767676;
+    border-bottom: solid 1px #767676;
+}
+
+.button-text {
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.btn-icon-l {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1.6rem;
+    height: 1.6rem;
+}
+
+.btn-icon-setting {
+    background: url("imgs/icon-setting.png") no-repeat;
+    background-size: 1.6rem 1.6rem;
+}
+
+.btn-icon-pos {
+    background: url("imgs/icon-pos.png") no-repeat;
+    background-size: 1.6rem 1.6rem;
+}
+
+.btn-icon-member {
+    background: url("imgs/icon-member.png") no-repeat;
+    background-size: 1.6rem 1.6rem;
+}
+.btn-icon-guadan {
+    background: url("imgs/icon-guadan.png") no-repeat;
+    background-size: 1.6rem 1.6rem;
+}
+
+.btn-icon-suspend {
+    background: url("imgs/icon-guadan.png") no-repeat;
+    background-size: 1.6rem 1.6rem;
+}
+
+.btn-icon-product {
+    background: url("imgs/icon-member.png") no-repeat;
+    background-size: 2rem 2rem;
+}
+
+.btn-icon-show {
+    background: url("imgs/show.png") no-repeat;
+    background-size: 1.6rem 1.6rem;
+}
+.btn-icon-checkout {
+    background: url("imgs/pay-style-white.png") no-repeat;
+    background-size: 1.6rem 1.6rem;
+    vertical-align: middle;
+    margin-top:-0.1rem;
+}
+
+.btn-icon-cancel {
+    background: url("imgs/delete-icon.png") no-repeat;
+    background-size: 2rem 2rem;
+}
+
+.navbar {
+    background-color: #565656;
+    height: 5rem;
+    overflow: hidden;
+}
+
+.nav-logo, .nav-welcome, .nav-collapse {
+    display: inline-block;
+    position: relative;
+}
+
+.nav-collapse {
+    float: right;
+}
+
+.nav-collapse .nav>li {
+    display: inline-block;
+    width: 7rem;
+    height: 5rem;
+    line-height: 5rem;
+    vertical-align: middle;
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.nav-collapse .nav>li:last-child {
+    width: 7rem;
+}
+
+.nav-collapse .nav>li:active {
+    background-color: #ff66cc;
+}
+
+.nav-collapse .nav>li.selected {
+    background-color: #b02e7d;
+}
+
+.nav-collapse .nav>li.selected+li {
+}
+
+.nav-collapse .nav {
+    margin: 0px;
+}
+
+.nav-logo {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    width: 17em;
+    height: 5em;
+    margin: 0px 1.2em 0px 0.5em;
+    background-size: 14rem 5rem;
+}
+
+.nav-logo>img {
+    width: 17em;
+    margin-top: 0.6rem;
+}
+
+.nav-welcome {
+    height: 100%;
+    vertical-align: middle;
+    color: #fff;
+}
+
+.operation-area {
+    display: -webkit-box;
+    -webkit-box-pack: center;
+}
+
+/**********************
+* 服务、产品列表项
+**********************/
+.product-list {
+    overflow: auto;
+}
+
+.product-list>div>li {
+    display: inline-block;
+    width: 8rem;
+    height: 8rem;
+    margin-top: 0.8rem;
+    margin-right: 0.8rem;
+    -webkit-box-align: stretch;
+    -webkit-box-pack: end;
+    -webkit-box-orient: vertical;
+    background-color: #eeeeee;
+    cursor: pointer;
+    color: black;
+    border-bottom: solid 1px #d0d0d0;
+    border-right: 1px solid #d0d0d0;
+    position: relative;
+    overflow: hidden;
+    background-size: 8rem 8rem
+}
+
+.product-list>div>li>a {
+    width: 8rem;
+    height: 8rem;
+    background-size: 8rem 8rem
+}
+
+.product-list>div>li.selected {
+    border: 1px solid red;
+}
+
+.product-list>div>li>a>.price {
+    position: absolute;
+    font-size: 1rem;
+    top: 0.4rem;
+    right: 0.4rem;
+    padding: 0.3rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #ff3101;
+    line-height: 1rem;
+    height: 1rem;
+}
+
+.product-list>div>li>a>.delete-icon {
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    font-size: 1.6rem;
+    top: 0.4rem;
+    right: 0rem;
+    margin: 0px;
+    font-size: 3rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    background-image: url(imgs/delete-icon.png);
+    background-size: 3rem 3rem;
+    color: black;
+    border-radius: 0.4rem;
+    -webkit-border-radius: 0.4rem;
+}
+
+.product-list>div>li>a>.title {
+    text-align: center;
+    font-size: 1rem;
+    position: absolute;
+    bottom: 0px;
+    width: 90%;
+    display: -webkit-box;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    -webkit-box-align: center;
+    -webkit-box-pack: start;
+    -webkit-box-orient: horizontal;
+    display: -webkit-box;
+    padding: 0.5rem;
+}
+
+.scroll-out-result-list {
+    position: absolute;
+    overflow: hidden;
+}
+
+.zui-slideshow{
+    overflow: hidden;
+    position: relative;
+    z-index: 5;
+}
+.zui-slideshow-box{
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+}
+.zui-slideshow-box .zui-slideshow-item{
+    border: none;
+    float: left;
+    z-index: 1;
+}
+.zui-slideshow-nav,
+.zui-slideshow-control{
+    /*box-shadow: 1px 1px 1px #555;*/
+    bottom: 10px;
+    overflow: hidden;
+    padding-right: 25em;
+    padding-bottom: 1em;
+    position: absolute;
+    z-index: 10;
+}
+.zui-slideshow-nav{
+    right: 10px;
+}
+.zui-slideshow-nav a:link, .zui-slideshow-nav a:visited, .zui-slideshow-nav a:active{
+    float: left;
+    background-color: #fff;
+    border-radius: 5px;
+    display: block;
+    margin: 0 0.625em;
+    outline: none;
+    width: 10px;
+    height: 10px;
+}
+.zui-slideshow-nav a:hover{}
+.zui-slideshow-nav a.zui-slideshow-nav-focus{
+    background-color: #bc483e;
+    box-shadow: inset 1px 1px 1px #000;
+}
+.zui-slideshow-control{
+    left: 10px;
+}
+.zui-slideshow-control a:link, .zui-slideshow-control a:visited, .zui-slideshow-control a:active{
+
+}
+.zui-slideshow-control a:hover{
+
+}
+.zui-slideshow-play, .zui-slideshow-stop{
+    display: block;
+    float: left;
+    margin: 0 5px;
+    outline: none;
+}
+
+.zui-slideshow-arrow{
+    background-color: #fff;
+    display: none;
+    outline: none;
+    position: absolute;
+    z-index: 10;
+}
+.zui-slideshow-prev, .zui-slideshow-next{
+    height: 57px;
+    top: 45%;
+    width: 57px;
+}
+.zui-slideshow-prev{
+    background: url(imgs/zui-prev.png) center center no-repeat;
+    left: 6em;
+}
+.zui-slideshow-next{
+    background:  url(imgs//zui-next.png) center center no-repeat;
+    right: 6em;
+}
+.zui-slideshow-up, .zui-slideshow-down{
+    height: 35px;
+    left: 45%;
+    width: 40px;
+}
+.zui-slideshow-up{
+    background: #fff url(imgs//zui-up.png) center center no-repeat;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    top: 0;
+}
+.zui-slideshow-down{
+    background: #fff url(imgs//zui-down.png) center center no-repeat;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    bottom: 0;
+}
+
+
+@media screen and (min-width: 400px) and (max-width: 640px) {
+    html, body {
+        font-size: 8px;
+    }
+
+    .nav-logo>img {
+        width: 15em;
+        height: 3.5em;
+    }
+}
+
+@media screen and (min-width: 640px) and (max-width: 800px) {
+    html, body {
+        font-size: 8px;
+    }
+
+    .nav-logo>img {
+        width: 15em;
+        height: 3.5em;
+    }
+}
+
+
