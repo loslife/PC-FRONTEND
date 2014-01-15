@@ -9,4 +9,5 @@ define(function (require, exports, module) {
     exports.RSA = require("./utils/RSA");
     exports.addressData = require("./utils/addressData");
     exports.dataUtils = require("./utils/dataUtils");
+    exports.datas = require("./utils/datas");
 });

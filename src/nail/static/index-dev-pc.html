@@ -163,6 +163,7 @@
 <script src="../../3rd-lib/jquery.cookie.js"></script>
 <script src="../../3rd-lib/highcharts.js"></script>
 <script src="../../3rd-lib/async.js"></script>
+<script src="../../3rd-lib/q.js"></script>
 <script src="../../3rd-lib/iscroll-5.js"></script>
 <script src="../../3rd-lib/EventEmitter.js"></script>
 <script src="../../3rd-lib/ichart-1.1.2.js"></script>
@@ -193,9 +194,9 @@ window.global = {_g_server: {}, setting: {lockable: true}};
 global["_g_server"].protocol = "http";
 global["_g_server"].ip = "";
 global["_g_server"].staticurl = "";
-global["_g_server"].uploadurl = "http://www.yilos.com/svc/file-upload";
-global["_g_server"].authurl = "http://www.yilos.com/svc";
-global["_g_server"].serviceurl = "http://www.yilos.com/svc";
+global["_g_server"].uploadurl = "http://192.168.1.111:5000/svc/file-upload";
+global["_g_server"].authurl = "http://192.168.1.111:5000/svc";
+global["_g_server"].serviceurl = "http://192.168.1.111:5000/svc";
 global["_g_env"] = "dev";
 cordova = {
     platformId:"ios"
@@ -276,6 +277,9 @@ var mainController = function ($scope, $location, $rootScope) {
 seajs.use(['./main.js', 'mframework/static/utils/utils.js',
     'm-widgets/static/package.js' ], function (main, utils, widgets) {
 
+    $.cookie("enterpriseId",YILOS.ENTERPRISEID);
+    $.cookie("username",YILOS.USERNAME);
+
     utils.global.enterpriseId = $.cookie('enterpriseId');
     utils.global.username = $.cookie('username');
     utils.global.userId = $.cookie('userId');
@@ -285,6 +289,7 @@ seajs.use(['./main.js', 'mframework/static/utils/utils.js',
         $("#header .nav>li").removeClass("selected");
         $(this).addClass("selected");
     });
+
     main.init();
 });
 

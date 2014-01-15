@@ -237,7 +237,7 @@ define(function (require, exports, module) {
                     cateService.serviceId = item.id;
                     cateService.serviceName = item.name;
                     cateService.create_date = updateTime;
-                    cateService.enterprise_Id = YILOS.ENTERPRISEID;
+                    cateService.enterprise_id = YILOS.ENTERPRISEID;
                     serviceList.push(_.clone(cateService));
                 });
                 featureDataI.updateRecordCate(cardCate, serviceList, function (error) {
@@ -290,7 +290,7 @@ define(function (require, exports, module) {
                     cateService.serviceId = item.id;
                     cateService.serviceName = item.name;
                     cateService.create_date = createDate;
-                    cateService.enterprise_Id = YILOS.ENTERPRISEID;
+                    cateService.enterprise_id = YILOS.ENTERPRISEID;
                     serviceList.push(_.clone(cateService));
                 });
 

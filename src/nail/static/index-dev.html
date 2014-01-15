@@ -228,6 +228,7 @@
     global["_g_server"].authurl="http://www.yilos.com/svc";
     global["_g_server"].serviceurl="http://www.yilos.com/svc";
     global["_g_env"] ="dev";
+
     var YILOS = {
         model:"dev",
         dbinstance:null,
@@ -312,6 +313,9 @@
     //seajs初始化
     seajs.use(['./main.js', 'mframework/static/package.js',
         'm-widgets/static/package.js'], function (main, framework,  widgets) {
+        $.cookie("enterpriseId",YILOS.ENTERPRISEID);
+        $.cookie("username",YILOS.USERNAME);
+
         framework.utils.global.enterpriseId  = $.cookie('enterpriseId');
         framework.utils.global.username  = $.cookie('username');
         framework.utils.global.userId  = $.cookie('userId');

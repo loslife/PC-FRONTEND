@@ -17,7 +17,7 @@ define(function (require, exports, module) {
     var utils = require("mframework/static/package").utils;
     var widgets = require("m-widgets/static/package");
     var database = require("mframework/static/package").database;		//数据操作服务
-    var featureDataI = require("./allMemberList-dataI.js");
+    var featureDataI = require("./allMemberList-data-server.js");
 
     var CONSTANT = {
         memberCountCaps: 80,
@@ -619,7 +619,7 @@ define(function (require, exports, module) {
                     employee_id: $scope.newMember.employee ? ($scope.newMember.employee.id ? $scope.newMember.employee.id : "" ) : "",
                     employee_name: $scope.newMember.employee ? ($scope.newMember.employee.id ? $scope.newMember.employee.name : "" ) : "",
                     memberId: "",
-                    enterprise_Id: YILOS.ENTERPRISEID,
+                    enterprise_id: YILOS.ENTERPRISEID,
                     create_date: createDate,
                     lastConsumption_date: 0,
                     totalConsumption: 0,

@@ -93,7 +93,7 @@ define(function (require, exports, module) {
                 memberCard.memberCardCategoryId = cateTemp.id;
                 memberCard.employee_id = empTemp.id;
                 memberCard.employee_name = empTemp.name;
-                memberCard.enterprise_Id = enterpriseId;
+                memberCard.enterprise_id = enterpriseId;
                 database.getUniqueCode("tb_memberCard", cateTemp.cardNoGenRule_cardNoLen, function (error, trans, code) {
                     if (error) {
                         callback(error);

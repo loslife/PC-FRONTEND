@@ -1400,8 +1400,8 @@ define(function (require, exports, module) {
                 $(".product-category").css("width", productCategorieMapLen * 9 + "rem");
                 $(".product-category").css("min-width", productCategoryMinwidth + "px");
             } else {
-                $(".pos-order-list").height(main_container_h - (operation_area_h + $(".pos-checkout").outerHeight() + $(".pos-order-title").outerHeight() + permanentMenuKeyHeight) + 56);
-                $(".product-list").height(main_container_h - (operation_area_h + $(".product-category").outerHeight() + permanentMenuKeyHeight) + 20);
+                $(".pos-order-list").height(main_container_h - (operation_area_h + $(".pos-checkout").outerHeight() + $(".pos-order-title").outerHeight() + permanentMenuKeyHeight)-10);
+                $(".product-list").height(main_container_h - (operation_area_h + $(".product-category").outerHeight() + permanentMenuKeyHeight+20));
                 $(".pos-product>div").width($("#main-container").outerWidth() - $(".pos-order").outerWidth() - 15);
                 $(".product-category").css("width", productCategorieMapLen * 9 + "rem");
                 $(".product-category").css("min-width", productCategoryMinwidth + "px");
