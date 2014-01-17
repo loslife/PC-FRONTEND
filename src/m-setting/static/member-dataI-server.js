@@ -24,6 +24,7 @@ define(function (require, exports, module) {
     exports.initCateList = initCateList;//初始化会员卡类型
     exports.cateMemberCount = cateMemberCount;//统计会员类型下的会员数
     exports.reInitServiceList = reInitServiceList;
+    var cacheInvalid = true;
 
 
     //根据类型id判断是否存在会员
@@ -43,54 +44,62 @@ define(function (require, exports, module) {
     }
 
     function initCateList(model, callback) {
-        //查询本地的会员卡列表，如果记录为空，则查询服务器
-        featureDataI.initCateList(model, function (error, model) {
-            if (error) {
-                utils.log("m-setting member.js initServiceList.featureDataI.initCateList", error);
-                callback(error);
-            }else{
-                if(model.recordTimeCateList.length ==0
-                    && model.memberTypeList.length ==0 ){
-                    async.waterfall([queryServerData,initLocalData],function(error,result){
-                        callback(null, model);
-                    })
+        if(cacheInvalid){
+            async.waterfall([
+                queryServerData
+                ,initLocalData
+                ,queryLocalData],function(error,result){
+                callback(error, model)
+            });
+        }else{
+            queryLocalData(function(error){
+                callback(error, model)
+            });
+        }
 
+
+        function queryLocalData(callback){
+            featureDataI.initCateList(model, function (error, data) {
+                if (error) {
+                    utils.log("m-setting member.js initCateList.featureDataI.initCateList", error);
+                    callback(error);
                 }else{
-                    callback(null,model);
+                    callback(null,data);
                 }
-            }
-        });
+            });
+        }
+
         function queryServerData(callback){
             datas.getResource("memberCard/queryAllMemberCardCate/"+YILOS.ENTERPRISEID)
                 .then(function (result) {
                     if(result.errorCode == 0){
                         if(result.memberCardList.length>0){
-                            for (var i = 0, len = result.memberCardList.length; i < len; i++) {
-                                var temp = _.clone(result.memberCardList[i]);
-                                if (temp.baseInfo_type === "recordTimeCard") {
-                                    model.recordTimeCateList.push(temp);
-                                }
-                                else {
-                                    model.memberTypeList.push(temp);
-                                }
-                            }
+                            callback(null,result.memberCardList);
                         }
+                    }else{
+                        callback(result);
                     }
-                    callback(model);
                 },function(error){
-                    callback(model);
+                    callback(error);
                 }
             );
         }
-        function initLocalData(callback){
-            callback(null);
+        function initLocalData(memberCardList,callback){
+            async.each(memberCardList,function(memberCardcate,callback){
+                if(memberCardcate.baseInfo_type === "recordTimeCard"){
+                    featureDataI.newRecordCate(memberCardcate,callback);
+                }else{
+                    featureDataI.newRechargeCate(memberCardcate,callback);
+                }
+            },function(error){
+                callback(null);
+            });
         }
     }
 
     function cateMemberCount(model, callback) {
         featureDataI.cateMemberCount.apply(featureDataI,arguments);
     }
-
 
     //新增充值卡
     function newRechargeCate(rechargeCate, callback) {
@@ -112,7 +121,6 @@ define(function (require, exports, module) {
     }
 
     function newRecordCate(recordCate, serviceList, callback) {
-
         var org_arguments = arguments;
         //提交服务器成功后，更新本地数据库
         var form = {

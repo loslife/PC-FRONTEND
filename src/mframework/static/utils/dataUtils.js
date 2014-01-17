@@ -77,6 +77,10 @@ define(function (require, exports, module) {
 
     //获取一个insert语句及参数，fitterArray过滤数组
     function getInsertSqlOfObj(tableName, obj, fitterArray) {
+        if(!obj){
+            //插入对象为空，直接返回空
+            return {};
+        }
         var field = "(", values = "(", valuesPlace = [];
         var insertObj, key, insertSql;
 

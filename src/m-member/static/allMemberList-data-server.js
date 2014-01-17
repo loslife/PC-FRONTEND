@@ -21,35 +21,64 @@ define(function (require, exports, module) {
     exports.queryLastRecharge = queryLastRecharge;
     exports.countMemberCost = countMemberCost;
     exports.queryMemberCount = queryMemberCount;
-
+    var cacheInvalid = true;
     function initEmployeeList(model, callback) {
         featureDataI.initEmployeeList.apply(featureDataI,arguments);
     }
 
     function initMemberList(model, callback) {
-        featureDataI.initMemberList(model, function (error, model) {
-            if (error) {
-                utils.log("m-member allMemberList.js initMemberList.featureDataI.initMemberList", error);
-                callback(error);
-            }else{
-                if(model.memberList.length ==0
-                    && model.memberList.length ==0 ){
-                    async.waterfall([queryServerData,initLocalData],function(error,result){
-                        callback(null, model);
-                    })
+        if(cacheInvalid){
+            async.waterfall([
+                 queryServerMemberData,initLocalMemberData
+                ,queryServerMemberCardData,initLocalMemberCardData
+                ,queryLocalData],function(error,result){
+                callback(error, model)
+            });
+        }else{
+            queryLocalData(function(error){
+                callback(error, model)
+            });
+        }
 
+        function queryLocalData(callback){
+            featureDataI.initMemberList(model, function (error, data) {
+                if (error) {
+                    utils.log("m-member allMemberList.js initMemberList.featureDataI.initMemberList", error);
+                    callback(error);
                 }else{
-                    callback(null,model);
+                    callback(null,data);
                 }
-            }
-        });
+            });
+        }
 
-        function queryServerData(callback){
+        function queryServerMemberData(callback){
             datas.getResource("member/queryMemberList/"+YILOS.ENTERPRISEID)
                 .then(function (result) {
                     if(result.errorCode == 0){
                         model.memberList = result.memberList;
-                        //插入服务器数据本地数据库缓存
+                        callback(null,result.memberList);
+                    }else{
+                        callback(result);
+                    }
+                },function(error){
+                    callback(error);
+                }
+            );
+        }
+        function initLocalMemberData(memberList,callback){
+            async.each(memberList,function(member,callback){
+                featureDataI.newMember(member, null, null, null, callback);
+            },function(error){
+                callback(error);
+            });
+        }
+        function queryServerMemberCardData(callback){
+            datas.getResource("member/queryMemberCardList/"+YILOS.ENTERPRISEID)
+                .then(function (result) {
+                    if(result.errorCode == 0){
+                        model.memberCardList = result.memberList;
+                    }else{
+                        callback(result);
                     }
                     callback(null);
                 },function(error){
@@ -57,14 +86,17 @@ define(function (require, exports, module) {
                 }
             );
         }
-        function initLocalData(callback){
-            callback(null);
+        function initLocalMemberCardData(memberCardList,callback){
+            async.each(memberCardList,function(memberCard,callback){
+                featureDataI.newMember(null, memberCard, null, null, callback);
+            },function(error){
+                callback(null);
+            });
         }
     }
 
     function initMemberCateList(model, callback) {
         featureDataI.initMemberCateList.apply(featureDataI,arguments);
-
     }
 
     function newMember(member, memberCard, rechargeBill, empBonus, callback) {
