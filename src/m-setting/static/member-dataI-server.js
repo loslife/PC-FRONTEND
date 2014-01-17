@@ -43,7 +43,48 @@ define(function (require, exports, module) {
     }
 
     function initCateList(model, callback) {
-        featureDataI.initCateList.apply(featureDataI,arguments);
+        //查询本地的会员卡列表，如果记录为空，则查询服务器
+        featureDataI.initCateList(model, function (error, model) {
+            if (error) {
+                utils.log("m-setting member.js initServiceList.featureDataI.initCateList", error);
+                callback(error);
+            }else{
+                if(model.recordTimeCateList.length ==0
+                    && model.memberTypeList.length ==0 ){
+                    async.waterfall([queryServerData,initLocalData],function(error,result){
+                        callback(null, model);
+                    })
+
+                }else{
+                    callback(null,model);
+                }
+            }
+        });
+        function queryServerData(callback){
+            datas.getResource("memberCard/queryAllMemberCardCate/"+YILOS.ENTERPRISEID)
+                .then(function (result) {
+                    if(result.errorCode == 0){
+                        if(result.memberCardList.length>0){
+                            for (var i = 0, len = result.memberCardList.length; i < len; i++) {
+                                var temp = _.clone(result.memberCardList[i]);
+                                if (temp.baseInfo_type === "recordTimeCard") {
+                                    model.recordTimeCateList.push(temp);
+                                }
+                                else {
+                                    model.memberTypeList.push(temp);
+                                }
+                            }
+                        }
+                    }
+                    callback(model);
+                },function(error){
+                    callback(model);
+                }
+            );
+        }
+        function initLocalData(callback){
+            callback(null);
+        }
     }
 
     function cateMemberCount(model, callback) {

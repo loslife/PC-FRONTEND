@@ -12,7 +12,7 @@ define(function (require, exports, module) {
     var utils = require("mframework/static/package").utils;
     var database = require("mframework/static/package").database;
     var dbInstance = null;
-    var featureDataI = require("./member-dataI.js");
+    var featureDataI = require("./member-dataI-server.js");
     var moduleScope;
 
     function loadModelAsync(params, callback) {

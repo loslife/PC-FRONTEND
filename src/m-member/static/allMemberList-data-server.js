@@ -27,7 +27,39 @@ define(function (require, exports, module) {
     }
 
     function initMemberList(model, callback) {
-        featureDataI.initMemberList.apply(featureDataI,arguments);
+        featureDataI.initMemberList(model, function (error, model) {
+            if (error) {
+                utils.log("m-member allMemberList.js initMemberList.featureDataI.initMemberList", error);
+                callback(error);
+            }else{
+                if(model.memberList.length ==0
+                    && model.memberList.length ==0 ){
+                    async.waterfall([queryServerData,initLocalData],function(error,result){
+                        callback(null, model);
+                    })
+
+                }else{
+                    callback(null,model);
+                }
+            }
+        });
+
+        function queryServerData(callback){
+            datas.getResource("member/queryMemberList/"+YILOS.ENTERPRISEID)
+                .then(function (result) {
+                    if(result.errorCode == 0){
+                        model.memberList = result.memberList;
+                        //插入服务器数据本地数据库缓存
+                    }
+                    callback(null);
+                },function(error){
+                    callback(null);
+                }
+            );
+        }
+        function initLocalData(callback){
+            callback(null);
+        }
     }
 
     function initMemberCateList(model, callback) {
