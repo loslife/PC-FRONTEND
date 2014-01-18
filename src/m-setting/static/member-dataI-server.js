@@ -87,7 +87,7 @@ define(function (require, exports, module) {
         function initLocalData(memberCardList,callback){
             async.each(memberCardList,function(memberCardcate,callback){
                 if(memberCardcate.baseInfo_type === "recordTimeCard"){
-                    featureDataI.newRecordCate(memberCardcate,callback);
+                    featureDataI.newRecordCate(memberCardcate,[],callback);
                 }else{
                     featureDataI.newRechargeCate(memberCardcate,callback);
                 }

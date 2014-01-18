@@ -33,17 +33,26 @@ define(function (require, exports, module) {
 
     exports.initData = function (callback) {
         var dbInstance = require("mframework/static/package").database.getDBInstance();		//数据操作服务
-
         dbInstance.transaction(function (trans) {
-            async.each(sqlArray, function (item, callback) {
-                trans.executeSql(item, [], function (trans, result) {
-                    callback(null);
+                trans.executeSql("SELECT name FROM sqlite_master WHERE type='table' AND name='tb_member';", [], function (trans, result) {
+                    if(result.rows.length==0){
+                        async.each(sqlArray, function (item, sub_callback) {
+                            trans.executeSql(item, [], function (trans, result) {
+                                sub_callback(null);
+                            }, function (trans, error) {
+                                sub_callback(error);
+                            });
+                        }, function (error) {
+                            callback(null);
+                        });
+                    }else{
+                        callback(null);
+                    }
                 }, function (trans, error) {
                     callback(error);
                 });
             }, function (error) {
                 callback(error);
             });
-        });
     }
 });

@@ -52,14 +52,14 @@ define(function (require, exports, module) {
     //批量执行一个sql数组、
     function batchExecuteSql(sqlArray, callback) {
         dbInstance.transaction(function (trans) {
-            async.each(sqlArray, function (item, callback) {
+            async.each(sqlArray, function (item, subcallback) {
                 if(!item.statement){
-                    callback(null); //如果sql不存在，执行下一条
+                    subcallback(null); //如果sql不存在，执行下一条
                 }else{
                     trans.executeSql(item.statement, item.value, function (trans, result) {
-                        callback(null);
+                        subcallback(null);
                     }, function (trans, error) {
-                        callback(error);
+                        subcallback(error);
                     });
                 }
             }, function (error) {

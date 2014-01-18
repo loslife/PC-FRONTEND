@@ -39,10 +39,6 @@
                     <img src="imgs/logo_yilos.png" alt=""/>
                 </div>
                 <div class="nav-collapse">
-
-
-
-
                     <ul class="nav " style="z-index: 3">
                         <li data-moduleid="pos" class="selected"
                             ng-tap="clickMainMenu('/m-pos/checkout','m-pos','checkout',$event)">
@@ -151,6 +147,7 @@
         <span class="text">正在加载...</span>
     </div>
 </div>
+<script src="/svc/portal/setting" ></script>
 
 <!--
 <script src="../../cordova-2.7.0.js"></script>
@@ -190,14 +187,15 @@ function getRequest() {
     }
     return theRequest;
 }
-window.global = {_g_server: {}, setting: {lockable: true}};
-global["_g_server"].protocol = "http";
-global["_g_server"].ip = "";
-global["_g_server"].staticurl = "";
-global["_g_server"].uploadurl = "http://192.168.1.100:5000/svc/file-upload";
-global["_g_server"].authurl = "http://192.168.1.100:5000/svc";
-global["_g_server"].serviceurl = "http://192.168.1.100:5000/svc";
+//window.global = {_g_server: {}, setting: {lockable: true}};
+//global["_g_server"].protocol = "http";
+//global["_g_server"].ip = "";
+//global["_g_server"].staticurl = "";
+//global["_g_server"].uploadurl = "http://192.168.1.111/svc/file-upload";
+//global["_g_server"].authurl = "http://192.168.1.111/svc";
+//global["_g_server"].serviceurl = "http://192.168.1.111/svc";
 global["_g_env"] = "dev";
+global["setting"] = {lockable: true};
 cordova = {
     platformId:"ios"
 }
@@ -289,8 +287,10 @@ seajs.use(['./main.js', 'mframework/static/utils/utils.js',
         $("#header .nav>li").removeClass("selected");
         $(this).addClass("selected");
     });
-
-    main.init();
+    var options = {
+        LANGUAGE: "zh_CN"
+    }
+    main.init(options);
 });
 
 
@@ -355,7 +355,7 @@ function getEnterpriseInfo(serverUrl,username){
             "Authorization": "Bearer " + $.cookie('accessToken')
         },
         success: function (response, status, xhr) {
-            //设置客户端ID
+            //
             YILOS.deviceID =  response.result.deviceRequestId;
         },
         error: function (xhr, textStatus, errorThrown) {

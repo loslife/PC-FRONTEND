@@ -134,7 +134,7 @@ define(function (require, exports, module) {
             dbinit.initTable(function () {
                 var tasks = [];
                 //判断数据是否需要重建
-                //tasks.push(require("./datas/emptyTable").initData);
+                tasks.push(require("./datas/emptyTable").initData);
                 tasks.push(require("./datas/show").initData);
                 tasks.push(require("./datas/service").initData);
                 tasks.push(require("./datas/member").initData);

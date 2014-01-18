@@ -16,7 +16,7 @@ define(function (require, exports, module) {
         if (window.sqlitePlugin) {
             YILOS.dbinstance = window.sqlitePlugin.openDatabase({name: YILOS.USERNAME});
         } else {
-            YILOS.dbinstance = window.openDatabase("losgraph", '1.0', 'losgraph', 2 * 1024 * 1024, function () {
+            YILOS.dbinstance = window.openDatabase(YILOS.USERNAME, '1.0', YILOS.USERNAME, 2 * 1024 * 1024, function () {
             });
         }
 
