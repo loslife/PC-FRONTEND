@@ -521,15 +521,21 @@ border-bottom: 1px solid #9b9e9e;padding:3rem">
                     </span>
             </li>
             <li style=" float: right;">
-                <a>
+                <a style="width: 16rem">
                     <!--覆盖层、模拟disable-->
                     <div id="member-save-disable-cover" class="member-save-disable-cover"
                          style="display: none;">
                     </div>
-                    <div ng-tap="newMember_save()" style="height: 5rem;">
+                    <div ng-tap="newMember_save()" style="height: 5rem;display: inline-block;">
                         <span style="font-size: 1.2rem;">
                            <i class="icon-save"></i>
-                            <%= common.label.save %>
+                            保存继续添加
+                        </span>
+                    </div>
+                    <div ng-tap="newMember_save()" style="height: 5rem;display: inline-block;">
+                        <span style="font-size: 1.2rem;">
+                           <i class="icon-save"></i>
+                            保存
                         </span>
                     </div>
                 </a>

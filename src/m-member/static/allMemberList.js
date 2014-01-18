@@ -569,9 +569,12 @@ define(function (require, exports, module) {
             }
             utils.printTicket(printTemplate, callback);
         }
+        $scope.newMember_save_noback = function () {
+            $scope.newMember_save(true);
+        }
 
         //新增或者修改会员确认
-        $scope.newMember_save = function () {
+        $scope.newMember_save = function (noback) {
             //通过覆盖层将按钮disable
             var memSaveCover = $("#member-save-disable-cover");
             memSaveCover.show();
@@ -741,9 +744,11 @@ define(function (require, exports, module) {
                         emptyNewMember();
                         //新增成功后2s返回
                         setTimeout(function () {
-                            $scope.cancel();
+                            if(noback){
+                                $scope.cancel();
+                            }
                             $scope.digestScope();
-                        }, 2000);
+                        }, 1000);
                         utils.showAreaSuccessMsg("#member-new", "新增成功");
                         printNewCardTicket(printResult.rechargeBill, printResult.memberCard, function (error) {
                             if (error) {

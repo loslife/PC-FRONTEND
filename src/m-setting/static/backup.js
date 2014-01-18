@@ -6,6 +6,8 @@
  * To change this template use File | Settings | File Templates.
  */
 define(function (require, exports, module) {
+    var datas = require("mframework/static/package").datas.instance;
+
     //暴露全局初始化方法
     exports.init = init;
     //一级菜单切换回调
@@ -107,11 +109,18 @@ define(function (require, exports, module) {
     }
 
     function backup() {
-        if (cordova && cordova.platformId == "ios") {
-            backup_ios();
-        }else{
-            backup_android();
-        }
+        datas.getResource("backup/buildResumeDataPkg?enterpriseId="+YILOS.ENTERPRISEID)
+            .then(function (result) {
+                utils.showGlobalSuccessMsg("备份成功!");
+            },function(error){
+            }
+        );
+
+//        if (cordova && cordova.platformId == "ios") {
+//            backup_ios();
+//        }else{
+//            backup_android();
+//        }
     }
 
     function resume() {
