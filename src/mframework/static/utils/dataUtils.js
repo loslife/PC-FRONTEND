@@ -53,11 +53,15 @@ define(function (require, exports, module) {
     function batchExecuteSql(sqlArray, callback) {
         dbInstance.transaction(function (trans) {
             async.each(sqlArray, function (item, callback) {
-                trans.executeSql(item.statement, item.value, function (trans, result) {
-                    callback(null);
-                }, function (trans, error) {
-                    callback(error);
-                });
+                if(!item.statement){
+                    callback(null); //如果sql不存在，执行下一条
+                }else{
+                    trans.executeSql(item.statement, item.value, function (trans, result) {
+                        callback(null);
+                    }, function (trans, error) {
+                        callback(error);
+                    });
+                }
             }, function (error) {
                 callback(error);
             });
@@ -94,13 +98,13 @@ define(function (require, exports, module) {
 //        }
 
         insertObj = fitterArray ? fitterObjAttr(obj, fitterArray) : obj;
-        for (key in insertObj) {
-            if (insertObj.hasOwnProperty(key)) {
+        _.each(insertObj,function(value,key){
+            if (key!=="_id") {
                 field += key + ",";
                 values += "?,";
-                valuesPlace.push(insertObj[key]);
+                valuesPlace.push(value);
             }
-        }
+        });
         field = field.slice(0, field.length - 1) + ")";
         values = values.slice(0, values.length - 1) + ")";
         insertSql = "insert into " + tableName + field + " values" + values + ";";
@@ -122,16 +126,14 @@ define(function (require, exports, module) {
 //        }
 
         updateObj = fitterArray ? fitterObjAttr(obj, fitterArray) : obj;
-
-        for (key in updateObj) {
-            if (updateObj.hasOwnProperty(key)) {
-                if (key === "id") {
-                    continue;
-                }
+        _.each(updateObj,function(value,key){
+            if (key!=="_id") {
                 setFieldStr += key + "=?,";
-                valuesPlace.push(updateObj[key]);
+                valuesPlace.push(value);
             }
-        }
+        });
+
+
         id = updateObj.id;
         setFieldStr = setFieldStr.slice(0, setFieldStr.length - 1);
         updateSql = "update " + tableName + " set " + setFieldStr + " where id='" + id + "';";
@@ -148,20 +150,20 @@ define(function (require, exports, module) {
 
     //过滤对象属性
     function fitterObjAttr(obj, fitterArray) {
-        var key, fitterResult = {};
+        var fitterResult = {};
         if (_.isArray(fitterArray)) {
-            for (key in obj) {
-                if (obj.hasOwnProperty(key) && fitterArray.indexOf(key.toString()) !== -1) {
-                    if (_.isNumber(obj[key]) || _.isString(obj[key])) {
+            _.each(obj,function(value,key){
+                if (fitterArray.indexOf(key.toString()) !== -1) {
+                    if (_.isNumber(value) || _.isString(value)) {
                         //默认""转换为NULL进行插入
-                        if (obj[key] === "") {
+                        if (value === "") {
                             fitterResult[key] = null;
-                            continue;
+                        }else{
+                            fitterResult[key] = value;
                         }
-                        fitterResult[key] = obj[key];
                     }
                 }
-            }
+            });
         }
         return fitterResult;
     }

@@ -87,7 +87,9 @@ define(function (require, exports, module) {
                 callback(error);
                 return;
             }
-            employee.id = id;
+            if(!employee.id){
+                employee.id = id;
+            }
             dataUtils.insertRecord("tb_employee", employee, null, callback);
         });
     }
@@ -106,7 +108,10 @@ define(function (require, exports, module) {
                 callback(error);
                 return;
             }
-            job.id = id;
+
+            if(!job.id){
+                job.id = id;
+            }
             dataUtils.insertRecord("tb_job", job, null, callback);
         });
     }
@@ -214,7 +219,9 @@ define(function (require, exports, module) {
                         callback(error);
                         return;
                     }
-                    item.id = id;
+                    if(!item.id){
+                        item.id = id;
+                    }
                     callback(null);
                 });
             }, function (error) {
@@ -239,7 +246,9 @@ define(function (require, exports, module) {
                 callback(error);
                 return;
             }
-            append.id = id;
+            if(!append.id){
+                append.id = id;
+            }
             dataUtils.insertRecord("tb_empBonus", append, null, callback);
         });
     }

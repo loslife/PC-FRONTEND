@@ -11,7 +11,7 @@ define(function (require, exports, module) {
     var widgets = require("m-widgets/static/package");
     var utils = require("mframework/static/package").utils;			        //全局公共函数
     var database = require("mframework/static/package").database;
-    var featureDataI = require("./employee-dataI.js");
+    var featureDataI = require("./employee-dataI-server.js");
     var moduleScope;
 
 

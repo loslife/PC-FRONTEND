@@ -61,7 +61,10 @@ define(function (require, exports, module) {
                 callback(error);
                 return;
             }
-            rechargeCate.id = id;
+
+            if(!rechargeCate.id){
+                rechargeCate.id = id;
+            }
             dataUtils.insertRecord("tb_memberCardCategory", rechargeCate, null, callback);
         });
     }
@@ -77,7 +80,9 @@ define(function (require, exports, module) {
                 callback(error);
                 return;
             }
-            recordCate.id = id;
+            if(!recordCate.id){
+                recordCate.id = id;
+            }
             sqlArray.push(dataUtils.getInsertSqlOfObj("tb_memberCardCategory", recordCate));
             async.each(serviceList, function (item, callback) {
                 database.getUniqueId(YILOS.ENTERPRISEID, function (error, trans, id) {
@@ -85,7 +90,9 @@ define(function (require, exports, module) {
                         callback(error);
                         return;
                     }
-                    item.id = id;
+                    if(!item.id){
+                        item.id = id;
+                    }
                     item.cardCateId = recordCate.id;
                     sqlArray.push(dataUtils.getInsertSqlOfObj("tb_recordCateServices", item));
                     callback(null);
@@ -241,7 +248,9 @@ define(function (require, exports, module) {
                     callback(error);
                     return;
                 }
-                item.id = id;
+                if(!item.id){
+                    item.id = id;
+                }
                 sqlArray.push(dataUtils.getInsertSqlOfObj("tb_recordCateServices", item));
                 callback(null);
             });

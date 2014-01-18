@@ -61,34 +61,34 @@ define(function (require, exports, module) {
                     });
                     tapping = true;
                 });
-                element.bind('touchstart', function (e) {
-                    var touch = event.touches[0];
-                    tapOffsetX = touch.screenX;
-                    tapOffsetY = touch.screenY;
-                    element.addClass('active');
-                    tapping = true;
-                });
-                element.bind('touchmove', function (e) {
-                    var touch = event.touches[0];
-                    element.removeClass('active');
-                    //移动超过48像素才不算tap点击处理
-                    if(Math.abs(touch.screenX - tapOffsetX) > 48){
-                        tapping = false;
-                    }
-                    if(Math.abs(touch.screenY - tapOffsetY) > 48){
-                        tapping = false;
-                    }
-                });
-                element.bind('touchend', function (e) {
-                    element.removeClass('active');
-                    if (tapping) {
-                        var fn = $parse(attrs["ngTap"]);
-                        scope.$apply(function () {
-                            fn(scope, {$event: e});
-
-                        });
-                    }
-                });
+//                element.bind('touchstart', function (e) {
+//                    var touch = event.touches[0];
+//                    tapOffsetX = touch.screenX;
+//                    tapOffsetY = touch.screenY;
+//                    element.addClass('active');
+//                    tapping = true;
+//                });
+//                element.bind('touchmove', function (e) {
+//                    var touch = event.touches[0];
+//                    element.removeClass('active');
+//                    //移动超过48像素才不算tap点击处理
+//                    if(Math.abs(touch.screenX - tapOffsetX) > 48){
+//                        tapping = false;
+//                    }
+//                    if(Math.abs(touch.screenY - tapOffsetY) > 48){
+//                        tapping = false;
+//                    }
+//                });
+//                element.bind('touchend', function (e) {
+//                    element.removeClass('active');
+//                    if (tapping) {
+//                        var fn = $parse(attrs["ngTap"]);
+//                        scope.$apply(function () {
+//                            fn(scope, {$event: e});
+//
+//                        });
+//                    }
+//                });
             }
         }]);
 

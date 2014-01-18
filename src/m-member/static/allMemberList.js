@@ -59,7 +59,8 @@ define(function (require, exports, module) {
     function initData(model, callback) {
         async.waterfall([transferModel, getMaxMemberCount, initMemberList, initMemberCateList, initEmployeeList, initMsgSwitch, initStoreInfo, initTicketSwitch], function (error, model) {
             if (error) {
-                utils.log("m-member allMemberList.js initData");
+                utils.log("m-member allMemberList.js initData",error);
+                callback(model);
                 return;
             }
             callback(model);
@@ -1002,6 +1003,13 @@ define(function (require, exports, module) {
                     }, 2000);
 
                     utils.showAreaSuccessMsg("#member-recharge", "充值成功");
+
+                    try{
+                        $scope.$digest();
+                    }catch(e){
+
+                    }
+
                     printRechargeTicket(printResult.rechargeBill, function (error) {
                         if (error) {
                             //todo 打印失败处理

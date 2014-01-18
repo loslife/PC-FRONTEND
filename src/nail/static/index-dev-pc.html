@@ -194,9 +194,9 @@ window.global = {_g_server: {}, setting: {lockable: true}};
 global["_g_server"].protocol = "http";
 global["_g_server"].ip = "";
 global["_g_server"].staticurl = "";
-global["_g_server"].uploadurl = "http://192.168.1.107:5000/svc/file-upload";
-global["_g_server"].authurl = "http://192.168.1.107:5000/svc";
-global["_g_server"].serviceurl = "http://192.168.1.107:5000/svc";
+global["_g_server"].uploadurl = "http://192.168.1.100:5000/svc/file-upload";
+global["_g_server"].authurl = "http://192.168.1.100:5000/svc";
+global["_g_server"].serviceurl = "http://192.168.1.100:5000/svc";
 global["_g_env"] = "dev";
 cordova = {
     platformId:"ios"
@@ -279,11 +279,11 @@ seajs.use(['./main.js', 'mframework/static/utils/utils.js',
 
     $.cookie("enterpriseId",YILOS.ENTERPRISEID);
     $.cookie("username",YILOS.USERNAME);
-
     utils.global.enterpriseId = $.cookie('enterpriseId');
     utils.global.username = $.cookie('username');
     utils.global.userId = $.cookie('userId');
     widgets.init();
+    getEnterpriseInfo(utils.global.url,YILOS.USERNAME);
     //绑定一级菜单点击事件
     $("#header").on("click", ".nav>li", function () {
         $("#header .nav>li").removeClass("selected");
@@ -345,6 +345,26 @@ $(function () {
         }
     });
 });
+
+function getEnterpriseInfo(serverUrl,username){
+    $.ajax({
+        type: "GET",
+        url: serverUrl + "/nail/queryUserByUserName/"+username,
+        dataType: "json",
+        headers: {
+            "Authorization": "Bearer " + $.cookie('accessToken')
+        },
+        success: function (response, status, xhr) {
+            //设置客户端ID
+            YILOS.deviceID =  response.result.deviceRequestId;
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            if (xhr.status == 401) {
+                window.location.href = global["_g_server"].staticurl + "/portal/index.html"
+            }
+        }
+    });
+}
 
 function validateAccessToken() {
     var locationhash = window.location.hash;

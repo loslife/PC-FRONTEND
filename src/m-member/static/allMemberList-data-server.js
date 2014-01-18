@@ -46,7 +46,7 @@ define(function (require, exports, module) {
                     utils.log("m-member allMemberList.js initMemberList.featureDataI.initMemberList", error);
                     callback(error);
                 }else{
-                    callback(null,data);
+                    callback(null,model);
                 }
             });
         }
@@ -66,8 +66,11 @@ define(function (require, exports, module) {
             );
         }
         function initLocalMemberData(memberList,callback){
-            async.each(memberList,function(member,callback){
-                featureDataI.newMember(member, null, null, null, callback);
+            async.each(memberList,function(member,sub_callback){
+                featureDataI.newMember(member, null, null, null, function(error){
+                    //主键冲突失败不处理
+                    sub_callback(null);
+                });
             },function(error){
                 callback(error);
             });
@@ -76,21 +79,23 @@ define(function (require, exports, module) {
             datas.getResource("member/queryMemberCardList/"+YILOS.ENTERPRISEID)
                 .then(function (result) {
                     if(result.errorCode == 0){
-                        model.memberCardList = result.memberList;
+                        callback(null,result.memberList);
                     }else{
                         callback(result);
                     }
-                    callback(null);
                 },function(error){
-                    callback(null);
+                    callback(error);
                 }
             );
         }
         function initLocalMemberCardData(memberCardList,callback){
-            async.each(memberCardList,function(memberCard,callback){
-                featureDataI.newMember(null, memberCard, null, null, callback);
+            async.each(memberCardList,function(memberCard,sub_callback){
+                featureDataI.newMember(null, memberCard, null, null, function(error){
+                    //主键冲突失败不处理
+                    sub_callback(null);
+                });
             },function(error){
-                callback(null);
+                callback(error);
             });
         }
     }

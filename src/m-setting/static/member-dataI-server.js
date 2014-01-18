@@ -145,7 +145,7 @@ define(function (require, exports, module) {
         var form = {
             "rechargeCate":rechargeCate
         }
-        datas.postResource("member/updateRechargeCate/" + utils.global.enterpriseId,form)
+        datas.putResource("memberCard/updateRechargeCate/" + utils.global.enterpriseId,form)
             .then(function (result) {
                 if(result.errorCode == 0){
                     featureDataI.updateRechargeCate.apply(featureDataI,org_arguments);
@@ -163,7 +163,7 @@ define(function (require, exports, module) {
         var form = {
             "recordCate":recordCate
         }
-        datas.postResource("member/updateRecordCate/" + utils.global.enterpriseId,form)
+        datas.putResource("memberCard/updateRecordCate/" + utils.global.enterpriseId,form)
             .then(function (result) {
                 if(result.errorCode == 0){
                     featureDataI.updateRecordCate.apply(featureDataI,org_arguments);
@@ -179,10 +179,7 @@ define(function (require, exports, module) {
     //根据类型id删除卡类型，返回影响记录条数
     function deleteRechargeCate(rechargeCate, callback) {
         var org_arguments = arguments;
-        var form = {
-            "rechargeCate":rechargeCate
-        }
-        datas.postResource("member/deleteRechargeCate/" + utils.global.enterpriseId,form)
+        datas.deleteResource("memberCard/deleteRechargeCate/" + utils.global.enterpriseId+"/"+rechargeCate.id)
             .then(function (result) {
                 if(result.errorCode == 0){
                     featureDataI.deleteRechargeCate.apply(featureDataI,org_arguments);
@@ -196,10 +193,7 @@ define(function (require, exports, module) {
 
     function deleteRecordCate(recordCate, callback) {
         var org_arguments = arguments;
-        var form = {
-            "recordCate":recordCate
-        }
-        datas.postResource("member/deleteRecordCate/" + utils.global.enterpriseId,form)
+        datas.deleteResource("memberCard/deleteRecordCate/" + utils.global.enterpriseId+"/"+recordCate.id)
             .then(function (result) {
                 if(result.errorCode == 0){
                     featureDataI.deleteRecordCate.apply(featureDataI,org_arguments);

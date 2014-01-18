@@ -510,18 +510,23 @@ define(function (require, exports, module) {
                     "Authorization": "Bearer " + ENV.access_token,
                     "custom-enterpriseId": $.cookie('enterpriseId')
                 },
-                success: function (result) {
-                    deferred.resolve(id);
+                success: function (data) {
+
+                    if(0==data.code){
+                        deferred.resolve(data.result);
+                    }else{
+                        deferred.reject(data.error);
+                    }
                 },
                 error: function (xhr, textStatus, errorThrown) {
                     if (xhr.status == 200 && xhr.responseText == "") {
-                        deferred.resolve(id);
+                        deferred.resolve({errorCode:"-1"});  //TODO整改ajax请求返回码
                     }
                     else if (xhr.status == 401) {
                         $.Topic("accessToken").publish("accessToken-Invalid");
-                        deferred.reject(401);
+                        deferred.reject({errorCode:"401"});
                     } else {
-                        deferred.reject(xhr.responseText);
+                        deferred.reject({errorCode:xhr.status,message:"xhr.responseText"});
                     }
                 }
             });
