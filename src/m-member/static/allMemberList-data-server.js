@@ -139,7 +139,7 @@ define(function (require, exports, module) {
             "memberCard":memberCard,
             "member":member
         }
-        datas.postResource("member/updateMember/" + utils.global.enterpriseId,form)
+        datas.putResource("member/updateMember/" + utils.global.enterpriseId,form)
             .then(function (result) {
                 if(result.errorCode == 0){
                     featureDataI.updateMember.apply(featureDataI,org_arguments);

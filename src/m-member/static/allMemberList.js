@@ -35,7 +35,7 @@ define(function (require, exports, module) {
                 name: "",
                 sex: "0",
                 cardNo: "",//卡编号即会员编号
-                birthday: "",
+                birthday: "1996-1-1",
                 phoneMobile: "",
                 currentMoney: "",
                 memberCardCategory: "",
@@ -313,7 +313,7 @@ define(function (require, exports, module) {
             $scope.newMember.id = "";
             $scope.newMember.name = "";
             $scope.newMember.sex = $scope.sexConstant[0];
-            $scope.newMember.birthday = "";
+            $scope.newMember.birthday = "1996-1-1";
             $scope.newMember.phoneMobile = "";
             if ($scope.rechargeCateList.length !== 0) {
                 $scope.cardTypeSelected = $scope.cardTypeList[0];
@@ -385,11 +385,12 @@ define(function (require, exports, module) {
             var flag = true;
             var rechargeError = $("#error-new-recharge").hide();
             if ($scope.memberRecharge.rechargeMoney || $scope.memberRecharge.rechargeMoney === 0) {
-                if (parseFloat($scope.memberRecharge.rechargeMoney) < parseFloat($scope.newMember.memberCardCategory.baseInfo_minMoney)) {
-                    flag = false;
-                    $("#newCard-minMoney-error").text("不能小于该类型最低金额" + $scope.newMember.memberCardCategory.baseInfo_minMoney);
-                    rechargeError.show();
-                }
+                //pc版本临时去除
+//                if (parseFloat($scope.memberRecharge.rechargeMoney) < parseFloat($scope.newMember.memberCardCategory.baseInfo_minMoney)) {
+//                    flag = false;
+//                    $("#newCard-minMoney-error").text("不能小于该类型最低金额" + $scope.newMember.memberCardCategory.baseInfo_minMoney);
+//                    rechargeError.show();
+//                }
                 if (parseFloat($scope.memberRecharge.rechargeMoney) > 1000000) {
                     flag = false;
                     $("#newCard-minMoney-error").text("输入金额过大");
@@ -418,11 +419,11 @@ define(function (require, exports, module) {
             //新增修改都调用此校验方法、修改时不需要对开卡金额校验
             if (!$scope.newMember.id) {
                 if ($scope.memberRecharge.rechargeMoney || $scope.memberRecharge.rechargeMoney === 0) {
-                    if (parseFloat($scope.memberRecharge.rechargeMoney) < parseFloat($scope.newMember.memberCardCategory.baseInfo_minMoney)) {
-                        flag = false;
-                        $("#newCard-minMoney-error").text("不能小于该类型最低金额" + $scope.newMember.memberCardCategory.baseInfo_minMoney);
-                        rechargeError.show();
-                    }
+//                    if (parseFloat($scope.memberRecharge.rechargeMoney) < parseFloat($scope.newMember.memberCardCategory.baseInfo_minMoney)) {
+//                        flag = false;
+//                        $("#newCard-minMoney-error").text("不能小于该类型最低金额" + $scope.newMember.memberCardCategory.baseInfo_minMoney);
+//                        rechargeError.show();
+//                    }
                     if (parseFloat($scope.memberRecharge.rechargeMoney) > 1000000) {
                         flag = false;
                         $("#newCard-minMoney-error").text("输入金额过大");
