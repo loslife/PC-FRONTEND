@@ -160,7 +160,7 @@ define(function (require, exports, module) {
             "memberId":memberId,
             "cardId":cardId
         }
-        datas.postResource("member/deleteMember/" + utils.global.enterpriseId,form)
+        datas.deleteResource("member/deleteMember/" + utils.global.enterpriseId,form)
             .then(function (result) {
                 if(result.errorCode == 0){
                     featureDataI.deleteMember.apply(featureDataI,org_arguments);
