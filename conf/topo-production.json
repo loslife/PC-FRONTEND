@@ -9,17 +9,15 @@
             "baseurl": "http://10.160.26.76:8080/svc",
             "workerno": 1,
             "applications": [
-                "uiframework",
-                "portal",
-                "auth",
-                "billing",
-                "graph",
-                "admin",
-                "backup",
-                "widgets",
-                "sms",
+                "3rd-lib",
+                "mframework",
+                "m-member",
+                "m-pos",
+                "m-setting",
+                "m-widgets",
+                "m-nail-show",
                 "nail",
-                "enterprise"
+                "m-member"
             ]
         }
     ],

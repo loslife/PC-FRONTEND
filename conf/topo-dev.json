@@ -1,0 +1,46 @@
+{
+    "env": "dev",
+    "cluster": [
+        {
+            "name": "pcEndService",
+            "ip": "192.168.1.108",
+            "port": 7080,
+            "protocol": "http",
+            "baseurl": "http://192.168.1.108:7080/svc",
+            "workerno": 1,
+            "applications": [
+                "3rd-lib",
+                "mframework",
+                "m-member",
+                "m-pos",
+                "m-setting",
+                "m-widgets",
+                "m-nail-show",
+                "nail",
+                "m-member"
+            ]
+        }
+    ],
+    "dataServer": {
+        "mysql": {
+            "ip": "127.0.0.1",
+            "port": 3306,
+            "user": "root",
+            "password": ""
+        },
+        "mongodb": {
+            "ip": "192.168.1.108",
+            "port": "27017",
+            "connectionurl": "192.168.1.108:27017",
+            "user": "",
+            "password": ""
+        }
+    },
+    "clientAccess": {
+        "staticurl": "http://192.168.1.108:7080",
+        "authurl": "http://192.168.1.108:5000/svc",
+        "serviceurl": "http://192.168.1.108:5000/svc",
+        "uploadurl": "http://192.168.1.108:5000/svc/file-upload"
+    },
+    "ip-whitelist": ["localhost", "127.0.0.1", "192.168.1.108"]
+}

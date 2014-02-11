@@ -14,6 +14,14 @@
         }
     },
     "services":[
+        {
+            "name": "client-setting",
+            "path": "/portal/setting",
+            "method": "get",
+            "auth":false,
+            "impl": "setting.clientSettingScript",
+            "comment": ""
+        }
     ],
     "statics": [
         {
